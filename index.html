@@ -1,0 +1,339 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no,viewport-fit=cover">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="apple-mobile-web-app-title" content="FLASHBAX">
+<meta name="theme-color" content="#f26b4f">
+<title>FLASHBAX</title>
+<link href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+<style>
+:root{--red:#f26b4f;--red2:#e0533a;--org:#ff9f5a;--yel:#ffd36b;--cream:#fff6e8;--ink:#1d1a19;--dark:#2a2523}
+*{box-sizing:border-box;margin:0;padding:0;-webkit-tap-highlight-color:transparent;user-select:none;-webkit-user-select:none}
+html,body{height:100%;background:#151213;font-family:'Space Mono',monospace;color:var(--ink);overflow:hidden}
+body{display:flex;align-items:center;justify-content:center}
+#phone{position:relative;width:100%;height:100%;max-width:430px;max-height:932px;overflow:hidden;background:var(--cream)}
+@media(min-width:500px){#phone{border-radius:48px;box-shadow:0 0 0 10px #000,0 30px 80px #000a;height:92vh;aspect-ratio:430/932;width:auto}}
+.screen{position:absolute;inset:0;display:none;flex-direction:column;padding:calc(env(safe-area-inset-top) + 14px) 18px calc(env(safe-area-inset-bottom) + 14px)}
+.screen.on{display:flex}
+/* LOGO */
+.logo{font-family:'Archivo Black',sans-serif;letter-spacing:-1px;display:flex;align-items:center;line-height:1}
+.logo svg{margin-left:-2px}
+/* ===== UNBOX ===== */
+#unbox{background:radial-gradient(circle at 30% 10%,#ffd9a8,transparent 50%),linear-gradient(160deg,var(--yel),var(--org) 45%,var(--red));overflow:hidden}
+#unbox .logo{font-size:44px;color:var(--cream);text-shadow:3px 3px 0 var(--red2);justify-content:center;margin-top:10px}
+.tag{text-align:center;color:var(--cream);font-weight:700;font-size:12px;letter-spacing:3px;margin:6px 0 14px}
+.packs{flex:1;display:flex;gap:16px;overflow-x:auto;scroll-snap-type:x mandatory;padding:10px 10% 20px;margin:0 -18px}
+.packs::-webkit-scrollbar{display:none}
+.pack{flex:0 0 78%;scroll-snap-align:center;border-radius:22px;padding:16px;position:relative;box-shadow:0 18px 40px #0005;display:flex;flex-direction:column;transition:transform .4s}
+.pack .hole{width:70px;height:14px;border-radius:10px;background:#0003;margin:0 auto 10px;box-shadow:inset 0 2px 4px #0005}
+.pack h3{font-family:'Archivo Black';font-size:28px;line-height:.95;color:var(--cream)}
+.pack .sub{font-size:11px;font-weight:700;color:var(--cream);opacity:.9;margin-top:4px}
+.pack .badge{position:absolute;right:16px;top:38px;background:var(--cream);color:var(--ink);font-family:'Archivo Black';padding:6px 10px;border-radius:6px;font-size:14px}
+.blister{flex:1;margin-top:14px;border-radius:26px;position:relative;background:linear-gradient(135deg,#ffffff70,#ffffff15 40%,#ffffff55);border:2px solid #ffffffa0;box-shadow:inset 0 0 30px #fff8,0 4px 0 #0002;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:14px;overflow:hidden;transition:transform .7s cubic-bezier(.6,-0.3,.4,1.4),opacity .7s}
+.blister:after{content:'';position:absolute;inset:-40%;background:linear-gradient(115deg,transparent 40%,#fff9 48%,transparent 56%);animation:shine 3.5s infinite}
+@keyframes shine{0%{transform:translateX(-60%)}60%,100%{transform:translateX(60%)}}
+.mini-cam{width:80%;aspect-ratio:1.7;border-radius:14px;background:var(--dark);position:relative;box-shadow:0 8px 16px #0004}
+.mini-cam .band{position:absolute;left:28%;right:28%;top:0;bottom:0}
+.mini-cam .lens{position:absolute;left:50%;top:58%;width:34%;aspect-ratio:1;transform:translate(-50%,-50%);border-radius:50%;background:radial-gradient(circle at 35% 35%,#6a6,#123 40%,#000 70%);border:5px solid #111}
+.mini-cam .fl{position:absolute;right:6%;top:10%;width:18%;height:22%;background:linear-gradient(#fff,#ccc);border-radius:3px}
+.rolls{display:flex;gap:10px}
+.roll{width:34px;height:46px;border-radius:6px;position:relative;box-shadow:inset -6px 0 0 #0002}
+.roll:before{content:'';position:absolute;left:8px;right:8px;top:-6px;height:6px;background:#333;border-radius:2px 2px 0 0}
+.peel{margin-top:14px;background:var(--ink);color:var(--cream);border:none;border-radius:40px;padding:14px;font-family:'Archivo Black';font-size:16px;letter-spacing:1px}
+.pack.opened .blister{transform:translateY(-130%) rotate(-12deg);opacity:0}
+.dots{display:flex;justify-content:center;gap:6px}
+.dots i{width:7px;height:7px;border-radius:50%;background:#fff7}.dots i.a{background:#fff}
+/* ===== CAMERA (back of camera) ===== */
+#cam{background:linear-gradient(170deg,var(--yel) 0%,var(--org) 40%,var(--red) 100%);gap:12px}
+#cam:before{content:'';position:absolute;inset:0;background:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='120' height='120'%3E%3Cfilter id='n'%3E%3CfeTurbulence baseFrequency='.9'/%3E%3C/filter%3E%3Crect width='120' height='120' filter='url(%23n)' opacity='.12'/%3E%3C/svg%3E");pointer-events:none;mix-blend-mode:multiply}
+.topbar{display:flex;justify-content:space-between;align-items:center;position:relative;z-index:2}
+.topbar .logo{font-size:26px;color:var(--cream);text-shadow:2px 2px 0 var(--red2)}
+.chip{background:var(--cream);border-radius:20px;padding:6px 10px;font-size:11px;font-weight:700;box-shadow:0 3px 0 #0003}
+.body-plate{flex:1;position:relative;border-radius:34px;background:linear-gradient(160deg,#fff8ec,#ffe9cf);box-shadow:inset 0 2px 0 #fff,inset 0 -6px 0 #0001,0 10px 24px #0003;padding:16px;display:flex;flex-direction:column;gap:14px;z-index:1}
+.stripe{position:absolute;left:0;right:0;top:54px;height:10px;background:linear-gradient(var(--red) 0 33%,var(--org) 0 66%,var(--yel) 0)}
+.row1{display:flex;justify-content:space-between;align-items:flex-start;gap:12px;position:relative;z-index:2}
+.counter-box{background:var(--dark);border-radius:16px;padding:8px 10px;display:flex;align-items:center;gap:8px;box-shadow:inset 0 3px 6px #000}
+.counter-win{width:52px;height:44px;border-radius:50%;background:radial-gradient(circle at 40% 35%,#fffdf6,#e8dcc4);overflow:hidden;position:relative;border:3px solid #111;box-shadow:inset 0 3px 6px #0006}
+.counter-strip{position:absolute;left:0;right:0;top:0;transition:transform .7s cubic-bezier(.3,1.5,.5,1)}
+.counter-strip div{height:38px;display:flex;align-items:center;justify-content:center;font-family:'Archivo Black';font-size:22px;color:var(--ink)}
+.counter-strip div.odd{font-size:12px;color:var(--red)}
+.counter-lbl{color:var(--cream);font-size:9px;line-height:1.2;font-weight:700}
+.flashbtn{width:54px;height:54px;border-radius:50%;border:none;background:var(--dark);display:flex;align-items:center;justify-content:center;box-shadow:0 4px 0 #000,inset 0 2px 0 #fff2}
+.flashbtn.on{background:var(--yel);box-shadow:0 4px 0 #b88a2a,0 0 20px var(--yel)}
+.flashbtn.on svg path{fill:var(--ink)}
+.led{width:10px;height:10px;border-radius:50%;background:#5a2a20;margin-top:6px;transition:.2s}
+.led.ready{background:#ff3b2f;box-shadow:0 0 10px #ff3b2f}
+.vf-wrap{flex:1;display:flex;align-items:center;justify-content:center;gap:12px;min-height:0}
+.vf{position:relative;width:62%;max-width:250px;aspect-ratio:3/4;border-radius:40% 40% 40% 40%/30% 30% 30% 30%;background:var(--dark);padding:18px;box-shadow:inset 0 6px 14px #000,0 4px 0 #fff}
+.vf-in{width:100%;height:100%;border-radius:18px;overflow:hidden;position:relative;background:#000;border:3px solid #000}
+.vf video{width:100%;height:100%;object-fit:cover;filter:saturate(.9) contrast(1.05)}
+.vf-in:after{content:'';position:absolute;inset:0;background:radial-gradient(ellipse,transparent 50%,#000c 100%);pointer-events:none}
+.vf-in .frame{position:absolute;inset:14%;border:1.5px solid #fff7;border-radius:4px;z-index:2;pointer-events:none}
+.vf-msg{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;text-align:center;color:var(--cream);font-size:11px;padding:14px;z-index:3;background:#000b}
+.vf-msg.hide{display:none}
+.wind-col{display:flex;flex-direction:column;align-items:center;gap:6px}
+.wheel{width:46px;height:200px;border-radius:14px;background:var(--dark);position:relative;overflow:hidden;box-shadow:inset 0 4px 8px #000,0 3px 0 #fff;touch-action:none;cursor:grab}
+.wheel-ribs{position:absolute;left:6px;right:6px;top:-40px;bottom:-40px;background:repeating-linear-gradient(#55504c 0 4px,#1a1716 4px 10px);border-radius:8px}
+.wheel:after{content:'';position:absolute;inset:0;background:linear-gradient(#000c,transparent 30%,transparent 70%,#000c);pointer-events:none}
+.wind-lbl{font-size:9px;font-weight:700;color:var(--red2);text-align:center;line-height:1.2}
+.wind-lbl.pulse{animation:pl 1s infinite}
+@keyframes pl{50%{color:var(--ink);transform:scale(1.1)}}
+.shutter-row{display:flex;align-items:center;justify-content:space-between;padding:0 6px}
+.smallbtn{width:48px;height:48px;border-radius:50%;border:none;background:var(--cream);box-shadow:0 4px 0 #0003;display:flex;align-items:center;justify-content:center}
+.shutter{width:96px;height:96px;border-radius:50%;border:8px solid var(--dark);background:radial-gradient(circle at 40% 35%,#fff3d6,var(--yel) 60%,#f0a93a);box-shadow:0 6px 0 #0005;display:flex;align-items:center;justify-content:center;transition:transform .08s}
+.shutter:active{transform:scale(.92) translateY(3px)}
+.shutter.locked{filter:grayscale(.7) brightness(.85)}
+.filmbar{background:var(--dark);border-radius:20px;padding:8px 10px;display:flex;align-items:center;gap:8px;position:relative;z-index:2}
+.filmbar .can{width:30px;height:40px;border-radius:5px;flex:0 0 auto}
+.strip{flex:1;display:flex;gap:4px;overflow-x:auto;padding:4px 0;background:repeating-linear-gradient(90deg,#000 0 6px,transparent 6px 12px) top/100% 4px no-repeat,repeating-linear-gradient(90deg,#000 0 6px,transparent 6px 12px) bottom/100% 4px no-repeat;background-color:#3b2a1c}
+.strip::-webkit-scrollbar{display:none}
+.strip .f{flex:0 0 30px;height:38px;border-radius:2px;background:#221a14;overflow:hidden;position:relative}
+.strip .f img{width:100%;height:100%;object-fit:cover;image-rendering:pixelated;filter:blur(3px) sepia(.6) hue-rotate(-20deg) saturate(1.4) brightness(.7);transform:scale(1.2)}
+.devbtn{background:var(--yel);border:none;border-radius:12px;padding:8px 10px;font-family:'Archivo Black';font-size:11px}
+#flash{position:absolute;inset:0;background:#fff;opacity:0;pointer-events:none;z-index:50}
+#flash.go{animation:fl .6s ease-out}
+@keyframes fl{0%{opacity:1}100%{opacity:0}}
+/* ===== DARKROOM ===== */
+#dark{background:#1b0f0d;color:var(--cream)}
+#dark h2{font-family:'Archivo Black';font-size:28px;margin:10px 0 2px}
+#dark .safelight{position:absolute;inset:0;background:radial-gradient(circle at 50% 0,#ff3b2f55,transparent 60%);pointer-events:none}
+.back{background:none;border:2px solid var(--cream);color:var(--cream);border-radius:20px;padding:6px 14px;font-family:'Space Mono';font-weight:700;align-self:flex-start;position:relative;z-index:2}
+.dev-box{margin:16px 0;padding:16px;border-radius:20px;background:#ffffff10;border:1px solid #ffffff20;text-align:center;position:relative}
+.dev-box .big{font-family:'Archivo Black';font-size:32px;color:var(--org)}
+.grid{flex:1;overflow-y:auto;display:grid;grid-template-columns:repeat(3,1fr);gap:6px;align-content:start;position:relative}
+.grid .ph{aspect-ratio:3/4;border-radius:4px;overflow:hidden;background:#000;position:relative}
+.grid .ph img{width:100%;height:100%;object-fit:cover}
+.grid .ph.locked img{filter:blur(6px) brightness(.5);image-rendering:pixelated;transform:scale(1.15)}
+.grid .ph.reveal{animation:dev 2.4s ease-out both}
+@keyframes dev{0%{filter:brightness(0) sepia(1)}40%{filter:brightness(.5) sepia(1) hue-rotate(-30deg)}100%{filter:none}}
+.actions{display:flex;gap:8px;margin-top:12px;position:relative}
+.actions button{flex:1;border:none;border-radius:16px;padding:14px;font-family:'Archivo Black';font-size:13px;background:var(--org);color:var(--ink)}
+.actions button.alt{background:var(--cream)}
+/* viewer */
+#viewer{position:absolute;inset:0;background:#000e;z-index:60;display:none;align-items:center;justify-content:center;flex-direction:column;gap:14px;padding:20px}
+#viewer.on{display:flex}
+#viewer img{max-width:100%;max-height:75%;border:10px solid #fff;border-bottom-width:36px;box-shadow:0 10px 40px #000}
+#viewer button{background:var(--cream);border:none;border-radius:20px;padding:10px 20px;font-family:'Archivo Black'}
+/* toast */
+#toast{position:absolute;left:12px;right:12px;top:calc(env(safe-area-inset-top) + 10px);background:#fffdf8ee;backdrop-filter:blur(10px);border-radius:20px;padding:12px 14px;display:flex;gap:10px;align-items:center;z-index:80;transform:translateY(-150%);transition:transform .5s cubic-bezier(.3,1.4,.5,1);box-shadow:0 10px 30px #0004}
+#toast.on{transform:none}
+#toast .ic{width:38px;height:38px;border-radius:10px;background:linear-gradient(var(--yel),var(--red));display:flex;align-items:center;justify-content:center;flex:0 0 auto}
+#toast b{font-size:13px;display:block}#toast span{font-size:11px}
+</style>
+</head>
+<body>
+<div id="phone">
+
+<!-- UNBOX -->
+<section class="screen on" id="unbox">
+  <div class="logo" id="logoBig"></div>
+  <div class="tag">CHOOSE YOUR FILM · 20 SHOTS</div>
+  <div class="packs" id="packs"></div>
+  <div class="dots" id="dots"></div>
+</section>
+
+<!-- CAMERA -->
+<section class="screen" id="cam">
+  <div class="topbar">
+    <div class="logo" id="logoSmall"></div>
+    <div class="chip" id="devChip">⏳ –</div>
+  </div>
+  <div class="body-plate">
+    <div class="stripe"></div>
+    <div class="row1">
+      <div class="counter-box">
+        <div class="counter-win"><div class="counter-strip" id="cstrip"></div></div>
+        <div class="counter-lbl">EXP.<br>LEFT</div>
+      </div>
+      <div style="display:flex;flex-direction:column;align-items:center">
+        <button class="flashbtn" id="flashBtn"><svg width="22" height="26" viewBox="0 0 22 26"><path d="M13 0L0 15h9l-2 11L22 10h-9z" fill="#ffd36b"/></svg></button>
+        <div class="led" id="led"></div>
+      </div>
+    </div>
+    <div class="vf-wrap">
+      <div class="vf"><div class="vf-in">
+        <video id="video" autoplay playsinline muted></video>
+        <div class="frame"></div>
+        <div class="vf-msg" id="vfMsg">Tippe hier, um die Kamera zu aktivieren</div>
+      </div></div>
+      <div class="wind-col">
+        <div class="wheel" id="wheel"><div class="wheel-ribs" id="ribs"></div></div>
+        <div class="wind-lbl" id="windLbl">WIND<br>▼</div>
+      </div>
+    </div>
+    <div class="shutter-row">
+      <button class="smallbtn" id="flipBtn" title="Kamera wechseln"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#1d1a19" stroke-width="2.4" stroke-linecap="round"><path d="M4 12a8 8 0 0 1 14-5l2 2M20 12a8 8 0 0 1-14 5l-2-2"/><path d="M20 4v5h-5M4 20v-5h5"/></svg></button>
+      <button class="shutter" id="shutter"><svg width="44" height="44" viewBox="-50 -50 100 100"><path id="starP" fill="#1d1a19"/></svg></button>
+      <button class="smallbtn" id="toDark" title="Dunkelkammer"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#1d1a19" stroke-width="2.4"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="M3 9h18M7 5v4M11 5v4M15 5v4"/></svg></button>
+    </div>
+  </div>
+  <div class="filmbar">
+    <div class="can" id="canIcon"></div>
+    <div class="strip" id="strip"></div>
+  </div>
+  <div id="flash"></div>
+</section>
+
+<!-- DARKROOM -->
+<section class="screen" id="dark">
+  <div class="safelight"></div>
+  <button class="back" id="backCam">← KAMERA</button>
+  <h2 id="darkTitle" style="position:relative">DUNKELKAMMER</h2>
+  <div style="font-size:12px;opacity:.7;position:relative" id="darkSub"></div>
+  <div class="dev-box" id="devBox"></div>
+  <div class="grid" id="grid"></div>
+  <div class="actions" id="actions"></div>
+</section>
+
+<div id="viewer"><img id="vImg"><div style="display:flex;gap:10px"><button id="vSave">SPEICHERN</button><button id="vClose">SCHLIESSEN</button></div></div>
+<div id="toast"><div class="ic" id="toastIc"></div><div><b id="tTitle"></b><span id="tText"></span></div></div>
+</div>
+
+<script>
+/* ---------- CONFIG ---------- */
+const SHOTS=20, DEV_MS=7*24*3600*1000; // ready 7 days after first shot (= day 8)
+const FILMS=[
+ {id:'color',name:'SUPERIA\nCOLOR 400',sub:'Warm, saftig, 90er Party-Look',badge:'C-400',bg:'linear-gradient(160deg,#ff8a5c,#f2564a)',can:'linear-gradient(90deg,#2f9e55,#57c27a)',rolls:['#57c27a','#ffd36b','#f26b4f']},
+ {id:'bw',name:'NEOPAN\nB&W 400',sub:'Schwarzweiß, harter Kontrast, viel Korn',badge:'BW-400',bg:'linear-gradient(160deg,#5b5552,#252120)',can:'linear-gradient(90deg,#111,#666)',rolls:['#eee','#999','#333']},
+ {id:'sepia',name:'SEPIA\nGOLD 200',sub:'Wie aus Omas Fotoalbum',badge:'SP-200',bg:'linear-gradient(160deg,#e8b56a,#a8693a)',can:'linear-gradient(90deg,#8a5a2b,#d9a35f)',rolls:['#d9a35f','#b57b3d','#7a4a22']}
+];
+/* ---------- STATE ---------- */
+let S=JSON.parse(localStorage.getItem('fbx')||'null');
+const save=()=>{try{localStorage.setItem('fbx',JSON.stringify(S))}catch(e){toast('Speicher voll','Bitte Fotos sichern')}};
+let wound=true, flashOn=true, facing='environment', stream=null;
+
+/* ---------- LOGO: X as camera flash ---------- */
+function starPath(points,ro,ri,rot=0){let d='';for(let i=0;i<points*2;i++){const r=i%2?ri:ro,a=Math.PI*i/points+rot;d+=(i?'L':'M')+(Math.cos(a)*r).toFixed(1)+' '+(Math.sin(a)*r).toFixed(1)}return d+'Z'}
+function xFlash(size,col){return `<svg width="${size}" height="${size}" viewBox="-50 -50 100 100" style="filter:drop-shadow(0 0 6px #fff8)"><path d="${starPath(4,50,9,Math.PI/4)}" fill="${col}"/><path d="${starPath(4,24,6,0)}" fill="${col}"/><circle r="7" fill="#fff"/></svg>`}
+function logo(el,fs,col){el.innerHTML=`FLASHBA${xFlash(fs*1.25,col)}`}
+logo(logoBig,44,'#fff6e8');logo(logoSmall,26,'#fff6e8');
+starP.setAttribute('d',starPath(8,46,16,0));
+
+/* ---------- SOUND (WebAudio) ---------- */
+let AC;const ac=()=>AC||(AC=new (window.AudioContext||window.webkitAudioContext)());
+function noise(dur,vol,freq,type='bandpass',when=0){const c=ac(),b=c.createBuffer(1,c.sampleRate*dur,c.sampleRate),d=b.getChannelData(0);for(let i=0;i<d.length;i++)d[i]=(Math.random()*2-1)*Math.pow(1-i/d.length,3);const s=c.createBufferSource();s.buffer=b;const f=c.createBiquadFilter();f.type=type;f.frequency.value=freq;const g=c.createGain();g.gain.value=vol;s.connect(f).connect(g).connect(c.destination);s.start(c.currentTime+when)}
+function sndShutter(){noise(.05,1.2,3000,'highpass');noise(.08,.9,1200,'bandpass',.06);if(flashOn){const c=ac(),o=c.createOscillator(),g=c.createGain();o.frequency.setValueAtTime(4000,c.currentTime+.1);o.frequency.exponentialRampToValueAtTime(9000,c.currentTime+.5);g.gain.setValueAtTime(.03,c.currentTime+.1);g.gain.linearRampToValueAtTime(0,c.currentTime+.55);o.connect(g).connect(c.destination);o.start(c.currentTime+.1);o.stop(c.currentTime+.6)}}
+const sndTick=()=>noise(.025,.6,2500);
+const sndDone=()=>{noise(.04,1,900);noise(.04,1,1500,'bandpass',.05)};
+const sndPeel=()=>{for(let i=0;i<8;i++)noise(.06,.5,600+i*200,'bandpass',i*.04)};
+const buzz=ms=>navigator.vibrate&&navigator.vibrate(ms);
+
+/* ---------- UNBOX ---------- */
+function renderPacks(){
+ packs.innerHTML='';dots.innerHTML='';
+ FILMS.forEach((f,i)=>{
+  const p=document.createElement('div');p.className='pack';p.style.background=f.bg;
+  p.innerHTML=`<div class="hole"></div><h3>${f.name.replace('\n','<br>')}</h3><div class="sub">${f.sub}</div><div class="badge">${f.badge}</div>
+  <div class="blister"><div class="rolls">${f.rolls.map(c=>`<div class="roll" style="background:${c}"></div>`).join('')}</div>
+  <div class="mini-cam"><div class="band" style="background:${f.can}"></div><div class="lens"></div><div class="fl"></div></div></div>
+  <button class="peel">AUFREISSEN ✦</button>`;
+  p.querySelector('.peel').onclick=()=>{sndPeel();buzz([20,30,20]);p.classList.add('opened');setTimeout(()=>startRoll(f.id),750)};
+  packs.appendChild(p);const d=document.createElement('i');if(!i)d.className='a';dots.appendChild(d);
+ });
+ packs.onscroll=()=>{const i=Math.round(packs.scrollLeft/(packs.scrollWidth/FILMS.length));[...dots.children].forEach((d,j)=>d.className=j==i?'a':'')};
+}
+function startRoll(film){S={film,shots:[],first:null,revealed:false,notified:false};save();show('cam');initCam()}
+
+/* ---------- SCREENS ---------- */
+function show(id){document.querySelectorAll('.screen').forEach(s=>s.classList.toggle('on',s.id==id));if(id=='dark')renderDark();if(id=='cam')renderCam()}
+
+/* ---------- CAMERA ---------- */
+async function initCam(){
+ if(stream)stream.getTracks().forEach(t=>t.stop());
+ try{stream=await navigator.mediaDevices.getUserMedia({video:{facingMode:facing,width:{ideal:1280},height:{ideal:1706}},audio:false});video.srcObject=stream;vfMsg.classList.add('hide');video.style.transform=facing=='user'?'scaleX(-1)':''}
+ catch(e){vfMsg.classList.remove('hide');vfMsg.textContent='Kein Kamerazugriff. Seite über https öffnen und Zugriff erlauben. Tippen zum Wiederholen.'}
+}
+vfMsg.onclick=initCam;
+flipBtn.onclick=()=>{facing=facing=='environment'?'user':'environment';initCam()};
+flashBtn.onclick=()=>{flashOn=!flashOn;flashBtn.classList.toggle('on',flashOn);sndTick()};flashBtn.classList.add('on');
+
+function left(){return SHOTS-(S?S.shots.length:0)}
+function buildCounter(){let h='';for(let n=SHOTS;n>=0;n--){h+=`<div>${n}</div>`}cstrip.innerHTML=h;setCounter(false)}
+function setCounter(anim=true){const idx=SHOTS-left();cstrip.style.transition=anim?'':'none';cstrip.style.transform=`translateY(${-idx*38+3}px)`}
+function renderCam(){
+ const f=FILMS.find(x=>x.id==S.film);canIcon.style.background=f.can;buildCounter();renderStrip();updateState();
+}
+function renderStrip(){strip.innerHTML='';for(let i=0;i<SHOTS;i++){const d=document.createElement('div');d.className='f';if(S.shots[i])d.innerHTML=`<img src="${S.shots[i].thumb}">`;strip.appendChild(d)}const last=strip.children[Math.max(0,S.shots.length-1)];last&&last.scrollIntoView({inline:'center',behavior:'smooth'})}
+function updateState(){
+ const l=left();led.classList.toggle('ready',wound&&l>0&&flashOn);
+ shutter.classList.toggle('locked',!wound||l==0);
+ windLbl.classList.toggle('pulse',!wound&&l>0);windLbl.innerHTML=l==0?'ROLL<br>FULL':(wound?'READY':'WIND<br>▼');
+ devChip.textContent=S.first?(isReady()?'✦ FERTIG!':'⏳ '+fmtLeft()):'🎞 '+l+' / '+SHOTS;
+}
+shutter.onclick=async()=>{
+ ac();if(left()==0){toast('Film voll','Ab in die Dunkelkammer.');return}
+ if(!wound){buzz(80);windLbl.animate([{transform:'translateX(-4px)'},{transform:'translateX(4px)'},{transform:'none'}],{duration:200,iterations:2});return}
+ if(!video.videoWidth){toast('Kamera aus','Bitte Kamerazugriff erlauben.');return}
+ sndShutter();buzz(30);if(flashOn){flash.classList.remove('go');void flash.offsetWidth;flash.classList.add('go')}
+ const shot=capture();S.shots.push(shot);if(!S.first)S.first=Date.now();save();
+ wound=false;renderStrip();updateState();
+ if(left()==0)setTimeout(()=>{setCounter();toast('Film voll! 🎞','Entwicklung läuft. Bald ist alles fertig.')},400);
+};
+
+/* ---------- FILM LOOK ---------- */
+function capture(){
+ const W=900,H=1200,c=document.createElement('canvas');c.width=W;c.height=H;const x=c.getContext('2d');
+ const vw=video.videoWidth,vh=video.videoHeight,r=W/H;let sw=vw,sh=vw/r;if(sh>vh){sh=vh;sw=vh*r}
+ x.save();if(facing=='user'){x.translate(W,0);x.scale(-1,1)}x.drawImage(video,(vw-sw)/2,(vh-sh)/2,sw,sh,0,0,W,H);x.restore();
+ const im=x.getImageData(0,0,W,H),d=im.data,f=S.film;
+ for(let i=0;i<d.length;i+=4){let r=d[i],g=d[i+1],b=d[i+2];
+  if(flashOn){r=r*1.12+8;g=g*1.1+6;b=b*1.08+4}
+  if(f=='color'){r=r*1.08+12;g=g*1.02+4;b=b*.9+10;const l=.3*r+.59*g+.11*b;r=l+(r-l)*1.25;g=l+(g-l)*1.2;b=l+(b-l)*1.15;g+=6}
+  else{let l=.3*r+.59*g+.11*b;l=(l-128)*(f=='bw'?1.35:1.1)+128;if(f=='bw'){r=g=b=l}else{r=l*1.07+28;g=l*.92+14;b=l*.7}}
+  const n=(Math.random()-.5)*(f=='bw'?46:30);d[i]=r+n;d[i+1]=g+n;d[i+2]=b+n}
+ x.putImageData(im,0,0);
+ // vignette + light leak
+ let gr=x.createRadialGradient(W/2,H/2,H*.3,W/2,H/2,H*.75);gr.addColorStop(0,'rgba(0,0,0,0)');gr.addColorStop(1,'rgba(0,0,0,.6)');x.fillStyle=gr;x.fillRect(0,0,W,H);
+ if(f!='bw'&&Math.random()<.5){x.globalCompositeOperation='screen';const lk=x.createLinearGradient(0,0,W*.5,0);lk.addColorStop(0,'rgba(255,90,30,.55)');lk.addColorStop(1,'rgba(255,90,30,0)');x.fillStyle=lk;x.fillRect(0,0,W,H);x.globalCompositeOperation='source-over'}
+ // orange date stamp
+ const dt=new Date(),ds=`'${String(dt.getFullYear()).slice(2)} ${dt.getMonth()+1} ${dt.getDate()}`;
+ x.font='bold 46px "Space Mono",monospace';x.fillStyle=f=='bw'?'#ddd':'#ff8a2a';x.shadowColor=x.fillStyle;x.shadowBlur=12;x.textAlign='right';x.fillText(ds,W-50,H-50);x.shadowBlur=0;
+ const full=c.toDataURL('image/jpeg',.68);
+ const t=document.createElement('canvas');t.width=12;t.height=16;t.getContext('2d').drawImage(c,0,0,12,16);
+ return {img:full,thumb:t.toDataURL('image/png'),t:Date.now()};
+}
+
+/* ---------- WIND WHEEL ---------- */
+let drag=null,acc=0,off=0;
+wheel.addEventListener('pointerdown',e=>{if(wound||left()==0)return;ac();drag=e.clientY;wheel.setPointerCapture(e.pointerId)});
+wheel.addEventListener('pointermove',e=>{if(drag==null)return;const dy=e.clientY-drag;drag=e.clientY;if(dy<=0)return;acc+=dy;off=(off+dy)%40;ribs.style.transform=`translateY(${off}px)`;
+ if(Math.floor((acc-dy)/18)<Math.floor(acc/18)){sndTick();buzz(5)}
+ if(acc>160){drag=null;acc=0;wound=true;sndDone();buzz([10,40,10]);setCounter();updateState()}});
+wheel.addEventListener('pointerup',()=>{drag=null});
+
+/* ---------- DEVELOPING ---------- */
+const readyAt=()=>S.first?S.first+DEV_MS:null;
+const isReady=()=>S&&S.first&&Date.now()>=readyAt();
+function fmtLeft(){let ms=readyAt()-Date.now();const d=Math.floor(ms/864e5),h=Math.floor(ms%864e5/36e5),m=Math.floor(ms%36e5/6e4);return d?`${d}T ${h}h`:`${h}h ${m}m`}
+function renderDark(){
+ const ready=isReady();grid.innerHTML='';actions.innerHTML='';
+ darkTitle.textContent=ready?'DEINE FLASHBAX':'DUNKELKAMMER';
+ darkSub.textContent=`${S.shots.length} von ${SHOTS} Bildern · ${FILMS.find(f=>f.id==S.film).name.replace('\n',' ')}`;
+ if(!S.first)devBox.innerHTML='Noch kein Foto. Los geht\'s!';
+ else if(!ready)devBox.innerHTML=`Wird entwickelt…<div class="big">${fmtLeft()}</div><div style="font-size:11px;opacity:.7">Fertig am ${new Date(readyAt()).toLocaleDateString('de-DE',{weekday:'long',day:'numeric',month:'long'})}. Alle Bilder auf einmal.</div>`;
+ else devBox.innerHTML=`<div class="big">✦ ENTWICKELT ✦</div><div style="font-size:11px;opacity:.7">Tippe ein Bild an</div>`;
+ S.shots.forEach((s,i)=>{const d=document.createElement('div');d.className='ph '+(ready?'reveal':'locked');d.style.animationDelay=(i*.15)+'s';d.innerHTML=`<img src="${ready?s.img:s.thumb}">`;if(ready)d.onclick=()=>{vImg.src=s.img;viewer.classList.add('on')};grid.appendChild(d)});
+ if(ready){S.revealed=true;save();actions.innerHTML='<button id="newRoll">NEUER FILM ✦</button><button class="alt" id="saveAll">ALLE SPEICHERN</button>';newRoll.onclick=()=>{if(confirm('Neuen Film einlegen? Sichere vorher deine Bilder.')){S=null;localStorage.removeItem('fbx');renderPacks();show('unbox')}};saveAll.onclick=()=>S.shots.forEach((s,i)=>setTimeout(()=>dl(s.img,i),i*300))}
+ else if(S.first){actions.innerHTML='<button class="alt" id="skip">DEMO: SOFORT ENTWICKELN</button>';skip.onclick=()=>{S.first=Date.now()-DEV_MS-1;save();checkReady();renderDark()}}
+}
+function dl(src,i){const a=document.createElement('a');a.href=src;a.download=`flashbax_${i+1}.jpg`;a.click()}
+vClose.onclick=()=>viewer.classList.remove('on');vSave.onclick=()=>dl(vImg.src,0);
+toDark.onclick=()=>show('dark');backCam.onclick=()=>show('cam');
+
+/* ---------- NOTIFY ---------- */
+let tT;function toast(t,x){toastIc.innerHTML=xFlash(26,'#fff');tTitle.textContent=t;tText.textContent=x;toast_.classList.add('on');clearTimeout(tT);tT=setTimeout(()=>toast_.classList.remove('on'),3500)}
+const toast_=document.getElementById('toast');toast_.onclick=()=>{toast_.classList.remove('on');if(isReady())show('dark')};
+function checkReady(){if(isReady()&&!S.notified){S.notified=true;save();toast('Hey, deine Flashbax sind fertig! ✦','Alle '+S.shots.length+' Bilder sind entwickelt. Tippen zum Ansehen.');buzz([100,50,100]);
+ if('Notification' in window&&Notification.permission=='granted')new Notification('FLASHBAX',{body:'Deine Fotos sind entwickelt! 🎞'})}}
+document.addEventListener('click',()=>{if('Notification' in window&&Notification.permission=='default')Notification.requestPermission()},{once:true});
+setInterval(()=>{if(S){checkReady();if(document.getElementById('cam').classList.contains('on'))updateState()}},30000);
+
+/* ---------- BOOT ---------- */
+renderPacks();
+if(S){show(isReady()?'dark':'cam');if(!isReady())initCam();setTimeout(checkReady,600)}
+</script>
+</body>
+</html>
