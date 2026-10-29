@@ -8,62 +8,92 @@
 <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
 <meta name="apple-mobile-web-app-title" content="Pack Rip">
 <meta name="theme-color" content="#050407">
-<title>PACK RIP</title>
+<title>PACK RIP · Collector</title>
 <style>
 :root{--gold:#ffd76a;--bg:#050407;--panel:rgba(255,255,255,.045);--line:rgba(255,255,255,.08);--txt:#f5f2ff;--mut:#8e88a8;--mx:50%;--my:50%;--rx:0deg;--ry:0deg;--c1:#2d63c8;--c2:#0c1f52;--c3:#ffcb05;--bgh:250;--bgs:18%}
 *{box-sizing:border-box;margin:0;padding:0;-webkit-tap-highlight-color:transparent;-webkit-user-select:none;user-select:none;-webkit-touch-callout:none}
 html,body{height:100%;background:var(--bg);color:var(--txt);font-family:-apple-system,BlinkMacSystemFont,"SF Pro Display","Helvetica Neue",Arial,sans-serif;overflow:hidden;overscroll-behavior:none}
 body{touch-action:none}
 img{-webkit-user-drag:none;pointer-events:none}
-button{font-family:inherit}
-.bgfx{position:fixed;inset:0;z-index:0;pointer-events:none;background:radial-gradient(110% 65% at 50% 42%,hsl(var(--bgh) var(--bgs) 17%) 0%,hsl(var(--bgh) calc(var(--bgs) * .8) 7%) 55%,#030305 100%);transition:background 1.2s}
+button{font-family:inherit;cursor:pointer}
+.bgfx{position:fixed;inset:0;z-index:0;pointer-events:none;background:radial-gradient(110% 65% at 50% 42%,hsl(var(--bgh) var(--bgs) 17%) 0%,hsl(var(--bgh) calc(var(--bgs) * .8) 7%) 55%,#030305 100%)}
 .bgfx::before{content:"";position:absolute;inset:-30%;background:radial-gradient(35% 22% at 30% 35%,hsla(var(--bgh),70%,55%,.10),transparent 70%),radial-gradient(35% 25% at 70% 65%,hsla(calc(var(--bgh) + 30),70%,55%,.08),transparent 70%);animation:drift 16s ease-in-out infinite alternate}
-.bgfx::after{content:"";position:absolute;inset:0;opacity:.06;background-image:radial-gradient(rgba(255,255,255,.9) 1px,transparent 1.2px);background-size:3px 3px}
 @keyframes drift{to{transform:translate(5%,-4%) rotate(8deg)}}
 .screen{position:absolute;inset:0;z-index:1;display:none;flex-direction:column;padding:calc(env(safe-area-inset-top) + 8px) 16px calc(env(safe-area-inset-bottom) + 80px)}
 .screen.on{display:flex}
-header.top{display:flex;justify-content:space-between;align-items:center;font-size:11px;letter-spacing:.18em;text-transform:uppercase;color:var(--mut);min-height:36px;gap:10px}
+header.top{display:flex;justify-content:space-between;align-items:center;font-size:11px;letter-spacing:.18em;text-transform:uppercase;color:var(--mut);min-height:38px;gap:10px;padding-right:118px}
 header.top b{color:var(--txt)}
 .brand{font-weight:900;letter-spacing:.28em;color:#fff}.brand i{font-style:normal;color:var(--gold)}
 .scroll{flex:1;overflow-y:auto;-webkit-overflow-scrolling:touch;touch-action:pan-y;margin:0 -16px;padding:0 16px 24px}
-.hero{padding:18px 2px 6px}
-.hero h1{font-size:34px;line-height:1;font-weight:900;letter-spacing:-.02em}
-.hero h1 span{background:linear-gradient(100deg,#fff,#ffe07a 40%,#ff7a3d 70%,#fff);background-size:250% 100%;-webkit-background-clip:text;background-clip:text;color:transparent;animation:shine 4s linear infinite}
-.hero p{color:var(--mut);font-size:13px;margin-top:8px;line-height:1.5}
 @keyframes shine{to{background-position:-250% 0}}
-.randBtn{margin:16px 0 4px;width:100%;border:0;border-radius:18px;padding:16px;font-weight:900;letter-spacing:.14em;font-size:14px;color:#140c00;background:linear-gradient(135deg,#fff3c4,#ffd76a 40%,#ff9d2e);box-shadow:0 12px 34px rgba(255,170,50,.3)}
-.gen{margin:26px 0 12px;display:flex;align-items:baseline;gap:10px}
+@keyframes sp{to{transform:rotate(360deg)}}
+#coin{position:fixed;top:calc(env(safe-area-inset-top) + 9px);right:12px;z-index:35;display:flex;gap:6px;align-items:center;background:rgba(20,18,28,.85);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);border:1px solid rgba(255,215,106,.35);border-radius:30px;padding:7px 13px;font-weight:900;font-size:14px;color:#ffe07a;transition:opacity .3s}
+#coin.bump{animation:bump .45s}
+@keyframes bump{40%{transform:scale(1.18)}}
+.flyv{position:fixed;z-index:90;font-weight:900;font-size:16px;color:#7dffa8;pointer-events:none;animation:flyup 1.3s forwards;text-shadow:0 2px 8px rgba(0,0,0,.6)}
+.flyv.neg{color:#ff8a8a}
+@keyframes flyup{to{transform:translateY(-50px);opacity:0}}
+.backBtn{border:1px solid var(--line);background:var(--panel);color:#fff;font-size:12px;font-weight:800;letter-spacing:.12em;padding:9px 13px;border-radius:30px}
+/* hub */
+.hello{margin:10px 0 4px;font-size:28px;font-weight:900;letter-spacing:-.02em}
+.kpis{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:12px}
+.kpi{background:var(--panel);border:1px solid var(--line);border-radius:18px;padding:14px}
+.kpi b{display:block;font-size:24px;font-weight:900}
+.kpi span{font-size:10px;color:var(--mut);letter-spacing:.14em;text-transform:uppercase}
+.pnl{background:var(--panel);border:1px solid var(--line);border-radius:18px;padding:14px;margin-top:12px}
+.pnl.gold{background:linear-gradient(135deg,rgba(255,215,106,.13),rgba(158,240,255,.05));border-color:rgba(255,215,106,.32)}
+.pnl.red{background:linear-gradient(135deg,rgba(255,80,80,.16),rgba(255,80,80,.04));border-color:rgba(255,100,100,.35)}
+.pnl h4{font-size:10px;letter-spacing:.24em;color:var(--gold);font-weight:800;margin-bottom:6px}
+.pnl .big{font-size:16px;font-weight:800}
+.pnl p{color:var(--mut);font-size:12px;line-height:1.5;margin-top:4px}
+.tiles{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-top:12px}
+.tile{border-radius:18px;padding:14px 6px;background:var(--panel);border:1px solid var(--line);color:#fff;font-weight:800;font-size:10.5px;letter-spacing:.1em;display:flex;flex-direction:column;align-items:center;gap:7px;position:relative}
+.tile i{font-style:normal;font-size:26px}
+.tile .dot{position:absolute;top:8px;right:8px;width:9px;height:9px;border-radius:50%;background:#ff3b5c;box-shadow:0 0 8px #ff3b5c}
+.row2{display:flex;align-items:center;gap:10px;padding:10px 0;border-top:1px solid var(--line)}
+.row2:first-of-type{border-top:0}
+.row2 .tx{flex:1;font-size:13px;min-width:0}
+.row2 .tx b{display:block}
+.row2 .tx small{display:block;color:var(--mut);font-size:11px;margin-top:2px;line-height:1.35}
+.row2 .ic{font-size:24px;width:34px;text-align:center;flex:none}
+.sbtn{border:0;border-radius:12px;padding:9px 12px;font-weight:900;font-size:11.5px;letter-spacing:.05em;background:linear-gradient(135deg,#fff3c4,#ffd76a 40%,#ff9d2e);color:#160d00;white-space:nowrap;flex:none}
+.sbtn.g{background:rgba(255,255,255,.07);color:#fff;border:1px solid var(--line)}
+.sbtn:disabled{opacity:.32}
+.th{width:40px;aspect-ratio:63/88;border-radius:4px;object-fit:cover;flex:none;background:#222}
+.mbar{height:6px;border-radius:6px;background:rgba(255,255,255,.08);overflow:hidden;margin-top:6px}
+.mbar i{display:block;height:100%;background:linear-gradient(90deg,#ffb43b,#ffe48a,#9ef0ff)}
+.tag{display:inline-block;font-size:9px;font-weight:900;letter-spacing:.1em;padding:2px 6px;border-radius:6px;background:#ffd76a;color:#000;vertical-align:middle;margin-left:4px}
+.tag.r{background:#ff3b5c;color:#fff}.tag.b{background:#9ef0ff}.tag.p{background:linear-gradient(90deg,#ffe07a,#ff9de6)}
+h3.sec{margin:22px 0 8px;font-size:11px;letter-spacing:.24em;color:var(--mut);text-transform:uppercase}
+.empty{color:var(--mut);font-size:13px;text-align:center;padding:24px;line-height:1.6}
+/* set list */
+.randBtn{margin:14px 0 4px;width:100%;border:0;border-radius:18px;padding:16px;font-weight:900;letter-spacing:.14em;font-size:14px;color:#140c00;background:linear-gradient(135deg,#fff3c4,#ffd76a 40%,#ff9d2e);box-shadow:0 12px 34px rgba(255,170,50,.3)}
+.gen{margin:24px 0 12px;display:flex;align-items:baseline;gap:10px}
 .gen b{font-size:13px;letter-spacing:.3em;color:#fff}.gen span{font-size:11px;color:var(--mut);letter-spacing:.1em}
 .gen::after{content:"";flex:1;height:1px;background:linear-gradient(90deg,var(--line),transparent)}
 .sets{display:grid;grid-template-columns:1fr 1fr;gap:10px}
-.setT{position:relative;border-radius:18px;padding:14px 12px 12px;min-height:122px;overflow:hidden;border:1px solid var(--line);background:linear-gradient(160deg,color-mix(in srgb,var(--a) 55%,#000),color-mix(in srgb,var(--b) 70%,#000));display:flex;flex-direction:column;justify-content:space-between;text-align:left;color:#fff}
-.setT::before{content:"";position:absolute;inset:0;background:linear-gradient(115deg,transparent 35%,rgba(255,255,255,.14) 50%,transparent 65%);background-size:250% 100%;animation:shine 6s linear infinite;pointer-events:none}
-.setT img{height:46px;max-width:100%;object-fit:contain;object-position:left center;filter:drop-shadow(0 4px 10px rgba(0,0,0,.5))}
+.setT{position:relative;border-radius:18px;padding:14px 12px 12px;min-height:126px;overflow:hidden;border:1px solid var(--line);background:linear-gradient(160deg,color-mix(in srgb,var(--a) 55%,#000),color-mix(in srgb,var(--b) 70%,#000));display:flex;flex-direction:column;justify-content:space-between;text-align:left;color:#fff}
+.setT img{height:44px;max-width:100%;object-fit:contain;object-position:left center;filter:drop-shadow(0 4px 10px rgba(0,0,0,.5))}
 .setT .nm{font-size:13px;font-weight:800;margin-top:8px}
-.setT .meta{font-size:10px;color:rgba(255,255,255,.65);letter-spacing:.08em;margin-top:2px;display:flex;justify-content:space-between}
+.setT .meta{font-size:10px;color:rgba(255,255,255,.7);letter-spacing:.06em;margin-top:2px;display:flex;justify-content:space-between}
 .setT .pb{height:3px;border-radius:3px;background:rgba(255,255,255,.12);margin-top:8px;overflow:hidden}
 .setT .pb i{display:block;height:100%;background:linear-gradient(90deg,#ffd76a,#9ef0ff)}
 .setT .fb{font-size:20px;font-weight:900;line-height:1.1}
 .setT.locked{filter:grayscale(1) brightness(.45);border-style:dashed}
 .setT.locked img{opacity:.35}
-.setT.next{filter:none;border:1px solid rgba(255,215,106,.55);box-shadow:0 0 22px rgba(255,215,106,.18)}
-.setT.next img{opacity:.55;filter:grayscale(.6)}
+.setT.next{filter:none;border:1px solid rgba(255,215,106,.55)}
+.setT.next img{opacity:.5;filter:grayscale(.6)}
 .setT .lk{position:absolute;top:10px;right:10px;width:26px;height:26px;border-radius:50%;background:rgba(0,0,0,.6);display:flex;align-items:center;justify-content:center;font-size:13px}
 .setT .req{font-size:9.5px;line-height:1.35;color:rgba(255,255,255,.75);margin-top:6px}
 .setT .req b{color:#ffd76a}
 .setT .done{position:absolute;top:10px;right:10px;font-size:9px;font-weight:900;letter-spacing:.12em;background:linear-gradient(90deg,#ffe07a,#9ef0ff);color:#000;padding:3px 7px;border-radius:20px}
-.quest{margin:14px 0 0;padding:14px;border-radius:18px;background:linear-gradient(135deg,rgba(255,215,106,.12),rgba(158,240,255,.06));border:1px solid rgba(255,215,106,.3)}
-.quest small{display:block;font-size:10px;letter-spacing:.24em;color:var(--gold);font-weight:800}
-.quest b{display:block;font-size:16px;margin:6px 0 10px}
-.quest .qr{display:flex;align-items:center;gap:10px;font-size:12px;color:var(--mut);margin-top:6px}
-.quest .qr .bar{flex:1}.quest .qr span{min-width:58px;text-align:right;color:#fff;font-weight:700}
-/* OPEN */
-.backBtn{border:1px solid var(--line);background:var(--panel);color:#fff;font-size:12px;font-weight:800;letter-spacing:.12em;padding:9px 13px;border-radius:30px}
-#setLogoTop{height:28px;max-width:46vw;object-fit:contain;transition:opacity .3s}
+.setT .own{position:absolute;top:10px;right:10px;font-size:9px;font-weight:900;background:#7dffa8;color:#000;padding:3px 7px;border-radius:20px}
+/* open */
+#setLogoTop{height:28px;max-width:36vw;object-fit:contain;transition:opacity .3s}
 #stage{flex:1;position:relative;display:flex;align-items:center;justify-content:center;perspective:1200px}
-#ripText{position:absolute;z-index:3;font-weight:900;font-size:clamp(34px,10.5vw,50px);line-height:.9;text-align:center;pointer-events:none;top:2%;left:0;right:0;background:linear-gradient(100deg,#fff 0%,#ffe07a 30%,#ff6a3d 55%,#fff 80%);background-size:250% 100%;-webkit-background-clip:text;background-clip:text;color:transparent;animation:shine 3s linear infinite;filter:drop-shadow(0 6px 22px rgba(255,120,60,.45));transform:rotate(-3deg);transition:opacity .35s,transform .35s}
-#ripText small{display:block;font-size:11px;letter-spacing:.34em;color:var(--mut);-webkit-text-fill-color:var(--mut);margin-top:10px;font-weight:700}
-#packWrap{position:relative;width:min(60vw,280px);aspect-ratio:100/178;transform-style:preserve-3d;margin-top:8%}
+#ripText{position:absolute;z-index:3;font-weight:900;font-size:clamp(32px,10vw,48px);line-height:.9;text-align:center;pointer-events:none;top:1%;left:0;right:0;background:linear-gradient(100deg,#fff 0%,#ffe07a 30%,#ff6a3d 55%,#fff 80%);background-size:250% 100%;-webkit-background-clip:text;background-clip:text;color:transparent;animation:shine 3s linear infinite;filter:drop-shadow(0 6px 22px rgba(255,120,60,.45));transform:rotate(-3deg);transition:opacity .35s,transform .35s}
+#ripText small{display:block;font-size:11px;letter-spacing:.3em;color:var(--mut);-webkit-text-fill-color:var(--mut);margin-top:10px;font-weight:700}
+#packWrap{position:relative;width:min(56vw,260px);aspect-ratio:100/178;transform-style:preserve-3d;margin-top:2%}
 #packWrap.float{animation:float 4.5s ease-in-out infinite}
 @keyframes float{0%,100%{translate:0 -7px}50%{translate:0 7px}}
 #pack3d{position:absolute;inset:0;transform-style:preserve-3d;transform:rotateX(var(--rx)) rotateY(var(--ry));touch-action:none}
@@ -85,30 +115,33 @@ header.top b{color:var(--txt)}
 .mascot .crop img{width:120.5%;margin-left:-10.24%;margin-top:-17.7%}
 .slogo{position:absolute;left:10%;right:10%;top:61%;height:14%;z-index:2;display:flex;align-items:center;justify-content:center}
 .slogo img{max-width:100%;max-height:100%;object-fit:contain;filter:drop-shadow(0 3px 6px rgba(0,0,0,.7))}
-.slogo .tx{font-weight:900;font-size:clamp(14px,5vw,22px);color:var(--c3);text-align:center;text-shadow:0 2px 0 #000,0 0 12px rgba(0,0,0,.7)}
+.slogo .tx{font-weight:900;font-size:clamp(14px,5vw,22px);color:var(--c3);text-align:center;text-shadow:0 2px 0 #000}
 .ccount{position:absolute;left:0;right:0;bottom:12.5%;text-align:center;z-index:2;font-weight:900;font-size:clamp(7px,2.2vw,10.5px);letter-spacing:.06em;color:var(--c3);text-shadow:0 1px 0 #000}
 .ed{position:absolute;right:7%;bottom:17%;z-index:2;width:clamp(16px,5vw,24px);height:clamp(16px,5vw,24px);border-radius:50%;background:#111;color:#fff;font-size:clamp(4px,1.2vw,6px);font-weight:900;display:flex;align-items:center;justify-content:center;text-align:center;line-height:1;border:1.5px solid #fff}
 .sym{position:absolute;left:7%;bottom:17%;z-index:2;width:clamp(14px,4.4vw,22px);height:clamp(14px,4.4vw,22px);object-fit:contain}
 .plastic{position:absolute;inset:0;z-index:5;pointer-events:none;background:linear-gradient(115deg,transparent 28%,rgba(255,255,255,.28) 46%,rgba(200,230,255,.08) 52%,transparent 62%);background-size:260% 260%;background-position:var(--mx) var(--my);mix-blend-mode:screen}
 .wrinkle{position:absolute;inset:0;z-index:5;pointer-events:none;opacity:.2;mix-blend-mode:overlay;background:repeating-linear-gradient(97deg,rgba(255,255,255,.4) 0 1px,transparent 1px 11px),repeating-linear-gradient(3deg,rgba(0,0,0,.3) 0 1px,transparent 1px 17px)}
 .pc{position:absolute;inset:0;will-change:transform,clip-path;contain:layout paint}
-#pBody{z-index:2}.strip{z-index:3}.torn{z-index:4;filter:none}
-.rim{position:absolute;inset:0;pointer-events:none;z-index:6}
+#pBody{z-index:2}.strip{z-index:3}.torn{z-index:4}
 #tearSpark{position:absolute;z-index:7;width:26px;height:26px;margin:-13px;border-radius:50%;background:radial-gradient(circle,#fff 0 20%,rgba(255,255,255,.4) 35%,transparent 70%);opacity:0;pointer-events:none}
 .hint{position:absolute;left:-4%;right:-4%;height:2px;pointer-events:none;z-index:6;background:repeating-linear-gradient(90deg,rgba(255,255,255,.9) 0 6px,transparent 6px 12px);animation:hint 2.4s ease-in-out infinite}
 @keyframes hint{0%,100%{opacity:0}50%{opacity:.8}}
 #finger{position:absolute;left:-4%;width:44px;height:44px;margin-top:-22px;border-radius:50%;pointer-events:none;z-index:7;background:radial-gradient(circle,rgba(255,255,255,.95) 0 28%,rgba(255,255,255,.25) 30% 60%,transparent 62%);animation:swipeHint 2.4s ease-in-out infinite}
-@keyframes swipeHint{0%{transform:translateX(0);opacity:0}15%{opacity:1}70%{transform:translateX(min(56vw,260px));opacity:1}100%{transform:translateX(min(56vw,260px));opacity:0}}
-#packLabel{position:absolute;bottom:0;left:0;right:0;text-align:center;font-size:11px;letter-spacing:.24em;color:var(--mut);text-transform:uppercase;transition:opacity .3s}
+@keyframes swipeHint{0%{transform:translateX(0);opacity:0}15%{opacity:1}70%{transform:translateX(min(52vw,240px));opacity:1}100%{transform:translateX(min(52vw,240px));opacity:0}}
+#packBar{position:absolute;bottom:0;left:0;right:0;display:flex;flex-direction:column;align-items:center;gap:8px;transition:opacity .3s}
+#packPrice{font-size:12px;letter-spacing:.14em;color:var(--mut);text-transform:uppercase;font-weight:700}
+#packPrice b{color:#ffe07a}
+#packBtns{display:flex;gap:8px}
+#weighOut{position:absolute;right:-6%;top:40%;z-index:8;background:#111;border:2px solid #444;border-radius:10px;padding:8px 10px;font:900 18px/1 "SF Mono",Menlo,monospace;color:#7dffa8;text-shadow:0 0 8px #3f9;display:none;box-shadow:0 10px 30px rgba(0,0,0,.6)}
+#weighOut small{display:block;font:700 8px/1.2 -apple-system,Arial;color:#888;letter-spacing:.2em;margin-bottom:4px}
 #loader{position:absolute;inset:0;z-index:8;display:none;align-items:center;justify-content:center;flex-direction:column;gap:14px;color:var(--mut);font-size:12px;letter-spacing:.2em}
 #loader.on{display:flex}
 .spin{width:44px;height:44px;border-radius:50%;border:3px solid rgba(255,255,255,.1);border-top-color:var(--gold);animation:sp 1s linear infinite}
-@keyframes sp{to{transform:rotate(360deg)}}
-/* CARDS */
+/* cards */
 .cb{position:absolute;inset:0;border-radius:inherit;border:min(2.6vw,11px) solid #1d4fb4;background:radial-gradient(circle at 50% 48%,#fff 0 7.5%,#1a1a1a 8% 10%,transparent 10.5%),radial-gradient(circle at 50% 48%,transparent 0 15%,#1a1a1a 15.5% 17%,transparent 17.5%),linear-gradient(180deg,#e52b2b 0 47%,#1a1a1a 47% 49%,#f4f4f4 49% 100%) 50% 48%/36% 26% no-repeat,radial-gradient(ellipse at 50% 48%,#5aa0ff 0%,#2860c9 30%,#173c8f 60%,#0f2766 100%)}
 #reveal{position:absolute;inset:0;display:none;align-items:center;justify-content:center;perspective:1300px;z-index:4}
 #reveal.on{display:flex}
-#stack{position:relative;width:min(76vw,340px);aspect-ratio:63/88}
+#stack{position:relative;width:min(74vw,330px);aspect-ratio:63/88}
 .card{position:absolute;inset:0;border-radius:4.5%/3.2%;transform-style:preserve-3d;will-change:transform;touch-action:none}
 .card .face,.card .back{position:absolute;inset:0;border-radius:inherit;overflow:hidden;backface-visibility:hidden;-webkit-backface-visibility:hidden;box-shadow:0 24px 50px rgba(0,0,0,.6)}
 .card .face{background:#ddd}
@@ -119,47 +152,59 @@ header.top b{color:var(--txt)}
 .card.ultraTease .back{animation:tease2 .65s ease-in-out infinite}
 @keyframes tease2{0%,100%{box-shadow:0 0 40px 10px rgba(255,60,200,.75)}50%{box-shadow:0 0 100px 30px rgba(255,230,120,1)}}
 .foil{position:absolute;pointer-events:none;mix-blend-mode:color-dodge;opacity:.6;background:repeating-linear-gradient(110deg,#ff3b3b 0%,#ffd93b 6%,#3bff7a 12%,#3bd2ff 18%,#a43bff 24%,#ff3b3b 30%);background-size:400% 400%;background-position:var(--mx) var(--my);-webkit-mask:radial-gradient(farthest-corner circle at var(--mx) var(--my),#000 0%,rgba(0,0,0,.55) 40%,rgba(0,0,0,.2) 90%);mask:radial-gradient(farthest-corner circle at var(--mx) var(--my),#000 0%,rgba(0,0,0,.55) 40%,rgba(0,0,0,.2) 90%)}
-.foil.win{inset:10.5% 8.5% 52% 8.5%}.foil.full{inset:0}
-.foil.rev{inset:0;opacity:.45}
+.foil.win{inset:10.5% 8.5% 52% 8.5%}.foil.full{inset:0}.foil.rev{inset:0;opacity:.45}
 .sparkle{position:absolute;pointer-events:none;mix-blend-mode:color-dodge;opacity:.75;background-image:radial-gradient(circle,#fff 0 1px,transparent 1.5px),radial-gradient(circle,#fff 0 .8px,transparent 1.3px);background-size:19px 23px,13px 11px;background-position:calc(var(--mx) * .3) calc(var(--my) * .2),calc(var(--mx) * -.25) 7px;animation:twinkle 1.6s steps(4) infinite}
 @keyframes twinkle{50%{opacity:.25}}
 .card.ultra .foil{opacity:.85;background:repeating-linear-gradient(125deg,#ff4fd8 0%,#ffe36a 5%,#6affd5 10%,#6a8bff 15%,#ff4fd8 20%);background-size:400% 400%}
 .card.ultra .face{box-shadow:0 0 60px rgba(255,210,110,.75),0 24px 50px rgba(0,0,0,.6)}
 .glare{position:absolute;inset:0;pointer-events:none;mix-blend-mode:overlay;background:radial-gradient(farthest-corner circle at var(--mx) var(--my),rgba(255,255,255,.8) 0%,rgba(255,255,255,.12) 30%,rgba(0,0,0,.3) 90%)}
 .badge{position:absolute;top:-11px;right:-9px;z-index:3;background:#ff3b5c;color:#fff;font-size:11px;font-weight:900;letter-spacing:.1em;padding:5px 9px;border-radius:30px;transform:translateZ(30px)}
-.rtag{position:absolute;bottom:-34px;left:0;right:0;text-align:center;font-size:11px;letter-spacing:.24em;font-weight:800;color:var(--mut);text-transform:uppercase;opacity:0;transition:opacity .3s}
+.badge.mp{background:linear-gradient(90deg,#ff9de6,#ffe07a);color:#000;left:-9px;right:auto}
+.rtag{position:absolute;bottom:-34px;left:0;right:0;text-align:center;font-size:11px;letter-spacing:.2em;font-weight:800;color:var(--mut);text-transform:uppercase;opacity:0;transition:opacity .3s}
+.rtag b{color:#7dffa8;letter-spacing:.05em}
 .card.live .rtag{opacity:1}
-#counter{position:absolute;top:2%;left:0;right:0;text-align:center;font-weight:800;font-size:14px;letter-spacing:.28em;color:var(--mut);z-index:5}
+/* misprints */
+.mp-off .face{background:#f2eee2}.mp-off .face img{transform:translate(7%,4.5%)}
+.mp-ink .face::after{content:"";position:absolute;width:34%;height:24%;left:38%;top:28%;background:radial-gradient(closest-side,#111 35%,rgba(0,0,0,.6) 60%,transparent 100%);opacity:.85;border-radius:50%;pointer-events:none}
+.mp-crimp .face::after{content:"";position:absolute;left:0;right:0;top:40%;height:9%;background:repeating-linear-gradient(90deg,rgba(255,255,255,.5) 0 2px,rgba(0,0,0,.3) 2px 4px);mix-blend-mode:overlay;pointer-events:none}
+.mp-off.mini img,.slot.mp-off img{transform:translate(7%,4.5%)}
+#counter{position:absolute;top:1%;left:0;right:0;text-align:center;font-weight:800;font-size:14px;letter-spacing:.28em;color:var(--mut);z-index:5}
 #counter b{color:#fff}
 #dots{display:flex;gap:5px;justify-content:center;margin-top:10px}
 #dots i{width:6px;height:6px;border-radius:50%;background:rgba(255,255,255,.15);transition:all .3s}
 #dots i.on{background:#fff;width:16px;border-radius:4px}
-#swipeTip{position:absolute;bottom:2%;left:0;right:0;text-align:center;color:var(--mut);font-size:11px;letter-spacing:.24em;text-transform:uppercase;z-index:5}
-#flash{position:fixed;inset:0;background:#fff;opacity:0;pointer-events:none;z-index:70}
+#swipeTip{position:absolute;bottom:1%;left:0;right:0;text-align:center;color:var(--mut);font-size:11px;letter-spacing:.24em;text-transform:uppercase;z-index:5}
+#flash{position:fixed;inset:0;background:#fff;opacity:0;pointer-events:none;z-index:95}
 #dark{position:fixed;inset:0;background:#000;opacity:0;pointer-events:none;z-index:3;transition:opacity .8s}
 #rays{position:fixed;left:50%;top:50%;width:180vmax;height:180vmax;margin:-90vmax 0 0 -90vmax;pointer-events:none;z-index:3;opacity:0;transition:opacity .8s;background:repeating-conic-gradient(from 0deg,rgba(255,220,120,.2) 0 6deg,transparent 6deg 18deg);animation:sp 18s linear infinite;-webkit-mask:radial-gradient(circle,#000 0,transparent 60%);mask:radial-gradient(circle,#000 0,transparent 60%)}
-#banner{position:fixed;left:0;right:0;top:calc(env(safe-area-inset-top) + 70px);text-align:center;z-index:66;pointer-events:none;font-weight:900;font-size:clamp(36px,11.5vw,60px);opacity:0}
+#banner{position:fixed;left:0;right:0;top:calc(env(safe-area-inset-top) + 70px);text-align:center;z-index:92;pointer-events:none;font-weight:900;font-size:clamp(34px,11vw,58px);opacity:0}
 #banner.show{animation:bann 2.3s cubic-bezier(.2,1.4,.3,1) forwards}
 @keyframes bann{0%{opacity:0;transform:scale(.4) rotate(-6deg)}18%{opacity:1;transform:scale(1.08) rotate(-3deg)}30%{transform:scale(1) rotate(-3deg)}80%{opacity:1}100%{opacity:0;transform:scale(1.05) rotate(-3deg) translateY(-14px)}}
 #banner span{background:linear-gradient(90deg,#fff,#9ef0ff,#ffe07a,#ff9de6,#fff);background-size:300% 100%;-webkit-background-clip:text;background-clip:text;color:transparent;animation:shine 1.4s linear infinite}
-#fx{position:fixed;inset:0;pointer-events:none;z-index:65;width:100%;height:100%}
-#summary{position:absolute;inset:0;z-index:6;display:none;flex-direction:column;padding:calc(env(safe-area-inset-top) + 40px) 14px calc(env(safe-area-inset-bottom) + 84px);background:rgba(5,4,7,.9);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);overflow-y:auto;touch-action:pan-y}
+#fx{position:fixed;inset:0;pointer-events:none;z-index:91;width:100%;height:100%}
+#summary{position:absolute;inset:0;z-index:6;display:none;flex-direction:column;padding:calc(env(safe-area-inset-top) + 50px) 14px calc(env(safe-area-inset-bottom) + 84px);background:rgba(5,4,7,.92);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);overflow-y:auto;touch-action:pan-y}
 #summary.on{display:flex}
 #summary h2{text-align:center;font-size:22px;font-weight:900}
-#summary p.sub{text-align:center;color:var(--mut);font-size:12px;margin:4px 0 14px;letter-spacing:.1em}
+#summary p.sub{text-align:center;color:var(--mut);font-size:12px;margin:4px 0 6px;letter-spacing:.08em}
+#sumVal{text-align:center;font-size:13px;margin-bottom:14px;font-weight:800}
 .grid5{display:grid;grid-template-columns:repeat(5,1fr);gap:7px}
 .mini{position:relative;aspect-ratio:63/88;border-radius:5px;overflow:hidden;animation:pop .4s backwards;background:#222}
 .mini img{width:100%;height:100%;object-fit:cover}
 .mini.holo{box-shadow:0 0 12px rgba(140,220,255,.85)}.mini.ultra{box-shadow:0 0 16px rgba(255,200,90,1)}
 .mini .nw{position:absolute;top:3px;left:3px;background:#ff3b5c;color:#fff;font-size:8px;font-weight:900;padding:2px 4px;border-radius:4px}
+.mini .pv{position:absolute;bottom:0;left:0;right:0;background:rgba(0,0,0,.7);font-size:8.5px;font-weight:800;text-align:center;padding:2px 0;color:#7dffa8}
 @keyframes pop{from{opacity:0;transform:scale(.6)}}
-.btn{appearance:none;border:0;border-radius:18px;padding:16px;font-weight:900;font-size:15px;letter-spacing:.1em;color:#160d00;background:linear-gradient(135deg,#fff3c4,#ffd76a 40%,#ff9d2e);box-shadow:0 12px 30px rgba(255,170,50,.3);margin-top:16px;width:100%}
+.btn{appearance:none;border:0;border-radius:18px;padding:16px;font-weight:900;font-size:15px;letter-spacing:.1em;color:#160d00;background:linear-gradient(135deg,#fff3c4,#ffd76a 40%,#ff9d2e);box-shadow:0 12px 30px rgba(255,170,50,.3);margin-top:14px;width:100%}
 .btn.ghost{background:var(--panel);color:var(--txt);box-shadow:none;border:1px solid var(--line);margin-top:10px}
-nav{position:fixed;z-index:30;left:12px;right:12px;bottom:calc(env(safe-area-inset-bottom) + 10px);height:62px;border-radius:22px;display:flex;background:rgba(20,18,28,.78);backdrop-filter:blur(20px) saturate(1.4);-webkit-backdrop-filter:blur(20px) saturate(1.4);border:1px solid rgba(255,255,255,.08);transition:transform .35s}
+.btn:disabled{opacity:.35}
+nav{position:fixed;z-index:30;left:10px;right:10px;bottom:calc(env(safe-area-inset-bottom) + 10px);height:62px;border-radius:22px;display:flex;background:rgba(20,18,28,.8);backdrop-filter:blur(20px) saturate(1.4);-webkit-backdrop-filter:blur(20px) saturate(1.4);border:1px solid rgba(255,255,255,.08);transition:transform .35s}
 nav.hide{transform:translateY(150%)}
-nav button{flex:1;background:none;border:0;color:var(--mut);font-size:10px;font-weight:800;letter-spacing:.12em;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:4px}
+nav button{flex:1;background:none;border:0;color:var(--mut);font-size:9.5px;font-weight:800;letter-spacing:.1em;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:4px;position:relative}
 nav button svg{width:22px;height:22px}
 nav button.on{color:var(--gold)}
+nav button .dot{position:absolute;top:9px;right:calc(50% - 16px);width:8px;height:8px;border-radius:50%;background:#ff3b5c;display:none}
+nav button.alert .dot{display:block}
+/* binder */
 .prog{background:var(--panel);border:1px solid var(--line);border-radius:18px;padding:14px;margin:8px 0 12px}
 .prog .row{display:flex;justify-content:space-between;align-items:center;font-size:13px;color:var(--mut);margin-bottom:8px}
 .prog .row b{color:#fff;font-size:22px}
@@ -174,52 +219,55 @@ nav button.on{color:var(--gold)}
 .slot img{width:100%;height:100%;object-fit:cover}
 .slot.miss img{filter:grayscale(1) brightness(.2) contrast(1.5) blur(1.5px)}
 .slot.miss::after{content:"?";position:absolute;inset:0;display:flex;align-items:center;justify-content:center;font-size:28px;font-weight:900;color:rgba(255,255,255,.18)}
+.slot.gone img{filter:grayscale(.85) brightness(.55)}
 .slot .no{position:absolute;bottom:4px;left:4px;font-size:10px;font-weight:800;background:rgba(0,0,0,.65);padding:2px 5px;border-radius:5px;color:#ddd}
+.slot .vl{position:absolute;bottom:4px;right:4px;font-size:9.5px;font-weight:900;background:rgba(0,0,0,.7);padding:2px 5px;border-radius:5px;color:#7dffa8}
 .slot .cnt{position:absolute;top:4px;right:4px;font-size:10px;font-weight:900;background:#fff;color:#000;padding:2px 6px;border-radius:9px}
 .slot .rt{position:absolute;top:4px;left:4px;font-size:9px;font-weight:900;padding:2px 5px;border-radius:5px}
-.rt.holo{background:linear-gradient(90deg,#9ef0ff,#ff9de6);color:#000}.rt.ultra{background:linear-gradient(90deg,#ffe07a,#ff6ad5);color:#000}.rt.rare{background:#ffd76a;color:#000}
+.rt.holo{background:linear-gradient(90deg,#9ef0ff,#ff9de6);color:#000}.rt.ultra{background:linear-gradient(90deg,#ffe07a,#ff6ad5);color:#000}.rt.rare{background:#ffd76a;color:#000}.rt.mp{background:linear-gradient(90deg,#ff9de6,#ffe07a);color:#000}
 .slot.ultra:not(.miss){box-shadow:0 0 0 1.5px #ffd76a,0 0 14px rgba(255,215,106,.5)}
 .slot.holo:not(.miss){box-shadow:0 0 0 1px rgba(158,240,255,.6)}
-.ov{position:fixed;inset:0;z-index:40;display:none;align-items:center;justify-content:center;background:rgba(0,0,0,.9);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);perspective:1000px;flex-direction:column}
+.ov{position:fixed;inset:0;z-index:48;display:none;align-items:center;justify-content:center;background:rgba(0,0,0,.9);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);perspective:1000px;flex-direction:column;padding:20px}
 .ov.on{display:flex}
-#zcard{position:relative;width:min(80vw,350px);aspect-ratio:63/88}
-#zslab{width:min(74vw,320px)}
-.oinfo{margin-top:22px;text-align:center;color:var(--mut);font-size:13px;letter-spacing:.06em}
-.oinfo b{display:block;color:#fff;font-size:20px;margin-bottom:4px;letter-spacing:0}
-.zact{width:min(82vw,360px)}
+#zcard{position:relative;width:min(70vw,300px);aspect-ratio:63/88}
+#zslab{width:min(64vw,280px)}
+.oinfo{margin-top:20px;text-align:center;color:var(--mut);font-size:13px;letter-spacing:.04em;line-height:1.5}
+.oinfo b{display:block;color:#fff;font-size:20px;margin-bottom:2px;letter-spacing:0}
+.oinfo .v{color:#7dffa8;font-weight:900;font-size:16px}
+.zact{width:min(86vw,360px);display:flex;flex-direction:column}
+.zact .two{display:flex;gap:8px}.zact .two .btn{flex:1;font-size:13px;padding:14px 8px}
+#modal{z-index:85}
+.mbox{width:min(92vw,390px);max-height:86vh;overflow-y:auto;touch-action:pan-y;background:#15121f;border:1px solid rgba(255,255,255,.1);border-radius:24px;padding:20px;box-shadow:0 30px 80px rgba(0,0,0,.7);animation:pop .3s}
+.mbox h2{font-size:22px;font-weight:900;text-align:center}
+.mbox .em{font-size:54px;text-align:center;line-height:1.2}
+.mbox p{color:var(--mut);font-size:13px;text-align:center;line-height:1.55;margin-top:8px}
+.mbox p b{color:#fff}
+.opt{display:flex;align-items:center;gap:12px;width:100%;text-align:left;padding:14px;border-radius:16px;background:var(--panel);border:1px solid var(--line);color:#fff;margin-top:10px}
+.opt .tx{flex:1}.opt .tx b{display:block;font-size:15px}.opt .tx small{color:var(--mut);font-size:11.5px}
+.opt .pr{font-weight:900;color:#ffe07a;font-size:15px}
+.opt:disabled{opacity:.35}
 .sgrid{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:8px}
 .stat{background:var(--panel);border:1px solid var(--line);border-radius:18px;padding:14px}
-.stat b{display:block;font-size:26px;font-weight:900}
+.stat b{display:block;font-size:24px;font-weight:900}
 .stat span{font-size:10px;color:var(--mut);letter-spacing:.12em;text-transform:uppercase}
-h3.sec{margin:22px 0 10px;font-size:12px;letter-spacing:.22em;color:var(--mut);text-transform:uppercase}
-.hist{display:flex;align-items:center;gap:10px;padding:10px;border-radius:14px;background:var(--panel);border:1px solid var(--line);margin-bottom:8px;font-size:13px}
-.hist img{width:38px;border-radius:3px}
-.hist .t{flex:1}.hist .t small{display:block;color:var(--mut);font-size:11px;margin-top:2px}
 .odds{font-size:13px;color:var(--mut);line-height:1.75;background:var(--panel);border:1px solid var(--line);border-radius:18px;padding:14px}
 .odds b{color:#fff}
-#toast{position:fixed;left:50%;top:calc(env(safe-area-inset-top) + 12px);transform:translate(-50%,-160%);background:#fff;color:#000;font-weight:800;font-size:13px;padding:10px 16px;border-radius:30px;z-index:80;transition:transform .35s;white-space:nowrap}
+#toast{position:fixed;left:50%;top:calc(env(safe-area-inset-top) + 56px);transform:translate(-50%,-260%);background:#fff;color:#000;font-weight:800;font-size:13px;padding:10px 16px;border-radius:30px;z-index:99;transition:transform .35s;max-width:92vw;text-align:center}
 #toast.on{transform:translate(-50%,0)}
-#godIntro{position:fixed;inset:0;z-index:67;display:none;align-items:center;justify-content:center;flex-direction:column;pointer-events:none}
+#godIntro{position:fixed;inset:0;z-index:93;display:none;align-items:center;justify-content:center;flex-direction:column;pointer-events:none}
 #godIntro.on{display:flex}
 #godIntro div{font-size:clamp(50px,16vw,84px);font-weight:900;background:conic-gradient(from 0deg,#ff4fd8,#ffe36a,#6affd5,#6a8bff,#ff4fd8);-webkit-background-clip:text;background-clip:text;color:transparent;animation:godPulse .9s ease-in-out infinite alternate}
 #godIntro small{color:#fff;letter-spacing:.4em;font-weight:800;margin-top:6px}
 @keyframes godPulse{to{transform:scale(1.08)}}
 .err{color:#ff8a8a;text-align:center;font-size:13px;padding:20px;line-height:1.6}
-#unlock{position:fixed;inset:0;z-index:60;display:none;flex-direction:column;align-items:center;justify-content:center;background:radial-gradient(80% 60% at 50% 45%,#281e46,#030305);text-align:center;padding:30px}
-#unlock.on{display:flex}
-#unlock small{letter-spacing:.4em;color:var(--gold);font-weight:800;font-size:12px}
-#unlock h2{font-size:36px;font-weight:900;margin:10px 0 4px}
-#unlock p{color:var(--mut);font-size:13px;margin-bottom:10px;line-height:1.5}
-#unlock img{max-width:70vw;max-height:110px;object-fit:contain;margin:18px 0;animation:uIn 1s cubic-bezier(.2,1.5,.3,1)}
-#unlock .lockA{font-size:56px;animation:uLock 1s ease forwards}
-@keyframes uIn{from{transform:scale(.3) rotate(-10deg);opacity:0}}
-@keyframes uLock{0%{transform:scale(1)}40%{transform:scale(1.3) rotate(-12deg)}100%{transform:scale(0);opacity:0}}
-#unlock .btn{max-width:340px}
 /* PSA */
 .slab{container-type:inline-size;position:relative;aspect-ratio:64/100;border-radius:5cqw;background:linear-gradient(135deg,rgba(255,255,255,.62),rgba(214,220,232,.42) 40%,rgba(255,255,255,.55) 70%,rgba(200,208,222,.45));box-shadow:inset 0 0 0 1.1cqw rgba(255,255,255,.7),inset 0 0 0 1.7cqw rgba(150,160,180,.45),0 30px 60px rgba(0,0,0,.6)}
 .slab .lab{position:absolute;left:6cqw;right:6cqw;top:6cqw;height:24cqw;background:#c41e2a;border-radius:1cqw;padding:3.6cqw 1.6cqw 1.6cqw}
+.slab.fk .lab{background:#d8402c}
 .slab .lab .logo{position:absolute;top:.4cqw;left:0;right:0;text-align:center;color:#fff;font:900 2.9cqw/1 Helvetica,Arial,sans-serif;letter-spacing:.3cqw}
+.slab.fk .lab .logo{font-family:Georgia,serif;font-style:italic}
 .slab .lab .in{background:#fbfbf8;height:100%;display:flex;justify-content:space-between;padding:1.4cqw 2.2cqw;font:500 3.3cqw/1.22 Helvetica,Arial,sans-serif;color:#111;text-transform:uppercase;overflow:hidden;border-radius:.3cqw}
+.slab.fk .lab .in{font-family:"Courier New",monospace;font-weight:700}
 .slab .lab .l{min-width:0;flex:1}.slab .lab .l div{white-space:nowrap;overflow:hidden}
 .slab .lab .r{text-align:right;padding-left:2cqw;white-space:nowrap}
 .slab .lab .bc{height:3.2cqw;width:34cqw;margin-top:.6cqw;background:repeating-linear-gradient(90deg,#111 0 .35cqw,transparent .35cqw .6cqw,#111 .6cqw .75cqw,transparent .75cqw 1.2cqw,#111 1.2cqw 1.7cqw,transparent 1.7cqw 2cqw)}
@@ -230,6 +278,8 @@ h3.sec{margin:22px 0 10px;font-size:12px;letter-spacing:.22em;color:var(--mut);t
 .slab .glass{position:absolute;inset:0;border-radius:inherit;pointer-events:none;mix-blend-mode:screen;background:linear-gradient(115deg,transparent 30%,rgba(255,255,255,.35) 47%,rgba(255,255,255,.08) 53%,transparent 62%);background-size:260% 260%;background-position:var(--mx) var(--my)}
 .slab .cover{position:absolute;left:5cqw;right:5cqw;top:5cqw;height:26cqw;border-radius:1.4cqw;z-index:3;display:flex;align-items:center;justify-content:center;background:linear-gradient(135deg,#2a2a33,#0d0d12);color:#fff;font:900 5cqw/1 Helvetica,Arial;letter-spacing:1cqw;transition:transform .7s cubic-bezier(.5,0,.3,1),opacity .7s;transform-origin:100% 0}
 .slab .cover.off{transform:translate(40cqw,-30cqw) rotate(35deg);opacity:0}
+.slab .void{position:absolute;inset:35cqw 5cqw 5cqw;z-index:2;display:flex;align-items:center;justify-content:center}
+.slab .void b{transform:rotate(-18deg);border:1.4cqw solid #e0242a;color:#e0242a;font:900 8cqw/1 Helvetica;padding:2cqw 4cqw;border-radius:2cqw;background:rgba(255,255,255,.75);letter-spacing:.5cqw}
 .slab.g10{box-shadow:inset 0 0 0 1.1cqw rgba(255,255,255,.7),0 0 9cqw rgba(255,215,106,.55),0 30px 60px rgba(0,0,0,.6)}
 .slab.cracking{animation:shk .45s}
 @keyframes shk{20%{transform:translate(-2%,0) rotate(-1.5deg)}40%{transform:translate(2%,0) rotate(1.5deg)}60%{transform:translate(-1%,0)}80%{transform:translate(1%,0)}}
@@ -241,7 +291,7 @@ h3.sec{margin:22px 0 10px;font-size:12px;letter-spacing:.22em;color:var(--mut);t
 #psaStage{position:relative;width:min(80vw,340px);height:min(120vw,520px);display:flex;align-items:center;justify-content:center;perspective:1200px}
 #psaFoot{position:absolute;bottom:calc(env(safe-area-inset-bottom) + 18px);left:18px;right:18px}
 .pk{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%)}
-.rawc{width:64%;aspect-ratio:63/88;border-radius:4.5%/3.2%;overflow:visible;transition:transform .6s cubic-bezier(.4,0,.2,1),opacity .3s}
+.rawc{width:64%;aspect-ratio:63/88;transition:transform .6s cubic-bezier(.4,0,.2,1),opacity .3s}
 .rawc img{width:100%;height:100%;object-fit:cover;display:block;border-radius:4.5%/3.2%;box-shadow:0 20px 40px rgba(0,0,0,.6)}
 .sleeve{position:absolute;inset:-3% -3% -6% -3%;border-radius:3px;background:linear-gradient(110deg,rgba(255,255,255,.08),rgba(255,255,255,.3) 45%,rgba(255,255,255,.06) 55%);border:1px solid rgba(255,255,255,.35);transform:translateY(-140%);transition:transform .5s cubic-bezier(.3,0,.2,1)}
 .toploader{position:absolute;inset:-8% -9% -10% -9%;border-radius:6px;border:5px solid rgba(220,235,255,.35);background:linear-gradient(120deg,rgba(255,255,255,.1),rgba(255,255,255,.28) 40%,rgba(255,255,255,.05) 60%);transform:translateY(-160%);transition:transform .55s cubic-bezier(.3,0,.2,1)}
@@ -252,7 +302,6 @@ h3.sec{margin:22px 0 10px;font-size:12px;letter-spacing:.22em;color:var(--mut);t
 .mailer .ship{position:absolute;left:12%;right:12%;top:40%;background:#fff;border-radius:4px;padding:10px 12px;color:#111;font:700 11px/1.45 Helvetica,Arial;opacity:0;transform:scale(1.3) rotate(-4deg);transition:all .35s cubic-bezier(.2,1.4,.3,1)}
 .mailer .ship.on{opacity:1;transform:rotate(-2deg)}
 .mailer .ship b{display:block;font-size:15px;color:#c41e2a}
-.mailer .ship i{display:block;height:20px;margin-top:6px;background:repeating-linear-gradient(90deg,#111 0 2px,transparent 2px 4px,#111 4px 5px,transparent 5px 8px)}
 .track{width:100%;max-width:340px}
 .track .row{display:flex;align-items:center;gap:12px;padding:11px 14px;border-radius:14px;background:var(--panel);border:1px solid var(--line);margin-bottom:8px;font-size:14px;font-weight:700;color:var(--mut)}
 .track .row i{width:22px;height:22px;border-radius:50%;border:2px solid rgba(255,255,255,.2);flex:none;display:flex;align-items:center;justify-content:center;font-style:normal;font-size:12px}
@@ -279,23 +328,89 @@ h3.sec{margin:22px 0 10px;font-size:12px;letter-spacing:.22em;color:var(--mut);t
 .box .front .fragile{position:absolute;left:8%;bottom:14%;font:900 13px/1 Helvetica;color:#c41e2a;letter-spacing:.2em;border:2px solid #c41e2a;padding:5px 7px;transform:rotate(-3deg)}
 #psaSlab{position:absolute;left:50%;top:50%;width:78%;transform:translate(-50%,-50%);z-index:2;transition:transform 1s cubic-bezier(.2,1,.3,1)}
 .vault{display:grid;grid-template-columns:1fr 1fr;gap:14px}
-.vault .when{text-align:center;font-size:10px;color:var(--mut);margin-top:6px;letter-spacing:.1em}
+.vault .when{text-align:center;font-size:10px;color:var(--mut);margin-top:6px;letter-spacing:.06em}
+.vault .when b{color:#7dffa8}
+/* show */
+#showStage{flex:1;display:flex;flex-direction:column;min-height:0}
+.strip2{display:flex;gap:6px;overflow-x:auto;padding:6px 0 8px;touch-action:pan-x;scrollbar-width:none;flex:none}
+.strip2::-webkit-scrollbar{display:none}
+.it{flex:none;width:46px;position:relative;border-radius:5px;overflow:hidden;transition:opacity .3s}
+.it img{width:100%;aspect-ratio:63/88;object-fit:cover;display:block}
+.it .gl{position:absolute;bottom:0;left:0;right:0;font-size:8px;font-weight:900;text-align:center;background:rgba(0,0,0,.75);color:#ffe07a}
+.it.sold{opacity:.2}
+.it.want{outline:2px solid #7dffa8;outline-offset:1px}
+.showTop{display:flex;justify-content:space-between;font-size:11px;color:var(--mut);letter-spacing:.14em;font-weight:700;margin-top:4px;flex:none}
+.showTop b{color:#fff}
+.buyerArea{flex:1;display:flex;flex-direction:column;align-items:center;justify-content:center;min-height:0}
+.av{font-size:70px;line-height:1;animation:walkin .5s cubic-bezier(.2,1.3,.3,1)}
+@keyframes walkin{from{transform:translateX(60vw) rotate(10deg);opacity:0}}
+.av.leave{animation:walkout .45s forwards}
+@keyframes walkout{to{transform:translateX(-70vw) rotate(-10deg);opacity:0}}
+.bn{font-weight:900;font-size:18px;margin-top:4px}.bt{color:var(--mut);font-size:10px;letter-spacing:.24em;font-weight:800}
+.pati{display:flex;gap:4px;justify-content:center;margin-top:4px}.pati i{width:14px;height:5px;border-radius:3px;background:#7dffa8}.pati i.x{background:rgba(255,255,255,.15)}
+.bubble{background:#fff;color:#111;border-radius:18px;padding:11px 14px;font-size:14px;font-weight:600;margin-top:10px;position:relative;max-width:330px;text-align:center;line-height:1.4}
+.bubble::before{content:"";position:absolute;top:-8px;left:50%;margin-left:-8px;border:8px solid transparent;border-top:0;border-bottom-color:#fff}
+.deal{display:flex;gap:14px;align-items:center;margin-top:12px}
+.deal .dimg{width:78px;flex:none}
+.deal .dimg img{width:100%;border-radius:5px;display:block}
+.deal .dimg .slab{width:78px}
+.deal .dtx{font-size:12px;color:var(--mut);line-height:1.5}
+.deal .dtx b{color:#fff;font-size:14px;display:block}
+.offer{font-size:30px;font-weight:900;color:#7dffa8;line-height:1}
+.ctrl{flex:none;padding-top:8px}
+.ctrl .two{display:flex;gap:8px}.ctrl .two .btn{flex:1;margin-top:8px;padding:14px 6px;font-size:13px}
+.sliderRow{display:flex;align-items:center;gap:10px;margin-top:6px}
+.sliderRow input{flex:1;accent-color:#ffd76a;height:30px}
+.sliderRow b{min-width:72px;text-align:right;font-size:18px;color:#ffe07a}
+.pick{display:grid;grid-template-columns:repeat(4,1fr);gap:8px}
+.pick .p{position:relative;border-radius:6px;overflow:hidden;border:2px solid transparent}
+.pick .p img{width:100%;aspect-ratio:63/88;object-fit:cover;display:block}
+.pick .p.on{border-color:#ffd76a;box-shadow:0 0 14px rgba(255,215,106,.5)}
+.pick .p .pv{position:absolute;bottom:0;left:0;right:0;font-size:9px;font-weight:900;text-align:center;background:rgba(0,0,0,.75);color:#7dffa8;padding:2px 0}
+.pick .p .ck{position:absolute;top:4px;right:4px;width:20px;height:20px;border-radius:50%;background:#ffd76a;color:#000;font-weight:900;font-size:12px;display:none;align-items:center;justify-content:center}
+.pick .p.on .ck{display:flex}
+.dgrid{display:grid;grid-template-columns:repeat(3,1fr);gap:10px}
+.dl{position:relative;border-radius:8px;overflow:hidden;background:var(--panel);border:1px solid var(--line);padding-bottom:6px;text-align:center}
+.dl img{width:100%;aspect-ratio:63/88;object-fit:cover;display:block}
+.dl .pr{font-weight:900;color:#ffe07a;font-size:14px;margin-top:5px}
+.dl .hv{font-size:9.5px;color:var(--mut);margin-top:1px}
+.dl.boughtx{opacity:.25;pointer-events:none}
+.dl .box2{aspect-ratio:63/88;display:flex;align-items:center;justify-content:center;font-size:44px;background:linear-gradient(135deg,#6a3a1a,#2a160a)}
+/* hof */
+.wall{margin-top:10px;perspective:900px}
+.wallIn{transform:rotateX(6deg);transform-origin:50% 0;display:grid;grid-template-columns:repeat(3,1fr);gap:16px 12px;padding:24px 14px 30px;border-radius:14px;background:radial-gradient(60% 40% at 50% 0%,rgba(255,240,200,.18),transparent 70%),repeating-linear-gradient(90deg,#3a2414 0 38px,#331f11 38px 40px);box-shadow:inset 0 0 60px rgba(0,0,0,.7),0 20px 50px rgba(0,0,0,.6)}
+.frame{position:relative;padding:7px;background:linear-gradient(135deg,#f1d27a,#9a6d22 45%,#e8c56a 70%,#7a5418);border-radius:4px;box-shadow:0 12px 24px rgba(0,0,0,.65)}
+.frame::before{content:"";position:absolute;left:-30%;right:-30%;top:-40px;height:60px;background:radial-gradient(closest-side,rgba(255,240,200,.35),transparent);pointer-events:none}
+.frame img{width:100%;display:block;aspect-ratio:63/88;object-fit:cover}
+.frame .slab{width:100%}
+.frame .pl{position:absolute;left:10%;right:10%;bottom:-20px;background:linear-gradient(#e9cf8a,#b38a3a);color:#2a1a05;font-size:8px;font-weight:900;text-align:center;padding:2px;border-radius:2px;white-space:nowrap;overflow:hidden}
+.jobCard{width:min(54vw,230px);aspect-ratio:63/88;margin:16px auto 0;border-radius:8px;overflow:hidden;box-shadow:0 20px 40px rgba(0,0,0,.6);transition:transform .25s}
+.jobCard img{width:100%;height:100%;object-fit:cover}
+
 </style>
 </head>
 <body>
 <div class="bgfx"></div>
+<div id="coin">$0</div>
 
-<section class="screen on" id="scrSets">
-  <header class="top"><span class="brand">PACK<i>RIP</i></span><span id="totPacks"></span></header>
+<!-- HOME -->
+<section class="screen on" id="scrHome">
+  <header class="top"><span class="brand">PACK<i>RIP</i></span></header>
+  <div class="scroll" id="homeBody"></div>
+</section>
+
+<!-- PACKS -->
+<section class="screen" id="scrSets">
+  <header class="top"><span>BOOSTER <b>PACKS</b></span><span id="totPacks"></span></header>
   <div class="scroll">
-    <div class="hero"><h1>Rip <span>vintage</span><br>booster packs.</h1><p>Start with Base Set. Complete a set or grade a PSA 10 holo to unlock the next one. 31 sets, all the way to the end of Gen III.</p></div>
     <button class="randBtn" id="randSet">⚡ RANDOM UNLOCKED BOOSTER</button>
     <div id="setList"></div>
   </div>
 </section>
 
+<!-- OPEN -->
 <section class="screen" id="scrOpen">
-  <header class="top"><button class="backBtn" id="backSets">‹ SETS</button><img id="setLogoTop" alt=""><span>PACK <b id="packNo">#1</b></span></header>
+  <header class="top"><button class="backBtn" id="backSets">‹ SETS</button><img id="setLogoTop" alt=""></header>
   <div id="stage">
     <div id="ripText">RIP ME OPEN<small>SWIPE ACROSS TOP OR BOTTOM</small></div>
     <div id="packWrap" class="float">
@@ -307,9 +422,10 @@ h3.sec{margin:22px 0 10px;font-size:12px;letter-spacing:.22em;color:var(--mut);t
         <div class="hint" id="hintT"></div><div class="hint" id="hintB"></div>
         <div id="finger"></div><div id="tearSpark"></div>
       </div>
+      <div id="weighOut"><small>SCALE</small><span>0.00 g</span></div>
     </div>
-    <div id="packLabel"></div>
-    <div id="loader"><div class="spin"></div><span id="loadTxt">LOADING SET</span></div>
+    <div id="packBar"><div id="packPrice"></div><div id="packBtns"><button class="sbtn g" id="weighBtn">⚖ WEIGH · $1</button><button class="sbtn g" id="swapBtn">↻ OTHER PACK</button></div></div>
+    <div id="loader"><div class="spin"></div><span>LOADING</span></div>
   </div>
   <div id="reveal">
     <div id="counter"><b id="cIdx">1</b> / 10<div id="dots"></div></div>
@@ -319,6 +435,7 @@ h3.sec{margin:22px 0 10px;font-size:12px;letter-spacing:.22em;color:var(--mut);t
   <div id="summary">
     <h2 id="sumTitle">Your pack</h2>
     <p class="sub" id="sumSub"></p>
+    <div id="sumVal"></div>
     <div class="grid5" id="sumGrid"></div>
     <button class="btn" id="nextPack">RIP ANOTHER</button>
     <button class="btn ghost" id="gradeHit" style="display:none">SEND HIT TO PSA</button>
@@ -326,6 +443,7 @@ h3.sec{margin:22px 0 10px;font-size:12px;letter-spacing:.22em;color:var(--mut);t
   </div>
 </section>
 
+<!-- BINDER -->
 <section class="screen" id="scrAlbum">
   <header class="top"><span>THE <b>BINDER</b></span><span id="albCount"></span></header>
   <div class="scroll">
@@ -336,34 +454,40 @@ h3.sec{margin:22px 0 10px;font-size:12px;letter-spacing:.22em;color:var(--mut);t
   </div>
 </section>
 
+<!-- SHOW -->
+<section class="screen" id="scrShow">
+  <header class="top"><span id="showHead">CARD <b>SHOWS</b></span></header>
+  <div class="scroll" id="showList"></div>
+  <div id="showStage" style="display:none"></div>
+</section>
+
+<!-- VAULT -->
 <section class="screen" id="scrVault">
-  <header class="top"><span>PSA <b>VAULT</b></span><span></span></header>
+  <header class="top"><span>PSA <b>VAULT</b></span></header>
   <div class="scroll">
+    <div id="subsBox"></div>
     <div class="sgrid" id="vStats" style="grid-template-columns:repeat(4,1fr);gap:8px"></div>
     <div class="chips" id="vChips" style="margin-top:14px"></div>
     <div class="vault" id="vGrid"></div>
-    <h3 class="sec">How grading works</h3>
-    <div class="odds">Send any <b>Holo</b> or <b>Ultra Rare</b> to PSA. Grades go from <b>PSA 1 (Poor)</b> to <b>PSA 10 (Gem Mint)</b>. Chance for a 10 is <b>15 %</b>. Lower grades show whitening, scratches, creases and stains. <b>Every grade is final.</b> A slab can never be cracked or resubmitted. A PSA 10 holo also unlocks the next set.</div>
+    <h3 class="sec">Sealed product</h3>
+    <div id="sealBox"></div>
   </div>
 </section>
 
-<section class="screen" id="scrStats">
-  <header class="top"><span>YOUR <b>STATS</b></span><span></span></header>
-  <div class="scroll">
-    <div class="sgrid" id="sgrid"></div>
-    <h3 class="sec">Best pulls</h3>
-    <div id="hist"></div>
-    <h3 class="sec">Pull rates</h3>
-    <div class="odds">Every pack: <b>10 cards</b>, never a duplicate inside one pack.<br>WotC sets: 6 Common · 3 Uncommon · 1 Rare slot<br>e-Card &amp; EX sets: 5 Common · 3 Uncommon · 1 Reverse Holo · 1 Rare slot<br>Rare slot is Holo: <b>12.5 %</b><br>Rare slot is Ultra Rare: <b>1 %</b><br>God Pack (10 holos): <b>1 in 200</b>, once per 200 packs at a random position<br>Unlock: <b>complete a set</b> or grade a <b>PSA 10 holo</b> from it</div>
-    <button class="btn ghost" id="resetBtn">RESET EVERYTHING</button>
-  </div>
-</section>
+<!-- SUB SCREENS -->
+<section class="screen sub" id="scrQuests"><header class="top"><button class="backBtn" data-home>‹ HOME</button><span><b>QUESTS</b></span></header><div class="scroll" id="questBody"></div></section>
+<section class="screen sub" id="scrShop"><header class="top"><button class="backBtn" data-home>‹ HOME</button><span><b>SHOP</b></span></header><div class="scroll" id="shopBody"></div></section>
+<section class="screen sub" id="scrMarket"><header class="top"><button class="backBtn" data-home>‹ HOME</button><span><b>MARKET</b></span></header><div class="scroll" id="marketBody"></div></section>
+<section class="screen sub" id="scrGyms"><header class="top"><button class="backBtn" data-home>‹ HOME</button><span><b>GYMS</b></span></header><div class="scroll" id="gymBody"></div></section>
+<section class="screen sub" id="scrHof"><header class="top"><button class="backBtn" data-home>‹ HOME</button><span>HALL OF <b>FAME</b></span></header><div class="scroll" id="hofBody"></div></section>
+<section class="screen sub" id="scrStats"><header class="top"><button class="backBtn" data-home>‹ HOME</button><span><b>STATS</b></span></header><div class="scroll" id="statsBody"></div></section>
 
 <nav id="nav">
-  <button data-s="scrSets" class="on"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="6" y="2.5" width="12" height="19" rx="1.5"/><path d="M6 6.5l2-1 2 1 2-1 2 1 2-1 2 1"/></svg>PACKS</button>
-  <button data-s="scrAlbum"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="7.5" height="10" rx="1"/><rect x="13.5" y="3" width="7.5" height="10" rx="1"/><rect x="3" y="15" width="18" height="6" rx="1"/></svg>BINDER</button>
-  <button data-s="scrVault"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="5" y="2" width="14" height="20" rx="2"/><rect x="7.5" y="4.5" width="9" height="3" rx=".5"/><rect x="7.5" y="10" width="9" height="9.5" rx=".5"/></svg>VAULT</button>
-  <button data-s="scrStats"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 20V10M10 20V4M16 20v-7M22 20H2"/></svg>STATS</button>
+  <button data-s="scrHome" class="on"><span class="dot"></span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 11l9-7 9 7v9a1 1 0 0 1-1 1h-5v-6h-6v6H4a1 1 0 0 1-1-1z"/></svg>HOME</button>
+  <button data-s="scrSets"><span class="dot"></span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="6" y="2.5" width="12" height="19" rx="1.5"/><path d="M6 6.5l2-1 2 1 2-1 2 1 2-1 2 1"/></svg>PACKS</button>
+  <button data-s="scrAlbum"><span class="dot"></span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="7.5" height="10" rx="1"/><rect x="13.5" y="3" width="7.5" height="10" rx="1"/><rect x="3" y="15" width="18" height="6" rx="1"/></svg>BINDER</button>
+  <button data-s="scrShow"><span class="dot"></span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 9h18l-2-5H5zM4 9v11h16V9M9 20v-6h6v6"/></svg>SHOWS</button>
+  <button data-s="scrVault"><span class="dot"></span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="5" y="2" width="14" height="20" rx="2"/><rect x="7.5" y="4.5" width="9" height="3" rx=".5"/><rect x="7.5" y="10" width="9" height="9.5" rx=".5"/></svg>VAULT</button>
 </nav>
 
 <div id="dark"></div><div id="rays"></div>
@@ -371,78 +495,89 @@ h3.sec{margin:22px 0 10px;font-size:12px;letter-spacing:.22em;color:var(--mut);t
 <div id="banner"><span></span></div>
 <div id="godIntro"><div>GOD PACK</div><small>10 HOLOS</small></div>
 <div class="ov" id="zoom"><div id="zcard"></div><div class="oinfo" id="zinfo"></div><div class="zact" id="zact"></div></div>
-<div class="ov" id="vzoom"><div id="zslab"></div><div class="oinfo" id="vinfo"></div></div>
+<div class="ov" id="vzoom"><div id="zslab"></div><div class="oinfo" id="vinfo"></div><div class="zact" id="vact"></div></div>
+<div class="ov" id="modal"><div class="mbox" id="mbox"></div></div>
 <div id="psa"><div id="psaHead"></div><div id="psaStage"></div><div id="psaFoot"></div></div>
-<div id="unlock"></div>
 <div id="toast"></div>
 <script>
-/* =================== SETS (Gen I – III, English) =================== */
-// h = background hue while opening this set
+/* =================== SETS =================== */
+// h = background hue · sm = market multiplier (drives card values + pack price)
 const SETS=[
- {g:1,id:'base1',n:'Base Set',y:1999,h:215,c:['#2d63c8','#0c1f52','#ffcb05'],ch:['Charizard'],ed:1},
- {g:1,id:'base2',n:'Jungle',y:1999,h:135,c:['#2f8a3a','#0c2e14','#b6f25a'],ch:['Snorlax','Vaporeon'],ed:1},
- {g:1,id:'base3',n:'Fossil',y:1999,h:32,c:['#9a6a2a','#2c1a08','#ffcf7a'],ch:['Gengar','Dragonite'],ed:1},
- {g:1,id:'base4',n:'Base Set 2',y:2000,h:240,c:['#3a52b8','#140f44','#ffd84a'],ch:['Charizard']},
- {g:1,id:'base5',n:'Team Rocket',y:2000,h:355,c:['#2a2a33','#0a0a0d','#ff3b3b'],ch:['Dark Charizard','Dark Raichu'],ed:1},
- {g:1,id:'gym1',n:'Gym Heroes',y:2000,h:12,c:['#c8312a','#3d0b0b','#ffd166'],ch:["Rocket's Moltres","Misty's Gyarados"],ed:1},
- {g:1,id:'gym2',n:'Gym Challenge',y:2000,h:275,c:['#6a2ab8','#1a0838','#ffcc4d'],ch:["Blaine's Charizard"],ed:1},
- {g:2,id:'neo1',n:'Neo Genesis',y:2000,h:45,c:['#d79a1e','#3a2405','#fff1a8'],ch:['Lugia','Typhlosion'],ed:1},
- {g:2,id:'neo2',n:'Neo Discovery',y:2001,h:262,c:['#5b3aa6','#150a33','#c9b6ff'],ch:['Umbreon','Espeon'],ed:1},
- {g:2,id:'neo3',n:'Neo Revelation',y:2001,h:198,c:['#2c5a7a','#0a1a26','#7fd9ff'],ch:['Shining'],ed:1},
- {g:2,id:'neo4',n:'Neo Destiny',y:2002,h:228,c:['#1d1d3a','#06060f','#c0a2ff'],ch:['Shining'],ed:1},
- {g:2,id:'base6',n:'Legendary Collection',y:2002,h:40,c:['#b8892a','#2a1b04','#fff0b0'],ch:['Charizard']},
- {g:2,id:'ecard1',n:'Expedition',y:2002,h:175,c:['#1e8a8a','#062626','#9ff5e8'],ch:['Charizard'],e:1},
- {g:2,id:'ecard2',n:'Aquapolis',y:2003,h:208,c:['#1d5fb0','#05193a','#8fd0ff'],ch:['Lugia','Kingdra'],e:1},
- {g:2,id:'ecard3',n:'Skyridge',y:2003,h:192,c:['#3a8ad6','#0a2140','#d2ecff'],ch:['Charizard','Ho-oh','Celebi'],e:1},
- {g:3,id:'ex1',n:'Ruby & Sapphire',y:2003,h:345,c:['#c42a3a','#10224d','#ffd34d'],e:1},
- {g:3,id:'ex2',n:'Sandstorm',y:2003,h:36,c:['#c8913c','#3a2006','#ffe2a3'],e:1},
- {g:3,id:'ex3',n:'Dragon',y:2003,h:150,c:['#2a8c5a','#08251a','#a9ffc8'],e:1},
- {g:3,id:'ex4',n:'Team Magma vs Team Aqua',y:2004,h:5,c:['#b52a2a','#0c2d5a','#ffcf5c'],e:1},
- {g:3,id:'ex5',n:'Hidden Legends',y:2004,h:48,c:['#8a6a2a','#1f1606','#ffe08a'],e:1},
- {g:3,id:'ex6',n:'FireRed & LeafGreen',y:2004,h:18,c:['#d1402a','#1f4d1a','#ffd84a'],e:1},
- {g:3,id:'ex7',n:'Team Rocket Returns',y:2004,h:0,c:['#2a2630','#0a080d','#ff4646'],e:1},
- {g:3,id:'ex8',n:'Deoxys',y:2005,h:285,c:['#6a3a9a','#14062a','#ff9a5a'],e:1},
- {g:3,id:'ex9',n:'Emerald',y:2005,h:155,c:['#1a9a5a','#04281a','#9fffd0'],e:1},
- {g:3,id:'ex10',n:'Unseen Forces',y:2005,h:258,c:['#3a2a6a','#0c0820','#e6d06a'],e:1},
- {g:3,id:'ex11',n:'Delta Species',y:2005,h:186,c:['#1a8a9a','#03252a','#9ff0ff'],e:1},
- {g:3,id:'ex12',n:'Legend Maker',y:2006,h:25,c:['#c8682a','#2a1206','#ffd29a'],e:1},
- {g:3,id:'ex13',n:'Holon Phantoms',y:2006,h:222,c:['#2a5ac8','#06133a','#a8e0ff'],e:1},
- {g:3,id:'ex14',n:'Crystal Guardians',y:2006,h:195,c:['#2aa0c8','#062a3a','#d0f5ff'],e:1},
- {g:3,id:'ex15',n:'Dragon Frontiers',y:2006,h:120,c:['#3a7a3a','#1a0a2a','#ffd060'],e:1},
- {g:3,id:'ex16',n:'Power Keepers',y:2007,h:245,c:['#5a5a6a','#14141c','#d8d8ff'],e:1},
+ {g:1,id:'base1',n:'Base Set',y:1999,h:215,sm:1.6,c:['#2d63c8','#0c1f52','#ffcb05'],ch:['Charizard'],ed:1},
+ {g:1,id:'base2',n:'Jungle',y:1999,h:135,sm:1.2,c:['#2f8a3a','#0c2e14','#b6f25a'],ch:['Snorlax','Vaporeon'],ed:1},
+ {g:1,id:'base3',n:'Fossil',y:1999,h:32,sm:1.2,c:['#9a6a2a','#2c1a08','#ffcf7a'],ch:['Gengar','Dragonite'],ed:1},
+ {g:1,id:'base4',n:'Base Set 2',y:2000,h:240,sm:.8,c:['#3a52b8','#140f44','#ffd84a'],ch:['Charizard']},
+ {g:1,id:'base5',n:'Team Rocket',y:2000,h:355,sm:1.3,c:['#2a2a33','#0a0a0d','#ff3b3b'],ch:['Dark Charizard','Dark Raichu'],ed:1},
+ {g:1,id:'gym1',n:'Gym Heroes',y:2000,h:12,sm:1,c:['#c8312a','#3d0b0b','#ffd166'],ch:["Rocket's Moltres","Misty's Gyarados"],ed:1},
+ {g:1,id:'gym2',n:'Gym Challenge',y:2000,h:275,sm:1.1,c:['#6a2ab8','#1a0838','#ffcc4d'],ch:["Blaine's Charizard"],ed:1},
+ {g:2,id:'neo1',n:'Neo Genesis',y:2000,h:45,sm:1.2,c:['#d79a1e','#3a2405','#fff1a8'],ch:['Lugia','Typhlosion'],ed:1},
+ {g:2,id:'neo2',n:'Neo Discovery',y:2001,h:262,sm:1.1,c:['#5b3aa6','#150a33','#c9b6ff'],ch:['Umbreon','Espeon'],ed:1},
+ {g:2,id:'neo3',n:'Neo Revelation',y:2001,h:198,sm:1.1,c:['#2c5a7a','#0a1a26','#7fd9ff'],ch:['Shining'],ed:1},
+ {g:2,id:'neo4',n:'Neo Destiny',y:2002,h:228,sm:1.4,c:['#1d1d3a','#06060f','#c0a2ff'],ch:['Shining'],ed:1},
+ {g:2,id:'base6',n:'Legendary Collection',y:2002,h:40,sm:.9,c:['#b8892a','#2a1b04','#fff0b0'],ch:['Charizard']},
+ {g:2,id:'ecard1',n:'Expedition',y:2002,h:175,sm:1,c:['#1e8a8a','#062626','#9ff5e8'],ch:['Charizard'],e:1},
+ {g:2,id:'ecard2',n:'Aquapolis',y:2003,h:208,sm:1.3,c:['#1d5fb0','#05193a','#8fd0ff'],ch:['Lugia','Kingdra'],e:1},
+ {g:2,id:'ecard3',n:'Skyridge',y:2003,h:192,sm:1.5,c:['#3a8ad6','#0a2140','#d2ecff'],ch:['Charizard','Ho-oh','Celebi'],e:1},
+ {g:3,id:'ex1',n:'Ruby & Sapphire',y:2003,h:345,sm:.8,c:['#c42a3a','#10224d','#ffd34d'],e:1},
+ {g:3,id:'ex2',n:'Sandstorm',y:2003,h:36,sm:.8,c:['#c8913c','#3a2006','#ffe2a3'],e:1},
+ {g:3,id:'ex3',n:'Dragon',y:2003,h:150,sm:1,c:['#2a8c5a','#08251a','#a9ffc8'],e:1},
+ {g:3,id:'ex4',n:'Team Magma vs Team Aqua',y:2004,h:5,sm:.9,c:['#b52a2a','#0c2d5a','#ffcf5c'],e:1},
+ {g:3,id:'ex5',n:'Hidden Legends',y:2004,h:48,sm:.9,c:['#8a6a2a','#1f1606','#ffe08a'],e:1},
+ {g:3,id:'ex6',n:'FireRed & LeafGreen',y:2004,h:18,sm:1.1,c:['#d1402a','#1f4d1a','#ffd84a'],e:1},
+ {g:3,id:'ex7',n:'Team Rocket Returns',y:2004,h:0,sm:1,c:['#2a2630','#0a080d','#ff4646'],e:1},
+ {g:3,id:'ex8',n:'Deoxys',y:2005,h:285,sm:1,c:['#6a3a9a','#14062a','#ff9a5a'],e:1},
+ {g:3,id:'ex9',n:'Emerald',y:2005,h:155,sm:1,c:['#1a9a5a','#04281a','#9fffd0'],e:1},
+ {g:3,id:'ex10',n:'Unseen Forces',y:2005,h:258,sm:1.1,c:['#3a2a6a','#0c0820','#e6d06a'],e:1},
+ {g:3,id:'ex11',n:'Delta Species',y:2005,h:186,sm:1.1,c:['#1a8a9a','#03252a','#9ff0ff'],e:1},
+ {g:3,id:'ex12',n:'Legend Maker',y:2006,h:25,sm:1,c:['#c8682a','#2a1206','#ffd29a'],e:1},
+ {g:3,id:'ex13',n:'Holon Phantoms',y:2006,h:222,sm:1.1,c:['#2a5ac8','#06133a','#a8e0ff'],e:1},
+ {g:3,id:'ex14',n:'Crystal Guardians',y:2006,h:195,sm:1.1,c:['#2aa0c8','#062a3a','#d0f5ff'],e:1},
+ {g:3,id:'ex15',n:'Dragon Frontiers',y:2006,h:120,sm:1.3,c:['#3a7a3a','#1a0a2a','#ffd060'],e:1},
+ {g:3,id:'ex16',n:'Power Keepers',y:2007,h:245,sm:1,c:['#5a5a6a','#14141c','#d8d8ff'],e:1},
 ];
 const GENS={1:['Generation I','Kanto · 1999–2000'],2:['Generation II','Johto · 2000–2003'],3:['Generation III','Hoenn · 2003–2007']};
 const setById={};SETS.forEach(s=>setById[s.id]=s);
 const $=s=>document.querySelector(s);
 const rnd=a=>a[Math.floor(Math.random()*a.length)];
+const rr=(a,b)=>a+Math.random()*(b-a);
 const shuffle=a=>{for(let i=a.length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1));[a[i],a[j]]=[a[j],a[i]]}return a};
 const wait=ms=>new Promise(r=>setTimeout(r,ms));
+const esc=s=>String(s).replace(/[&<>"']/g,m=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[m]));
 const logoURL=id=>`https://images.pokemontcg.io/${id}/logo.png`;
 const symURL=id=>`https://images.pokemontcg.io/${id}/symbol.png`;
 const artURL=dex=>`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/${dex}.png`;
+const setOf=id=>id.slice(0,id.lastIndexOf('-'));
+const NOW=()=>Date.now();
+const HOUR=36e5,DAY=864e5;
 
 /* =================== STATE =================== */
-const KEY='packrip_v6';
-let S=JSON.parse(localStorage.getItem(KEY)||'null')||{};
-S=Object.assign({packs:0,cards:0,holos:0,ultras:0,gods:0,sinceHolo:0,coll:{},perSet:{},hist:[],godAt:1+Math.floor(Math.random()*200),slabs:[],psaSubs:0,tot:{},seenUnlock:['base1']},S);
+const KEY='packrip_game_v1';
+const S0=()=>({coins:60,xp:0,rep:0,packs:0,cards:0,holos:0,ultras:0,gods:0,sinceHolo:0,lastHit:false,
+ coll:{},seen:{},nm:{},fakes:{},perSet:{},hist:[],godAt:1+Math.floor(Math.random()*200),
+ slabs:[],subs:[],psaSubs:0,tot:{},seenUnlock:['base1'],inv:{},free:0,sealed:[],mis:[],badges:[],
+ story:0,cols:[],ach:[],bounties:[],daily:{day:'',keys:[],p:{},claimed:[]},
+ shop:{owned:false,disp:0,light:0,store:0,guide:false,partner:false,last:NOW()},
+ grail:null,lastOak:0,lastPocket:0,lastJob:0,lastDay:'',
+ stats:{sold:0,earned:0,shows:0,bought:0,graded:0,scams:0,mis:0,grails:0,jobs:0,spent:0},flags:{}});
+let S=Object.assign(S0(),JSON.parse(localStorage.getItem(KEY)||'{}'));
+S.stats=Object.assign(S0().stats,S.stats);S.shop=Object.assign(S0().shop,S.shop);S.daily=Object.assign(S0().daily,S.daily);
 const save=()=>{try{localStorage.setItem(KEY,JSON.stringify(S))}catch(e){}};
 
 /* =================== CARD DATA =================== */
-const CACHE='packrip_cards6_';const memo={};
+const CACHE='packrip_cards7_';const memo={};
 function rarityTier(r){r=(r||'').toLowerCase();
  if(r&&/(ex|star|secret|shining|ultra|crystal|legend)/.test(r))return 'ultra';
  if(r.includes('holo'))return 'holo';if(r.includes('rare'))return 'rare';if(r.includes('uncommon'))return 'uncommon';return 'common'}
 async function fetchJSON(url,ms=15000){const c=new AbortController();const t=setTimeout(()=>c.abort(),ms);try{const r=await fetch(url,{signal:c.signal});if(!r.ok)throw new Error(r.status);return await r.json()}finally{clearTimeout(t)}}
+function loadCached(id){if(memo[id])return memo[id];const c=localStorage.getItem(CACHE+id);if(!c)return null;try{return memo[id]=finalize(id,JSON.parse(c))}catch(e){return null}}
 async function loadSet(id){
- if(memo[id])return memo[id];
- const cached=localStorage.getItem(CACHE+id);
- if(cached){try{return memo[id]=finalize(id,JSON.parse(cached))}catch(e){}}
+ const m=loadCached(id);if(m)return m;
  let cards=null;
- try{const j=await fetchJSON(`https://api.pokemontcg.io/v2/cards?q=set.id:${id}&pageSize=250&select=id,name,number,rarity,images,supertype,nationalPokedexNumbers`,20000);
-  cards=j.data.map(c=>({id:c.id,n:c.number,name:c.name,r:rarityTier(c.rarity),s:c.images.small,l:c.images.large,t:c.supertype,dex:(c.nationalPokedexNumbers||[])[0]||0}));
+ try{const j=await fetchJSON(`https://api.pokemontcg.io/v2/cards?q=set.id:${id}&pageSize=250&select=id,name,number,rarity,images,supertype,nationalPokedexNumbers,types`,20000);
+  cards=j.data.map(c=>({id:c.id,n:c.number,name:c.name,r:rarityTier(c.rarity),s:c.images.small,l:c.images.large,t:c.supertype,dex:(c.nationalPokedexNumbers||[])[0]||0,ty:(c.types||[])[0]||''}));
  }catch(e){
   const j=await fetchJSON(`https://api.tcgdex.net/v2/en/sets/${id}`);const list=(j.cards||[]).filter(c=>c.image);const N=list.length;
-  cards=list.map((c,i)=>{const p=i/N;return {id:c.id,n:c.localId,name:c.name,r:p<.14?'holo':p<.25?'rare':p<.5?'uncommon':'common',s:c.image+'/low.webp',l:c.image+'/high.webp',t:'Pokémon',dex:0}});
+  cards=list.map((c,i)=>{const p=i/N;return {id:c.id,n:c.localId,name:c.name,r:p<.14?'holo':p<.25?'rare':p<.5?'uncommon':'common',s:c.image+'/low.webp',l:c.image+'/high.webp',t:'Pokémon',dex:0,ty:''}});
  }
  if(!cards||!cards.length)throw new Error('empty');
  cards.sort((a,b)=>(parseInt(a.n)||999)-(parseInt(b.n)||999)||String(a.n).localeCompare(String(b.n)));
@@ -456,24 +591,71 @@ function finalize(id,cards){
   picked.forEach(c=>{P[c.r]=P[c.r].filter(x=>x!==c);c.r='ultra';P.ultra.push(c)})}
  if(!P.ultra.length&&P.holo.length){const c=P.holo.pop();c.r='ultra';P.ultra.push(c)}
  if(!P.holo.length&&P.rare.length){P.holo=P.rare.splice(0,Math.ceil(P.rare.length/3));P.holo.forEach(c=>c.r='holo')}
- S.tot[id]=cards.length;save();
+ S.tot[id]=cards.length;
  return {id,cards,P,byId:Object.fromEntries(cards.map(c=>[c.id,c]))};
 }
+const cardById=id=>{const m=memo[setOf(id)];return m&&m.byId[id]};
 
-/* =================== PULLS =================== */
-function pickUnique(arr,k,used){const a=arr.filter(c=>!used.has(c.id));const out=[];while(out.length<k&&a.length)out.push(a.splice(Math.floor(Math.random()*a.length),1)[0]);out.forEach(c=>used.add(c.id));return out}
-function fill(list,k,pools,used){for(const p of pools){if(list.length>=k)break;list.push(...pickUnique(p,k-list.length,used))}return list}
-function buildPack(D,set){
- const n=S.packs+1,pos=((n-1)%200)+1;if(pos===1&&n>1)S.godAt=1+Math.floor(Math.random()*200);
- const used=new Set(),P=D.P;
- if(pos===S.godAt){const cards=shuffle(fill([],10,[P.holo,P.ultra,P.rare],used));const ui=cards.findIndex(c=>c.r==='ultra');if(ui>=0)cards.push(cards.splice(ui,1)[0]);return {cards:cards.map(c=>({c})),god:true}}
- const ne=a=>a.filter(c=>!/energy/i.test(c.name)||Math.random()<.15);
- const com=fill([],set.e?5:6,[ne(P.common),P.common,P.uncommon],used),unc=fill([],3,[P.uncommon,P.common],used);
- const out=shuffle([...com,...unc]).map(c=>({c}));
- if(set.e){const rv=fill([],1,[[...P.common,...P.uncommon,...P.rare]],used)[0];if(rv)out.push({c:rv,rev:true})}
- const r=Math.random();const hit=r<.01?fill([],1,[P.ultra,P.holo,P.rare],used)[0]:r<.135?fill([],1,[P.holo,P.rare],used)[0]:fill([],1,[P.rare,P.holo,P.uncommon],used)[0];
- out.push({c:hit});return {cards:out,god:false};
-}
+/* =================== ECONOMY =================== */
+const TIER={common:.1,uncommon:.25,rare:1.5,holo:12,ultra:60};
+const GM={10:6,9:2.2,8:1.4,7:1.1,6:.9,5:.75,4:.6,3:.5,2:.4,1.5:.35,1:.3};
+const POP={charizard:4,lugia:3,pikachu:2.5,umbreon:2.5,rayquaza:2.5,blastoise:2,mewtwo:2,espeon:2,'ho-oh':2,venusaur:1.8,gengar:1.8,dragonite:1.8,gyarados:1.6,tyranitar:1.6,celebi:1.6,mew:1.7,suicune:1.5,eevee:1.5,typhlosion:1.5,groudon:1.5,kyogre:1.5,snorlax:1.4,entei:1.4,raikou:1.4,latios:1.4,latias:1.4,deoxys:1.4,salamence:1.4,blaziken:1.4,gardevoir:1.4,feraligatr:1.3,raichu:1.3,alakazam:1.3,articuno:1.3,zapdos:1.3,moltres:1.3,jirachi:1.3,metagross:1.3,meganium:1.2,sceptile:1.2,swampert:1.2,flygon:1.2};
+function hsh(s){let h=2166136261;for(let i=0;i<s.length;i++){h^=s.charCodeAt(i);h=Math.imul(h,16777619)}return h>>>0}
+const popCache={};
+function pop(name){if(popCache[name])return popCache[name];const n=name.toLowerCase();let m=0;for(const k in POP)if(n.includes(k))m=Math.max(m,POP[k]);return popCache[name]=m||(.7+(hsh(n)%100)/125)}
+const dayN=()=>Math.floor((NOW()+HOUR)/DAY);
+const dayKey=()=>String(dayN());
+const crashToday=()=>hsh('crash'+dayN())%100<7;
+let hotDay=-1,hotSet=new Set();
+function hotIds(){if(hotDay===dayN()&&hotSet.size)return hotSet;hotDay=dayN();hotSet=new Set();
+ const pool=[];Object.values(memo).forEach(m=>{if(isUnlocked(SETS.findIndex(s=>s.id===m.id)))pool.push(...m.P.rare,...m.P.holo)});
+ pool.sort((a,b)=>hsh(a.id+'h'+dayN())-hsh(b.id+'h'+dayN()));pool.slice(0,4).forEach(c=>hotSet.add(c.id));return hotSet}
+function mkt(id){let f=1+((hsh(id+':'+dayN())%1000)/1000-.5)*.2;if(hotIds().has(id))f*=1.8;if(crashToday())f*=.7;return f}
+function cardVal(c,o={}){const set=setById[setOf(c.id)]||{sm:1};let v=TIER[c.r]*(set.sm||1)*pop(c.name)*mkt(c.id);
+ if(c.t==='Trainer'||c.t==='Energy')v*=.6;if(o.grade)v*=(o.grade===10&&c.r==='ultra')?8:GM[o.grade];if(o.mis)v*=4;
+ return Math.max(.02,Math.round(v*100)/100)}
+const packPrice=set=>Math.max(3,Math.round(6*set.sm*(hasBadge('volcano')?.9:1)));
+const sealedVal=s=>Math.round(s.base*(1+Math.min(.6,(NOW()-s.bought)/HOUR*.005)));
+const fmt=v=>v<10?'$'+(Math.round(v*100)/100).toFixed(2):'$'+Math.round(v).toLocaleString('en-US');
+const hasBadge=b=>S.badges.includes(b);
+
+/* =================== COINS / XP / REP =================== */
+function updCoin(){$('#coin').textContent='$ '+(S.coins<1000?S.coins.toFixed(2):Math.round(S.coins).toLocaleString('en-US'))}
+function flyVal(v){const e=document.createElement('div');e.className='flyv'+(v<0?' neg':'');e.textContent=(v<0?'−':'+')+fmt(Math.abs(v));const r=$('#coin').getBoundingClientRect();e.style.left=(r.left+8)+'px';e.style.top=(r.bottom+4)+'px';document.body.appendChild(e);setTimeout(()=>e.remove(),1300);
+ const c=$('#coin');c.classList.remove('bump');void c.offsetWidth;c.classList.add('bump')}
+function addCoins(v){v=Math.round(v*100)/100;S.coins=Math.round((S.coins+v)*100)/100;updCoin();flyVal(v);save()}
+function spend(v){v=Math.round(v*100)/100;if(S.coins+1e-9<v){toast(`Not enough money · need ${fmt(v)}`);brokeCheck();return false}S.coins=Math.round((S.coins-v)*100)/100;S.stats.spent+=v;updCoin();flyVal(-v);save();return true}
+const RANKS=[['Rookie',0],['Hobbyist',400],['Dealer',1500],['Expert',4500],['Legend',12000]];
+const rankIdx=()=>{let i=0;RANKS.forEach((r,k)=>{if(S.xp>=r[1])i=k});return i};
+function addXP(n){const before=rankIdx();S.xp+=Math.round(n*(hasBadge('earth')?1.25:1));save();const after=rankIdx();
+ if(after>before)setTimeout(()=>{const sh=SHOWS.find(s=>s.rank===after);modal(`<div class="em">🏅</div><h2>Rank up: ${RANKS[after][0]}</h2><p>You are now a <b>${RANKS[after][0]}</b>.${sh?`<br>New card show unlocked: <b>${sh.n}</b>.`:''}${after===1?'<br>You can now buy your own card shop.':''}</p><button class="btn" onclick="closeModal()">NICE</button>`);sfx.ultra();burst(200,['#ffe07a','#fff','#9ef0ff'],1.2)},400)}
+function addRep(n){if(n>0)n*=hasBadge('earth')?1.25:1;S.rep=Math.max(0,Math.round((S.rep+n)*10)/10);save()}
+function minPackPrice(){return Math.min(...unlockedSets().map(packPrice))}
+function isBroke(){return S.coins<minPackPrice()&&S.free<1&&!Object.values(S.inv).some(n=>n>0)}
+function brokeCheck(){if(isBroke())setTimeout(()=>toast('Short on money? Do an odd job or ask Grandpa (Shop)'),2100)}
+
+/* =================== COLLECTION =================== */
+function addRaw(c,fake){const s=setOf(c.id);S.coll[s]=S.coll[s]||{};S.coll[s][c.id]=(S.coll[s][c.id]||0)+1;S.seen[s]=S.seen[s]||{};S.seen[s][c.id]=1;S.nm[c.id]=c.name;
+ if(fake){S.fakes[c.id]=(S.fakes[c.id]||0)+1}}
+function rawCount(id){const s=setOf(id);return (S.coll[s]||{})[id]||0}
+function takeRaw(id){ // returns true if the removed copy was fake
+ const s=setOf(id),n=rawCount(id);if(n<1)return null;const f=S.fakes[id]||0;const isFake=f>0&&Math.random()<f/n;
+ S.coll[s][id]=n-1;if(isFake)S.fakes[id]=f-1;else if(f>S.coll[s][id])S.fakes[id]=S.coll[s][id];return isFake}
+const seenCount=id=>Object.keys(S.seen[id]||{}).length;
+// unified "items" (everything you can sell)
+function allItems(){const out=[];
+ Object.keys(S.coll).forEach(sid=>{const m=memo[sid];if(!m)return;Object.entries(S.coll[sid]).forEach(([id,n])=>{if(n>0&&m.byId[id]){const c=m.byId[id];out.push({k:'raw',key:'r:'+id,c,id,cnt:n,val:cardVal(c),name:c.name,img:c.s,set:sid})}})});
+ S.slabs.forEach(sl=>out.push({k:'slab',key:'s:'+sl.uid,sl,val:cardVal(sl,{grade:sl.grade}),name:sl.name,img:sl.s,set:setOf(sl.id),grade:sl.grade}));
+ S.mis.forEach(m=>out.push({k:'mis',key:'m:'+m.uid,m,val:cardVal(m,{mis:1}),name:m.name,img:m.s,set:setOf(m.id)}));
+ S.sealed.forEach(s=>out.push({k:'seal',key:'x:'+s.uid,s,val:sealedVal(s),name:setById[s.set].n+' '+(s.kind==='box'?'Booster Box':'Booster Bundle'),img:logoURL(s.set),set:s.set}));
+ return out}
+const collValue=()=>allItems().reduce((a,i)=>a+i.val*(i.cnt||1),0);
+function removeItem(it){ // returns {fake:bool}
+ if(it.k==='raw')return {fake:!!takeRaw(it.id)};
+ if(it.k==='slab'){S.slabs=S.slabs.filter(s=>s.uid!==it.sl.uid);return {fake:!!it.sl.fake}}
+ if(it.k==='mis'){S.mis=S.mis.filter(s=>s.uid!==it.m.uid);return {fake:false}}
+ if(it.k==='seal'){S.sealed=S.sealed.filter(s=>s.uid!==it.s.uid);return {fake:false}}}
+const uid=()=>NOW().toString(36)+Math.floor(Math.random()*1e6).toString(36);
 
 /* =================== AUDIO / FX =================== */
 let AC=null;
@@ -484,6 +666,7 @@ function noise(dur,vol,freq,q=1,type='highpass'){const a=ac();if(!a)return;const
 function tone(fr,dur,vol,type='sine',gap=.07){const a=ac();if(!a)return;fr.forEach((f,i)=>{const o=a.createOscillator(),g=a.createGain();o.type=type;o.frequency.value=f;const t=a.currentTime+i*gap;g.gain.setValueAtTime(0,t);g.gain.linearRampToValueAtTime(vol,t+.02);g.gain.exponentialRampToValueAtTime(.0001,t+dur);o.connect(g);g.connect(a.destination);o.start(t);o.stop(t+dur+.05)})}
 const sfx={crinkle:()=>noise(.06,.2,2600+Math.random()*3000,.7),tick:()=>noise(.04,.55,1800+Math.random()*1800,1.3,'bandpass'),rip:()=>{noise(.3,.9,1200,.6);setTimeout(()=>noise(.15,.5,3800,.8),40)},
  swipe:()=>noise(.15,.25,900,.5,'bandpass'),flip:()=>noise(.07,.35,2200,.8),slide:()=>noise(.4,.3,600,.4,'bandpass'),
+ cash:()=>tone([1318,1760,2637],.25,.08,'square',.05),bad:()=>tone([300,240],.3,.1,'sawtooth',.12),
  holo:()=>tone([1046,1318,1568,2093,2637],.9,.11,'sine',.06),ultra:()=>{tone([261,329,392,523],2.2,.12,'triangle',0);setTimeout(()=>tone([1046,1318,1568,2093,2637,3136],1.2,.1,'sine',.07),500)}};
 const buzz=p=>{try{navigator.vibrate&&navigator.vibrate(p)}catch(e){}};
 const cv=$('#fx'),cx=cv.getContext('2d');let parts=[],fxOn=false;
@@ -496,19 +679,30 @@ function burst(n,colors,power=1){const x=cv.width/2,y=cv.height/2;for(let i=0;i<
 function shards(x,y,n,col,up=-1){for(let i=0;i<n;i++)parts.push({x:x*devicePixelRatio,y:y*devicePixelRatio,vx:(Math.random()-.5)*6*devicePixelRatio,vy:up*Math.random()*5*devicePixelRatio,life:1,dec:.035+Math.random()*.03,size:(.8+Math.random()*1.6)*devicePixelRatio,c:col});kick()}
 function flash(o=.9,ms=500){const f=$('#flash');f.style.transition='none';f.style.opacity=o;requestAnimationFrame(()=>requestAnimationFrame(()=>{f.style.transition=`opacity ${ms}ms`;f.style.opacity=0}))}
 function banner(t){const b=$('#banner');b.querySelector('span').textContent=t;b.classList.remove('show');void b.offsetWidth;b.classList.add('show')}
-function toast(t){const e=$('#toast');e.textContent=t;e.classList.add('on');clearTimeout(e._t);e._t=setTimeout(()=>e.classList.remove('on'),2000)}
+function toast(t){const e=$('#toast');e.textContent=t;e.classList.add('on');clearTimeout(e._t);e._t=setTimeout(()=>e.classList.remove('on'),2400)}
+function modal(html){$('#mbox').innerHTML=html;$('#modal').classList.add('on')}
+function closeModal(){$('#modal').classList.remove('on')}
+$('#modal').addEventListener('click',e=>{if(e.target.id==='modal')closeModal()});
 
 /* =================== GYRO =================== */
 let gyroOn=false,gx=0,gy=0;
 function setTilt(el,x,y){el.style.setProperty('--mx',(x*100).toFixed(1)+'%');el.style.setProperty('--my',(y*100).toFixed(1)+'%')}
 function askGyro(){if(gyroOn)return;
  const go=()=>{gyroOn=true;addEventListener('deviceorientation',e=>{if(e.gamma==null)return;gx=Math.max(-1,Math.min(1,e.gamma/25));gy=Math.max(-1,Math.min(1,((e.beta||45)-45)/25));
-  if(!T.active&&!dragging&&!opened){pack3d.style.setProperty('--ry',(gx*12)+'deg');pack3d.style.setProperty('--rx',(-gy*8)+'deg');setTilt(pack3d,.5+gx*.5,.5+gy*.5)}
+  if(typeof T!=='undefined'&&!T.active&&!dragging&&!opened){pack3d.style.setProperty('--ry',(gx*12)+'deg');pack3d.style.setProperty('--rx',(-gy*8)+'deg');setTilt(pack3d,.5+gx*.5,.5+gy*.5)}
   document.querySelectorAll('.card.live,#zcard .card').forEach(c=>{if(!c._touch&&!c._anim){setTilt(c,.5+gx*.5,.5+gy*.5);c.style.transform=(c._base||'')+` rotateY(${gx*10}deg) rotateX(${-gy*8}deg)`}})})};
  if(window.DeviceOrientationEvent&&typeof DeviceOrientationEvent.requestPermission==='function'){DeviceOrientationEvent.requestPermission().then(r=>{if(r==='granted')go()}).catch(()=>{})}else go()}
 document.addEventListener('touchend',()=>{ac();askGyro()},{once:true});
 document.addEventListener('click',()=>{ac();askGyro()},{once:true});
 function applyTheme(set,open){const r=document.documentElement.style;r.setProperty('--c1',set.c[0]);r.setProperty('--c2',set.c[1]);r.setProperty('--c3',set.c[2]);if(open!==undefined){r.setProperty('--bgh',open?set.h:250);r.setProperty('--bgs',open?'48%':'18%')}}
+
+/* =================== PROGRESSION =================== */
+const setTotal=id=>memo[id]?memo[id].cards.length:(S.tot[id]||0);
+const hasPSA10=id=>S.slabs.some(s=>setOf(s.id)===id&&s.grade===10&&!s.fake);
+const setComplete=id=>{const t=setTotal(id);return t>0&&seenCount(id)>=t};
+const setCleared=id=>setComplete(id)||hasPSA10(id);
+const isUnlocked=i=>i===0||(i>0&&setCleared(SETS[i-1].id));
+const unlockedSets=()=>SETS.filter((s,i)=>isUnlocked(i));
 
 /* =================== BOOSTER ART =================== */
 const PLOGO=`<svg viewBox="0 0 300 92"><defs><linearGradient id="pg" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#ffe14a"/><stop offset=".55" stop-color="#ffcb05"/><stop offset="1" stop-color="#f2a900"/></linearGradient></defs><g font-family="'Arial Black','Helvetica Neue',Arial,sans-serif" font-weight="900" font-size="74" text-anchor="middle" letter-spacing="-2"><text x="150" y="72" fill="#1b3a8a" stroke="#1b3a8a" stroke-width="18" stroke-linejoin="round" transform="rotate(-4 150 50)">Pokémon</text><text x="150" y="72" fill="url(#pg)" stroke="#3d7dca" stroke-width="6" stroke-linejoin="round" paint-order="stroke" transform="rotate(-4 150 50)">Pokémon</text></g></svg>`;
@@ -524,6 +718,26 @@ function artHTML(set,m){
  ${set.ed?'<div class="ed">1st<br>ED.</div>':''}<img class="sym" src="${symURL(set.id)}" alt="" onerror="this.remove()">
  <div class="ccount">${set.e?'10':'11'} ADDITIONAL GAME CARDS</div><div class="wrinkle"></div><div class="plastic"></div></div>`}
 
+/* =================== PULLS =================== */
+function pickUnique(arr,k,used){const a=arr.filter(c=>!used.has(c.id));const out=[];while(out.length<k&&a.length)out.push(a.splice(Math.floor(Math.random()*a.length),1)[0]);out.forEach(c=>used.add(c.id));return out}
+function fill(list,k,pools,used){for(const p of pools){if(list.length>=k)break;list.push(...pickUnique(p,k-list.length,used))}return list}
+const MISV=[['off','Off-center'],['ink','Ink blot'],['crimp','Crimp error']];
+function buildPack(D,set){
+ const n=S.packs+1,pos=((n-1)%200)+1;if(pos===1&&n>1)S.godAt=1+Math.floor(Math.random()*200);
+ const used=new Set(),P=D.P;let out;
+ if(pos===S.godAt){const cards=shuffle(fill([],10,[P.holo,P.ultra,P.rare],used));const ui=cards.findIndex(c=>c.r==='ultra');if(ui>=0)cards.push(cards.splice(ui,1)[0]);out={cards:cards.map(c=>({c})),god:true}}
+ else{const ne=a=>a.filter(c=>!/energy/i.test(c.name)||Math.random()<.15);
+  const com=fill([],set.e?5:6,[ne(P.common),P.common,P.uncommon],used),unc=fill([],3,[P.uncommon,P.common],used);
+  const cs=shuffle([...com,...unc]).map(c=>({c}));
+  if(set.e){const rv=fill([],1,[[...P.common,...P.uncommon,...P.rare]],used)[0];if(rv)cs.push({c:rv,rev:true})}
+  const r=Math.random();const hit=r<.01?fill([],1,[P.ultra,P.holo,P.rare],used)[0]:r<.135?fill([],1,[P.holo,P.rare],used)[0]:fill([],1,[P.rare,P.holo,P.uncommon],used)[0];
+  cs.push({c:hit});out={cards:cs,god:false}}
+ out.cards.forEach(x=>{if(Math.random()<.006)x.mis=rnd(MISV)[0]});
+ out.heavy=out.god||out.cards.some(x=>x.c.r==='holo'||x.c.r==='ultra');
+ out.weight=out.heavy?rr(21.4,22.5):rr(20.5,21.7);
+ return out;
+}
+
 /* =================== TEAR ENGINE =================== */
 const packWrap=$('#packWrap'),pack3d=$('#pack3d'),pBody=$('#pBody'),sTop=$('#sTop'),sBot=$('#sBot');
 let curSet=null,curData=null,current=null,opened=false,dragging=false,dragStart=null,artStr='';
@@ -536,13 +750,15 @@ function stripPoly(side,xa,xb){const pts=T.pts[side];const mid=pts.filter(p=>p[0
  if(side==='t')return `polygon(${xa}% -2%,${xb}% -2%,${[[xb,yAt(pts,xb)],...mid.slice().reverse(),[xa,yAt(pts,xa)]].map(P2).join(',')})`;
  return `polygon(${[[xa,yAt(pts,xa)],...mid,[xb,yAt(pts,xb)]].map(P2).join(',')},${xb}% 102%,${xa}% 102%)`}
 function bodyPoly(){return `polygon(${T.pts.t.map(P2).join(',')},${T.pts.b.slice().reverse().map(P2).join(',')})`}
-function rimSVG(){return ''}
 async function openSet(id){
  curSet=setById[id];applyTheme(curSet,true);go('scrOpen');$('#setLogoTop').src=logoURL(id);$('#setLogoTop').style.opacity=1;
- packWrap.style.opacity=0;$('#ripText').style.opacity=0;$('#loader').classList.add('on');$('#loader').innerHTML=`<div class="spin"></div><span>LOADING ${curSet.n.toUpperCase()}</span>`;
- try{curData=await loadSet(id);$('#loader').classList.remove('on');newPack()}
+ packWrap.style.opacity=0;$('#packBar').style.opacity=0;$('#ripText').style.opacity=0;$('#loader').classList.add('on');$('#loader').innerHTML=`<div class="spin"></div><span>LOADING ${curSet.n.toUpperCase()}</span>`;
+ try{curData=await loadSet(id);save();$('#loader').classList.remove('on');newPack()}
  catch(e){$('#loader').innerHTML=`<div class="err">Could not load ${curSet.n}.<br>Please check your internet connection.<br><br><button class="btn ghost" onclick="location.reload()">TRY AGAIN</button></div>`}
 }
+function priceLabel(){const p=packPrice(curSet),inv=S.inv[curSet.id]||0;
+ $('#packPrice').innerHTML=current&&current.paid?'<b>PAID</b> · RIP IT':S.free>0?`<b>FREE PACK</b> · ${S.free} voucher${S.free>1?'s':''} left`:inv>0?`<b>${inv} SEALED</b> in your stash`:`PACK PRICE <b>${fmt(p)}</b>`;
+ $('#weighBtn').disabled=!!(current&&current.weighed);$('#swapBtn').disabled=!!(current&&current.paid)}
 function newPack(){
  opened=false;current=buildPack(curData,curSet);current.cards.forEach(x=>{const i=new Image();i.src=x.c.l});
  artStr=artHTML(curSet,rnd(rarest3(curData)));
@@ -550,78 +766,72 @@ function newPack(){
  pack3d.querySelectorAll('.torn').forEach(e=>e.remove());
  [pBody,sTop,sBot].forEach(e=>{e.innerHTML=artStr;e.style.transform='';e.style.transition='none';e.style.display=''});
  pBody.style.clipPath=bodyPoly();sTop.style.clipPath=stripPoly('t',0,100);sBot.style.clipPath=stripPoly('b',0,100);
- pack3d.style.setProperty('--rx','0deg');pack3d.style.setProperty('--ry','0deg');
+ pack3d.style.setProperty('--rx','0deg');pack3d.style.setProperty('--ry','0deg');$('#weighOut').style.display='none';
  packWrap.classList.add('float');packWrap.style.transition='none';packWrap.style.transform='translateY(60px) scale(.88) rotate(-4deg)';packWrap.style.opacity=0;
  requestAnimationFrame(()=>requestAnimationFrame(()=>{packWrap.style.transition='transform .6s cubic-bezier(.2,1.3,.3,1),opacity .35s';packWrap.style.transform='';packWrap.style.opacity=1}));
- $('#ripText').style.opacity=1;$('#ripText').style.transform='rotate(-3deg)';
+ $('#ripText').style.opacity=1;$('#ripText').style.transform='rotate(-3deg)';$('#packBar').style.opacity=1;$('#packBar').style.pointerEvents='';
  $('#hintT').style.top=LINE.t+'%';$('#hintB').style.top=LINE.b+'%';$('#finger').style.top=LINE.t+'%';['#hintT','#hintB','#finger'].forEach(s=>$(s).style.display='');
- $('#packLabel').textContent=curSet.n+' · '+curSet.y;$('#packLabel').style.opacity=1;$('#packNo').textContent='#'+(S.packs+1);
+ priceLabel();
 }
+function payPack(){
+ if(current.paid)return true;
+ if(S.free>0){S.free--;toast('Free pack voucher used')}
+ else if((S.inv[curSet.id]||0)>0){S.inv[curSet.id]--}
+ else if(!spend(packPrice(curSet)))return false;
+ current.paid=true;save();priceLabel();return true}
+$('#weighBtn').onclick=()=>{if(!current||current.weighed||opened)return;if(!spend(1))return;current.weighed=true;priceLabel();
+ const w=$('#weighOut');w.style.display='block';const sp=w.querySelector('span');let t=0;const tgt=current.weight;sfx.tick();
+ const iv=setInterval(()=>{t++;sp.textContent=(t<12?rr(18,24):tgt).toFixed(2)+' g';if(t>=12){clearInterval(iv);tone([880],.15,.06);toast(tgt>21.6?'Heavy one… holo packs weigh a bit more':'Feels light. Could still hit')}},70)};
+$('#swapBtn').onclick=()=>{if(!current||current.paid||opened)return;sfx.slide();newPack()};
 function startTear(side,dir){
- T.side=side;T.dir=dir;T.front=dir>0?0:100;
- T.rest=side==='t'?sTop:sBot;
+ if(!payPack()){T.active=false;return false}
+ $('#packBar').style.opacity=0;$('#packBar').style.pointerEvents='none';
+ T.side=side;T.dir=dir;T.front=dir>0?0:100;T.rest=side==='t'?sTop:sBot;
  const el=document.createElement('div');el.className='pc torn';el.innerHTML=artStr;pack3d.appendChild(el);T.torn=el;
- ['#hintT','#hintB','#finger'].forEach(s=>$(s).style.display='none');sfx.crinkle();buzz(8);
-}
+ ['#hintT','#hintB','#finger'].forEach(s=>$(s).style.display='none');sfx.crinkle();buzz(8);return true}
 function applyTear(){
- T.raf=0;if(!T.torn)return;const f=T.front,s=T.side,d=T.dir;
- const p=d>0?f/100:(100-f)/100;
- T.torn.style.clipPath=d>0?stripPoly(s,0,f):stripPoly(s,f,100);
- T.rest.style.clipPath=d>0?stripPoly(s,f,100):stripPoly(s,0,f);
+ T.raf=0;if(!T.torn)return;const f=T.front,s=T.side,d=T.dir;const p=d>0?f/100:(100-f)/100;
+ T.torn.style.clipPath=d>0?stripPoly(s,0,f):stripPoly(s,f,100);T.rest.style.clipPath=d>0?stripPoly(s,f,100):stripPoly(s,0,f);
  const ly=yAt(T.pts[s],f);T.torn.style.transformOrigin=`${f}% ${ly}%`;
  const sign=(s==='t'?1:-1)*(d>0?1:-1);const ang=(4+p*24)*sign;
  const r=pack3d.getBoundingClientRect();const off=Math.max(-28,Math.min(28,(T.fy-(r.top+r.height*ly/100))*.35));
  T.torn.style.transform=`translateY(${(s==='t'?-1:1)*(2+p*6)+off}px) rotate(${ang}deg)`;
  pBody.style.transform=`rotate(${d*(s==='t'?1:-1)*p*1.2}deg)`;
- const sp=$('#tearSpark');sp.style.opacity=p<1?1:0;sp.style.left=f+'%';sp.style.top=ly+'%';
-}
+ const sp=$('#tearSpark');sp.style.opacity=p<1?1:0;sp.style.left=f+'%';sp.style.top=ly+'%'}
 function queue(){if(!T.raf)T.raf=requestAnimationFrame(applyTear)}
 pack3d.addEventListener('pointerdown',e=>{
  ac();if(!current||opened)return;pack3d.setPointerCapture(e.pointerId);packWrap.classList.remove('float');
  const r=pack3d.getBoundingClientRect();const ry=(e.clientY-r.top)/r.height;
  T.zone=T.side||(ry<.32?'t':ry>.68?'b':null);
  if(T.zone){T.active=true;T.startX=e.clientX;T.lastX=e.clientX;T.lastT=performance.now();T.fx=e.clientX;T.fy=e.clientY}
- else{dragging=true;dragStart={x:e.clientX,y:e.clientY};pack3d.style.transition='none'}
-});
+ else{dragging=true;dragStart={x:e.clientX,y:e.clientY};pack3d.style.transition='none'}});
 pack3d.addEventListener('pointermove',e=>{
  const r=pack3d.getBoundingClientRect();
- if(T.active){
-  T.fx=e.clientX;T.fy=e.clientY;
-  if(!T.dir){const dx=e.clientX-T.startX;if(Math.abs(dx)<5)return;startTear(T.zone,dx>0?1:-1)}
+ if(T.active){T.fx=e.clientX;T.fy=e.clientY;
+  if(!T.dir){const dx=e.clientX-T.startX;if(Math.abs(dx)<5)return;if(!startTear(T.zone,dx>0?1:-1))return}
   const now=performance.now();const v=(e.clientX-T.lastX)*T.dir/Math.max(1,now-T.lastT);T.vel=T.vel*.6+v*.4;T.lastX=e.clientX;T.lastT=now;
-  const fx=Math.max(0,Math.min(100,(e.clientX-r.left)/r.width*100));
-  const nf=T.dir>0?Math.max(T.front,fx):Math.min(T.front,fx);
+  const fx=Math.max(0,Math.min(100,(e.clientX-r.left)/r.width*100));const nf=T.dir>0?Math.max(T.front,fx):Math.min(T.front,fx);
   if(nf!==T.front){const step=Math.floor((T.dir>0?nf:100-nf)/6);if(step>T.ticks){T.ticks=step;sfx.tick();buzz(5);shards(r.left+r.width*nf/100,r.top+r.height*yAt(T.pts[T.side],nf)/100,2,'rgba(240,245,255,.9)',T.side==='t'?-1:1)}
    T.front=nf;if(now-T.lastCr>55){sfx.crinkle();T.lastCr=now}}
-  queue();
-  const p=T.dir>0?T.front/100:1-T.front/100;
-  if(p>.8||(p>.3&&T.vel>.9))finishTear();
- }else if(dragging){const dx=(e.clientX-dragStart.x)/r.width,dy=(e.clientY-dragStart.y)/r.height;
+  queue();const p=T.dir>0?T.front/100:1-T.front/100;if(p>.8||(p>.3&&T.vel>.9))finishTear()}
+ else if(dragging){const dx=(e.clientX-dragStart.x)/r.width,dy=(e.clientY-dragStart.y)/r.height;
   pack3d.style.setProperty('--ry',(dx*45)+'deg');pack3d.style.setProperty('--rx',(-dy*35)+'deg');setTilt(pack3d,.5+dx,.5+dy);
-  if(performance.now()-T.lastCr>110){sfx.crinkle();T.lastCr=performance.now()}}
-});
+  if(performance.now()-T.lastCr>110){sfx.crinkle();T.lastCr=performance.now()}}});
 const endPack=()=>{
- if(T.active&&!opened){T.active=false;$('#tearSpark').style.opacity=0;if(!T.dir)toast('Swipe sideways across the top or bottom')}
+ if(T.active&&!opened){T.active=false;$('#tearSpark').style.opacity=0;if(!T.dir&&current&&!current.paid)toast('Swipe sideways across the top or bottom')}
  if(dragging){dragging=false;pack3d.style.transition='transform .7s cubic-bezier(.2,1.5,.4,1)';pack3d.style.setProperty('--ry','0deg');pack3d.style.setProperty('--rx','0deg');setTimeout(()=>pack3d.style.transition='',700)}
- if(!opened&&!T.dir)packWrap.classList.add('float');
-};
+ if(!opened&&!T.dir)packWrap.classList.add('float')};
 pack3d.addEventListener('pointerup',endPack);pack3d.addEventListener('pointercancel',endPack);
-function finishTear(){
- if(opened)return;opened=true;T.active=false;
- // zip the rest of the line in a few frames
- const target=T.dir>0?100:0;const from=T.front;const t0=performance.now();
- (function zip(){const k=Math.min(1,(performance.now()-t0)/90);T.front=from+(target-from)*k;applyTear();if(k<1)requestAnimationFrame(zip);else fling()})();
-}
+function finishTear(){if(opened)return;opened=true;T.active=false;const target=T.dir>0?100:0,from=T.front,t0=performance.now();
+ (function zip(){const k=Math.min(1,(performance.now()-t0)/90);T.front=from+(target-from)*k;applyTear();if(k<1)requestAnimationFrame(zip);else fling()})()}
 function fling(){
  sfx.rip();buzz([20,30,50]);$('#tearSpark').style.opacity=0;T.rest.style.display='none';
  const r=pack3d.getBoundingClientRect();shards(r.left+(T.dir>0?r.width:0),r.top+r.height*LINE[T.side]/100,16,'rgba(255,255,255,.95)',T.side==='t'?-1:1);
- const el=T.torn,up=T.side==='t'?-1:1;let x=0,y=0,rot=0,vx=T.dir*(4+Math.random()*4)+T.vel*6,vy=up*(7+Math.random()*4),vr=T.dir*up*-(6+Math.random()*7);
- const base=el.style.transform;
+ const el=T.torn,up=T.side==='t'?-1:1;let x=0,y=0,rot=0,vx=T.dir*(4+Math.random()*4)+T.vel*6,vy=up*(7+Math.random()*4),vr=T.dir*up*-(6+Math.random()*7);const base=el.style.transform;
  (function fly(){vy+=.7;x+=vx;y+=vy;rot+=vr;vr*=.985;el.style.transform=`translate(${x}px,${y}px) rotate(${rot}deg) ${base}`;if(Math.abs(y)<innerHeight*1.3&&Math.abs(x)<innerWidth*1.5)requestAnimationFrame(fly);else el.remove()})();
  pBody.style.transition='transform .45s cubic-bezier(.2,1.6,.4,1)';pBody.style.transform='';
- $('#ripText').style.opacity=0;$('#ripText').style.transform='rotate(-3deg) translateY(-20px)';
- setTimeout(()=>{packWrap.style.transition='transform .6s cubic-bezier(.6,0,.8,.4),opacity .5s';packWrap.style.transform=`translateY(${T.side==='t'?110:-110}vh) rotate(${T.dir*8}deg)`;sfx.slide();startReveal()},260);
-}
+ $('#ripText').style.opacity=0;$('#ripText').style.transform='rotate(-3deg) translateY(-20px)';$('#weighOut').style.display='none';
+ setTimeout(()=>{packWrap.style.transition='transform .6s cubic-bezier(.6,0,.8,.4),opacity .5s';packWrap.style.transform=`translateY(${T.side==='t'?110:-110}vh) rotate(${T.dir*8}deg)`;sfx.slide();startReveal()},260)}
 
 /* =================== REVEAL =================== */
 const stackEl=$('#stack');let idx=0,cardEls=[],newSet=new Set();
@@ -629,29 +839,28 @@ const tierName={common:'Common',uncommon:'Uncommon',rare:'Rare',holo:'Holo Rare'
 function cardHTML(c,o={}){
  const holo=c.r==='holo'||(o.foil&&c.r!=='ultra'),ultra=c.r==='ultra',rev=o.rev;
  const foil=ultra?'<div class="foil full"></div><div class="sparkle" style="inset:0"></div>':holo?'<div class="foil win"></div><div class="sparkle" style="inset:10.5% 8.5% 52% 8.5%"></div>':rev?'<div class="foil rev"></div>':'';
- return `<div class="face"><img src="${o.small?c.s:c.l}" alt="" onerror="if(this.src!=='${c.s}')this.src='${c.s}'">${foil}<div class="glare"></div></div><div class="back"><div class="cb"></div></div>${o.isNew?'<div class="badge">NEW</div>':''}${o.tag?`<div class="rtag">${rev?'Reverse Holo':tierName[c.r]}</div>`:''}`}
+ const mv=o.mis?MISV.find(m=>m[0]===o.mis)[1]:'';
+ return `<div class="face"><img src="${o.small?c.s:c.l}" alt="" onerror="if(this.src!=='${c.s}')this.src='${c.s}'">${foil}<div class="glare"></div></div><div class="back"><div class="cb"></div></div>${o.isNew?'<div class="badge">NEW</div>':''}${o.mis?'<div class="badge mp">MISPRINT</div>':''}${o.tag?`<div class="rtag">${o.mis?mv+' misprint':rev?'Reverse Holo':tierName[c.r]} · <b>${fmt(cardVal(c,{mis:o.mis?1:0}))}</b></div>`:''}`}
 function startReveal(){
- $('#nav').classList.add('hide');$('#packLabel').style.opacity=0;$('#setLogoTop').style.opacity=0;
+ $('#nav').classList.add('hide');$('#setLogoTop').style.opacity=0;$('#coin').style.opacity=0;
  $('#reveal').classList.add('on');stackEl.innerHTML='';cardEls=[];idx=0;newSet=new Set();
- const seen=new Set(Object.keys(S.coll[curSet.id]||{}));current.cards.forEach(x=>{if(!seen.has(x.c.id)){newSet.add(x.c.id);seen.add(x.c.id)}});
+ const seen=new Set(Object.keys(S.seen[curSet.id]||{}));current.cards.forEach(x=>{if(!seen.has(x.c.id)){newSet.add(x.c.id);seen.add(x.c.id)}});
  $('#dots').innerHTML=current.cards.map(()=>'<i></i>').join('');
- current.cards.forEach((x,i)=>{const c=x.c;const el=document.createElement('div');el.className='card '+c.r;el.innerHTML=cardHTML(c,{isNew:newSet.has(c.id),rev:x.rev,foil:current.god,tag:1});
-  const hit=(c.r==='holo'||c.r==='ultra')&&!current.god;el._hit=hit;el._c=c;el._x=x;el._flipped=!hit;el._base=`translateZ(${-i*2}px) translateY(${i*1.5}px)`;el.style.zIndex=100-i;
+ current.cards.forEach((x,i)=>{const c=x.c;const el=document.createElement('div');el.className='card '+c.r+(x.mis?' mp-'+x.mis:'');el.innerHTML=cardHTML(c,{isNew:newSet.has(c.id),rev:x.rev,foil:current.god,tag:1,mis:x.mis});
+  const hit=((c.r==='holo'||c.r==='ultra')&&!current.god)||!!x.mis;el._hit=hit;el._c=c;el._x=x;el._flipped=!hit;el._base=`translateZ(${-i*2}px) translateY(${i*1.5}px)`;el.style.zIndex=100-i;
   el.style.transform=`translateY(${T.side==='b'?-40:40}vh) scale(.7)`+(hit?' rotateY(180deg)':'');el.style.opacity=0;stackEl.appendChild(el);cardEls.push(el);
   setTimeout(()=>{el.style.transition='transform .5s cubic-bezier(.2,1.1,.3,1),opacity .25s';el.style.opacity=1;el.style.transform=el._base+(hit?' rotateY(180deg)':'')},20+i*28)});
  if(current.god){$('#godIntro').classList.add('on');$('#dark').style.opacity=.85;$('#rays').style.opacity=1;sfx.ultra();buzz([60,40,60,40,120]);flash(1,900);burst(280,['#ff4fd8','#ffe36a','#6affd5','#6a8bff','#fff'],1.4);
   setTimeout(()=>{$('#godIntro').classList.remove('on');$('#dark').style.opacity=0;$('#rays').style.opacity=0},2400)}
- setTimeout(()=>activate(0),520);
-}
+ setTimeout(()=>activate(0),520)}
 function activate(i){
  idx=i;$('#cIdx').textContent=Math.min(i+1,10);document.querySelectorAll('#dots i').forEach((d,k)=>d.classList.toggle('on',k===i));
  const el=cardEls[i];if(!el)return showSummary();el.classList.add('live');
- if(el._hit&&!el._flipped){el.classList.add(el._c.r==='ultra'?'ultraTease':'tease');$('#swipeTip').textContent='Tap to flip';if(el._c.r==='ultra'){$('#dark').style.opacity=.85;buzz([30,60,30,60,30])}else buzz(20)}
+ if(el._hit&&!el._flipped){el.classList.add(el._c.r==='ultra'||el._x.mis?'ultraTease':'tease');$('#swipeTip').textContent='Tap to flip';if(el._c.r==='ultra'){$('#dark').style.opacity=.85;buzz([30,60,30,60,30])}else buzz(20)}
  else $('#swipeTip').textContent=i===cardEls.length-1?'Swipe for summary':'Swipe for next card';
  if(current.god&&i>0){sfx.holo();burst(50,['#9ef0ff','#ff9de6','#ffe07a','#fff'],.7)}
  if(el._x.rev&&!current.god)setTimeout(()=>tone([1568,2093],.4,.05),80);
- bindCard(el);
-}
+ bindCard(el)}
 function bindCard(el){
  let sx=0,sy=0,dx=0,dy=0,down=false,t0=0;
  el.onpointerdown=e=>{ac();down=true;el._touch=true;sx=e.clientX;sy=e.clientY;dx=dy=0;t0=performance.now();el.setPointerCapture(e.pointerId);el.style.transition='none'};
@@ -663,77 +872,69 @@ function bindCard(el){
   if(!el._flipped){if(tap||Math.abs(dx)>30)flipHit(el);else el.style.transform=el._base+' rotateY(180deg)';return}
   if(Math.abs(dx)>60||tap){const dir=dx===0?1:Math.sign(dx);sfx.swipe();el.style.transition='transform .4s cubic-bezier(.4,0,.8,.6),opacity .4s';
    el.style.transform=`translate(${dir*innerWidth*1.2}px,${dy*.6-40}px) rotate(${dir*28}deg)`;el.style.opacity=0;el.classList.remove('live');setTimeout(()=>el.remove(),420);activate(idx+1)}
-  else el.style.transform=el._base};
-}
+  else el.style.transform=el._base}}
 function flipHit(el){
- const ultra=el._c.r==='ultra';el.classList.remove('tease','ultraTease');el._flipped=true;el._anim=true;sfx.flip();
+ const ultra=el._c.r==='ultra',mis=el._x.mis;el.classList.remove('tease','ultraTease');el._flipped=true;el._anim=true;sfx.flip();
  if(ultra){$('#rays').style.opacity=1;el.style.transition='transform 1.6s cubic-bezier(.3,0,.2,1)';el.style.transform=el._base+' scale(1.06) rotateY(0deg)';
   setTimeout(()=>{flash(1,1000);sfx.ultra();buzz([80,50,120,50,200]);burst(320,['#ffe36a','#ff4fd8','#6affd5','#fff','#ffb43b'],1.5);banner('ULTRA RARE')},1100);
   setTimeout(()=>{$('#dark').style.opacity=0;$('#rays').style.opacity=0;el.style.transform=el._base;el._anim=false},3600)}
  else{el.style.transition='transform .75s cubic-bezier(.3,1.3,.4,1)';el.style.transform=el._base+' rotateY(0deg)';
-  setTimeout(()=>{flash(.7,600);sfx.holo();buzz([40,30,60]);burst(170,['#9ef0ff','#ff9de6','#ffe07a','#b3ff9e','#fff'],1);banner('HOLO!');el._anim=false},330)}
+  setTimeout(()=>{flash(.7,600);sfx.holo();buzz([40,30,60]);burst(170,['#9ef0ff','#ff9de6','#ffe07a','#b3ff9e','#fff'],1);banner(mis?'MISPRINT!':'HOLO!');el._anim=false},330)}
  $('#swipeTip').textContent='Swipe for next card';
- let t=0;const iv=setInterval(()=>{t+=.05;if(!el._touch)setTilt(el,.5+Math.sin(t*2)*.5,.5+Math.cos(t*1.3)*.5);if(t>3.5)clearInterval(iv)},30);
-}
+ let t=0;const iv=setInterval(()=>{t+=.05;if(!el._touch)setTilt(el,.5+Math.sin(t*2)*.5,.5+Math.cos(t*1.3)*.5);if(t>3.5)clearInterval(iv)},30)}
 function showSummary(){
- S.packs++;S.cards+=current.cards.length;let hasHolo=false,best=null;const rank={common:0,uncommon:1,rare:2,holo:3,ultra:4};
- const coll=S.coll[curSet.id]=S.coll[curSet.id]||{};S.perSet[curSet.id]=(S.perSet[curSet.id]||0)+1;
- current.cards.forEach(({c})=>{coll[c.id]=(coll[c.id]||0)+1;if(c.r==='holo'){S.holos++;hasHolo=true}if(c.r==='ultra'){S.ultras++;hasHolo=true}if(!best||rank[c.r]>rank[best.r])best=c});
- if(current.god)S.gods++;S.sinceHolo=hasHolo?0:S.sinceHolo+1;
- if(rank[best.r]>=3){S.hist.unshift({set:curSet.id,name:best.name,img:best.s,r:best.r,p:S.packs,god:current.god,d:Date.now()});S.hist=S.hist.slice(0,40)}
+ S.packs++;S.cards+=current.cards.length;let holoCnt=0,best=null,pv=0;const rank={common:0,uncommon:1,rare:2,holo:3,ultra:4};
+ S.perSet[curSet.id]=(S.perSet[curSet.id]||0)+1;
+ current.cards.forEach(x=>{const c=x.c;
+  if(x.mis){S.mis.push({uid:uid(),id:c.id,name:c.name,r:c.r,s:c.s,l:c.l,t:c.t,v:x.mis});S.seen[curSet.id]=S.seen[curSet.id]||{};S.seen[curSet.id][c.id]=1;S.nm[c.id]=c.name;S.stats.mis++;pv+=cardVal(c,{mis:1})}
+  else{addRaw(c);pv+=cardVal(c)}
+  if(c.r==='holo'){S.holos++;holoCnt++}if(c.r==='ultra'){S.ultras++;holoCnt++}if(!best||rank[c.r]>rank[best.r])best=c});
+ if(current.god)S.gods++;
+ if(holoCnt&&!current.god){if(S.lastHit)S.flags.b2b=true;S.lastHit=true}else if(!current.god)S.lastHit=false;
+ S.sinceHolo=holoCnt?0:S.sinceHolo+1;if(holoCnt&&curSet.id==='base1')S.flags.baseHolo=true;
+ if(rank[best.r]>=3){S.hist.unshift({set:curSet.id,name:best.name,img:best.s,r:best.r,p:S.packs,god:current.god,d:NOW()});S.hist=S.hist.slice(0,40)}
+ addXP(10+holoCnt*20+(best.r==='ultra'?40:0));prog('rip',1);if(holoCnt)prog('holo',1);
  save();
- $('#reveal').classList.remove('on');
- $('#sumGrid').innerHTML=current.cards.map(({c},i)=>`<div class="mini ${c.r}" style="animation-delay:${i*45}ms"><img src="${c.s}">${newSet.has(c.id)?'<span class="nw">NEW</span>':''}</div>`).join('');
+ $('#reveal').classList.remove('on');$('#coin').style.opacity=1;
+ $('#sumGrid').innerHTML=current.cards.map((x,i)=>`<div class="mini ${x.c.r} ${x.mis?'mp-'+x.mis:''}" style="animation-delay:${i*45}ms"><img src="${x.c.s}">${newSet.has(x.c.id)?'<span class="nw">NEW</span>':''}<span class="pv">${fmt(cardVal(x.c,{mis:x.mis?1:0}))}</span></div>`).join('');
  $('#sumTitle').textContent=current.god?'GOD PACK!':curSet.n+' · Pack #'+S.packs;
- $('#sumSub').textContent=`${newSet.size} new · ${curSet.n} ${Object.keys(coll).length}/${curData.cards.length}`;
+ $('#sumSub').textContent=`${newSet.size} new · ${curSet.n} ${seenCount(curSet.id)}/${curData.cards.length}`;
+ const price=packPrice(curSet);$('#sumVal').innerHTML=`Pack value <span style="color:${pv>=price?'#7dffa8':'#ff9a9a'}">${fmt(pv)}</span> <span style="color:var(--mut);font-weight:600">· shelf price ${fmt(price)}</span>`;
  const hit=rank[best.r]>=3?best:null,gb=$('#gradeHit');gb.style.display=hit?'':'none';
- if(hit){gb.textContent='SEND '+hit.name.toUpperCase()+' TO PSA';const sid=curSet.id;gb.onclick=()=>{$('#summary').classList.remove('on');newPack();sendToPSA(sid,hit)}}
+ if(hit){gb.textContent='SEND '+hit.name.toUpperCase()+' TO PSA';gb.onclick=()=>{$('#summary').classList.remove('on');newPack();sendToPSA(hit)}}
  $('#summary').classList.add('on');$('#nav').classList.remove('hide');
- setTimeout(checkUnlocks,700);
-}
+ setTimeout(()=>{checkUnlocks();checkAll()},700)}
 $('#nextPack').onclick=()=>{$('#summary').classList.remove('on');$('#setLogoTop').style.opacity=1;newPack()};
 $('#toAlbum').onclick=()=>{$('#summary').classList.remove('on');albumSet=curSet.id;go('scrAlbum')};
-$('#backSets').onclick=()=>{$('#summary').classList.remove('on');$('#reveal').classList.remove('on');$('#dark').style.opacity=0;$('#rays').style.opacity=0;go('scrSets')};
+$('#backSets').onclick=()=>{$('#summary').classList.remove('on');$('#reveal').classList.remove('on');$('#dark').style.opacity=0;$('#rays').style.opacity=0;$('#coin').style.opacity=1;go('scrSets')};
 
-/* =================== PROGRESSION =================== */
-const setTotal=id=>memo[id]?memo[id].cards.length:(S.tot[id]||0);
-const ownedCount=id=>Object.keys(S.coll[id]||{}).length;
-const hasPSA10=id=>S.slabs.some(s=>s.set===id&&s.open&&s.grade===10);
-const setComplete=id=>{const t=setTotal(id);return t>0&&ownedCount(id)>=t};
-const setCleared=id=>setComplete(id)||hasPSA10(id);
-const isUnlocked=i=>i===0||setCleared(SETS[i-1].id);
-const unlockedSets=()=>SETS.filter((s,i)=>isUnlocked(i));
+/* =================== UNLOCKS =================== */
 function checkUnlocks(){
  const fresh=SETS.filter((s,i)=>isUnlocked(i)&&!S.seenUnlock.includes(s.id));if(!fresh.length)return;
  fresh.forEach(s=>S.seenUnlock.push(s.id));save();
  const s=fresh[fresh.length-1],prev=SETS[SETS.indexOf(s)-1];const how=setComplete(prev.id)?`You completed ${prev.n}`:`You graded a PSA 10 from ${prev.n}`;
- const u=$('#unlock');u.innerHTML=`<div class="lockA">🔒</div><small>NEW SET UNLOCKED</small><img src="${logoURL(s.id)}" onerror="this.remove()"><h2>${s.n}</h2><p>${how}.<br>${GENS[s.g][0]} · ${s.y}</p><button class="btn" id="uGo">RIP ${s.n.toUpperCase()}</button><button class="btn ghost" id="uLater">LATER</button>`;
- u.classList.add('on');flash(1,900);sfx.ultra();buzz([60,40,60,40,150]);burst(300,['#ffe36a','#fff','#9ef0ff','#ff9de6'],1.4);
- $('#uGo').onclick=()=>{u.classList.remove('on');$('#summary').classList.remove('on');closePSA();openSet(s.id)};
- $('#uLater').onclick=()=>u.classList.remove('on');
-}
+ modal(`<div class="em">🔓</div><h2>${s.n} unlocked</h2><p>${how}.<br>${GENS[s.g][0]} · ${s.y} · packs ${fmt(packPrice(s))}</p><button class="btn" id="uGo">RIP ${s.n.toUpperCase()}</button><button class="btn ghost" onclick="closeModal()">LATER</button>`);
+ flash(1,900);sfx.ultra();buzz([60,40,60,40,150]);burst(300,['#ffe36a','#fff','#9ef0ff','#ff9de6'],1.4);
+ $('#uGo').onclick=()=>{closeModal();$('#summary').classList.remove('on');closePSA();openSet(s.id)}}
 
 /* =================== SET LIST =================== */
 function renderSets(){
  let h='';const nextI=SETS.findIndex((s,i)=>!isUnlocked(i));
- if(nextI>=0){const cur=SETS[nextI-1],tot=setTotal(cur.id),own=ownedCount(cur.id);
-  h+=`<div class="quest"><small>CURRENT GOAL</small><b>Unlock ${SETS[nextI].n}</b><div class="qr">Complete ${cur.n}<div class="bar"><i style="width:${tot?own/tot*100:0}%"></i></div><span>${own}/${tot||'?'}</span></div><div class="qr">or grade a PSA 10 holo from ${cur.n}<span>${hasPSA10(cur.id)?'✓':'—'}</span></div></div>`}
- else h+=`<div class="quest"><small>ALL SETS UNLOCKED</small><b>You beat Gen I to III. Legend.</b></div>`;
+ if(nextI>0){const cur=SETS[nextI-1],tot=setTotal(cur.id),own=seenCount(cur.id);
+  h+=`<div class="pnl gold"><h4>CURRENT GOAL</h4><div class="big">Unlock ${SETS[nextI].n}</div><p>Complete ${cur.n} (${own}/${tot||'?'}) or grade a PSA 10 holo from it.</p><div class="mbar"><i style="width:${tot?own/tot*100:0}%"></i></div></div>`}
  [1,2,3].forEach(g=>{h+=`<div class="gen"><b>${GENS[g][0].toUpperCase()}</b><span>${GENS[g][1]}</span></div><div class="sets">`;
-  SETS.forEach((s,i)=>{if(s.g!==g)return;const un=isUnlocked(i),nx=i===nextI,own=ownedCount(s.id),tot=setTotal(s.id);
-   const body=un?`<div class="meta"><span>${s.y}</span><span>${tot?own+'/'+tot:(S.perSet[s.id]||0)+' packs'}</span></div><div class="pb"><i style="width:${tot?own/tot*100:0}%"></i></div>`:nx?`<div class="req">Complete <b>${SETS[i-1].n}</b><br>or get a <b>PSA 10</b> holo from it</div>`:`<div class="meta"><span>${s.y}</span><span>LOCKED</span></div>`;
-   h+=`<button class="setT ${un?'':nx?'locked next':'locked'}" data-i="${i}" style="--a:${s.c[0]};--b:${s.c[1]}">${un?(setCleared(s.id)?'<span class="done">CLEARED</span>':''):'<span class="lk">🔒</span>'}<img src="${logoURL(s.id)}" alt="" onerror="this.outerHTML='<div class=fb>${s.n.replace(/'/g,'')}</div>'"><div><div class="nm">${s.n}</div>${body}</div></button>`});
+  SETS.forEach((s,i)=>{if(s.g!==g)return;const un=isUnlocked(i),nx=i===nextI,own=seenCount(s.id),tot=setTotal(s.id),inv=S.inv[s.id]||0;
+   const body=un?`<div class="meta"><span>${fmt(packPrice(s))} / pack</span><span>${tot?own+'/'+tot:'—'}</span></div><div class="pb"><i style="width:${tot?own/tot*100:0}%"></i></div>`:nx?`<div class="req">Complete <b>${SETS[i-1].n}</b><br>or get a <b>PSA 10</b> holo from it</div>`:`<div class="meta"><span>${s.y}</span><span>LOCKED</span></div>`;
+   h+=`<button class="setT ${un?'':nx?'locked next':'locked'}" data-i="${i}" style="--a:${s.c[0]};--b:${s.c[1]}">${un?(inv?`<span class="own">${inv} SEALED</span>`:setCleared(s.id)?'<span class="done">CLEARED</span>':''):'<span class="lk">🔒</span>'}<img src="${logoURL(s.id)}" alt="" onerror="this.outerHTML='<div class=fb>${s.n.replace(/'/g,'')}</div>'"><div><div class="nm">${s.n}</div>${body}</div></button>`});
   h+='</div>'});
- $('#setList').innerHTML=h;$('#totPacks').innerHTML=`<b>${unlockedSets().length}</b>/${SETS.length} SETS`;
-}
+ $('#setList').innerHTML=h;$('#totPacks').innerHTML=`<b>${unlockedSets().length}</b>/${SETS.length}`}
 $('#setList').addEventListener('click',e=>{const b=e.target.closest('.setT');if(!b)return;const i=+b.dataset.i;
- if(!isUnlocked(i)){toast('Locked · clear '+SETS[i-1].n+' first');b.animate([{transform:'translateX(0)'},{transform:'translateX(-6px)'},{transform:'translateX(6px)'},{transform:'translateX(0)'}],{duration:300});return}
- openSet(SETS[i].id)});
+ if(!isUnlocked(i)){toast('Locked · clear '+SETS[i-1].n+' first');return}openSet(SETS[i].id)});
 $('#randSet').onclick=()=>openSet(rnd(unlockedSets()).id);
 
 /* =================== BINDER =================== */
 let filt='all',albumSet=null;
-const FILTERS=[['all','All'],['miss','Missing'],['own','Owned'],['ultra','Ultra Rare'],['holo','Holo'],['rare','Rare'],['uncommon','Uncommon'],['common','Common']];
+const FILTERS=[['all','All'],['own','In hand'],['miss','Missing'],['ultra','Ultra'],['holo','Holo'],['rare','Rare'],['uncommon','Uncommon'],['common','Common']];
 async function renderAlbum(){
  if(!albumSet||!isUnlocked(SETS.findIndex(s=>s.id===albumSet)))albumSet=(curSet&&curSet.id)||'base1';
  $('#setChips').innerHTML=SETS.map((s,i)=>`<button class="chip ${s.id===albumSet?'on':''}" data-set="${s.id}" ${isUnlocked(i)?'':'style="opacity:.4"'}>${isUnlocked(i)?'':'🔒 '}${s.n}</button>`).join('');
@@ -742,138 +943,499 @@ async function renderAlbum(){
  $('#agrid').innerHTML='<div style="grid-column:1/-1;display:flex;justify-content:center;padding:40px"><div class="spin"></div></div>';
  let D;try{D=await loadSet(me)}catch(e){$('#agrid').innerHTML='<div class="err" style="grid-column:1/-1">Needs internet to load this set.</div>';return}
  if(me!==albumSet)return;
- const coll=S.coll[me]||{},own=D.cards.filter(c=>coll[c.id]).length;
- $('#albCount').innerHTML=`<b>${own}</b> / ${D.cards.length}`;$('#albPct').textContent=Math.round(own/D.cards.length*100)+'%';$('#albBar').style.width=(own/D.cards.length*100)+'%';
+ const coll=S.coll[me]||{},seen=S.seen[me]||{},reg=D.cards.filter(c=>seen[c.id]).length;
+ $('#albCount').innerHTML=`<b>${reg}</b> / ${D.cards.length}`;$('#albPct').textContent=Math.round(reg/D.cards.length*100)+'%';$('#albBar').style.width=(reg/D.cards.length*100)+'%';
  $('#chips').innerHTML=FILTERS.map(([k,l])=>`<button class="chip ${k===filt?'on':''}" data-f="${k}">${l}</button>`).join('');
- const list=D.cards.filter(c=>filt==='all'||(filt==='miss'&&!coll[c.id])||(filt==='own'&&coll[c.id])||c.r===filt);const lbl={holo:'HOLO',ultra:'ULTRA',rare:'RARE'};
- $('#agrid').innerHTML=list.map(c=>{const n=coll[c.id]||0;return `<div class="slot ${c.r} ${n?'':'miss'}" data-id="${c.id}"><img src="${c.s}" loading="lazy">${n&&lbl[c.r]?`<span class="rt ${c.r}">${lbl[c.r]}</span>`:''}${n>1?`<span class="cnt">×${n}</span>`:''}<span class="no">#${c.n}</span></div>`}).join('')||'<p style="color:var(--mut);grid-column:1/-1;text-align:center;padding:30px">Nothing here. Yet.</p>';
-}
+ const lbl={holo:'HOLO',ultra:'ULTRA',rare:'RARE'};
+ const mis=S.mis.filter(m=>setOf(m.id)===me);
+ let h=filt==='all'||filt==='own'?mis.map(m=>`<div class="slot ${m.r} mp-${m.v}" data-mis="${m.uid}"><img src="${m.s}"><span class="rt mp">MISPRINT</span><span class="vl">${fmt(cardVal(m,{mis:1}))}</span></div>`).join(''):'';
+ const list=D.cards.filter(c=>filt==='all'||(filt==='miss'&&!seen[c.id])||(filt==='own'&&coll[c.id])||c.r===filt);
+ h+=list.map(c=>{const n=coll[c.id]||0,sn=seen[c.id];return `<div class="slot ${c.r} ${sn?(n?'':'gone'):'miss'}" data-id="${c.id}"><img src="${c.s}" loading="lazy">${n&&lbl[c.r]?`<span class="rt ${c.r}">${lbl[c.r]}</span>`:''}${n>1?`<span class="cnt">×${n}</span>`:''}<span class="no">#${c.n}</span>${n?`<span class="vl">${fmt(cardVal(c))}</span>`:''}</div>`}).join('');
+ $('#agrid').innerHTML=h||'<p class="empty" style="grid-column:1/-1">Nothing here. Yet.</p>'}
 $('#setChips').addEventListener('click',e=>{const b=e.target.closest('.chip');if(!b)return;if(!isUnlocked(SETS.findIndex(s=>s.id===b.dataset.set))){toast('Locked set');return}albumSet=b.dataset.set;renderAlbum()});
 $('#chips').addEventListener('click',e=>{const b=e.target.closest('.chip');if(b){filt=b.dataset.f;renderAlbum()}});
-$('#agrid').addEventListener('click',e=>{const s=e.target.closest('.slot');if(!s||!memo[albumSet])return;const c=memo[albumSet].byId[s.dataset.id];if(!(S.coll[albumSet]||{})[c.id]){toast('Not pulled yet');return}openZoom(c)});
-const rawAvail=(sid,id)=>((S.coll[sid]||{})[id]||0)-S.slabs.filter(s=>s.set===sid&&s.id===id).length;
-function openZoom(c){const z=$('#zcard');z.innerHTML='';const el=document.createElement('div');el.className='card live '+c.r;el.innerHTML=cardHTML(c);el._base='';z.appendChild(el);
- $('#zinfo').innerHTML=`<b>${c.name}</b>#${c.n} · ${tierName[c.r]} · pulled ${S.coll[albumSet][c.id]}×`;
- const av=rawAvail(albumSet,c.id),sid=albumSet;
- $('#zact').innerHTML=(c.r==='holo'||c.r==='ultra')?(av>0?`<button class="btn" id="zPSA">SEND TO PSA · ${av} RAW</button>`:`<p style="text-align:center;color:var(--mut);font-size:12px;margin-top:16px">All copies are graded</p>`):'';
- if($('#zPSA'))$('#zPSA').onclick=e=>{e.stopPropagation();sendToPSA(sid,c)};
+$('#agrid').addEventListener('click',e=>{const s=e.target.closest('.slot');if(!s)return;
+ if(s.dataset.mis){const m=S.mis.find(x=>x.uid===s.dataset.mis);if(m)openZoom(m,m.v);return}
+ const c=memo[albumSet]&&memo[albumSet].byId[s.dataset.id];if(!c)return;if(!(S.seen[albumSet]||{})[c.id]){toast('Not pulled yet');return}openZoom(c)});
+function openZoom(c,misV){const z=$('#zcard');z.innerHTML='';const el=document.createElement('div');el.className='card live '+c.r+(misV?' mp-'+misV:'');el.innerHTML=cardHTML(c,{mis:misV});el._base='';z.appendChild(el);
+ const n=misV?1:rawCount(c.id),v=cardVal(c,{mis:misV?1:0});
+ $('#zinfo').innerHTML=`<b>${esc(c.name)}</b>${setById[setOf(c.id)].n} #${c.n||''} · ${misV?MISV.find(m=>m[0]===misV)[1]+' misprint':tierName[c.r]} · ${misV?'1 copy':n+' in hand'}<br><span class="v">Market ${fmt(v)}</span>${hotIds().has(c.id)?' <span class="tag r">HOT</span>':''}`;
+ let a='';
+ if(!misV&&(c.r==='holo'||c.r==='ultra')&&n>0)a+=`<button class="btn" id="zPSA">SEND TO PSA</button>`;
+ if(n>0)a+=`<button class="btn ghost" id="zQS">QUICK SELL TO GARY · ${fmt(Math.max(.01,v*.45))}</button>`;
+ if(n===0)a+=`<p class="empty" style="padding:12px">You sold or graded every copy. It stays registered in your binder.</p>`;
+ $('#zact').innerHTML=a;
+ if($('#zPSA'))$('#zPSA').onclick=e=>{e.stopPropagation();sendToPSA(c)};
+ if($('#zQS'))$('#zQS').onclick=e=>{e.stopPropagation();quickSell(misV?{k:'mis',m:c,val:v,name:c.name}:{k:'raw',id:c.id,c,val:v,name:c.name});$('#zoom').classList.remove('on');renderAlbum()};
  el.onpointermove=e=>{el._touch=true;const r=el.getBoundingClientRect();const x=(e.clientX-r.left)/r.width,y=(e.clientY-r.top)/r.height;setTilt(el,x,y);el.style.transition='none';el.style.transform=`rotateY(${(x-.5)*30}deg) rotateX(${-(y-.5)*24}deg)`};
  el.onpointerleave=el.onpointerup=()=>{el._touch=false;el.style.transition='transform .5s';el.style.transform=''};
  $('#zoom').classList.add('on');if(c.r==='holo'||c.r==='ultra')sfx.holo()}
 $('#zoom').addEventListener('click',e=>{if(e.target.id==='zoom'||e.target.id==='zinfo')$('#zoom').classList.remove('on')});
+function quickSell(it){
+ const r=removeItem(it);if(r&&r.fake){sfx.bad();modal(`<div class="em">🧐</div><h2>Gary shakes his head</h2><p>"That ${esc(it.name)} is a <b>fake</b>, kid. Wrong font, wrong holo. I can't buy that." He bins it for you.</p><button class="btn" onclick="closeModal()">UGH</button>`);save();return}
+ const p=Math.max(.01,Math.round(it.val*.45*100)/100);addCoins(p);sfx.cash();toast(`Sold ${it.name} to Gary`);save()}
 
 /* =================== PSA =================== */
 const GRADE_ODDS=[[10,15],[9,30],[8,21],[7,12],[6,7],[5,5],[4,3.5],[3,2.5],[2,2],[1.5,1],[1,1]];
 const GRADE_NAME={10:'GEM MT',9:'MINT',8:'NM-MT',7:'NM',6:'EX-MT',5:'EX',4:'VG-EX',3:'VG',2:'GOOD',1.5:'FR',1:'PR'};
 const GRADE_LONG={10:'Gem Mint',9:'Mint',8:'Near Mint-Mint',7:'Near Mint',6:'Excellent-Mint',5:'Excellent',4:'Very Good-Excellent',3:'Very Good',2:'Good',1.5:'Fair',1:'Poor'};
 const LVL={10:0,9:1,8:2,7:3,6:4,5:5,4:6,3:7,2:8,1.5:9,1:10};
+const TIERS=[{k:'std',n:'Standard',fee:15,ms:20*60e3,d:'Back in 20 minutes'},{k:'exp',n:'Express',fee:35,ms:3*60e3,d:'Back in 3 minutes'},{k:'inst',n:'Walk-through',fee:75,ms:0,d:'Graded on the spot'}];
+const psaFee=t=>Math.round(t.fee*(hasBadge('thunder')?.75:1)*(S.shop.partner?.85:1));
 function rollGrade(){let r=Math.random()*100;for(const [g,w] of GRADE_ODDS){if((r-=w)<0)return g}return 9}
 function mulberry(a){return function(){a|=0;a=a+0x6D2B79F5|0;let t=Math.imul(a^a>>>15,1|a);t=t+Math.imul(t^t>>>7,61|t)^t;return((t^t>>>14)>>>0)/4294967296}}
-function dmgSVG(g,seed){const L=LVL[g],R=mulberry(seed),W=63,H=88;let s='';const rr=(a,b)=>a+R()*(b-a);
+function dmgSVG(g,seed){const L=LVL[g],R=mulberry(seed),W=63,H=88;let s='';const q=(a,b)=>a+R()*(b-a);
  const ew=[0,3,5,7,9,12,15,18,22,26,30][L];
- for(let i=0;i<ew;i++){const e=Math.floor(R()*4),len=rr(.8,2+L*.6),w=rr(.25,.45+L*.08),o=rr(.55,.95);
-  if(e<2){const x=rr(1,W-1),y=e?H-.2:.2;s+=`<line x1="${x}" y1="${y}" x2="${x+len}" y2="${y}" stroke="#fff" stroke-width="${w}" opacity="${o}"/>`}
-  else{const y=rr(1,H-1),x=e===2?.2:W-.2;s+=`<line x1="${x}" y1="${y}" x2="${x}" y2="${y+len}" stroke="#fff" stroke-width="${w}" opacity="${o}"/>`}}
- [[0,0],[W,0],[0,H],[W,H]].slice(0,Math.min(4,L)).forEach(([x,y])=>{s+=`<circle cx="${x}" cy="${y}" r="${rr(.8,1.2+L*.35)}" fill="#fff" opacity="${rr(.6,.95)}"/>`});
- for(let i=0;i<(L>=3?(L-2)*3:0);i++){const x=rr(3,W-3),y=rr(3,H-3),a=rr(0,Math.PI),l=rr(4,10+L*2);s+=`<line x1="${x}" y1="${y}" x2="${x+Math.cos(a)*l}" y2="${y+Math.sin(a)*l}" stroke="#fff" stroke-width="${rr(.12,.3)}" opacity="${rr(.2,.45)}"/>`}
- for(let i=0;i<[0,0,0,0,0,0,1,1,2,4,5][L];i++){let x1,y1,x2,y2;if(R()<.5){x1=0;x2=W;y1=rr(10,H-10);y2=y1+rr(-14,14)}else{y1=0;y2=H;x1=rr(8,W-8);x2=x1+rr(-12,12)}const mx=(x1+x2)/2+rr(-3,3),my=(y1+y2)/2+rr(-3,3);
+ for(let i=0;i<ew;i++){const e=Math.floor(R()*4),len=q(.8,2+L*.6),w=q(.25,.45+L*.08),o=q(.55,.95);
+  if(e<2){const x=q(1,W-1),y=e?H-.2:.2;s+=`<line x1="${x}" y1="${y}" x2="${x+len}" y2="${y}" stroke="#fff" stroke-width="${w}" opacity="${o}"/>`}
+  else{const y=q(1,H-1),x=e===2?.2:W-.2;s+=`<line x1="${x}" y1="${y}" x2="${x}" y2="${y+len}" stroke="#fff" stroke-width="${w}" opacity="${o}"/>`}}
+ [[0,0],[W,0],[0,H],[W,H]].slice(0,Math.min(4,L)).forEach(([x,y])=>{s+=`<circle cx="${x}" cy="${y}" r="${q(.8,1.2+L*.35)}" fill="#fff" opacity="${q(.6,.95)}"/>`});
+ for(let i=0;i<(L>=3?(L-2)*3:0);i++){const x=q(3,W-3),y=q(3,H-3),a=q(0,Math.PI),l=q(4,10+L*2);s+=`<line x1="${x}" y1="${y}" x2="${x+Math.cos(a)*l}" y2="${y+Math.sin(a)*l}" stroke="#fff" stroke-width="${q(.12,.3)}" opacity="${q(.2,.45)}"/>`}
+ for(let i=0;i<[0,0,0,0,0,0,1,1,2,4,5][L];i++){let x1,y1,x2,y2;if(R()<.5){x1=0;x2=W;y1=q(10,H-10);y2=y1+q(-14,14)}else{y1=0;y2=H;x1=q(8,W-8);x2=x1+q(-12,12)}const mx=(x1+x2)/2+q(-3,3),my=(y1+y2)/2+q(-3,3);
   s+=`<path d="M${x1},${y1} Q${mx},${my} ${x2},${y2}" stroke="#000" stroke-width=".55" opacity=".38" fill="none"/><path d="M${x1+.35},${y1+.35} Q${mx+.35},${my+.35} ${x2+.35},${y2+.35}" stroke="#fff" stroke-width=".5" opacity=".55" fill="none"/>`}
- for(let i=0;i<(L>=7?L-6:0);i++)s+=`<ellipse cx="${rr(8,W-8)}" cy="${rr(8,H-8)}" rx="${rr(4,10)}" ry="${rr(3,8)}" fill="url(#stn${seed})" opacity="${rr(.35,.6)}"/>`;
- if(L>=10){const y=rr(30,60);s+=`<path d="M${W},${y} l-6,1.5 l-3,-1 l-5,2.2 l-4,-.8" stroke="#2a1a0a" stroke-width=".55" fill="none" opacity=".75"/>`}
+ for(let i=0;i<(L>=7?L-6:0);i++)s+=`<ellipse cx="${q(8,W-8)}" cy="${q(8,H-8)}" rx="${q(4,10)}" ry="${q(3,8)}" fill="url(#stn${seed})" opacity="${q(.35,.6)}"/>`;
+ if(L>=10){const y=q(30,60);s+=`<path d="M${W},${y} l-6,1.5 l-3,-1 l-5,2.2 l-4,-.8" stroke="#2a1a0a" stroke-width=".55" fill="none" opacity=".75"/>`}
  return `<svg viewBox="0 0 ${W} ${H}" preserveAspectRatio="none"><defs><radialGradient id="stn${seed}"><stop offset="0" stop-color="#7a4a10" stop-opacity=".9"/><stop offset="1" stop-color="#9a6a20" stop-opacity="0"/></radialGradient></defs>${s}</svg>`}
 function condStyle(g,seed){const L=LVL[g];
  let st=`filter:${['none','none','none','saturate(.97)','saturate(.92) brightness(.98)','saturate(.86) contrast(.96)','saturate(.8) sepia(.08)','saturate(.72) sepia(.15) contrast(.9)','saturate(.65) sepia(.25) contrast(.88)','saturate(.55) sepia(.32) contrast(.85)','saturate(.5) sepia(.4) contrast(.8) brightness(.95)'][L]};`;
  if(L>=5)st+=`border-radius:${4+L}%/${3+L*.7}%;`;
  if(L>=10){const R=mulberry(seed+7);const a=8+R()*10,b=6+R()*10;st+=`clip-path:polygon(0 0,${100-a}% 0,${100-a+3}% ${b*.4}%,100% ${b}%,100% 100%,0 100%);`}
  return st}
-function slabHTML(sl,o={}){const set=setById[sl.set],g=sl.grade,L=LVL[g],gl=Math.max(.15,1-L*.09);
- const foil=sl.r==='ultra'?`<div class="foil full" style="opacity:${.85*gl}"></div>`:`<div class="foil win" style="opacity:${.6*gl}"></div><div class="sparkle" style="inset:10.5% 8.5% 52% 8.5%;opacity:${.7*gl}"></div>`;
- return `<div class="slab ${g===10?'g10':''}"><div class="lab"><div class="logo">PSA</div><div class="in"><div class="l"><div>${set.y} POKEMON ${set.n.toUpperCase()}</div><div>${sl.name.toUpperCase()}-HOLO</div><div>${set.ed?'1ST EDITION':'&nbsp;'}</div><div class="bc"></div></div><div class="r"><div>#${sl.n}</div><div>${GRADE_NAME[g]}</div><div>${g}</div><div>${sl.cert}</div></div></div></div>
- <div class="well"><div class="sc" style="${condStyle(g,sl.seed)}"><img src="${o.small?sl.s:sl.l}" onerror="if(this.src!=='${sl.s}')this.src='${sl.s}'">${foil}${dmgSVG(g,sl.seed)}<div class="glare" style="opacity:${g===10?1:.6}"></div></div></div>${o.cover?'<div class="cover">PSA</div>':''}<div class="glass"></div></div>`}
+function slabHTML(sl,o={}){const set=setById[setOf(sl.id)],g=sl.grade,L=LVL[g]||0,gl=Math.max(.15,1-L*.09),fk=sl.fake;
+ const foil=sl.r==='ultra'?`<div class="foil full" style="opacity:${.85*gl}"></div>`:sl.r==='holo'?`<div class="foil win" style="opacity:${.6*gl}"></div><div class="sparkle" style="inset:10.5% 8.5% 52% 8.5%;opacity:${.7*gl}"></div>`:'';
+ const void_=o.void?`<div class="void"><b>COUNTERFEIT</b></div>`:'';
+ return `<div class="slab ${g===10&&!o.void?'g10':''} ${fk?'fk':''}"><div class="lab"><div class="logo">${fk?'P.S.A':'PSA'}</div><div class="in"><div class="l"><div>${set.y} POKEMON ${set.n.toUpperCase()}</div><div>${esc(sl.name.toUpperCase())}${sl.r==='holo'||sl.r==='ultra'?'-HOLO':''}</div><div>${o.void?'AUTHENTICATION FAILED':set.ed?'1ST EDITION':'&nbsp;'}</div><div class="bc"></div></div><div class="r"><div>#${sl.n||''}</div><div>${o.void?'N/A':fk?'GEM MNT':GRADE_NAME[g]}</div><div>${o.void?'—':g}</div><div>${sl.cert}</div></div></div></div>
+ <div class="well"><div class="sc" style="${o.void?'filter:grayscale(.6) brightness(.8)':condStyle(g,sl.seed)}"><img src="${o.small?sl.s:sl.l}" onerror="if(this.src!=='${sl.s}')this.src='${sl.s}'">${foil}${o.void?'':dmgSVG(g,sl.seed)}<div class="glare" style="opacity:${g===10?1:.6}"></div></div></div>${void_}${o.cover?'<div class="cover">PSA</div>':''}<div class="glass"></div></div>`}
 const psaEl=$('#psa'),pStage=$('#psaStage'),pFoot=$('#psaFoot');
 const psaHead=(t,s)=>$('#psaHead').innerHTML=`<b>${t}</b><small>${s||''}</small>`;
 function thud(){noise(.25,.9,180,.7,'lowpass');buzz(30)}
-function bindTilt(el){el.onpointermove=e=>{const r=el.getBoundingClientRect();const x=(e.clientX-r.left)/r.width,y=(e.clientY-r.top)/r.height;setTilt(el,x,y);el.querySelectorAll('.sc').forEach(s=>setTilt(s,x,y));el.style.transition='none';el.style.transform=`rotateY(${(x-.5)*24}deg) rotateX(${-(y-.5)*18}deg)`};el.onpointerleave=el.onpointerup=()=>{el.style.transition='transform .5s';el.style.transform=''}}
-async function sendToPSA(setId,card){
- if(rawAvail(setId,card.id)<1){toast('No raw copy left');return}
- ac();$('#zoom').classList.remove('on');
- const sl={uid:Date.now()+''+Math.floor(Math.random()*1e4),set:setId,id:card.id,name:card.name,n:card.n,r:card.r,s:card.s,l:card.l,grade:rollGrade(),cert:String(Math.floor(1e8+Math.random()*9e8)),seed:Math.floor(Math.random()*1e9),d:Date.now(),open:false};
- S.slabs.push(sl);S.psaSubs++;save();
- psaEl.classList.add('on');$('#nav').classList.add('hide');pFoot.innerHTML='';
- psaHead('PACKING YOUR CARD','Sleeve · Toploader · Mailer');
- pStage.innerHTML=`<div class="pk rawc" id="rc"><img src="${card.l}" onerror="this.src='${card.s}'"><div class="sleeve"></div><div class="toploader"></div></div><div class="mailer" id="ml"><div class="body"></div><div class="flap"></div><div class="ship"><b>PSA</b>SUBMISSION #${String(S.psaSubs).padStart(6,'0')}<br>SANTA ANA, CA · USA<i></i></div></div>`;
- const rc=$('#rc');await wait(450);rc.querySelector('.sleeve').style.transform='translateY(0)';sfx.slide();await wait(600);
- rc.querySelector('.toploader').style.transform='translateY(0)';noise(.12,.5,1200,1,'bandpass');await wait(650);
- const ml=$('#ml');ml.style.transform='translate(-50%,-50%)';rc.style.transform='translate(-50%,-50%) scale(.82)';sfx.slide();await wait(600);
- ml.querySelector('.flap').classList.add('closed');await wait(420);rc.style.opacity=0;ml.querySelector('.ship').classList.add('on');thud();await wait(750);
+function bindTilt(el){if(!el)return;el.onpointermove=e=>{const r=el.getBoundingClientRect();const x=(e.clientX-r.left)/r.width,y=(e.clientY-r.top)/r.height;setTilt(el,x,y);el.querySelectorAll('.sc').forEach(s=>setTilt(s,x,y));el.style.transition='none';el.style.transform=`rotateY(${(x-.5)*24}deg) rotateX(${-(y-.5)*18}deg)`};el.onpointerleave=el.onpointerup=()=>{el.style.transition='transform .5s';el.style.transform=''}}
+function sendToPSA(card){
+ if(rawCount(card.id)<1){toast('No raw copy left');return}
+ $('#zoom').classList.remove('on');const v=cardVal(card);
+ modal(`<div class="em">📮</div><h2>Submit to PSA</h2><p><b>${esc(card.name)}</b> · raw value ${fmt(v)}<br>PSA 10 would be worth about <b>${fmt(cardVal(card,{grade:10}))}</b>. PSA 9 about ${fmt(cardVal(card,{grade:9}))}. Grades are final.</p>
+ ${TIERS.map(t=>`<button class="opt" data-t="${t.k}" ${S.coins<psaFee(t)?'disabled':''}><div class="tx"><b>${t.n}</b><small>${t.d}</small></div><div class="pr">${fmt(psaFee(t))}</div></button>`).join('')}
+ <button class="btn ghost" onclick="closeModal()">CANCEL</button>`);
+ $('#mbox').querySelectorAll('.opt').forEach(b=>b.onclick=()=>{const t=TIERS.find(x=>x.k===b.dataset.t);closeModal();submit(card,t)})}
+async function submit(card,t){
+ if(!spend(psaFee(t)))return;const fake=takeRaw(card.id);if(fake===null){toast('No copy left');return}
+ ac();const sl={uid:uid(),id:card.id,name:card.name,n:card.n,r:card.r,s:card.s,l:card.l,grade:rollGrade(),cert:String(Math.floor(1e8+Math.random()*9e8)),seed:Math.floor(Math.random()*1e9),d:NOW(),counterfeit:!!fake};
+ S.psaSubs++;S.stats.graded++;prog('grade',1);addXP(15);save();
+ psaEl.classList.add('on');$('#nav').classList.add('hide');$('#coin').style.opacity=0;pFoot.innerHTML='';
+ psaHead('PACKING YOUR CARD',t.n+' service');
+ pStage.innerHTML=`<div class="pk rawc" id="rc"><img src="${card.l}" onerror="this.src='${card.s}'"><div class="sleeve"></div><div class="toploader"></div></div><div class="mailer" id="ml"><div class="body"></div><div class="flap"></div><div class="ship"><b>PSA</b>SUBMISSION #${String(S.psaSubs).padStart(6,'0')}<br>${t.n.toUpperCase()} · SANTA ANA, CA</div></div>`;
+ const rc=$('#rc');await wait(400);rc.querySelector('.sleeve').style.transform='translateY(0)';sfx.slide();await wait(550);
+ rc.querySelector('.toploader').style.transform='translateY(0)';noise(.12,.5,1200,1,'bandpass');await wait(600);
+ const ml=$('#ml');ml.style.transform='translate(-50%,-50%)';rc.style.transform='translate(-50%,-50%) scale(.82)';sfx.slide();await wait(550);
+ ml.querySelector('.flap').classList.add('closed');await wait(400);rc.style.opacity=0;ml.querySelector('.ship').classList.add('on');thud();await wait(700);
  psaHead('SHIPPED TO PSA','Off it goes');ml.style.transition='transform .8s cubic-bezier(.6,0,.8,.3)';ml.style.transform='translate(80%,-180%) rotate(28deg) scale(.4)';await wait(850);
- psaHead('ORDER STATUS','Tap to skip the queue');
- const steps=['Arrived','Order Prep','Research & ID','Grading','Assembly','QA Checks','Shipped'];
+ if(t.ms>0){S.subs.push({sl,ready:NOW()+t.ms,tier:t.n});save();
+  psaHead('IN THE QUEUE',t.d);pStage.innerHTML=`<div class="track"><div class="row done"><i></i>Shipped<small>NOW</small></div><div class="row on"><i></i>Grading<small>${t.n.toUpperCase()}</small></div><div class="row"><i></i>Back to you<small>${Math.round(t.ms/60e3)} MIN</small></div></div>`;
+  pFoot.innerHTML=`<button class="btn" id="pOk">GOT IT</button><p class="empty" style="padding:8px">You'll find the package in your Vault when it's back.</p>`;$('#pOk').onclick=()=>{closePSA();checkSubs()};return}
+ psaHead('ORDER STATUS','Tap to speed through');
+ const steps=['Arrived','Research & ID','Grading','Assembly','QA Checks','Shipped'];
  pStage.innerHTML=`<div class="track">${steps.map(s=>`<div class="row"><i></i>${s}<small></small></div>`).join('')}</div>`;
  let skip=false;psaEl.onclick=()=>skip=true;const rows=[...pStage.querySelectorAll('.row')];
- for(let i=0;i<rows.length;i++){rows[i].classList.add('on');await wait(skip?80:(i===3?1200:480));rows[i].classList.remove('on');rows[i].classList.add('done');rows[i].querySelector('small').textContent=new Date(Date.now()+i*864e5*6).toLocaleDateString('en-GB',{day:'2-digit',month:'short'});tone([880+i*60],.12,.05)}
- psaEl.onclick=null;await wait(400);
+ for(let i=0;i<rows.length;i++){rows[i].classList.add('on');await wait(skip?70:(i===2?1000:420));rows[i].classList.remove('on');rows[i].classList.add('done');rows[i].querySelector('small').textContent='DONE';tone([880+i*60],.12,.05)}
+ psaEl.onclick=null;await wait(300);deliver(sl)}
+async function deliver(sl){
+ psaEl.classList.add('on');$('#nav').classList.add('hide');$('#coin').style.opacity=0;pFoot.innerHTML='';
  psaHead('DELIVERY!','Swipe across the tape');
- pStage.innerHTML=`<div id="psaSlab">${slabHTML(sl,{cover:1})}</div><div class="box" id="bx"><div class="top" id="bxTop"><div class="inside"></div><div class="flapA"></div><div class="flapB"></div><div class="tape">PSA · PSA · PSA</div><div class="cut"></div><div class="knife"></div></div><div class="front"><div class="stamp">PSA</div><div class="fragile">FRAGILE</div><div class="sl">SHIP TO: COLLECTOR<br>CONTAINS: 1 SLAB · CERT ${sl.cert}</div></div></div>`;
+ pStage.innerHTML=`<div id="psaSlab">${slabHTML(sl,{cover:1,void:sl.counterfeit})}</div><div class="box" id="bx"><div class="top" id="bxTop"><div class="inside"></div><div class="flapA"></div><div class="flapB"></div><div class="tape">PSA · PSA · PSA</div><div class="cut"></div><div class="knife"></div></div><div class="front"><div class="stamp">PSA</div><div class="fragile">FRAGILE</div><div class="sl">SHIP TO: COLLECTOR<br>CERT ${sl.cert}</div></div></div>`;
  const bx=$('#bx'),sw=$('#psaSlab');sw.style.transform='translate(-50%,-10%) scale(.85)';sw.style.opacity=0;sw.style.pointerEvents='none';
  bx.style.transform='translate(-50%,-260%)';await wait(30);bx.style.transform='translate(-50%,-50%)';await wait(450);thud();
  await new Promise(res=>{const top=$('#bxTop'),cut=top.querySelector('.cut'),kn=top.querySelector('.knife');let down=false,p=0,lt=0;
   bx.onpointerdown=e=>{const r=top.getBoundingClientRect();if(e.clientY>r.bottom+30)return;down=true;bx.setPointerCapture(e.pointerId);kn.style.animation='none';kn.style.opacity=1};
-  bx.onpointermove=e=>{if(!down)return;const r=top.getBoundingClientRect();const fx=(e.clientX-r.left)/r.width;p=Math.max(p,Math.min(1,fx));cut.style.width=(p*100)+'%';kn.style.left=(p*100)+'%';const t=performance.now();if(t-lt>50){noise(.05,.35,3500,.8);lt=t}if(p>.85){down=false;res()}};
+  bx.onpointermove=e=>{if(!down)return;const r=top.getBoundingClientRect();p=Math.max(p,Math.min(1,(e.clientX-r.left)/r.width));cut.style.width=(p*100)+'%';kn.style.left=(p*100)+'%';const t=performance.now();if(t-lt>50){noise(.05,.35,3500,.8);lt=t}if(p>.85){down=false;res()}};
   bx.onpointerup=()=>down=false;bx.onclick=()=>{if(p<.05){cut.style.width='100%';res()}}});
  bx.onpointerdown=bx.onpointermove=bx.onclick=null;const top=$('#bxTop');top.querySelector('.knife').remove();top.querySelector('.tape').style.opacity=0;noise(.3,.6,2500,.9);buzz([20,20,30]);
  await wait(200);bx.classList.add('open');await wait(500);
  sw.style.zIndex=4;sw.style.opacity=1;sw.style.transform='translate(-50%,-62%) scale(.85)';sfx.slide();
  await wait(650);bx.querySelector('.front').style.transform='translateY(120%)';bx.style.transition='opacity .5s';bx.style.opacity=0;sw.style.transform='translate(-50%,-50%) scale(1)';await wait(650);
- psaHead(sl.name.toUpperCase(),'Tap the slab to reveal your grade');sw.style.pointerEvents='';
+ psaHead(esc(sl.name.toUpperCase()),'Tap the slab to reveal your grade');sw.style.pointerEvents='';
  const slabEl=sw.querySelector('.slab');bindTilt(slabEl);await new Promise(res=>slabEl.onclick=res);slabEl.onclick=null;
- tone([220,247,262,294,330,349,392],.18,.06,'square',.12);await wait(900);
- slabEl.querySelector('.cover').classList.add('off');sl.open=true;save();const g=sl.grade;
- if(g===10){flash(1,900);sfx.ultra();buzz([80,50,120,50,200]);burst(320,['#ffe36a','#fff','#ffb43b','#9ef0ff'],1.5);banner('GEM MINT 10');$('#rays').style.opacity=1;setTimeout(()=>$('#rays').style.opacity=0,3000)}
- else if(g===9){flash(.6,600);sfx.holo();burst(140,['#9ef0ff','#fff','#ffe07a'],1);banner('MINT 9')}
+ tone([220,247,262,294,330,349,392],.18,.06,'square',.12);await wait(900);slabEl.querySelector('.cover').classList.add('off');
+ if(sl.counterfeit){sfx.bad();slabEl.classList.add('cracking');buzz([100,60,100]);banner('FAKE!');
+  psaHead('AUTHENTICATION FAILED','This card is counterfeit');
+  pFoot.innerHTML=`<p class="empty" style="padding:8px">PSA could not authenticate it. Someone sold you a fake. The card is worthless.</p><button class="btn" id="pKeep">BIN IT</button>`;
+  $('#pKeep').onclick=()=>{closePSA();go('scrVault')};save();return}
+ S.slabs.push(sl);const g=sl.grade;save();
+ if(g===10){flash(1,900);sfx.ultra();buzz([80,50,120,50,200]);burst(320,['#ffe36a','#fff','#ffb43b','#9ef0ff'],1.5);banner('GEM MINT 10');$('#rays').style.opacity=1;setTimeout(()=>$('#rays').style.opacity=0,3000);addXP(80)}
+ else if(g===9){flash(.6,600);sfx.holo();burst(140,['#9ef0ff','#fff','#ffe07a'],1);banner('MINT 9');addXP(30)}
  else if(g>=7){tone([784,988,1175],.5,.08,'sine',.08);banner(GRADE_NAME[g]+' '+g)}
  else if(g>=4){tone([523,494],.5,.08,'triangle',.18);banner(GRADE_NAME[g]+' '+g)}
  else{tone([392,370,349,330],.5,.12,'triangle',.28);slabEl.classList.add('cracking');buzz([100,60,100]);banner(g<=1.5?'OUCH… '+g:GRADE_NAME[g]+' '+g)}
- psaHead(`PSA ${g} · ${GRADE_LONG[g].toUpperCase()}`,`Cert #${sl.cert} · final grade`);
+ psaHead(`PSA ${g} · ${GRADE_LONG[g].toUpperCase()}`,`Worth ${fmt(cardVal(sl,{grade:g}))} · final grade`);
  pFoot.innerHTML=`<button class="btn" id="pKeep">ADD TO VAULT</button>`;
  $('#pKeep').onclick=()=>{closePSA();go('scrVault')};
- if(g===10)setTimeout(checkUnlocks,2600);
-}
-function closePSA(){psaEl.classList.remove('on');$('#nav').classList.remove('hide');pStage.innerHTML='';pFoot.innerHTML=''}
-// unfinished submissions (app closed mid-animation) get revealed silently
-S.slabs.forEach(s=>{if(!s.open)s.open=true});
+ if(g===10&&S.grail&&S.grail.id===sl.id){S.stats.grails++;const gr=S.grail;S.grail=null;save();setTimeout(()=>{addCoins(200);addXP(300);modal(`<div class="em">🏆</div><h2>Holy Grail!</h2><p>You landed a <b>PSA 10 ${esc(gr.name)}</b>. Grandpa would be proud.<br>+$200 · +300 XP</p><button class="btn" onclick="closeModal()">LEGENDARY</button>`)},2600)}
+ setTimeout(()=>{checkUnlocks();checkAll()},2700)}
+function closePSA(){psaEl.classList.remove('on');$('#nav').classList.remove('hide');$('#coin').style.opacity=1;pStage.innerHTML='';pFoot.innerHTML='';psaEl.onclick=null}
+function checkSubs(){const ready=S.subs.filter(s=>s.ready<=NOW()).length;document.querySelector('nav button[data-s="scrVault"]').classList.toggle('alert',ready>0);return ready}
+setInterval(()=>{checkSubs();if($('#scrVault').classList.contains('on'))renderSubs();if($('#scrHome').classList.contains('on'))renderHomeLive()},5000);
+function renderSubs(){
+ $('#subsBox').innerHTML=S.subs.length?`<div class="pnl"><h4>AT PSA</h4>${S.subs.map((s,i)=>{const left=s.ready-NOW();return `<div class="row2"><img class="th" src="${s.sl.s}"><div class="tx"><b>${esc(s.sl.name)}</b><small>${s.tier} · ${left>0?'back in '+Math.ceil(left/60e3)+' min':'📦 package arrived'}</small></div>${left>0?`<button class="sbtn g" disabled>WAIT</button>`:`<button class="sbtn" data-sub="${i}">OPEN</button>`}</div>`}).join('')}</div>`:''}
+$('#subsBox').addEventListener('click',e=>{const b=e.target.closest('[data-sub]');if(!b)return;const s=S.subs[+b.dataset.sub];if(!s||s.ready>NOW())return;S.subs.splice(+b.dataset.sub,1);save();checkSubs();deliver(s.sl)});
 
 /* =================== VAULT =================== */
-let vSort='new';
+let vSort='val';
 function renderVault(){
- const sl=S.slabs.filter(s=>s.open);const avg=sl.length?(sl.reduce((a,b)=>a+b.grade,0)/sl.length).toFixed(1):'–';
- $('#vStats').innerHTML=[[sl.length,'Slabs'],[sl.filter(s=>s.grade===10).length,'PSA 10s'],[avg,'Avg grade'],[S.psaSubs,'Subs']].map(([v,l])=>`<div class="stat"><b>${v}</b><span>${l}</span></div>`).join('');
- $('#vChips').innerHTML=[['new','Newest'],['hi','Highest'],['lo','Lowest']].map(([k,l])=>`<button class="chip ${k===vSort?'on':''}" data-v="${k}">${l}</button>`).join('');
- const list=[...sl];if(vSort==='hi')list.sort((a,b)=>b.grade-a.grade||b.d-a.d);else if(vSort==='lo')list.sort((a,b)=>a.grade-b.grade);else list.sort((a,b)=>b.d-a.d);
- $('#vGrid').innerHTML=list.length?list.map(s=>`<div class="v" data-uid="${s.uid}">${slabHTML(s,{small:1})}<div class="when">${setById[s.set].n}</div></div>`).join(''):`<p style="color:var(--mut);grid-column:1/-1;text-align:center;padding:30px;line-height:1.6">No slabs yet.<br>Open a holo in your binder and send it to PSA.</p>`;
-}
+ renderSubs();const sl=S.slabs;const avg=sl.length?(sl.reduce((a,b)=>a+b.grade,0)/sl.length).toFixed(1):'–';
+ $('#vStats').innerHTML=[[sl.length,'Slabs'],[sl.filter(s=>s.grade===10).length,'PSA 10s'],[avg,'Avg'],[S.psaSubs,'Subs']].map(([v,l])=>`<div class="stat"><b>${v}</b><span>${l}</span></div>`).join('');
+ $('#vChips').innerHTML=[['val','Value'],['new','Newest'],['hi','Grade']].map(([k,l])=>`<button class="chip ${k===vSort?'on':''}" data-v="${k}">${l}</button>`).join('');
+ const list=[...sl];if(vSort==='hi')list.sort((a,b)=>b.grade-a.grade||b.d-a.d);else if(vSort==='new')list.sort((a,b)=>b.d-a.d);else list.sort((a,b)=>cardVal(b,{grade:b.grade})-cardVal(a,{grade:a.grade}));
+ $('#vGrid').innerHTML=list.length?list.map(s=>`<div class="v" data-uid="${s.uid}">${slabHTML(s,{small:1})}<div class="when">${setById[setOf(s.id)].n} · <b>${fmt(cardVal(s,{grade:s.grade}))}</b></div></div>`).join(''):`<p class="empty" style="grid-column:1/-1">No slabs yet.<br>Open a holo in your binder and send it to PSA.</p>`;
+ $('#sealBox').innerHTML=S.sealed.length?`<div class="pnl">${S.sealed.map(s=>{const set=setById[s.set],v=sealedVal(s);return `<div class="row2"><div class="ic">${s.kind==='box'?'📦':'🎁'}</div><div class="tx"><b>${set.n} ${s.kind==='box'?'Booster Box':'Bundle'}</b><small>${s.packs} packs · paid ${fmt(s.base)} · now <span style="color:#7dffa8">${fmt(v)}</span>${v>=s.base*1.6?' (maxed)':''}<br>Sealed value grows over time. Sell at card shows or open it.</small></div><button class="sbtn" data-open="${s.uid}">OPEN</button></div>`}).join('')}</div>`:'<p class="empty">No sealed product. Buy bundles and boxes in the Shop.</p>'}
 $('#vChips').addEventListener('click',e=>{const b=e.target.closest('.chip');if(b){vSort=b.dataset.v;renderVault()}});
+$('#sealBox').addEventListener('click',e=>{const b=e.target.closest('[data-open]');if(!b)return;const s=S.sealed.find(x=>x.uid===b.dataset.open);if(!s)return;
+ modal(`<div class="em">✂️</div><h2>Open it?</h2><p>This adds <b>${s.packs} ${setById[s.set].n} packs</b> to your stash. Sealed it's worth ${fmt(sealedVal(s))} and still growing.</p><button class="btn" id="yOpen">CUT THE SHRINK WRAP</button><button class="btn ghost" onclick="closeModal()">KEEP IT SEALED</button>`);
+ $('#yOpen').onclick=()=>{S.sealed=S.sealed.filter(x=>x!==s);S.inv[s.set]=(S.inv[s.set]||0)+s.packs;save();closeModal();sfx.rip();toast(`${s.packs} packs added. Go rip them!`);renderVault()}});
 $('#vGrid').addEventListener('click',e=>{const v=e.target.closest('.v');if(!v)return;const sl=S.slabs.find(s=>s.uid===v.dataset.uid);if(!sl)return;
- $('#zslab').innerHTML=slabHTML(sl);bindTilt($('#zslab .slab'));$('#vinfo').innerHTML=`<b>PSA ${sl.grade} · ${GRADE_LONG[sl.grade]}</b>${sl.name} · ${setById[sl.set].n} #${sl.n}<br>Graded for life · cert #${sl.cert}`;$('#vzoom').classList.add('on')});
+ const val=cardVal(sl,{grade:sl.grade});$('#zslab').innerHTML=slabHTML(sl);bindTilt($('#zslab .slab'));
+ $('#vinfo').innerHTML=`<b>PSA ${sl.grade} · ${GRADE_LONG[sl.grade]}</b>${esc(sl.name)} · ${setById[setOf(sl.id)].n}<br>Cert #${sl.cert} · graded for life<br><span class="v">Market ${fmt(val)}</span>`;
+ $('#vact').innerHTML=`<button class="btn ghost" id="vQS">QUICK SELL TO GARY · ${fmt(val*.45)}</button>`;
+ $('#vQS').onclick=e2=>{e2.stopPropagation();quickSell({k:'slab',sl,val,name:sl.name});$('#vzoom').classList.remove('on');renderVault()};
+ $('#vzoom').classList.add('on')});
 $('#vzoom').addEventListener('click',e=>{if(e.target.id==='vzoom'||e.target.id==='vinfo')$('#vzoom').classList.remove('on')});
 
-/* =================== STATS =================== */
-function renderStats(){
- let own=0,dup=0;Object.values(S.coll).forEach(s=>Object.values(s).forEach(n=>{own++;dup+=n-1}));
- const st=[[S.packs,'Packs ripped'],[S.cards,'Cards pulled'],[own,'Unique cards'],[dup,'Duplicates'],[S.holos,'Holos'],[S.ultras,'Ultra rares'],[S.gods,'God packs'],[S.sinceHolo,'Packs since holo'],[unlockedSets().length+'/'+SETS.length,'Sets unlocked'],[S.slabs.filter(s=>s.grade===10).length,'PSA 10s']];
- $('#sgrid').innerHTML=st.map(([v,l])=>`<div class="stat"><b>${v}</b><span>${l}</span></div>`).join('');
- $('#hist').innerHTML=S.hist.length?S.hist.map(h=>`<div class="hist"><img src="${h.img}"><div class="t"><b>${h.name}</b>${h.god?' · GOD PACK':''}<small>${setById[h.set].n} · Pack #${h.p} · ${tierName[h.r]} · ${new Date(h.d).toLocaleDateString('en-GB')}</small></div></div>`).join(''):'<p style="color:var(--mut);font-size:13px">No holos yet. Keep ripping.</p>';
-}
-$('#resetBtn').onclick=()=>{if(confirm('Really delete your whole collection, slabs and progress?')){localStorage.removeItem(KEY);location.reload()}};
+/* =================== CARD SHOWS =================== */
+const SHOWS=[
+ {id:'flea',n:'Sunday Flea Market',e:'🧺',rank:0,fee:0,vis:6,mult:.88,gem:.2,fake:.12,boxN:4,hits:1,d:'Cheap stuff, kids and lowballers. Watch out for fakes in the aisles.'},
+ {id:'reg',n:'Regional Card Show',e:'🏟️',rank:1,fee:12,vis:8,mult:1,gem:.15,fake:.04,boxN:6,hits:1,d:'Real collectors, the first whales and better dealers.'},
+ {id:'tokyo',n:'Tokyo Card Expo',e:'🗼',rank:2,fee:45,vis:9,mult:1.12,gem:.12,fake:0,boxN:8,hits:2,d:'Serious buyers who pay for quality. No fakes on the floor.'},
+ {id:'world',n:'Pokémon World Show',e:'🌍',rank:3,fee:140,vis:10,mult:1.25,gem:.1,fake:0,boxN:10,hits:3,d:'The biggest whales on the planet. Bring your best slabs.'}];
+const BT={
+ kid:{e:['🧒','👧','👦'],n:['Timmy','Mia','Leo','Emma','Noah'],t:'THE KID',pat:1,max:1,w:[3,2,1,.5]},
+ flip:{e:['🕶️','😎'],n:['Vince','Brad','Kyle','Dex'],t:'THE FLIPPER',pat:3,max:.8,w:[3,3,2,2]},
+ dad:{e:['🧔','👨‍🦳'],n:['Mike','Steve','Frank','Tom'],t:'NOSTALGIC DAD',pat:2,max:1.35,w:[2,2,1,1]},
+ coll:{e:['🧐','👩‍🦰','🤓'],n:['Yuki','Sarah','Jonas','Priya','Ken'],t:'THE COLLECTOR',pat:2,max:1.15,w:[1,2,3,3]},
+ whale:{e:['🐋','🤵'],n:['Mr. Sterling','Victoria','Mr. Tanaka','The Duke'],t:'THE WHALE',pat:2,max:1.45,w:[.2,.6,1.5,3]},
+ trade:{e:['🤝'],n:['Alex','Sam','Jo','Chris'],t:'TRADER',pat:1,max:1,w:[1.4,1.2,1,.8]}};
+const LINES={kid:['Is that a real {c}?! I saved my allowance!','Whoa, {c}! My friends will freak out!'],flip:['{o} for the {c}. Cash. Right now.','Market\'s soft, man. {o} for that {c}.'],
+ dad:['I had this {c} as a kid! My mom threw them all out…','Oh wow, {c}. This takes me back. Would {o} work?'],coll:['I need {c} for my binder. Would you take {o}?','Nice {c}. Centering looks fine. {o}?'],
+ whale:['I only buy the best. {o} for the {c}.','{c}. I\'ll take it. {o}, don\'t waste my time.']};
+let SH=null;
+function renderShowList(){
+ $('#showStage').style.display='none';$('#showList').style.display='';$('#showHead').innerHTML='CARD <b>SHOWS</b>';
+ const ri=rankIdx();
+ $('#showList').innerHTML=`<div class="pnl"><h4>YOUR REPUTATION</h4><div class="big">⭐ ${S.rep.toFixed(1)}</div><p>Fair deals raise it, gouging and fakes lower it. Higher reputation brings more collectors and whales to your table.</p></div>`+
+ SHOWS.map(s=>{const lock=ri<s.rank;return `<div class="pnl ${lock?'':'gold'}" style="${lock?'opacity:.5':''}"><div class="row2"><div class="ic" style="font-size:34px">${s.e}</div><div class="tx"><b>${s.n}</b><small>${s.d}<br>${s.vis} visitors · entry ${s.fee?fmt(s.fee):'free'}${lock?` · needs rank ${RANKS[s.rank][0]}`:''}</small></div><button class="sbtn" data-show="${s.id}" ${lock?'disabled':''}>GO</button></div></div>`}).join('')+
+ `<h3 class="sec">How it works</h3><div class="odds">Pick up to <b>8 items</b> for your table. Buyers walk up and make offers. <b>Accept</b>, <b>counter</b> or <b>decline</b>. Push too hard and they leave. Between buyers you can walk the <b>dealer aisles</b> and hunt for underpriced cards, but every walk costs you one visitor. <b>Traders</b> offer slabs in swap. Check the label carefully: fake slabs are out there.</div>`}
+$('#showList').addEventListener('click',e=>{const b=e.target.closest('[data-show]');if(b)setupTable(SHOWS.find(s=>s.id===b.dataset.show))});
+async function ensureLoaded(){await Promise.all(unlockedSets().map(s=>loadSet(s.id).catch(()=>null)));save()}
+function itemThumb(it){return it.k==='seal'?`<div style="aspect-ratio:63/88;display:flex;align-items:center;justify-content:center;font-size:24px;background:linear-gradient(135deg,#3a2a6a,#120a26)">${it.s.kind==='box'?'📦':'🎁'}</div>`:`<img src="${it.img}">`}
+function itemTag(it){return it.k==='slab'?`PSA ${it.grade}`:it.k==='mis'?'ERROR':it.k==='seal'?'SEALED':''}
+async function setupTable(show){
+ $('#showList').style.display='none';const st=$('#showStage');st.style.display='flex';st.innerHTML='<div style="flex:1;display:flex;align-items:center;justify-content:center"><div class="spin"></div></div>';
+ await ensureLoaded();
+ const items=allItems().sort((a,b)=>b.val-a.val);const sel=new Set(items.slice(0,Math.min(8,items.length)).filter(i=>i.val>=1).map(i=>i.key));
+ $('#showHead').innerHTML=`${show.e} <b>${show.n.toUpperCase()}</b>`;
+ const draw=()=>{st.innerHTML=`<div class="showTop"><span>SET UP YOUR TABLE</span><span><b>${sel.size}</b>/8</span></div>
+  <div class="scroll" style="margin-top:8px"><div class="pick">${items.map(it=>`<div class="p ${sel.has(it.key)?'on':''} ${it.k==='mis'?'mp-'+it.m.v:''}" data-k="${it.key}">${itemThumb(it)}<span class="ck">✓</span><span class="pv">${itemTag(it)?itemTag(it)+' · ':''}${fmt(it.val)}</span></div>`).join('')||'<p class="empty" style="grid-column:1/-1">Nothing to sell yet. You can still walk the aisles and buy.</p>'}</div></div>
+  <div class="ctrl"><div class="two"><button class="btn ghost" id="shCancel">BACK</button><button class="btn" id="shGo">OPEN DOORS${show.fee?' · '+fmt(show.fee):''}</button></div></div>`;
+  st.querySelector('.pick')&&st.querySelector('.pick').addEventListener('click',e=>{const p=e.target.closest('.p');if(!p)return;const k=p.dataset.k;if(sel.has(k))sel.delete(k);else{if(sel.size>=8){toast('Your table fits 8 items');return}sel.add(k)}draw()});
+  $('#shCancel').onclick=renderShowList;
+  $('#shGo').onclick=()=>{if(show.fee&&!spend(show.fee))return;startShow(show,items.filter(i=>sel.has(i.key)))}};
+ draw()}
+function startShow(show,table){
+ SH={show,table:table.map(t=>Object.assign({},t,{sold:false})),vis:show.vis,earned:0,sold:0,rep0:S.rep,dealers:null,cur:null};
+ S.stats.shows++;prog('show',1);save();sfx.cash();nextBuyer()}
+function showFrame(inner,ctrl){
+ const st=$('#showStage');
+ st.innerHTML=`<div class="showTop"><span>VISITORS LEFT <b>${SH.vis}</b></span><span>SOLD <b>${SH.sold}</b> · <b style="color:#7dffa8">${fmt(SH.earned)}</b></span></div>
+ <div class="strip2">${SH.table.map(t=>`<div class="it ${t.sold?'sold':''} ${SH.cur&&SH.cur.it===t?'want':''} ${t.k==='mis'?'mp-'+t.m.v:''}">${itemThumb(t)}<div class="gl">${t.sold?'SOLD':itemTag(t)||fmt(t.val)}</div></div>`).join('')||'<span class="empty" style="padding:8px">Empty table</span>'}</div>
+ <div class="buyerArea">${inner}</div><div class="ctrl">${ctrl}</div>`}
+function pickType(){const i=SHOWS.indexOf(SH.show);const boost=1+Math.min(1.5,S.rep/60);
+ const w=Object.entries(BT).map(([k,b])=>[k,b.w[i]*((k==='coll'||k==='whale')?boost:1)]);let r=Math.random()*w.reduce((a,x)=>a+x[1],0);for(const [k,v] of w){if((r-=v)<0)return k}return 'coll'}
+const gen1=it=>{const s=setById[it.set];return s&&s.g===1};
+function wants(type,it){if(it.sold)return 0;const v=it.val;
+ switch(type){case 'kid':return v<=22*SH.show.mult&&it.k!=='seal'?(/pikachu/i.test(it.name)?3:1):0;
+  case 'flip':return v>=.5?1:0;case 'dad':return gen1(it)?(it.k==='seal'?3:2):(v>=2?.4:0);
+  case 'coll':return it.k==='mis'?3:it.k==='slab'?2:(it.c&&(it.c.r==='holo'||it.c.r==='ultra'))?2:v>=1?.6:0;
+  case 'whale':return (it.k==='slab'&&it.grade>=9)||it.k==='seal'||it.k==='mis'||(it.c&&it.c.r==='ultra')?2+v/50:0;case 'trade':return v>=3?1:0}return 0}
+function ceilingFor(type,it){let f=BT[type].max;if(type==='kid'&&/pikachu/i.test(it.name))f=1.5;if(type==='dad'&&!gen1(it))f=.95;
+ return it.val*f*SH.show.mult*(1+Math.min(.12,S.rep/400))*(hasBadge('boulder')?1.05:1)*rr(.92,1.08)}
+function nextBuyer(){
+ if(SH.vis<=0)return endShow();SH.vis--;
+ const type=pickType(),b=BT[type];const cands=SH.table.filter(t=>wants(type,t)>0);
+ const who={type,e:rnd(b.e),n:rnd(b.n),t:b.t,pat:b.pat};
+ if(!cands.length){SH.cur=null;showFrame(`<div class="av">${who.e}</div><div class="bn">${who.n}</div><div class="bt">${who.t}</div><div class="bubble">${SH.table.every(t=>t.sold)?'Your table is empty, friend.':'Just looking, thanks 👀'}</div>`,
+  `<div class="two"><button class="btn ghost" id="aisle">🛒 AISLES</button><button class="btn" id="nxt">NEXT VISITOR</button></div>`);bindShowCtl();return}
+ let tot=cands.reduce((a,t)=>a+wants(type,t),0),r=Math.random()*tot,it=cands[0];for(const t of cands){if((r-=wants(type,t))<0){it=t;break}}
+ who.it=it;SH.cur=who;
+ if(type==='trade')return tradeOffer(who);
+ who.ceil=Math.round(ceilingFor(type,it)*100)/100;who.offer=Math.max(.05,Math.round(who.ceil*(type==='flip'?rr(.55,.68):rr(.68,.85))*100)/100);
+ haggleView(who,rnd(LINES[type]).replace('{c}',esc(it.name)).replace('{o}',fmt(who.offer)))}
+function haggleView(who,line){
+ const it=who.it,lo=Math.max(.05,it.val*.5),hi=Math.max(it.val*2.4,who.offer*1.5),def=Math.min(hi,Math.max(who.offer*1.2,it.val*1.05));
+ showFrame(`<div class="av">${who.e}</div><div class="bn">${who.n}</div><div class="bt">${who.t}</div><div class="pati">${Array.from({length:BT[who.type].pat},(_,i)=>`<i class="${i<who.pat?'':'x'}"></i>`).join('')}</div>
+  <div class="bubble">${line}</div>
+  <div class="deal"><div class="dimg">${it.k==='slab'?slabHTML(it.sl,{small:1}):itemThumb(it)}</div><div class="dtx"><b>${esc(it.name)}</b>${itemTag(it)?itemTag(it)+' · ':''}market ${fmt(it.val)}<div class="offer">${fmt(who.offer)}</div>their offer</div></div>`,
+  `<div class="sliderRow"><input type="range" id="ask" min="${lo}" max="${hi}" step="${hi>50?1:.05}" value="${def}"><b id="askV">${fmt(def)}</b></div>
+  <div class="two"><button class="btn ghost" id="dec">NO DEAL</button><button class="btn ghost" id="ctr">COUNTER</button><button class="btn" id="acc">ACCEPT</button></div>`);
+ const a=$('#ask');a.oninput=()=>{$('#askV').textContent=fmt(+a.value);const r=+a.value/it.val;$('#askV').style.color=r>1.4?'#ff8a8a':r>1.15?'#ffe07a':'#7dffa8'};a.oninput();
+ a.addEventListener('pointerdown',e=>e.stopPropagation());
+ $('#acc').onclick=()=>doSale(who,who.offer);
+ $('#dec').onclick=()=>leave(who,'No worries. Have a good one!');
+ $('#ctr').onclick=()=>{const ask=+a.value;
+  if(ask<=who.offer){doSale(who,ask);return}
+  if(ask<=who.ceil){doSale(who,ask,true);return}
+  who.pat--;if(who.pat<=0){sfx.bad();leave(who,rnd(['Too rich for me 👋','You\'re dreaming, pal.','I\'ll find it cheaper online.']));return}
+  who.offer=Math.round((who.offer+(who.ceil-who.offer)*rr(.45,.7))*100)/100;tone([440,392],.15,.06,'triangle',.1);
+  haggleView(who,rnd(['Hmm… best I can do is {o}.','Okay, okay. {o}?','{o}. That\'s my limit.']).replace('{o}',fmt(who.offer)))}}
+function leave(who,line){const av=document.querySelector('.av');if(av)av.classList.add('leave');const bb=document.querySelector('.bubble');if(bb)bb.textContent=line;
+ document.querySelector('.ctrl').innerHTML=`<div class="two"><button class="btn ghost" id="aisle">🛒 AISLES</button><button class="btn" id="nxt">NEXT VISITOR</button></div>`;bindShowCtl()}
+function doSale(who,price,countered){
+ const it=who.it,r=removeItem(it);it.sold=true;
+ if(r&&r.fake&&(it.k==='slab'||Math.random()<.5)){sfx.bad();buzz([80,40,80]);addRep(-3);
+  leave(who,it.k==='slab'?'Wait… "P.S.A"? This slab is FAKE! I\'m calling security 😠':'This is a FAKE card! Shame on you.');toast('Fake detected. It got confiscated. Reputation −3');save();return}
+ addCoins(price);sfx.cash();SH.earned+=price;SH.sold++;S.stats.sold++;S.stats.earned+=price;prog('sell',1);prog('earn',price);
+ const ratio=price/it.val;addRep(ratio<=1.25?1:ratio>1.45?-1:.5);addXP(5+Math.min(40,price/3));save();
+ leave(who,countered?rnd(['Deal! 🤝','Fine, you win. Deal.','Pleasure doing business!']):rnd(['Awesome, thanks!','Sweet! 🙌','Deal!']));burst(40,['#7dffa8','#ffe07a','#fff'],.6);checkAll()}
+function tradeOffer(who){
+ const it=who.it,scam=Math.random()<(SHOWS.indexOf(SH.show)<2?.5:.3);const pool=[];Object.values(memo).forEach(m=>pool.push(...m.P.holo,...m.P.ultra));
+ if(!pool.length){SH.vis++;return nextBuyer()}
+ let sl;
+ if(scam){const c=pool.sort((a,b)=>cardVal(b)-cardVal(a))[Math.floor(Math.random()*Math.min(8,pool.length))];sl={uid:uid(),id:c.id,name:c.name,n:c.n,r:c.r,s:c.s,l:c.l,grade:10,cert:String(Math.floor(1e5+Math.random()*9e5)),seed:Math.floor(Math.random()*1e9),d:NOW(),fake:true}}
+ else{const tgt=it.val*rr(.95,1.3);let best=null,bd=1e9;for(let k=0;k<40;k++){const c=rnd(pool);for(const g of [7,8,9,10]){const d=Math.abs(cardVal(c,{grade:g})-tgt);if(d<bd){bd=d;best={c,g}}}}
+  const c=best.c;sl={uid:uid(),id:c.id,name:c.name,n:c.n,r:c.r,s:c.s,l:c.l,grade:best.g,cert:String(Math.floor(1e8+Math.random()*9e8)),seed:Math.floor(Math.random()*1e9),d:NOW()}}
+ who.sl=sl;who.scam=scam;const claim=cardVal(sl,{grade:sl.grade});
+ showFrame(`<div class="av">${who.e}</div><div class="bn">${who.n}</div><div class="bt">${who.t}</div>
+  <div class="bubble">Trade you my <b>PSA ${sl.grade} ${esc(sl.name)}</b> for your ${esc(it.name)}? Tap my slab to inspect it.</div>
+  <div class="deal"><div class="dimg" style="width:120px" id="tSlab"><div style="width:120px">${slabHTML(sl,{small:1})}</div></div><div class="dtx"><b>Their slab</b>worth ${fmt(claim)} if real<br><br><b>Your ${itemTag(it)||'card'}</b>${esc(it.name)} · ${fmt(it.val)}</div></div>`,
+  `<div class="two"><button class="btn ghost" id="tNo">NO THANKS</button><button class="btn" id="tYes">TRADE</button></div>`);
+ $('#tSlab').onclick=()=>{$('#zslab').innerHTML=slabHTML(sl);bindTilt($('#zslab .slab'));$('#vinfo').innerHTML=`<b>Inspect the slab</b>Check the logo, the font, the grade text and the cert number.<br>Real PSA certs have 9 digits.`;$('#vact').innerHTML='';$('#vzoom').classList.add('on')};
+ $('#tYes').onclick=()=>{removeItem(it);it.sold=true;S.slabs.push(sl);save();sfx.cash();
+  leave(who,scam?'Pleasure! 😏 *walks away very fast*':'Great trade, enjoy it! 🤝');if(!scam)addRep(.5)};
+ $('#tNo').onclick=()=>{if(scam){S.stats.scams++;addRep(2);addXP(25);sfx.holo();toast('You spotted a fake slab! Reputation +2');leave(who,'Uh… never mind 😬');checkAll()}else leave(who,'Suit yourself!');save()}}
+function bindShowCtl(){if($('#nxt'))$('#nxt').onclick=nextBuyer;if($('#aisle'))$('#aisle').onclick=aisles}
+/* ---- dealer aisles ---- */
+function knowsValue(c){return S.shop.guide||hasBadge('marsh')}
+function genDealers(){const sh=SH.show,pool={rare:[],holo:[],ultra:[]};unlockedSets().forEach(s=>{const m=memo[s.id];if(m){pool.rare.push(...m.P.rare);pool.holo.push(...m.P.holo);pool.ultra.push(...m.P.ultra)}});
+ const out=[];for(let i=0;i<6;i++){const r=Math.random();const tier=r<.06?'ultra':r<.45?'holo':'rare';const c=rnd(pool[tier].length?pool[tier]:pool.rare);if(!c)continue;const v=cardVal(c);
+  let price,fake=false,gem=false;const q=Math.random();
+  if(q<sh.fake){fake=true;price=v*rr(.3,.5)}else if(q<sh.fake+sh.gem){gem=true;price=v*rr(.35,.55)}else price=v*rr(.88,1.32);
+  out.push({c,price:Math.max(.25,Math.round(price*100)/100),fake,gem,bought:false})}
+ // mystery box priced from a simulation so it never pays on average
+ let sum=0;for(let k=0;k<50;k++)sum+=boxContents(pool).reduce((a,c)=>a+cardVal(c),0);
+ SH.box={price:Math.max(3,Math.round(sum/50*1.2)),bought:false,pool};SH.dealers=out}
+function boxContents(pool){const sh=SH.show,out=[];const lo=[];unlockedSets().forEach(s=>{const m=memo[s.id];if(m)lo.push(...m.P.uncommon,...m.P.rare)});
+ for(let i=0;i<sh.boxN-sh.hits;i++){const c=rnd(lo);if(c)out.push(c)}
+ for(let i=0;i<sh.hits;i++){const r=Math.random();const p=r<.03*(1+SHOWS.indexOf(sh))?pool.ultra:r<.3?pool.holo:pool.rare;const c=rnd(p.length?p:pool.rare);if(c)out.push(c)}return out}
+function aisles(){
+ if(SH.vis<=0){toast('The show is closing');return endShow()}
+ SH.vis--;if(!SH.dealers)genDealers();SH.cur=null;
+ const draw=()=>{showFrame(`<div style="width:100%;overflow-y:auto;touch-action:pan-y;max-height:100%"><div class="bt" style="text-align:center;margin-bottom:8px">DEALER AISLES · ${knowsValue()?'PRICE GUIDE ON':'TRUST YOUR GUT'}</div><div class="dgrid">${SH.dealers.map((d,i)=>{const seen=(S.seen[setOf(d.c.id)]||{})[d.c.id];const hv=knowsValue()?`Market ${fmt(cardVal(d.c))}`:seen?`Your binder: ~${fmt(Math.round(cardVal(d.c)))}`:'Value: ???';
+   return `<div class="dl ${d.bought?'boughtx':''}" data-d="${i}"><img src="${d.c.s}"><div class="pr">${fmt(d.price)}</div><div class="hv">${hv}</div></div>`}).join('')}
+   <div class="dl ${SH.box.bought?'boughtx':''}" data-box="1"><div class="box2">🎁</div><div class="pr">${fmt(SH.box.price)}</div><div class="hv">Mystery box · ${SH.show.boxN} cards</div></div></div></div>`,
+  `<div class="two"><button class="btn" id="nxt">BACK TO MY TABLE</button></div>`);
+  bindShowCtl();
+  document.querySelectorAll('.dl[data-d]').forEach(el=>el.onclick=()=>{const d=SH.dealers[+el.dataset.d];if(d.bought)return;
+   modal(`<div style="width:56%;margin:0 auto"><img src="${d.c.l}" style="width:100%;border-radius:8px"></div><h2 style="margin-top:12px">${esc(d.c.name)}</h2><p>${setById[setOf(d.c.id)].n} · ${tierName[d.c.r]}<br>Dealer asks <b>${fmt(d.price)}</b></p><button class="btn" id="dBuy" ${S.coins<d.price?'disabled':''}>BUY · ${fmt(d.price)}</button><button class="btn ghost" onclick="closeModal()">PASS</button>`);
+   $('#dBuy').onclick=()=>{if(!spend(d.price))return;d.bought=true;addRaw(d.c,d.fake);S.stats.bought++;prog('bought',1);save();closeModal();sfx.cash();toast(d.gem||d.fake?'Bargain! 🔥':'Bought '+d.c.name);draw();checkAll()}});
+  const bx=document.querySelector('.dl[data-box]');if(bx)bx.onclick=()=>{if(SH.box.bought)return;if(!spend(SH.box.price))return;SH.box.bought=true;const cs=boxContents(SH.box.pool);cs.forEach(c=>addRaw(c));S.stats.bought++;prog('bought',1);save();
+   modal(`<div class="em">🎁</div><h2>Mystery box</h2><div class="grid5" style="margin-top:12px">${cs.map((c,i)=>`<div class="mini ${c.r}" style="animation-delay:${i*120}ms"><img src="${c.s}"><span class="pv">${fmt(cardVal(c))}</span></div>`).join('')}</div><p>Total value <b>${fmt(cs.reduce((a,c)=>a+cardVal(c),0))}</b> · paid ${fmt(SH.box.price)}</p><button class="btn" onclick="closeModal()">NICE</button>`);sfx.holo();draw();checkAll()}};
+ draw()}
+function endShow(){
+ const dr=Math.round((S.rep-SH.rep0)*10)/10;addXP(20);save();
+ showFrame(`<div class="em" style="font-size:60px">🏁</div><div class="bn">Show's over</div><div class="bubble">You sold <b>${SH.sold}</b> item${SH.sold===1?'':'s'} for <b>${fmt(SH.earned)}</b>.<br>Reputation ${dr>=0?'+':''}${dr}</div>`,
+ `<div class="two"><button class="btn" id="shDone">PACK UP</button></div>`);$('#shDone').onclick=()=>{SH=null;renderShowList()};checkAll()}
 
-/* =================== NAV =================== */
+/* =================== DAILY MISSIONS =================== */
+const DPOOL=[{k:'rip',t:'Rip 3 packs',n:3,r:8},{k:'holo',t:'Pull a holo',n:1,r:12},{k:'sell',t:'Sell 2 items at a card show',n:2,r:12},{k:'earn',t:'Earn $30 at card shows',n:30,r:15},
+ {k:'grade',t:'Send a card to PSA',n:1,r:10},{k:'show',t:'Visit a card show',n:1,r:6},{k:'job',t:'Do an odd job at Gary\'s',n:1,r:5},{k:'bounty',t:'Complete a bounty',n:1,r:15},{k:'bought',t:'Buy something from a dealer',n:1,r:8}];
+function rollDaily(){if(S.daily.day===dayKey())return;const pool=[...DPOOL].sort((a,b)=>hsh(a.k+dayKey())-hsh(b.k+dayKey()));S.daily={day:dayKey(),keys:pool.slice(0,3).map(d=>d.k),p:{},claimed:[]};save()}
+function prog(k,n){rollDaily();S.daily.p[k]=(S.daily.p[k]||0)+n;save()}
+const dReward=d=>Math.round(d.r*(1+rankIdx()*.5));
+const dailyReady=()=>S.daily.keys.filter(k=>{const d=DPOOL.find(x=>x.k===k);return (S.daily.p[k]||0)>=d.n&&!S.daily.claimed.includes(k)}).length;
+
+/* =================== STORY / COLLECTIONS / ACHIEVEMENTS =================== */
+const STORY=[
+ {t:"Grandpa's old binder",d:'Grandpa found his binder from 1999 in the attic. Half the pages are empty. Rip 5 packs to see what the fuss is about.',ok:()=>S.packs>=5,r:{c:20},rt:'+$20'},
+ {t:'Filling the pages',d:'"Back in my day we had them all." Own 30 different Base Set cards.',ok:()=>seenCount('base1')>=30,r:{free:2},rt:'+2 free packs'},
+ {t:'The shiny ones',d:'"The holos were the ones that mattered." Pull a holo from Base Set.',ok:()=>!!S.flags.baseHolo,r:{c:30},rt:'+$30'},
+ {t:'Make it official',d:'Grandpa read about PSA in the paper. Get any card graded.',ok:()=>S.slabs.length>=1||S.stats.graded>=1,r:{c:25},rt:'+$25'},
+ {t:'Weekend at the market',d:'Sell 3 items at a card show. Grandpa wants to see you haggle.',ok:()=>S.stats.sold>=3,r:{c:40},rt:'+$40'},
+ {t:'The full binder',d:'Complete Base Set. Every last card.',ok:()=>setComplete('base1'),r:{seal:'base1',kind:'box'},rt:'Sealed Base Set booster box'},
+ {t:'Old friends',d:'Earn the Boulder and Cascade badges.',ok:()=>hasBadge('boulder')&&hasBadge('cascade'),r:{c:150},rt:'+$150'},
+ {t:'A family legend',d:'Reach Expert rank.',ok:()=>rankIdx()>=3,r:{c:400},rt:'+$400'}];
+const COLS=[['Kanto Starters',['bulbasaur','charmander','squirtle'],25],['Legendary Birds',['articuno','zapdos','moltres'],45],['Eeveelutions',['vaporeon','jolteon','flareon'],35],['Ghost Hunter',['gastly','haunter','gengar'],30],
+ ['Dragon Tamer',['dratini','dragonair','dragonite'],35],['Fossil Hunter',['omanyte','kabuto','aerodactyl'],30],['Johto Starters',['chikorita','cyndaquil','totodile'],30],['Legendary Beasts',['raikou','entei','suicune'],50],
+ ['Day & Night',['espeon','umbreon'],45],['Tower Duo',['lugia','ho-oh'],60],['Hoenn Starters',['treecko','torchic','mudkip'],30],['Weather Trio',['groudon','kyogre','rayquaza'],70],['Pikachu Fan',['pikachu×5'],40]];
+function colProgress(list){const names=Object.values(S.nm).map(n=>n.toLowerCase());
+ if(list[0]==='pikachu×5'){const c=Object.entries(S.nm).filter(([id,n])=>/pikachu/i.test(n)).length;return [Math.min(5,c),5]}
+ const have=list.filter(t=>names.some(n=>new RegExp('(^|[^a-z])'+t.replace('-','\\-')+'($|[^a-z])').test(n)));return [have.length,list.length]}
+const ACH=[['first','First rip','Open your first pack',()=>S.packs>=1,5],['p100','Pack addict','Open 100 packs',()=>S.packs>=100,50],['p1000','Pack legend','Open 1,000 packs',()=>S.packs>=1000,300],
+ ['holo','Shiny!','Pull your first holo',()=>S.holos>=1,10],['ultra','Ultra rare','Pull an ultra rare',()=>S.ultras>=1,40],['god','God Pack','Open a God Pack',()=>S.gods>=1,100],['b2b','Back to back','Holos in two packs in a row',()=>!!S.flags.b2b,40],
+ ['g10','Gem Mint','Get a PSA 10',()=>S.slabs.some(s=>s.grade===10&&!s.fake),60],['g1','Ouch','Get a PSA 1',()=>S.slabs.some(s=>s.grade===1),20],['sale','First sale','Sell at a card show',()=>S.stats.sold>=1,10],
+ ['k1','Big business','Earn $1,000 at shows',()=>S.stats.earned>=1000,100],['scam','Not today','Spot a fake slab',()=>S.stats.scams>=1,30],['comp','Completionist','Complete a set',()=>SETS.some(s=>setComplete(s.id)),80],
+ ['mis','Factory error','Pull a misprint',()=>S.stats.mis>=1,40],['shop','Open for business','Own a card shop',()=>S.shop.owned,50],['badges','Kanto Champion','Earn all 8 badges',()=>S.badges.length>=8,250],
+ ['legend','Legend','Reach Legend rank',()=>rankIdx()>=4,500],['grail','Holy Grail','Land your grail as PSA 10',()=>S.stats.grails>=1,300]];
+function checkAll(){ACH.forEach(([k,n,d,ok,r])=>{if(!S.ach.includes(k)&&ok()){S.ach.push(k);save();setTimeout(()=>{addCoins(r);toast(`🏆 ${n} · +${fmt(r)}`);tone([1318,1568,2093],.3,.07,'sine',.08)},300)}});
+ updDots()}
+function updDots(){const q=dailyReady()+(STORY[S.story]&&STORY[S.story].ok()?1:0)+COLS.filter(c=>!S.cols.includes(c[0])&&colProgress(c[1])[0]>=colProgress(c[1])[1]).length;
+ document.querySelector('nav button[data-s="scrHome"]').classList.toggle('alert',q>0||S.subs.some(s=>s.ready<=NOW())||oakReady())}
+
+/* =================== BOUNTIES =================== */
+function ensureBounties(){const slots=2+(hasBadge('soul')?1:0);S.bounties=S.bounties.filter(b=>b.until>NOW());
+ const pool=[];unlockedSets().forEach(s=>{const m=memo[s.id];if(m)pool.push(...m.P.rare,...m.P.rare,...m.P.holo)});
+ while(S.bounties.length<slots&&pool.length){const c=rnd(pool);if(S.bounties.some(b=>b.id===c.id))continue;S.bounties.push({id:c.id,name:c.name,img:c.s,reward:Math.round(cardVal(c)*1.7+2),until:NOW()+48*HOUR})}save()}
+function handBounty(i){const b=S.bounties[i];if(!b||rawCount(b.id)<1)return;const fake=takeRaw(b.id);S.bounties.splice(i,1);
+ if(fake){sfx.bad();addRep(-2);modal(`<div class="em">😠</div><h2>That's a fake</h2><p>The collector checked your ${esc(b.name)} under a loupe. Counterfeit. No reward, and they kept it.</p><button class="btn" onclick="closeModal()">OUCH</button>`)}
+ else{addCoins(b.reward);addXP(30);addRep(1);prog('bounty',1);sfx.cash();toast(`Bounty done · +${fmt(b.reward)}`)}save();renderQuests();checkAll()}
+
+/* =================== GYMS =================== */
+const GYMS=[['brock','Brock','Pewter City','Fighting',4,'boulder','Boulder Badge','+5% on every card show sale','🪨'],['misty','Misty','Cerulean City','Water',10,'cascade','Cascade Badge','+$5 daily allowance','💧'],
+ ['surge','Lt. Surge','Vermilion City','Lightning',20,'thunder','Thunder Badge','−25% PSA fees','⚡'],['erika','Erika','Celadon City','Grass',35,'rainbow','Rainbow Badge','+25% shop income','🌿'],
+ ['koga','Koga','Fuchsia City','Darkness',60,'soul','Soul Badge','+1 bounty slot','🌑'],['sabrina','Sabrina','Saffron City','Psychic',90,'marsh','Marsh Badge','See market values at every dealer','🔮'],
+ ['blaine','Blaine','Cinnabar Island','Fire',140,'volcano','Volcano Badge','−10% pack prices','🔥'],['gio','Giovanni','Viridian City','Holo',250,'earth','Earth Badge','+25% XP and reputation','🌍']];
+function gymTeam(type){const own=[];
+ Object.keys(S.coll).forEach(sid=>{const m=memo[sid];if(!m)return;Object.entries(S.coll[sid]).forEach(([id,n])=>{const c=m.byId[id];if(n>0&&c)own.push({c,v:cardVal(c)})})});
+ S.slabs.filter(s=>!s.fake).forEach(s=>{const c=cardById(s.id);if(c)own.push({c,v:cardVal(s,{grade:s.grade}),g:s.grade})});
+ const ok=own.filter(o=>type==='Holo'?(o.c.r==='holo'||o.c.r==='ultra'):o.c.ty===type&&o.c.t!=='Trainer');
+ const best={};ok.forEach(o=>{if(!best[o.c.id]||best[o.c.id].v<o.v)best[o.c.id]=o});return Object.values(best).sort((a,b)=>b.v-a.v).slice(0,3)}
+
+/* =================== SHOP / JOBS =================== */
+const UPG={disp:{n:'Display case',c:[0,160,320,640,1200],max:5,d:'+$1.50 per hour each level'},light:{n:'Lighting',c:[120,300,700],max:3,d:'+15% income each level'},store:{n:'Storage room',c:[60,150,400],max:3,d:'Income piles up longer while you are away'}};
+const shopRate=()=>S.shop.owned?S.shop.disp*1.5*(1+.15*S.shop.light)*(hasBadge('rainbow')?1.25:1):0;
+const shopCap=()=>[4,8,12,24][S.shop.store];
+const shopPending=()=>Math.round(Math.min(shopCap(),(NOW()-S.shop.last)/HOUR)*shopRate()*100)/100;
+const oakReady=()=>NOW()-S.lastOak>=7*DAY;
+const jobReady=()=>NOW()-S.lastJob>=3*60e3;
+const pocketReady=()=>isBroke()&&NOW()-S.lastPocket>=20*60e3;
+function doJob(){if(!jobReady())return;const pool=[];Object.values(memo).forEach(m=>pool.push(...m.P.common,...m.P.uncommon,...m.P.rare,...m.P.holo));
+ if(!pool.length){S.lastJob=NOW();addCoins(2);prog('job',1);save();return}
+ const cards=[];for(let i=0;i<8;i++){const lo=Math.random()<.5;const c=rnd(pool.filter(x=>lo?(x.r==='common'||x.r==='uncommon'):(x.r==='rare'||x.r==='holo')))||rnd(pool);cards.push(c)}
+ let i=0,ok=0;const draw=()=>{const c=cards[i];modal(`<h2>Sort Gary's bulk</h2><p>Card ${i+1}/8 · correct so far <b>${ok}</b> · $0.50 each</p><div class="jobCard" id="jc"><img src="${c.l}" onerror="this.src='${c.s}'"></div><div class="zact" style="margin:6px auto 0"><div class="two"><button class="btn ghost" id="jB">BULK BIN</button><button class="btn" id="jR">RARE CASE</button></div></div><p style="font-size:11px">Rare cards have a ★ next to the card number. Commons ● and uncommons ◆ go in bulk.</p>`);
+  const pickA=rare=>{const right=(c.r==='rare'||c.r==='holo'||c.r==='ultra')===rare;if(right){ok++;tone([988],.1,.06)}else sfx.bad();$('#jc').style.transform=`translateX(${rare?120:-120}%) rotate(${rare?15:-15}deg)`;i++;setTimeout(()=>i<8?draw():fin(),220)};
+  $('#jB').onclick=()=>pickA(false);$('#jR').onclick=()=>pickA(true)};
+ const fin=()=>{S.lastJob=NOW();S.stats.jobs++;prog('job',1);const pay=Math.max(.5,ok*.5);addCoins(pay);save();modal(`<div class="em">🧹</div><h2>Shift done</h2><p>${ok}/8 sorted right. Gary pays you <b>${fmt(pay)}</b>. Come back in 3 minutes.</p><button class="btn" onclick="closeModal();go('scrShop')">THANKS GARY</button>`);checkAll()};
+ draw()}
+
+/* =================== RENDER: HOME =================== */
+function renderHome(){
+ rollDaily();const ri=rankIdx(),nx=RANKS[ri+1],cv=collValue();
+ const rProg=nx?(S.xp-RANKS[ri][1])/(nx[1]-RANKS[ri][1])*100:100;
+ let h=`<div class="hello">${RANKS[ri][0]}</div><div class="mbar"><i style="width:${rProg}%"></i></div><p style="color:var(--mut);font-size:11px;margin-top:5px;letter-spacing:.06em">${S.xp} XP${nx?` · ${nx[1]-S.xp} to ${nx[0]}`:' · max rank'} · ⭐ ${S.rep.toFixed(1)} reputation</p>
+ <div class="kpis"><div class="kpi"><b>${fmt(S.coins)}</b><span>Cash</span></div><div class="kpi"><b>${fmt(cv)}</b><span>Collection value</span></div></div>`;
+ if(crashToday())h+=`<div class="pnl red"><h4>📉 MARKET CRASH</h4><p>Every card trades 30% lower today. Great day to buy at dealers, bad day to sell.</p></div>`;
+ const ready=S.subs.filter(s=>s.ready<=NOW()).length;if(ready)h+=`<div class="pnl gold" data-go="scrVault"><h4>📦 PSA PACKAGE ARRIVED</h4><div class="big">${ready} slab${ready>1?'s':''} waiting in your Vault</div></div>`;
+ if(oakReady())h+=`<div class="pnl gold"><div class="row2"><div class="ic">🎓</div><div class="tx"><b>Professor Oak's weekly gift</b><small>A sealed bundle is waiting for you.</small></div><button class="sbtn" id="oak">CLAIM</button></div></div>`;
+ if(isBroke())h+=`<div class="pnl red"><h4>LOW ON CASH</h4><p>Do an odd job at Gary's, quick sell a card, or ask Grandpa for pocket money in the Shop.</p></div>`;
+ if(S.free>0||Object.values(S.inv).some(n=>n>0))h+=`<div class="pnl" data-go="scrSets"><div class="row2"><div class="ic">🎟️</div><div class="tx"><b>Packs waiting</b><small>${S.free?S.free+' free voucher'+(S.free>1?'s':''):''}${S.free&&Object.values(S.inv).some(n=>n>0)?' · ':''}${Object.entries(S.inv).filter(([k,n])=>n>0).map(([k,n])=>n+'× '+setById[k].n).join(', ')}</small></div><button class="sbtn">RIP</button></div></div>`;
+ // grail
+ const g=S.grail;h+=`<div class="pnl"><h4>👑 YOUR GRAIL</h4>${g?`<div class="row2"><img class="th" src="${g.img}"><div class="tx"><b>PSA 10 ${esc(g.name)}</b><small>${setById[setOf(g.id)].n} · raw ${rawCount(g.id)?'✓ owned':'✗ not owned'} · PSA 10 ✗<br>Reward: $200 + 300 XP</small></div><button class="sbtn g" id="grailPick">CHANGE</button></div>`:`<p>Pick one ultra rare as your life goal. Land it as a PSA 10 for a huge reward.</p><button class="btn ghost" id="grailPick">CHOOSE GRAIL</button>`}</div>`;
+ // daily
+ h+=`<div class="pnl"><h4>DAILY MISSIONS</h4>${S.daily.keys.map(k=>{const d=DPOOL.find(x=>x.k===k),p=Math.min(d.n,Math.floor(S.daily.p[k]||0)),done=p>=d.n,cl=S.daily.claimed.includes(k);
+  return `<div class="row2"><div class="tx"><b>${d.t}</b><div class="mbar"><i style="width:${p/d.n*100}%"></i></div></div><button class="sbtn ${done&&!cl?'':'g'}" data-claim="${k}" ${done&&!cl?'':'disabled'}>${cl?'✓':fmt(dReward(d))}</button></div>`}).join('')}</div>`;
+ const qd=(STORY[S.story]&&STORY[S.story].ok()?1:0)+COLS.filter(c=>!S.cols.includes(c[0])&&colProgress(c[1])[0]>=colProgress(c[1])[1]).length;
+ h+=`<div class="tiles">
+  <button class="tile" data-go="scrQuests">${qd?'<span class="dot"></span>':''}<i>📜</i>QUESTS</button>
+  <button class="tile" data-go="scrShop">${(S.shop.owned&&shopPending()>=1)||jobReady()?'<span class="dot"></span>':''}<i>🏪</i>SHOP</button>
+  <button class="tile" data-go="scrMarket"><i>📈</i>MARKET</button>
+  <button class="tile" data-go="scrGyms"><i>🏅</i>GYMS ${S.badges.length}/8</button>
+  <button class="tile" data-go="scrHof"><i>🖼️</i>HALL OF FAME</button>
+  <button class="tile" data-go="scrStats"><i>📊</i>STATS</button></div>`;
+ $('#homeBody').innerHTML=h;updDots()}
+let homeSig='';
+function renderHomeLive(){const sig=[S.subs.filter(s=>s.ready<=NOW()).length,jobReady(),oakReady(),isBroke()].join();if(sig!==homeSig){homeSig=sig;renderHome()}}
+$('#homeBody').addEventListener('click',e=>{const g=e.target.closest('[data-go]');if(g){go(g.dataset.go);return}
+ const c=e.target.closest('[data-claim]');if(c){const d=DPOOL.find(x=>x.k===c.dataset.claim);if(S.daily.claimed.includes(d.k))return;S.daily.claimed.push(d.k);addCoins(dReward(d));addXP(40);sfx.cash();save();renderHome();return}
+ if(e.target.id==='oak'){const s=rnd(unlockedSets());S.sealed.push({uid:uid(),set:s.id,kind:'bundle',packs:6,base:6*packPrice(s),bought:NOW()});S.lastOak=NOW();save();sfx.ultra();burst(120,['#ffe07a','#fff'],1);modal(`<div class="em">🎓</div><h2>Professor Oak</h2><p>"A true researcher needs samples!"<br>You got a sealed <b>${s.n} bundle</b> (6 packs). Find it in your Vault.</p><button class="btn" onclick="closeModal()">THANK YOU PROFESSOR</button>`);renderHome();return}
+ if(e.target.id==='grailPick'){pickGrail();return}});
+async function pickGrail(){await ensureLoaded();const pool=[];unlockedSets().forEach(s=>{const m=memo[s.id];if(m)pool.push(...m.P.ultra)});pool.sort((a,b)=>cardVal(b)-cardVal(a));
+ modal(`<h2>Choose your grail</h2><p>Only ultra rares from unlocked sets. More sets unlock more grails.</p><div class="grid5" style="grid-template-columns:repeat(3,1fr);margin-top:12px">${pool.slice(0,15).map(c=>`<div class="mini ultra" data-g="${c.id}" style="cursor:pointer"><img src="${c.s}"><span class="pv">${fmt(cardVal(c,{grade:10}))}</span></div>`).join('')}</div><button class="btn ghost" onclick="closeModal()">CANCEL</button>`);
+ document.querySelectorAll('[data-g]').forEach(el=>el.onclick=()=>{const c=cardById(el.dataset.g);S.grail={id:c.id,name:c.name,img:c.s};save();closeModal();renderHome();toast('Grail set: '+c.name)})}
+
+/* =================== RENDER: QUESTS =================== */
+function renderQuests(){ensureBounties();let h='';
+ const st=STORY[S.story];
+ h+=`<div class="pnl gold"><h4>👴 GRANDPA'S STORY · CHAPTER ${Math.min(S.story+1,STORY.length)}/${STORY.length}</h4>${st?`<div class="big">${st.t}</div><p>${st.d}</p><div class="row2"><div class="tx"><small>Reward: ${st.rt}</small></div><button class="sbtn" id="stClaim" ${st.ok()?'':'disabled'}>${st.ok()?'CLAIM':'IN PROGRESS'}</button></div>`:'<div class="big">The end… for now</div><p>Grandpa\'s binder is complete. He framed the first page.</p>'}</div>`;
+ h+=`<h3 class="sec">Bounties</h3><div class="pnl">${S.bounties.map((b,i)=>`<div class="row2"><img class="th" src="${b.img}"><div class="tx"><b>${esc(b.name)}</b><small>${setById[setOf(b.id)].n} · ${Math.ceil((b.until-NOW())/HOUR)}h left · you have ${rawCount(b.id)}</small></div><button class="sbtn" data-b="${i}" ${rawCount(b.id)?'':'disabled'}>${fmt(b.reward)}</button></div>`).join('')||'<p>No bounties right now. Open a set first.</p>'}</div>`;
+ h+=`<h3 class="sec">Collections</h3><div class="pnl">${COLS.map(([n,l,r])=>{const [a,b]=colProgress(l),done=S.cols.includes(n);return `<div class="row2"><div class="tx"><b>${n}</b><small>${l[0]==='pikachu×5'?'5 different Pikachu cards':l.map(x=>x[0].toUpperCase()+x.slice(1)).join(' · ')}</small><div class="mbar"><i style="width:${a/b*100}%"></i></div></div><button class="sbtn ${done?'g':''}" data-col="${n}" ${a>=b&&!done?'':'disabled'}>${done?'✓':`${fmt(r)} + PACK`}</button></div>`}).join('')}</div>`;
+ h+=`<h3 class="sec">Achievements · ${S.ach.length}/${ACH.length}</h3><div class="pnl">${ACH.map(([k,n,d,ok,r])=>`<div class="row2" style="${S.ach.includes(k)?'':'opacity:.45'}"><div class="ic">${S.ach.includes(k)?'🏆':'🔒'}</div><div class="tx"><b>${n}</b><small>${d} · ${fmt(r)}</small></div></div>`).join('')}</div>`;
+ $('#questBody').innerHTML=h}
+$('#questBody').addEventListener('click',e=>{
+ if(e.target.id==='stClaim'){const st=STORY[S.story];if(!st||!st.ok())return;const r=st.r;
+  if(r.c)addCoins(r.c);if(r.free){S.free+=r.free;toast(`+${r.free} free packs`)}if(r.seal){const s=setById[r.seal];S.sealed.push({uid:uid(),set:s.id,kind:r.kind,packs:18,base:18*packPrice(s),bought:NOW()});toast('Sealed Base Set box added to your Vault')}
+  S.story++;addXP(60);save();sfx.holo();burst(120,['#ffe07a','#fff'],1);renderQuests();checkAll();return}
+ const b=e.target.closest('[data-b]');if(b){handBounty(+b.dataset.b);return}
+ const c=e.target.closest('[data-col]');if(c){const col=COLS.find(x=>x[0]===c.dataset.col);if(S.cols.includes(col[0]))return;S.cols.push(col[0]);addCoins(col[2]);S.free++;addXP(50);save();sfx.holo();toast(`${col[0]} complete · +1 free pack`);renderQuests();checkAll()}});
+
+/* =================== RENDER: GYMS =================== */
+async function renderGyms(){$('#gymBody').innerHTML='<div style="display:flex;justify-content:center;padding:40px"><div class="spin"></div></div>';await ensureLoaded();
+ $('#gymBody').innerHTML=`<p class="empty" style="padding:10px 4px;text-align:left">Show each Gym Leader a team of 3 of your cards of their type. The team's combined value has to reach their bar. You keep your cards. Every badge gives a permanent bonus.</p>`+
+ GYMS.map(([k,n,city,type,need,b,bn,bd,em])=>{const team=gymTeam(type),tot=team.reduce((a,o)=>a+o.v,0),has=hasBadge(b),ok=team.length>=3&&tot>=need;
+  return `<div class="pnl ${has?'gold':''}"><div class="row2"><div class="ic">${has?'🏅':em}</div><div class="tx"><b>${n} · ${city}</b><small>${type==='Holo'?'Any holo or ultra rare':type+' type'} · team value ${fmt(need)}+<br>${has?'✓ '+bn+': '+bd:bn+': '+bd}</small></div>${has?'':`<button class="sbtn" data-gym="${k}" ${ok?'':'disabled'}>CHALLENGE</button>`}</div>
+  ${has?'':`<div style="display:flex;gap:6px;margin-top:6px">${team.map(o=>`<img class="th" src="${o.c.s}" style="width:44px">`).join('')}<div style="flex:1;font-size:11px;color:var(--mut);align-self:center;text-align:right">${team.length}/3 · ${fmt(tot)}</div></div><div class="mbar"><i style="width:${Math.min(100,tot/need*100)*(team.length/3)}%"></i></div>`}</div>`}).join('')}
+$('#gymBody').addEventListener('click',e=>{const b=e.target.closest('[data-gym]');if(!b)return;const g=GYMS.find(x=>x[0]===b.dataset.gym);if(hasBadge(g[5]))return;
+ S.badges.push(g[5]);addXP(150);save();flash(1,800);sfx.ultra();burst(260,['#ffe07a','#fff','#9ef0ff'],1.3);
+ modal(`<div class="em">${g[8]}</div><h2>${g[6]}!</h2><p>${g[1]}: "Your team is impressive. Take this."<br><b>${g[7]}</b></p><button class="btn" onclick="closeModal()">AWESOME</button>`);renderGyms();checkAll()});
+
+/* =================== RENDER: SHOP =================== */
+function bulkInfo(){let n=0,v=0;Object.keys(S.coll).forEach(sid=>{const m=memo[sid];if(!m)return;Object.entries(S.coll[sid]).forEach(([id,c])=>{const card=m.byId[id];if(card&&c>1&&(card.r==='common'||card.r==='uncommon')){n+=c-1;v+=(c-1)*cardVal(card)*.5}})});return {n,v:Math.round(v*100)/100}}
+function renderShop(){const bi=bulkInfo();let h=`<div class="pnl"><h4>🧑‍🦳 GARY'S CARD SHOP</h4>
+ <div class="row2"><div class="ic">🧹</div><div class="tx"><b>Odd job: sort bulk</b><small>8 cards, $0.50 for each one you sort right. ${jobReady()?'Ready now.':'Back in '+Math.ceil((3*60e3-(NOW()-S.lastJob))/1000)+'s'}</small></div><button class="sbtn" id="job" ${jobReady()?'':'disabled'}>WORK</button></div>
+ <div class="row2"><div class="ic">📦</div><div class="tx"><b>Sell bulk duplicates</b><small>${bi.n} spare common/uncommon cards · Gary pays 50%</small></div><button class="sbtn" id="bulk" ${bi.n?'':'disabled'}>${fmt(bi.v)}</button></div>
+ ${isBroke()?`<div class="row2"><div class="ic">👴</div><div class="tx"><b>Ask Grandpa for pocket money</b><small>${pocketReady()?'He slips you $12. "Don\'t tell Grandma."':'Grandpa needs a little break. Try again in '+Math.ceil((20*60e3-(NOW()-S.lastPocket))/60e3)+' min.'}</small></div><button class="sbtn" id="pocket" ${pocketReady()?'':'disabled'}>$12</button></div>`:''}</div>`;
+ h+=`<h3 class="sec">Sealed product</h3><div class="pnl"><p style="margin-top:0">Sealed product gains value over time (up to +60%). Open it any time, or sell it to dads and whales at card shows.</p>${unlockedSets().map(s=>{const p=packPrice(s),b6=Math.round(6*p*.9),b18=Math.round(18*p*.85);return `<div class="row2"><div class="tx"><b>${s.n}</b><small>Bundle 6 packs · Box 18 packs</small></div><button class="sbtn g" data-buy="${s.id}|bundle|6|${b6}">${fmt(b6)}</button><button class="sbtn" data-buy="${s.id}|box|18|${b18}">${fmt(b18)}</button></div>`}).join('')}</div>`;
+ h+=`<h3 class="sec">Your card shop</h3>`;
+ if(!S.shop.owned)h+=`<div class="pnl gold"><div class="big">Open your own shop</div><p>Customers buy from your display while you're away. Income piles up for a few hours, then stops until you collect.<br>Needs rank <b>Hobbyist</b>.</p><button class="btn" id="buyShop" ${rankIdx()>=1&&S.coins>=250?'':'disabled'}>SIGN THE LEASE · $250</button></div>`;
+ else{const pend=shopPending();h+=`<div class="pnl gold"><div class="row2"><div class="ic">🏪</div><div class="tx"><b>${fmt(shopRate())} per hour</b><small>Fills up for ${shopCap()} hours · ${fmt(pend)} waiting</small></div><button class="sbtn" id="collect" ${pend>=.01?'':'disabled'}>COLLECT</button></div></div><div class="pnl">`+
+  Object.entries(UPG).map(([k,u])=>{const lv=S.shop[k],cost=u.c[lv];return `<div class="row2"><div class="tx"><b>${u.n} · level ${lv}/${u.max}</b><small>${u.d}</small></div>${lv>=u.max?'<button class="sbtn g" disabled>MAX</button>':`<button class="sbtn" data-up="${k}">${fmt(cost)}</button>`}</div>`}).join('')+
+  `<div class="row2"><div class="tx"><b>Price guide</b><small>See the true market value of every card in the dealer aisles</small></div>${S.shop.guide?'<button class="sbtn g" disabled>OWNED</button>':'<button class="sbtn" data-up="guide">$150</button>'}</div>
+  <div class="row2"><div class="tx"><b>PSA partner account</b><small>−15% on every grading fee</small></div>${S.shop.partner?'<button class="sbtn g" disabled>OWNED</button>':'<button class="sbtn" data-up="partner">$250</button>'}</div></div>`}
+ $('#shopBody').innerHTML=h}
+$('#shopBody').addEventListener('click',e=>{const t=e.target.closest('button');if(!t||t.disabled)return;
+ if(t.id==='job'){doJob();return}
+ if(t.id==='bulk'){const bi=bulkInfo();Object.keys(S.coll).forEach(sid=>{const m=memo[sid];if(!m)return;Object.entries(S.coll[sid]).forEach(([id,c])=>{const card=m.byId[id];if(card&&c>1&&(card.r==='common'||card.r==='uncommon')){S.coll[sid][id]=1;if((S.fakes[id]||0)>1)S.fakes[id]=1}})});addCoins(bi.v);sfx.cash();save();renderShop();return}
+ if(t.id==='pocket'){S.lastPocket=NOW();addCoins(12);save();renderShop();return}
+ if(t.id==='buyShop'){if(!spend(250))return;Object.assign(S.shop,{owned:true,disp:1,last:NOW()});addXP(100);save();sfx.ultra();burst(200,['#ffe07a','#fff'],1.2);renderShop();checkAll();return}
+ if(t.id==='collect'){const p=shopPending();S.shop.last=NOW();addCoins(p);sfx.cash();save();renderShop();return}
+ if(t.dataset.up){const k=t.dataset.up;if(k==='guide'||k==='partner'){if(!spend(k==='guide'?150:250))return;S.shop[k]=true}else{const pend=shopPending();const cost=UPG[k].c[S.shop[k]];if(!spend(cost))return;if(pend>=.01)addCoins(pend);S.shop.last=NOW();S.shop[k]++}save();sfx.holo();renderShop();return}
+ if(t.dataset.buy){const [sid,kind,packs,price]=t.dataset.buy.split('|');if(!spend(+price))return;S.sealed.push({uid:uid(),set:sid,kind,packs:+packs,base:+price,bought:NOW()});save();sfx.cash();toast('Sealed '+kind+' added to your Vault');return}});
+
+/* =================== RENDER: MARKET =================== */
+async function renderMarket(){$('#marketBody').innerHTML='<div style="display:flex;justify-content:center;padding:40px"><div class="spin"></div></div>';await ensureLoaded();
+ const hot=[...hotIds()].map(cardById).filter(Boolean);const items=allItems().sort((a,b)=>b.val-a.val).slice(0,15);
+ $('#marketBody').innerHTML=`<div class="pnl ${crashToday()?'red':'gold'}"><h4>${crashToday()?'📉 CRASH DAY':'📈 MARKET OPEN'}</h4><p>${crashToday()?'Prices are 30% lower everywhere today.':'Prices drift a little every day. Hot cards trade at about 1.8× for 24 hours.'}</p></div>
+ <h3 class="sec">🔥 Hot today</h3><div class="pnl">${hot.map(c=>`<div class="row2"><img class="th" src="${c.s}"><div class="tx"><b>${esc(c.name)}</b><small>${setById[setOf(c.id)].n} · you have ${rawCount(c.id)}</small></div><b style="color:#7dffa8">${fmt(cardVal(c))}</b></div>`).join('')||'<p>Open some sets to see the market.</p>'}</div>
+ <h3 class="sec">Your most valuable items</h3><div class="pnl">${items.map((it,i)=>`<div class="row2"><img class="th" src="${it.img}" style="${it.k==='seal'?'object-fit:contain;background:#222':''}"><div class="tx"><b>${esc(it.name)}${it.k==='slab'?' <span class="tag">PSA '+it.grade+'</span>':it.k==='mis'?' <span class="tag p">ERROR</span>':''}${it.cnt>1?' ×'+it.cnt:''}</b><small>Market ${fmt(it.val)}</small></div>${it.k==='seal'?'':`<button class="sbtn g" data-qs="${i}">SELL ${fmt(it.val*.45)}</button>`}</div>`).join('')||'<p>Nothing yet.</p>'}</div>
+ <p class="empty" style="font-size:11px">Quick sell pays 45% of market. Card shows pay much more if you can haggle.</p>`;
+ $('#marketBody').querySelectorAll('[data-qs]').forEach(b=>b.onclick=()=>{const it=items[+b.dataset.qs];modal(`<h2>Quick sell?</h2><p><b>${esc(it.name)}</b><br>Gary pays <b>${fmt(it.val*.45)}</b> (market ${fmt(it.val)}).</p><button class="btn" id="qsY">SELL</button><button class="btn ghost" onclick="closeModal()">KEEP</button>`);$('#qsY').onclick=()=>{closeModal();quickSell(it);renderMarket()}})}
+
+/* =================== RENDER: HOF / STATS =================== */
+function renderHof(){const items=allItems().filter(i=>i.k!=='seal').sort((a,b)=>b.val-a.val).slice(0,9);
+ $('#hofBody').innerHTML=items.length?`<p class="empty" style="padding:10px 4px">Your 9 most valuable pieces, framed. Worth <b style="color:#7dffa8">${fmt(items.reduce((a,i)=>a+i.val,0))}</b> together.</p><div class="wall"><div class="wallIn">${items.map(it=>`<div class="frame">${it.k==='slab'?slabHTML(it.sl,{small:1}):`<img src="${it.img}" class="${it.k==='mis'?'':''}">`}<div class="pl">${esc(it.name)} · ${fmt(it.val)}</div></div>`).join('')}</div></div>`:'<p class="empty">Your wall is empty. Pull something worth framing.</p>'}
+function renderStats(){let own=0;Object.values(S.coll).forEach(s=>Object.values(s).forEach(n=>own+=n));
+ const st=[[S.packs,'Packs ripped'],[S.cards,'Cards pulled'],[own,'Cards in hand'],[S.holos,'Holos'],[S.ultras,'Ultra rares'],[S.gods,'God packs'],[S.stats.mis,'Misprints'],[S.sinceHolo,'Packs since holo'],
+  [S.stats.sold,'Items sold'],[fmt(S.stats.earned),'Show earnings'],[S.stats.graded,'PSA subs'],[S.slabs.filter(s=>s.grade===10&&!s.fake).length,'PSA 10s'],[S.stats.scams,'Scams spotted'],[unlockedSets().length+'/'+SETS.length,'Sets unlocked']];
+ $('#statsBody').innerHTML=`<div class="sgrid">${st.map(([v,l])=>`<div class="stat"><b>${v}</b><span>${l}</span></div>`).join('')}</div>
+ <h3 class="sec">Best pulls</h3>${S.hist.length?S.hist.slice(0,12).map(h=>`<div class="pnl" style="margin-top:8px"><div class="row2"><img class="th" src="${h.img}"><div class="tx"><b>${esc(h.name)}</b><small>${setById[h.set].n} · Pack #${h.p} · ${tierName[h.r]}${h.god?' · GOD PACK':''}</small></div></div></div>`).join(''):'<p class="empty">No holos yet.</p>'}
+ <h3 class="sec">Rules of the game</h3><div class="odds">Packs: <b>10 cards</b>, no duplicates inside one pack. Rare slot: <b>12.5% holo</b>, <b>1% ultra rare</b>. One <b>God Pack</b> in every 200. Misprints: about 1 in 170 cards.<br>
+ Pack prices are set so that ripping loses a little on average, like in real life. You make money by <b>haggling at card shows</b>, <b>hunting dealer bargains</b>, <b>grading</b>, <b>bounties</b>, <b>quests</b> and your <b>shop</b>.<br>
+ You can't go broke: daily allowance, free daily pack, odd jobs at Gary's and Grandpa's pocket money are always there.<br>
+ PSA grades are final. Standard 20 min, Express 3 min, Walk-through instantly.</div>
+ <button class="btn ghost" id="resetBtn">RESET EVERYTHING</button>`;
+ $('#resetBtn').onclick=()=>{if(confirm('Really delete your whole save?')){localStorage.removeItem(KEY);location.reload()}}}
+
+/* =================== NAV / BOOT =================== */
 function go(id){document.querySelectorAll('.screen').forEach(s=>s.classList.toggle('on',s.id===id));
- document.querySelectorAll('nav button').forEach(b=>b.classList.toggle('on',b.dataset.s===id||(id==='scrOpen'&&b.dataset.s==='scrSets')));
+ const tab=id==='scrOpen'?'scrSets':['scrQuests','scrShop','scrMarket','scrGyms','scrHof','scrStats'].includes(id)?'scrHome':id;
+ document.querySelectorAll('nav button').forEach(b=>b.classList.toggle('on',b.dataset.s===tab));
  if(id!=='scrOpen'){const r=document.documentElement.style;r.setProperty('--bgh',250);r.setProperty('--bgs','18%')}
- if(id==='scrSets')renderSets();if(id==='scrAlbum')renderAlbum();if(id==='scrStats')renderStats();if(id==='scrVault')renderVault()}
+ ({scrHome:renderHome,scrSets:renderSets,scrAlbum:renderAlbum,scrVault:renderVault,scrShow:()=>{if(!SH)renderShowList()},scrQuests:renderQuests,scrShop:renderShop,scrMarket:renderMarket,scrGyms:renderGyms,scrHof:renderHof,scrStats:renderStats}[id]||(()=>{}))()}
 document.querySelectorAll('nav button').forEach(b=>b.onclick=()=>go(b.dataset.s));
+document.querySelectorAll('[data-home]').forEach(b=>b.onclick=()=>go('scrHome'));
 document.addEventListener('gesturestart',e=>e.preventDefault());
-save();renderSets();
+function boot(){
+ SETS.forEach(s=>loadCached(s.id));rollDaily();updCoin();
+ if(S.lastDay!==dayKey()){const first=!S.lastDay;const al=first?0:15+(hasBadge('cascade')?5:0);S.lastDay=dayKey();S.free+=1;if(al)S.coins+=al;save();updCoin();
+  setTimeout(()=>modal(first?`<div class="em">👴</div><h2>Welcome, collector</h2><p>Grandpa found his old binder from 1999 and wants your help finishing it.<br><br>You start with <b>$60</b> and <b>1 free pack</b>. Rip Base Set, complete it to unlock the next set, sell at card shows, grade your hits and build a legendary collection.</p><button class="btn" onclick="closeModal();go('scrSets')">LET'S RIP</button>`
+   :`<div class="em">☀️</div><h2>Daily bonus</h2><p>+<b>${fmt(al)}</b> allowance and <b>1 free pack</b>.<br>New daily missions are up.</p><button class="btn" onclick="closeModal()">NICE</button>`),500)}
+ renderHome();checkSubs();checkAll();
+ unlockedSets().forEach(s=>{if(!memo[s.id])loadSet(s.id).then(()=>{save();if($('#scrHome').classList.contains('on'))renderHome()}).catch(()=>{})})}
+boot();
 
 </script>
 </body>
