@@ -74,10 +74,13 @@ header.top b{color:var(--txt)}
 .plogo svg{width:100%;display:block;overflow:visible;filter:drop-shadow(0 3px 4px rgba(0,0,0,.45))}
 .tcgline{position:absolute;left:0;right:0;top:22.2%;text-align:center;font-size:clamp(6px,1.9vw,9px);font-weight:900;letter-spacing:.22em;color:#fff;z-index:2;text-shadow:0 1px 3px rgba(0,0,0,.7)}
 .tcgline b{background:#c7202a;padding:1px 6px;border-radius:2px;border:1px solid rgba(255,255,255,.6)}
-.mascot{position:absolute;left:7%;right:7%;top:27.5%;aspect-ratio:1/.623;z-index:2;border-radius:8px;overflow:hidden;
- box-shadow:0 0 0 2px rgba(255,255,255,.75),0 0 0 4px color-mix(in srgb,var(--c3) 85%,#000),0 10px 30px rgba(0,0,0,.6),0 0 40px color-mix(in srgb,var(--c3) 45%,transparent)}
-.mascot img{display:block;width:120.5%;margin-left:-10.24%;margin-top:-17.7%}
-.mascot::after{content:"";position:absolute;inset:0;box-shadow:inset 0 0 18px rgba(0,0,0,.55);background:linear-gradient(120deg,rgba(255,255,255,.25),transparent 40%)}
+.mascot{position:absolute;left:4%;right:4%;top:24%;height:36%;z-index:2;display:flex;align-items:center;justify-content:center}
+.mascot .halo{position:absolute;inset:6% 10%;border-radius:50%;background:radial-gradient(closest-side,color-mix(in srgb,var(--c3) 75%,#fff) 0%,color-mix(in srgb,var(--c3) 35%,transparent) 45%,transparent 75%);filter:blur(2px)}
+.mascot .burst{position:absolute;inset:-10% -5%;background:repeating-conic-gradient(from 0deg at 50% 50%,rgba(255,255,255,.16) 0 4deg,transparent 4deg 14deg);-webkit-mask:radial-gradient(closest-side,#000 20%,transparent 80%);mask:radial-gradient(closest-side,#000 20%,transparent 80%)}
+.mascot img.art3{position:relative;max-width:100%;max-height:100%;object-fit:contain;filter:drop-shadow(0 6px 10px rgba(0,0,0,.6)) drop-shadow(0 0 2px rgba(255,255,255,.7))}
+.mascot .crop{position:relative;width:86%;aspect-ratio:1/.62;border-radius:50%/40%;overflow:hidden;-webkit-mask:radial-gradient(closest-side,#000 60%,transparent 100%);mask:radial-gradient(closest-side,#000 60%,transparent 100%)}
+.mascot .crop img{width:120.5%;margin-left:-10.24%;margin-top:-17.7%}
+.slogo{top:60%!important}
 .slogo{position:absolute;left:10%;right:10%;top:56%;height:15%;z-index:2;display:flex;align-items:center;justify-content:center}
 .slogo img{max-width:100%;max-height:100%;object-fit:contain;filter:drop-shadow(0 3px 6px rgba(0,0,0,.7)) drop-shadow(0 0 1px #fff)}
 .ccount{position:absolute;left:0;right:0;bottom:12.5%;text-align:center;z-index:2;font-weight:900;font-size:clamp(7px,2.2vw,10.5px);letter-spacing:.06em;color:var(--c3);text-shadow:0 1px 0 #000,0 0 8px rgba(0,0,0,.8)}
@@ -304,6 +307,30 @@ h3.sec{margin:22px 0 10px;font-size:12px;letter-spacing:.22em;color:var(--mut);t
 
 #vzoom{position:fixed;inset:0;z-index:40;display:none;align-items:center;justify-content:center;background:rgba(0,0,0,.9);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);perspective:1000px;flex-direction:column}#vzoom.on{display:flex}#vinfo{margin-top:20px;text-align:center;color:var(--mut);font-size:13px}#vinfo b{display:block;color:#fff;font-size:20px;margin-bottom:4px}
 #zact{width:min(82vw,360px)}
+.setT.locked{filter:grayscale(1) brightness(.45);border-style:dashed}
+.setT.locked img{opacity:.35}
+.setT .lk{position:absolute;top:10px;right:10px;width:26px;height:26px;border-radius:50%;background:rgba(0,0,0,.6);display:flex;align-items:center;justify-content:center;font-size:13px}
+.setT.next{filter:none;border:1px solid rgba(255,215,106,.55);box-shadow:0 0 22px rgba(255,215,106,.18)}
+.setT.next img{opacity:.55;filter:grayscale(.6) drop-shadow(0 4px 10px rgba(0,0,0,.5))}
+.setT .req{font-size:9.5px;line-height:1.35;color:rgba(255,255,255,.75);margin-top:6px;letter-spacing:.02em}
+.setT .req b{color:#ffd76a}
+.setT .done{position:absolute;top:10px;right:10px;font-size:9px;font-weight:900;letter-spacing:.12em;background:linear-gradient(90deg,#ffe07a,#9ef0ff);color:#000;padding:3px 7px;border-radius:20px}
+.quest{margin:14px 0 0;padding:14px;border-radius:18px;background:linear-gradient(135deg,rgba(255,215,106,.12),rgba(158,240,255,.06));border:1px solid rgba(255,215,106,.3)}
+.quest small{display:block;font-size:10px;letter-spacing:.24em;color:var(--gold);font-weight:800}
+.quest b{display:block;font-size:16px;margin:6px 0 10px}
+.quest .qr{display:flex;align-items:center;gap:10px;font-size:12px;color:var(--mut);margin-top:6px}
+.quest .qr .bar{flex:1}
+.quest .qr span{min-width:58px;text-align:right;color:#fff;font-weight:700}
+#unlock{position:fixed;inset:0;z-index:60;display:none;flex-direction:column;align-items:center;justify-content:center;background:radial-gradient(80% 60% at 50% 45%,#281e46,#030305);text-align:center;padding:30px}
+#unlock.on{display:flex}
+#unlock small{letter-spacing:.4em;color:var(--gold);font-weight:800;font-size:12px}
+#unlock h2{font-size:36px;font-weight:900;margin:10px 0 4px}
+#unlock p{color:var(--mut);font-size:13px;margin-bottom:10px}
+#unlock img{max-width:70vw;max-height:110px;object-fit:contain;margin:18px 0;filter:drop-shadow(0 6px 20px rgba(255,215,106,.5));animation:uIn 1s cubic-bezier(.2,1.5,.3,1)}
+#unlock .lockA{font-size:56px;animation:uLock 1s ease forwards}
+@keyframes uIn{from{transform:scale(.3) rotate(-10deg);opacity:0}}
+@keyframes uLock{0%{transform:scale(1)}40%{transform:scale(1.3) rotate(-12deg)}100%{transform:scale(0);opacity:0}}
+#unlock .btn{max-width:340px}
 </style>
 </head>
 <body>
@@ -313,8 +340,8 @@ h3.sec{margin:22px 0 10px;font-size:12px;letter-spacing:.22em;color:var(--mut);t
 <section class="screen on" id="scrSets">
   <header class="top"><span class="brand">PACK<i>RIP</i></span><span id="totPacks"></span></header>
   <div class="scroll">
-    <div class="hero"><h1>Rip <span>vintage</span><br>booster packs.</h1><p>Every English set from Generation I to III. 10 cards per pack, real holo odds, one God Pack in every 200.</p></div>
-    <button class="randBtn" id="randSet">⚡ RANDOM BOOSTER</button>
+    <div class="hero"><h1>Rip <span>vintage</span><br>booster packs.</h1><p>Start with Base Set. Complete a set or grade a PSA 10 holo to unlock the next one. 31 sets, all the way to the end of Gen III.</p></div>
+    <button class="randBtn" id="randSet">⚡ RANDOM UNLOCKED BOOSTER</button>
     <div id="setList"></div>
   </div>
 </section>
@@ -377,7 +404,7 @@ h3.sec{margin:22px 0 10px;font-size:12px;letter-spacing:.22em;color:var(--mut);t
       e-Card &amp; EX sets: 5 Common · 3 Uncommon · 1 Reverse Holo · 1 Rare slot<br>
       Rare slot is Holo: <b>12.5 %</b><br>
       Rare slot is Ultra Rare: <b>1 %</b> (ex, Gold Star, Shining, Crystal, Secret or the set's chase card)<br>
-      God Pack (10 holos): <b>1 in 200</b>, guaranteed once per 200 packs at a random position
+      Unlock: <b>complete a set</b> or pull a <b>PSA 10 holo</b> from it to open the next set<br>God Pack (10 holos): <b>1 in 200</b>, guaranteed once per 200 packs at a random position
     </div>
     <button class="btn ghost" id="resetBtn">RESET COLLECTION</button>
   </div>
@@ -406,6 +433,7 @@ h3.sec{margin:22px 0 10px;font-size:12px;letter-spacing:.22em;color:var(--mut);t
 <div id="godIntro"><div>GOD PACK</div><small>10 HOLOS</small></div>
 <div id="zoom"><div id="zcard"></div><div id="zinfo"></div><div class="zact" id="zact"></div></div>
 <div id="toast"></div>
+<div id="unlock"></div>
 <div id="psa"><div id="psaHead"></div><div id="psaStage"></div><div id="psaFoot"></div></div>
 <div id="vzoom"><div id="zslab"></div><div id="vinfo"></div><div class="zact" id="vact"></div></div>
 
@@ -460,7 +488,7 @@ let S=JSON.parse(localStorage.getItem(KEY)||'null')||{packs:0,cards:0,holos:0,ul
 const save=()=>{try{localStorage.setItem(KEY,JSON.stringify(S))}catch(e){}};
 
 /* =================== CARD DATA (pokemontcg.io, fallback TCGdex) =================== */
-const CACHE='packrip_cards_';const memo={};
+const CACHE='packrip_cards2_';const memo={};
 function rarityTier(r,name,set){
  r=(r||'').toLowerCase();
  if(/ex|star|secret|shining|ultra|lv\.x|legend|crystal|prime/.test(r)&&r!=='')return 'ultra';
@@ -476,13 +504,13 @@ async function loadSet(id){
  if(cached){try{return memo[id]=finalize(id,JSON.parse(cached))}catch(e){}}
  let cards=null;
  try{
-  const j=await fetchJSON(`https://api.pokemontcg.io/v2/cards?q=set.id:${id}&pageSize=250&select=id,name,number,rarity,images,supertype`,20000);
-  cards=j.data.map(c=>({id:c.id,n:c.number,name:c.name,r:rarityTier(c.rarity),raw:c.rarity||'',s:c.images.small,l:c.images.large,t:c.supertype}));
+  const j=await fetchJSON(`https://api.pokemontcg.io/v2/cards?q=set.id:${id}&pageSize=250&select=id,name,number,rarity,images,supertype,nationalPokedexNumbers`,20000);
+  cards=j.data.map(c=>({id:c.id,n:c.number,name:c.name,r:rarityTier(c.rarity),raw:c.rarity||'',s:c.images.small,l:c.images.large,t:c.supertype,dex:(c.nationalPokedexNumbers||[])[0]||0}));
  }catch(e){
   try{ // fallback: TCGdex
    const j=await fetchJSON(`https://api.tcgdex.net/v2/en/sets/${id}`);
    const list=j.cards||[];const N=list.length;
-   cards=list.filter(c=>c.image).map((c,i)=>{const p=i/N;const r=p<.14?'holo':p<.25?'rare':p<.5?'uncommon':'common';return {id:c.id,n:c.localId,name:c.name,r,raw:'',s:c.image+'/low.webp',l:c.image+'/high.webp'}});
+   cards=list.filter(c=>c.image).map((c,i)=>{const dex=0;const p=i/N;const r=p<.14?'holo':p<.25?'rare':p<.5?'uncommon':'common';return {id:c.id,n:c.localId,name:c.name,r,raw:'',s:c.image+'/low.webp',l:c.image+'/high.webp'}});
   }catch(e2){throw new Error('offline')}
  }
  if(!cards||!cards.length)throw new Error('empty');
@@ -503,6 +531,7 @@ function finalize(id,cards){
  if(!P.ultra.length&&P.holo.length){const c=P.holo.pop();c.r='ultra';P.ultra.push(c)}
  if(!P.holo.length&&P.rare.length){P.holo=P.rare.splice(0,Math.ceil(P.rare.length/3));P.holo.forEach(c=>c.r='holo')}
  // energies count as commons but keep them rare-ish in packs
+ if(typeof S!=='undefined'){S.tot=S.tot||{};S.tot[id]=cards.length;save()}
  return {id,cards,P,byId:Object.fromEntries(cards.map(c=>[c.id,c]))};
 }
 
@@ -582,7 +611,7 @@ function artHTML(set,mascot){
  <div class="crimp t"></div><div class="crimp b"></div>
  <div class="plogo">${PLOGO}</div>
  <div class="tcgline"><b>TRADING CARD GAME</b></div>
- <div class="mascot">${mascot?`<img src="${mascot.l}" alt="">`:''}</div>
+ <div class="mascot"><div class="burst"></div><div class="halo"></div>${mascot?(mascot.dex?`<img class="art3" src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/${mascot.dex}.png" alt="" onerror="this.outerHTML='<div class=crop><img src=${mascot.l}></div>'">`:`<div class="crop"><img src="${mascot.l}"></div>`):''}</div>
  <div class="slogo"><img src="${logoURL(set.id)}" alt=""></div>
  ${set.ed?'<div class="ed">1st<br>ED.</div>':''}<img class="sym" src="${symURL(set.id)}" alt="" onerror="this.remove()">
  <div class="ccount">10 ADDITIONAL GAME CARDS</div>
@@ -601,11 +630,12 @@ async function openSet(id){
  catch(e){$('#loader').innerHTML=`<div class="err">Could not load ${curSet.n}.<br>Please check your internet connection.<br><br><button class="btn ghost" onclick="location.reload()">TRY AGAIN</button></div>`}
 }
 function applyTheme(set){const r=document.documentElement.style;r.setProperty('--c1',set.c[0]);r.setProperty('--c2',set.c[1]);r.setProperty('--c3',set.c[2])}
-function findMascot(){
- const all=curData.cards;const pref=shuffle([...curSet.m]);
- for(const n of pref){const c=all.find(c=>c.name===n)||all.find(c=>c.name.startsWith(n));if(c)return c}
- return rnd([...curData.P.holo,...curData.P.ultra])||all[0];
+function rarest3(D){
+ const seen=new Set(),out=[];const order=[...D.P.ultra,...D.P.holo,...D.P.rare].filter(c=>c.t!=='Trainer'&&c.t!=='Energy'&&!/energy/i.test(c.name));
+ for(const c of order){const k=c.dex||c.name;if(!seen.has(k)){seen.add(k);out.push(c)}if(out.length===3)break}
+ return out.length?out:[D.cards[0]];
 }
+function findMascot(){return rnd(rarest3(curData))}
 function newPack(){
  opened=false;pulled=false;pulling=false;tearP=0;tornCount=0;current=null;
  const mascot=findMascot();const html=artHTML(curSet,mascot);
@@ -683,12 +713,12 @@ function finishTear(){
  // cards peek out
  inner.style.display='block';inner.style.transform='translateY(4%)';
  requestAnimationFrame(()=>requestAnimationFrame(()=>{inner.style.transition='transform .6s cubic-bezier(.2,1.4,.4,1)';inner.style.transform='translateY(-14%)'}));
- setTimeout(()=>{if(!pulled)$('#pullTip').style.opacity=1},500);
+ setTimeout(()=>pullOut(),380);
  packWrap.classList.remove('float');
 }
 function pullOut(){
- if(pulled)return;pulled=true;pulling=false;sfx.slide();buzz(15);$('#pullTip').style.opacity=0;
- inner.style.transition='transform .45s cubic-bezier(.3,0,.2,1)';inner.style.transform='translateY(-62%)';
+ if(pulled)return;pulled=true;pulling=false;sfx.slide();$('#pullTip').style.opacity=0;
+ inner.style.transition='transform .35s cubic-bezier(.3,0,.2,1)';inner.style.transform='translateY(-70%)';
  setTimeout(()=>{packWrap.style.transition='transform .7s cubic-bezier(.6,0,.8,.4),opacity .6s';packWrap.style.transform='translateY(110vh) rotate(10deg)';startReveal()},300);
 }
 
@@ -759,7 +789,7 @@ function showSummary(){
  const coll=S.coll[curSet.id]=S.coll[curSet.id]||{};S.perSet[curSet.id]=(S.perSet[curSet.id]||0)+1;
  current.cards.forEach(({c})=>{coll[c.id]=(coll[c.id]||0)+1;if(c.r==='holo'){S.holos++;hasHolo=true}if(c.r==='ultra'){S.ultras++;hasHolo=true}if(!best||rank[c.r]>rank[best.r])best=c});
  if(current.god)S.gods++;S.sinceHolo=hasHolo?0:S.sinceHolo+1;
- if(rank[best.r]>=3)S.hist.unshift({set:curSet.id,id:best.id,name:best.name,img:best.s,r:best.r,p:S.packs,god:current.god,d:Date.now()});S.hist=S.hist.slice(0,40);save();
+ if(rank[best.r]>=3)S.hist.unshift({set:curSet.id,id:best.id,name:best.name,img:best.s,r:best.r,p:S.packs,god:current.god,d:Date.now()});S.hist=S.hist.slice(0,40);save();setTimeout(checkUnlocks,900);
  $('#reveal').classList.remove('on');
  $('#sumGrid').innerHTML=current.cards.map(({c,rev},i)=>`<div class="mini ${c.r}" style="animation-delay:${i*50}ms"><img src="${c.s}">${newSet.has(c.id)?'<span class="nw">NEW</span>':''}</div>`).join('');
  $('#sumTitle').textContent=current.god?'GOD PACK!':curSet.n+' · Pack #'+S.packs;
@@ -772,23 +802,53 @@ $('#nextPack').onclick=()=>{$('#summary').classList.remove('on');newPack()};
 $('#toAlbum').onclick=()=>{$('#summary').classList.remove('on');albumSet=curSet.id;go('scrAlbum')};
 $('#backSets').onclick=()=>{$('#summary').classList.remove('on');$('#reveal').classList.remove('on');$('#dark').style.opacity=0;$('#rays').style.opacity=0;go('scrSets')};
 
+/* =================== PROGRESSION =================== */
+S.tot=S.tot||{};S.seenUnlock=S.seenUnlock||['base1'];
+function setTotal(id){if(memo[id])return memo[id].cards.length;return S.tot[id]||0}
+function ownedCount(id){return Object.keys(S.coll[id]||{}).length}
+function hasPSA10(id){return (S.slabs||[]).some(s=>s.set===id&&s.open&&s.grade===10&&(s.r==='holo'||s.r==='ultra'))}
+function setComplete(id){const t=setTotal(id);return t>0&&ownedCount(id)>=t}
+function setCleared(id){return setComplete(id)||hasPSA10(id)}
+function isUnlocked(i){return i===0||setCleared(SETS[i-1].id)}
+function unlockedSets(){return SETS.filter((s,i)=>isUnlocked(i))}
+function checkUnlocks(){
+ const fresh=SETS.filter((s,i)=>isUnlocked(i)&&!S.seenUnlock.includes(s.id));
+ if(!fresh.length)return false;fresh.forEach(s=>S.seenUnlock.push(s.id));save();
+ const s=fresh[fresh.length-1],prev=SETS[SETS.indexOf(s)-1];const how=setComplete(prev.id)?`You completed ${prev.n}`:`You graded a PSA 10 from ${prev.n}`;
+ const u=$('#unlock');u.innerHTML=`<div class="lockA">🔒</div><small>NEW SET UNLOCKED</small><img src="${logoURL(s.id)}" onerror="this.remove()"><h2>${s.n}</h2><p>${how}.<br>${GENS[s.g][0]} · ${s.y}</p><button class="btn" id="uGo">RIP ${s.n.toUpperCase()}</button><button class="btn ghost" id="uLater">LATER</button>`;
+ setTimeout(()=>{u.classList.add('on');flash(1,900);sfx.ultra();buzz([60,40,60,40,150]);burst(300,['#ffe36a','#fff','#9ef0ff','#ff9de6'],1.4)},400);
+ $('#uGo').onclick=()=>{u.classList.remove('on');$('#summary').classList.remove('on');closePSA&&closePSA();openSet(s.id)};
+ $('#uLater').onclick=()=>{u.classList.remove('on')};
+ return true;
+}
+
 /* =================== SET LIST =================== */
 function renderSets(){
- let h='';[1,2,3].forEach(g=>{h+=`<div class="gen"><b>${GENS[g][0].toUpperCase()}</b><span>${GENS[g][1]}</span></div><div class="sets">`;
-  SETS.filter(s=>s.g===g).forEach(s=>{const own=Object.keys(S.coll[s.id]||{}).length;const tot=memo[s.id]?memo[s.id].cards.length:(JSON.parse(localStorage.getItem(CACHE+s.id)||'[]').length||0);
-   h+=`<button class="setT" data-id="${s.id}" style="--a:${s.c[0]};--b:${s.c[1]}"><img src="${logoURL(s.id)}" alt="" onerror="this.outerHTML='<div class=fb>${s.n.replace(/'/g,'')}</div>'"><div><div class="nm">${s.n}</div><div class="meta"><span>${s.y}</span><span>${tot?own+'/'+tot:(S.perSet[s.id]||0)+' packs'}</span></div><div class="pb"><i style="width:${tot?own/tot*100:0}%"></i></div></div></button>`});
+ let h='';const nextI=SETS.findIndex((s,i)=>!isUnlocked(i));
+ const curI=nextI<0?SETS.length-1:nextI-1;const cur=SETS[curI];
+ if(nextI>=0){const tot=setTotal(cur.id),own=ownedCount(cur.id);
+  h+=`<div class="quest"><small>CURRENT GOAL</small><b>Unlock ${SETS[nextI].n}</b>
+  <div class="qr">Complete ${cur.n}<div class="bar"><i style="width:${tot?own/tot*100:0}%"></i></div><span>${own}/${tot||'?'}</span></div>
+  <div class="qr">or grade a PSA 10 holo from ${cur.n}<span>${hasPSA10(cur.id)?'✓':'—'}</span></div></div>`}
+ else h+=`<div class="quest"><small>ALL SETS UNLOCKED</small><b>You beat Gen I to III. Legend.</b></div>`;
+ [1,2,3].forEach(g=>{h+=`<div class="gen"><b>${GENS[g][0].toUpperCase()}</b><span>${GENS[g][1]}</span></div><div class="sets">`;
+  SETS.forEach((s,i)=>{if(s.g!==g)return;const un=isUnlocked(i),isNext=i===nextI;const own=ownedCount(s.id),tot=setTotal(s.id);
+   const cls=un?'':(isNext?'locked next':'locked');
+   const body=un?`<div class="meta"><span>${s.y}</span><span>${tot?own+'/'+tot:(S.perSet[s.id]||0)+' packs'}</span></div><div class="pb"><i style="width:${tot?own/tot*100:0}%"></i></div>`
+    :isNext?`<div class="req">Complete <b>${SETS[i-1].n}</b><br>or get a <b>PSA 10</b> holo from it</div>`:`<div class="meta"><span>${s.y}</span><span>LOCKED</span></div>`;
+   h+=`<button class="setT ${cls}" data-id="${s.id}" data-i="${i}" style="--a:${s.c[0]};--b:${s.c[1]}">${un?(setCleared(s.id)?'<span class="done">CLEARED</span>':''):'<span class="lk">🔒</span>'}<img src="${logoURL(s.id)}" alt="" onerror="this.outerHTML='<div class=fb>${s.n.replace(/'/g,'')}</div>'"><div><div class="nm">${s.n}</div>${body}</div></button>`});
   h+='</div>'});
- $('#setList').innerHTML=h;$('#totPacks').innerHTML=`<b>${S.packs}</b> PACKS RIPPED`;
+ $('#setList').innerHTML=h;$('#totPacks').innerHTML=`<b>${unlockedSets().length}</b>/${SETS.length} SETS`;
 }
-$('#setList').addEventListener('click',e=>{const b=e.target.closest('.setT');if(b)openSet(b.dataset.id)});
-$('#randSet').onclick=()=>openSet(rnd(SETS).id);
+$('#setList').addEventListener('click',e=>{const b=e.target.closest('.setT');if(!b)return;if(!isUnlocked(+b.dataset.i)){const p=SETS[+b.dataset.i-1];toast('Locked · clear '+p.n+' first');b.animate([{transform:'translateX(0)'},{transform:'translateX(-6px)'},{transform:'translateX(6px)'},{transform:'translateX(0)'}],{duration:300});return}openSet(b.dataset.id)});
+$('#randSet').onclick=()=>openSet(rnd(unlockedSets()).id);
 
 /* =================== BINDER =================== */
 let filt='all',albumSet=null;
 const FILTERS=[['all','All'],['miss','Missing'],['own','Owned'],['ultra','Ultra Rare'],['holo','Holo'],['rare','Rare'],['uncommon','Uncommon'],['common','Common']];
 async function renderAlbum(){
  if(!albumSet)albumSet=(curSet&&curSet.id)||Object.keys(S.coll)[0]||'base1';
- $('#setChips').innerHTML=SETS.map(s=>`<button class="chip ${s.id===albumSet?'on':''}" data-set="${s.id}">${s.n}</button>`).join('');
+ $('#setChips').innerHTML=SETS.map((s,i)=>`<button class="chip ${s.id===albumSet?'on':''}" data-set="${s.id}" ${isUnlocked(i)?'':'style="opacity:.4"'}>${isUnlocked(i)?'':'🔒 '}${s.n}</button>`).join('');
  const sc=$('#setChips .chip.on');if(sc)sc.scrollIntoView({inline:'center',block:'nearest'});
  const set=setById[albumSet];$('#albSetName').textContent=set.n;applyTheme(set);
  $('#agrid').innerHTML='<div style="grid-column:1/-1;display:flex;justify-content:center;padding:40px"><div class="spin"></div></div>';
@@ -801,7 +861,7 @@ async function renderAlbum(){
  const lbl={holo:'HOLO',ultra:'ULTRA',rare:'RARE'};
  $('#agrid').innerHTML=list.map(c=>{const n=coll[c.id]||0;return `<div class="slot ${c.r} ${n?'':'miss'}" data-id="${c.id}"><img src="${c.s}" loading="lazy">${n&&lbl[c.r]?`<span class="rt ${c.r}">${lbl[c.r]}</span>`:''}${n>1?`<span class="cnt">×${n}</span>`:''}<span class="no">#${c.n}</span></div>`}).join('')||'<p style="color:var(--mut);grid-column:1/-1;text-align:center;padding:30px">Nothing here. Yet.</p>';
 }
-$('#setChips').addEventListener('click',e=>{const b=e.target.closest('.chip');if(b){albumSet=b.dataset.set;renderAlbum()}});
+$('#setChips').addEventListener('click',e=>{const b=e.target.closest('.chip');if(b){const i=SETS.findIndex(s=>s.id===b.dataset.set);if(!isUnlocked(i)){toast('Locked set');return}albumSet=b.dataset.set;renderAlbum()}});
 $('#chips').addEventListener('click',e=>{const b=e.target.closest('.chip');if(b){filt=b.dataset.f;renderAlbum()}});
 $('#agrid').addEventListener('click',e=>{const s=e.target.closest('.slot');if(!s)return;const D=memo[albumSet];const c=D.byId[s.dataset.id];if(!(S.coll[albumSet]||{})[c.id]){toast('Not pulled yet');return}openZoom(c,S.coll[albumSet][c.id])});
 function openZoom(c,cnt){const z=$('#zcard');z.innerHTML='';const el=document.createElement('div');el.className='card live '+c.r;el.innerHTML=cardHTML(c,{});el._base='';z.appendChild(el);
@@ -935,7 +995,7 @@ async function sendToPSA(setId,card){
  tone([220,247,262,294,330,349,392],.18,.06,'square',.12);await wait(900);
  cov.classList.add('off');sl.open=true;S.psaGrades[sl.grade]=(S.psaGrades[sl.grade]||0)+1;save();
  const g=sl.grade;
- if(g===10){flash(1,900);sfx.ultra();buzz([80,50,120,50,200]);burst(320,['#ffe36a','#fff','#ffb43b','#9ef0ff'],1.5);banner('GEM MINT 10');$('#rays').style.opacity=1;setTimeout(()=>$('#rays').style.opacity=0,3000)}
+ if(g===10){flash(1,900);sfx.ultra();buzz([80,50,120,50,200]);burst(320,['#ffe36a','#fff','#ffb43b','#9ef0ff'],1.5);banner('GEM MINT 10');setTimeout(checkUnlocks,2600);$('#rays').style.opacity=1;setTimeout(()=>$('#rays').style.opacity=0,3000)}
  else if(g===9){flash(.6,600);sfx.holo();burst(140,['#9ef0ff','#fff','#ffe07a'],1);banner('MINT 9')}
  else if(g>=7){tone([784,988,1175],.5,.08,'sine',.08);banner(GRADE_NAME[g]+' '+g)}
  else if(g>=4){tone([523,494],.5,.08,'triangle',.18);banner(GRADE_NAME[g]+' '+g)}
