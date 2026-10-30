@@ -10,7 +10,7 @@
 <meta name="theme-color" content="#050407">
 <title>PACK RIP · Collector</title>
 <style>
-:root{--gold:#ffd76a;--bg:#050407;--panel:rgba(18,14,24,.66);--line:rgba(255,255,255,.1);--txt:#f5f2ff;--mut:#a8a2c0;--grn:#2fbf6a;--red:#e8455a;--mx:50%;--my:50%;--rx:0deg;--ry:0deg;--c1:#2d63c8;--c2:#0c1f52;--c3:#ffcb05;--bgh:225;--bgs:30%;--pw:220px}
+:root{--gold:#ffd76a;--bg:#050407;--panel:rgba(18,14,24,.66);--line:rgba(255,255,255,.1);--txt:#f5f2ff;--mut:#a8a2c0;--grn:#2fbf6a;--red:#e8455a;--mx:50%;--my:50%;--rx:0deg;--ry:0deg;--c1:#2d63c8;--c2:#0c1f52;--c3:#ffcb05;--bgh:225;--bgs:30%;--pw:220px;--pbg:linear-gradient(135deg,#fff,#dfe6ff)}
 *{box-sizing:border-box;margin:0;padding:0;-webkit-tap-highlight-color:transparent;-webkit-user-select:none;user-select:none;-webkit-touch-callout:none}
 html,body{height:100%;background:var(--bg);color:var(--txt);font-family:-apple-system,BlinkMacSystemFont,"SF Pro Display","Helvetica Neue",Arial,sans-serif;overflow:hidden;overscroll-behavior:none}
 body{touch-action:none}
@@ -72,10 +72,14 @@ header.top b{color:var(--txt)}
 .sbtn.g{background:rgba(255,255,255,.08);color:#fff;border:1px solid var(--line)}
 .money{font-weight:900}.money.in{color:#6ff0a0}.money.out{color:#ff8a8a}
 .trainer{display:flex;align-items:center;gap:14px;margin-top:6px}
-.trainer .spr{width:66px;height:66px;flex:none;border-radius:20px;background:linear-gradient(135deg,#fff,#dfe6ff);display:flex;align-items:flex-end;justify-content:center;box-shadow:0 8px 20px rgba(0,0,0,.4);overflow:hidden}
+.trainer .spr{width:66px;height:66px;flex:none;border-radius:20px;background:var(--pbg);display:flex;align-items:flex-end;justify-content:center;box-shadow:0 8px 20px rgba(0,0,0,.4);overflow:hidden;cursor:pointer;position:relative}
+.trainer .spr::after{content:"🎨";position:absolute;right:3px;top:2px;font-size:10px;opacity:.75}
 .trainer .tn{font-size:24px;font-weight:900;letter-spacing:-.01em;text-shadow:0 2px 8px #000}
 .trainer .tr{font-size:11px;color:var(--gold);margin-top:2px;letter-spacing:.14em;font-weight:800;text-shadow:0 1px 6px #000}
-.bestc{position:relative;flex:none;width:40px;margin-left:-6px;cursor:pointer;text-align:center}.bestc img{width:40px;aspect-ratio:63/88;object-fit:cover;border-radius:4px;box-shadow:0 0 0 2px #ffd76a,0 0 14px rgba(255,215,106,.6);display:block}.bestc span{display:block;font-size:9px;font-weight:900;color:#6ff0a0;margin-top:3px;text-shadow:0 1px 4px #000}.bestc i{position:absolute;top:-8px;right:-8px;font-style:normal;font-size:14px}
+.bestc{position:relative;flex:none;width:40px;margin-left:-6px;text-align:center;cursor:pointer}.bestc img{width:40px;aspect-ratio:63/88;object-fit:cover;border-radius:4px;box-shadow:0 0 0 2px #ffd76a,0 0 14px rgba(255,215,106,.6);display:block}.bestc span{display:block;font-size:9px;font-weight:900;color:#6ff0a0;margin-top:3px;text-shadow:0 1px 4px #000}.bestc i{position:absolute;top:-8px;right:-8px;font-style:normal;font-size:14px}
+.pbgs{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin-top:12px}
+.pbgs button{aspect-ratio:1;border-radius:16px;border:3px solid transparent;display:flex;align-items:flex-end;justify-content:center;overflow:hidden}
+.pbgs button.on{border-color:#ffd76a;transform:scale(1.05)}
 .lvl{display:inline-flex;align-items:center;justify-content:center;min-width:34px;height:22px;border-radius:8px;background:linear-gradient(135deg,#9ef0ff,#5aa0ff);color:#04122a;font-weight:900;font-size:12px;padding:0 6px;margin-right:6px;vertical-align:2px}
 .kpis{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:14px}
 .kpi,.pnl,.stat,.odds,.prog{background:var(--panel);border:1px solid var(--line);border-radius:18px;padding:14px;backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px)}
@@ -153,8 +157,8 @@ h3.sec{margin:22px 0 8px;font-size:11px;letter-spacing:.22em;color:var(--mut);te
 #scaleBox .vd{font-size:12px;line-height:1.35;color:#dfffe8;max-width:150px;font-weight:600}
 #packPrice{font-size:12px;letter-spacing:.1em;color:#fff;text-transform:uppercase;font-weight:700;text-align:center;text-shadow:0 1px 6px #000}
 #packBtns{display:flex;gap:8px;flex-wrap:wrap;justify-content:center}
-.qty{display:flex;gap:4px;background:rgba(10,8,14,.8);border:1px solid var(--line);border-radius:14px;padding:4px}
-.qty button{border:0;background:none;color:var(--mut);font-weight:900;font-size:12px;padding:8px 11px;border-radius:10px;letter-spacing:.04em}
+.qty{display:flex;gap:3px;background:rgba(10,8,14,.8);border:1px solid var(--line);border-radius:14px;padding:4px;flex-wrap:wrap;justify-content:center}
+.qty button{border:0;background:none;color:var(--mut);font-weight:900;font-size:12px;padding:8px 9px;border-radius:10px;letter-spacing:.04em}
 .qty button.on{background:#fff;color:#000}
 .qty button.lk{opacity:.4;font-size:11px}
 #loader{position:absolute;inset:0;z-index:8;display:none;align-items:center;justify-content:center;flex-direction:column;gap:14px;color:var(--mut);font-size:12px;letter-spacing:.2em}
@@ -233,7 +237,11 @@ nav button.alert .dot{display:block}
 .chip{flex:none;padding:8px 13px;border-radius:30px;background:var(--panel);border:1px solid var(--line);color:var(--mut);font-size:12px;font-weight:700}
 .chip.on{background:#fff;color:#000}
 .chip.val{border-color:rgba(111,240,160,.5);color:#6ff0a0}.chip.val.on{background:#6ff0a0;color:#062014}
+.chip.psa{border-color:rgba(232,69,90,.6);color:#ff8a8a}.chip.psa.on{background:#c41e2a;color:#fff}
 .agrid{display:grid;grid-template-columns:repeat(3,1fr);gap:10px}
+.agrid .vslab{position:relative}
+.agrid .vslab .rk{position:absolute;top:-6px;left:-4px;z-index:3;font-size:10px;font-weight:900;background:#ffd76a;color:#000;padding:2px 6px;border-radius:9px}
+.agrid .vslab .vv{text-align:center;font-size:10px;font-weight:900;color:#6ff0a0;margin-top:4px}
 .slot{position:relative;aspect-ratio:63/88;border-radius:7px;overflow:hidden;background:rgba(255,255,255,.05);border:1px solid var(--line)}
 .slot img{width:100%;height:100%;object-fit:cover}
 .slot.miss{border-style:dashed;border-color:rgba(255,255,255,.22);background:rgba(0,0,0,.35)}
@@ -315,11 +323,14 @@ nav button.alert .dot{display:block}
 @keyframes shk{20%{transform:translate(-2%,0) rotate(-1.5deg)}40%{transform:translate(2%,0) rotate(1.5deg)}60%{transform:translate(-1%,0)}80%{transform:translate(1%,0)}}
 #psa{position:fixed;inset:0;z-index:45;display:none;flex-direction:column;align-items:center;justify-content:center;background:radial-gradient(100% 70% at 50% 45%,#1a1626,#050407 75%);touch-action:none}
 #psa.on{display:flex}
-#psaHead{position:absolute;top:calc(env(safe-area-inset-top) + 18px);left:0;right:0;text-align:center;padding:0 12px}
+#psaHead{position:absolute;top:calc(env(safe-area-inset-top) + 18px);left:0;right:0;text-align:center;padding:0 12px;z-index:5}
 #psaHead b{display:block;font-size:21px;font-weight:900;letter-spacing:.04em}
 #psaHead small{display:block;color:var(--mut);font-size:11px;letter-spacing:.22em;margin-top:6px;text-transform:uppercase}
 #psaStage{position:relative;width:min(80vw,340px);height:min(120vw,520px,calc(100vh - 220px));display:flex;align-items:center;justify-content:center;perspective:1200px}
 #psaFoot{position:absolute;bottom:calc(env(safe-area-inset-bottom) + 18px);left:18px;right:18px}
+.pgrid{position:absolute;inset:0;display:grid;gap:10px;align-content:center;justify-content:center;overflow-y:auto;touch-action:pan-y;padding:8px 0}
+.pgrid .pg{position:relative;animation:pop .4s backwards}
+.pgrid .pg .gl{text-align:center;font-size:10px;font-weight:900;margin-top:4px;color:#ffe07a;min-height:12px}
 .pk{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%)}
 .rawc{width:64%;aspect-ratio:63/88;transition:transform .6s cubic-bezier(.4,0,.2,1),opacity .3s}
 .rawc img{width:100%;height:100%;object-fit:cover;display:block;border-radius:4.5%/3.2%;box-shadow:0 20px 40px rgba(0,0,0,.6)}
@@ -327,13 +338,15 @@ nav button.alert .dot{display:block}
 .rawc .cntB{position:absolute;top:-12px;right:-12px;z-index:3;background:#ffd76a;color:#000;font-weight:900;font-size:14px;padding:6px 10px;border-radius:20px}
 .sleeve{position:absolute;inset:-3% -3% -6% -3%;border-radius:3px;background:linear-gradient(110deg,rgba(255,255,255,.08),rgba(255,255,255,.3) 45%,rgba(255,255,255,.06) 55%);border:1px solid rgba(255,255,255,.35);transform:translateY(-140%);transition:transform .5s cubic-bezier(.3,0,.2,1)}
 .toploader{position:absolute;inset:-8% -9% -10% -9%;border-radius:6px;border:5px solid rgba(220,235,255,.35);background:linear-gradient(120deg,rgba(255,255,255,.1),rgba(255,255,255,.28) 40%,rgba(255,255,255,.05) 60%);transform:translateY(-160%);transition:transform .55s cubic-bezier(.3,0,.2,1)}
+/* PSA style mailer: white with red stripes */
 .mailer{position:absolute;left:50%;top:50%;width:96%;height:74%;transform:translate(-50%,130%);transition:transform .6s cubic-bezier(.2,1,.3,1);z-index:3}
-.mailer .body{position:absolute;inset:0;border-radius:6px;background:radial-gradient(circle at 30% 30%,rgba(255,255,255,.5) 0 18%,transparent 20%) 0 0/14px 14px,linear-gradient(160deg,#f3e3b3,#e2c98a);box-shadow:0 20px 40px rgba(0,0,0,.5)}
-.mailer .flap{position:absolute;left:0;right:0;top:0;height:30%;background:linear-gradient(180deg,#e9d49b,#d9bd78);clip-path:polygon(0 0,100% 0,100% 40%,50% 100%,0 40%);transform-origin:50% 0;transform:rotateX(180deg);transition:transform .45s;z-index:2}
+.mailer .body{position:absolute;inset:0;border-radius:6px;background:linear-gradient(180deg,transparent 0 12%,#d2232a 12% 17%,transparent 17% 83%,#d2232a 83% 88%,transparent 88%),linear-gradient(160deg,#ffffff,#eceef1);box-shadow:0 20px 40px rgba(0,0,0,.5),inset 0 0 0 1px rgba(0,0,0,.08)}
+.mailer .body::after{content:"PSA";position:absolute;right:7%;bottom:22%;font:900 italic 26px/1 Helvetica,Arial;color:#d2232a;letter-spacing:.04em}
+.mailer .flap{position:absolute;left:0;right:0;top:0;height:30%;background:linear-gradient(180deg,#f6f6f7,#e2e4e8);clip-path:polygon(0 0,100% 0,100% 40%,50% 100%,0 40%);transform-origin:50% 0;transform:rotateX(180deg);transition:transform .45s;z-index:2}
 .mailer .flap.closed{transform:rotateX(0)}
-.mailer .ship{position:absolute;left:12%;right:12%;top:40%;background:#fff;border-radius:4px;padding:10px 12px;color:#111;font:700 11px/1.45 Helvetica,Arial;opacity:0;transform:scale(1.3) rotate(-4deg);transition:all .35s cubic-bezier(.2,1.4,.3,1)}
+.mailer .ship{position:absolute;left:10%;right:30%;top:36%;background:#fff;border:1px solid #ddd;border-radius:4px;padding:10px 12px;color:#111;font:700 11px/1.45 Helvetica,Arial;opacity:0;transform:scale(1.3) rotate(-4deg);transition:all .35s cubic-bezier(.2,1.4,.3,1)}
 .mailer .ship.on{opacity:1;transform:rotate(-2deg)}
-.mailer .ship b{display:block;font-size:15px;color:#c41e2a}
+.mailer .ship b{display:block;font-size:15px;color:#d2232a}
 .track{width:100%;max-width:340px}
 .track .row{display:flex;align-items:center;gap:12px;padding:11px 14px;border-radius:14px;background:rgba(255,255,255,.05);border:1px solid var(--line);margin-bottom:8px;font-size:14px;font-weight:700;color:var(--mut)}
 .track .row i{width:22px;height:22px;border-radius:50%;border:2px solid rgba(255,255,255,.2);flex:none;display:flex;align-items:center;justify-content:center;font-style:normal;font-size:12px}
@@ -343,20 +356,22 @@ nav button.alert .dot{display:block}
 .track .row.done i{background:#3ddc84;border-color:#3ddc84;color:#06240f}
 .track .row.done i::after{content:"✓";font-weight:900}
 .track .row small{margin-left:auto;font-size:10px;letter-spacing:.12em;color:var(--mut);font-weight:600}
+/* PSA style return box: white with red stripes */
 .box{position:absolute;left:50%;top:58%;width:100%;transform:translate(-50%,-50%);transition:transform .6s cubic-bezier(.3,1.5,.5,1)}
-.box .top{position:relative;height:110px;clip-path:polygon(7% 0,93% 0,100% 100%,0 100%);background:#b58550}
-.box .top .inside{position:absolute;inset:0;background:linear-gradient(180deg,#2c1d0e,#5a3d1e)}
-.box .flapA,.box .flapB{position:absolute;left:0;right:0;height:50%;background:linear-gradient(180deg,#c99a63,#b88a54);transition:transform .7s cubic-bezier(.3,1.2,.4,1)}
-.box .flapA{top:0;transform-origin:50% 0}.box .flapB{bottom:0;transform-origin:50% 100%;background:linear-gradient(180deg,#b88a54,#a97c47)}
+.box .top{position:relative;height:110px;clip-path:polygon(7% 0,93% 0,100% 100%,0 100%);background:#f2f3f5}
+.box .top .inside{position:absolute;inset:0;background:linear-gradient(180deg,#bfc3ca,#e9ebee)}
+.box .flapA,.box .flapB{position:absolute;left:0;right:0;height:50%;background:linear-gradient(90deg,transparent 0 14%,#d2232a 14% 19%,transparent 19% 81%,#d2232a 81% 86%,transparent 86%),linear-gradient(180deg,#ffffff,#eceef1);transition:transform .7s cubic-bezier(.3,1.2,.4,1)}
+.box .flapA{top:0;transform-origin:50% 0}.box .flapB{bottom:0;transform-origin:50% 100%;background:linear-gradient(90deg,transparent 0 14%,#d2232a 14% 19%,transparent 19% 81%,#d2232a 81% 86%,transparent 86%),linear-gradient(180deg,#eceef1,#e1e3e7)}
 .box.open .flapA{transform:scaleY(-1.15)}.box.open .flapB{transform:scaleY(-.9)}
-.box .tape{position:absolute;left:0;right:0;top:calc(50% - 13px);height:26px;background:repeating-linear-gradient(90deg,#c41e2a 0 70px,#fff 70px 74px);opacity:.92;display:flex;align-items:center;justify-content:center;font:900 11px/1 Helvetica;letter-spacing:.3em;color:#fff;transition:opacity .3s}
+.box .tape{position:absolute;left:0;right:0;top:calc(50% - 13px);height:26px;background:linear-gradient(180deg,rgba(255,255,255,.75),rgba(230,236,245,.6));box-shadow:inset 0 0 0 1px rgba(0,0,0,.06);opacity:.95;display:flex;align-items:center;justify-content:center;font:900 italic 11px/1 Helvetica;letter-spacing:.3em;color:#d2232a;transition:opacity .3s}
 .box .cut{position:absolute;left:0;top:calc(50% - 1px);height:2px;width:0;background:#111}
-.box .knife{position:absolute;top:calc(50% - 16px);left:0;width:32px;height:32px;margin-left:-16px;border-radius:50%;background:radial-gradient(circle,#fff 0 25%,rgba(255,255,255,.3) 30% 60%,transparent 62%);animation:sh2 2.2s ease-in-out infinite}
+.box .knife{position:absolute;top:calc(50% - 16px);left:0;width:32px;height:32px;margin-left:-16px;border-radius:50%;background:radial-gradient(circle,#fff 0 25%,rgba(255,255,255,.3) 30% 60%,transparent 62%);box-shadow:0 0 0 2px rgba(0,0,0,.15);animation:sh2 2.2s ease-in-out infinite}
 @keyframes sh2{0%{left:4%;opacity:0}15%{opacity:1}75%{left:92%;opacity:1}100%{left:92%;opacity:0}}
-.box .front{position:relative;height:230px;background:linear-gradient(180deg,#a97c47,#8e6537);box-shadow:inset 0 0 40px rgba(0,0,0,.25),0 30px 50px rgba(0,0,0,.55);z-index:3;transition:transform .7s cubic-bezier(.6,0,.8,.4)}
-.box .front .stamp{position:absolute;left:8%;top:12%;font:900 34px/1 Helvetica;color:rgba(40,20,5,.55);transform:rotate(-6deg);border:4px solid rgba(40,20,5,.45);padding:4px 10px;border-radius:6px}
-.box .front .sl{position:absolute;right:7%;bottom:12%;width:46%;background:#fff;border-radius:4px;padding:8px;font:700 9px/1.4 Helvetica;color:#111;transform:rotate(2deg)}
-.box .front .fragile{position:absolute;left:8%;bottom:14%;font:900 13px/1 Helvetica;color:#c41e2a;letter-spacing:.2em;border:2px solid #c41e2a;padding:5px 7px;transform:rotate(-3deg)}
+.box .front{position:relative;height:230px;background:linear-gradient(90deg,transparent 0 14%,#d2232a 14% 19%,transparent 19% 81%,#d2232a 81% 86%,transparent 86%),linear-gradient(180deg,#ffffff,#e4e6ea);box-shadow:inset 0 0 30px rgba(0,0,0,.08),0 30px 50px rgba(0,0,0,.55);z-index:3;transition:transform .7s cubic-bezier(.6,0,.8,.4)}
+.box .front .stamp{position:absolute;left:50%;top:14%;transform:translateX(-50%);font:900 italic 46px/1 Helvetica,Arial;color:#d2232a;letter-spacing:.02em;text-shadow:0 1px 0 rgba(0,0,0,.1)}
+.box .front .stamp small{display:block;font:800 8px/1.4 Helvetica,Arial;letter-spacing:.3em;color:#333;text-align:center;font-style:normal;margin-top:4px}
+.box .front .sl{position:absolute;right:22%;bottom:10%;width:40%;background:#fff;border:1px solid #ddd;border-radius:4px;padding:8px;font:700 9px/1.4 Helvetica;color:#111;transform:rotate(1.5deg);box-shadow:0 2px 4px rgba(0,0,0,.12)}
+.box .front .fragile{position:absolute;left:22%;bottom:14%;font:900 11px/1 Helvetica;color:#d2232a;letter-spacing:.2em;border:2px solid #d2232a;padding:5px 7px;transform:rotate(-3deg);background:#fff}
 #psaSlab{position:absolute;left:50%;top:50%;width:78%;transform:translate(-50%,-50%);z-index:2;transition:transform 1s cubic-bezier(.2,1,.3,1),opacity .4s}
 .vault{display:grid;grid-template-columns:1fr 1fr;gap:14px}
 .vault .v{position:relative}
@@ -403,10 +418,14 @@ nav button.alert .dot{display:block}
 .pick .p .ck{position:absolute;top:4px;right:4px;width:20px;height:20px;border-radius:50%;background:#ffd76a;color:#000;font-weight:900;font-size:12px;display:none;align-items:center;justify-content:center}
 .pick .p.on .ck{display:flex}
 .dgrid{display:grid;grid-template-columns:repeat(3,1fr);gap:10px}
+.dgrid.c4{grid-template-columns:repeat(4,1fr);gap:8px}
 .dl{position:relative;border-radius:10px;overflow:hidden;background:var(--panel);border:1px solid var(--line);padding-bottom:6px;text-align:center}
 .dl img{width:100%;aspect-ratio:63/88;object-fit:cover;display:block}
-.dl .pr{font-weight:900;color:#fff;font-size:12px;margin:6px 6px 0;padding:4px 0;border-radius:8px;background:linear-gradient(135deg,#ff7a8a,#e8455a)}
-.dl .hv{font-size:9.5px;color:var(--mut);margin-top:3px}
+.dl .pr{font-weight:900;color:#fff;font-size:11px;margin:6px 5px 0;padding:4px 0;border-radius:8px;background:linear-gradient(135deg,#ff7a8a,#e8455a)}
+.dl .hv{font-size:9px;color:var(--mut);margin-top:3px}
+.dl .mtag{position:absolute;top:4px;left:4px;font-size:8px;font-weight:900;padding:2px 5px;border-radius:5px;background:linear-gradient(90deg,#ff9de6,#ffe07a);color:#000;z-index:2}
+.dl.missing{box-shadow:0 0 0 2px #ff9de6,0 0 14px rgba(255,157,230,.45)}
+.dl.ultra{box-shadow:0 0 0 1.5px #ffd76a}
 .dl.boughtx{opacity:.25;pointer-events:none}
 .dl .box2{aspect-ratio:63/88;display:flex;align-items:center;justify-content:center;font-size:44px;background:linear-gradient(135deg,#6a3a1a,#2a160a)}
 .jobCard{width:min(50vw,210px);aspect-ratio:63/88;margin:14px auto 0;border-radius:8px;overflow:hidden;box-shadow:0 20px 40px rgba(0,0,0,.6);transition:transform .25s}
@@ -505,6 +524,7 @@ body.intro .screen,body.intro nav,body.intro #coin,body.intro #musBtn,body.intro
 .nameIn input{width:100%;max-width:320px;border:2px solid rgba(16,16,32,.15);border-radius:16px;background:#fff;padding:14px;font-size:20px;font-weight:900;letter-spacing:.12em;text-transform:uppercase;text-align:center;color:#101020}
 .nameIn .pre{display:flex;gap:8px;flex-wrap:wrap;justify-content:center}
 .nameIn .pre button{border:1px solid rgba(16,16,32,.15);border-radius:20px;background:#fff;font-size:12px;font-weight:800;letter-spacing:.1em;padding:8px 14px;color:#101020}
+/* room */
 .room{position:relative;width:100%;aspect-ratio:3/4;border-radius:20px;overflow:hidden;box-shadow:0 20px 50px rgba(0,0,0,.6);margin-top:6px;background:#2a1f2e}
 .room .wall{position:absolute;left:0;right:0;top:0;height:62%;background:linear-gradient(180deg,var(--wa,#3b5f8f),var(--wb,#2d4a72))}
 .room .wall::after{content:"";position:absolute;inset:0;background:repeating-linear-gradient(90deg,rgba(255,255,255,.035) 0 22px,transparent 22px 44px)}
@@ -514,6 +534,11 @@ body.intro .screen,body.intro nav,body.intro #coin,body.intro #musBtn,body.intro
 .room .win::before{content:"";position:absolute;left:50%;top:0;bottom:0;width:4px;margin-left:-2px;background:#f2e6d0}
 .room .win::after{content:"";position:absolute;top:50%;left:0;right:0;height:4px;margin-top:-2px;background:#f2e6d0}
 .room .frames{position:absolute;left:69%;right:3%;top:4%;display:grid;grid-template-columns:repeat(var(--fc,2),1fr);gap:6px 5px;z-index:2}
+.room .fr{position:relative;padding:5%;background:linear-gradient(135deg,#f1d27a,#9a6d22 45%,#e8c56a 70%,#7a5418);border-radius:2px;box-shadow:0 6px 12px rgba(0,0,0,.55)}
+.room .fr img{width:100%;aspect-ratio:63/88;object-fit:cover;display:block}
+.room .fr.em{background:rgba(0,0,0,.15);box-shadow:inset 0 0 0 2px rgba(255,255,255,.15)}
+.room .fr.em::after{content:"";display:block;aspect-ratio:63/88}
+.room .fr .gt{position:absolute;bottom:-6px;left:50%;transform:translateX(-50%);background:#c41e2a;color:#fff;font-size:6.5px;font-weight:900;padding:1px 3px;border-radius:2px;white-space:nowrap}
 .room .hero{position:absolute;left:31%;width:36%;top:3%;height:55%;z-index:3;border-radius:6px 6px 3px 3px;background:linear-gradient(90deg,#5a3418,#8a5a30 8%,#6a4022 50%,#8a5a30 92%,#5a3418);box-shadow:0 14px 30px rgba(0,0,0,.6),inset 0 0 0 3px #3a2010;padding:5% 5% 0;display:flex;flex-direction:column;align-items:center}
 .room .hero .crown{position:absolute;top:-4px;left:50%;transform:translate(-50%,-50%);background:linear-gradient(135deg,#fff3c4,#ffd76a 40%,#c8901a);color:#2a1a05;font:900 7px/1 Arial;letter-spacing:.12em;padding:4px 7px;border-radius:10px;white-space:nowrap;box-shadow:0 3px 8px rgba(0,0,0,.5)}
 .room .hero .glassbox{position:relative;width:100%;flex:1;border-radius:3px;background:linear-gradient(180deg,#1a1020,#2a1a2a);box-shadow:inset 0 0 0 2px rgba(220,240,255,.35),inset 0 10px 30px rgba(0,0,0,.6);overflow:hidden;display:flex;flex-direction:column;align-items:center;padding-top:9%}
@@ -531,15 +556,10 @@ body.intro .screen,body.intro nav,body.intro #coin,body.intro #musBtn,body.intro
 .room .hero .gshelf .slab{width:28%}
 .room .hero .gshelf .emp{font:800 6px/1 Arial;color:rgba(255,255,255,.4);letter-spacing:.1em;align-self:center}
 .room .hero .base2{width:108%;height:4%;min-height:6px;background:linear-gradient(#9a6a3a,#4a2c16);border-radius:2px;margin:0 -4%}
-.room .fr{position:relative;padding:5%;background:linear-gradient(135deg,#f1d27a,#9a6d22 45%,#e8c56a 70%,#7a5418);border-radius:2px;box-shadow:0 6px 12px rgba(0,0,0,.55)}
-.room .fr img{width:100%;aspect-ratio:63/88;object-fit:cover;display:block}
-.room .fr.em{background:rgba(0,0,0,.15);box-shadow:inset 0 0 0 2px rgba(255,255,255,.15)}
-.room .fr.em::after{content:"";display:block;aspect-ratio:63/88}
-.room .fr .gt{position:absolute;bottom:-6px;left:50%;transform:translateX(-50%);background:#c41e2a;color:#fff;font-size:6.5px;font-weight:900;padding:1px 3px;border-radius:2px;white-space:nowrap}
-.room .rposter{position:absolute;width:6.5%;box-shadow:0 6px 12px rgba(0,0,0,.5);border-radius:2px;z-index:1;font-size:6px;aspect-ratio:3/4;display:flex;align-items:flex-end;justify-content:center;color:#fff;font-weight:900;padding:3px;text-align:center}
-.room .shelf{position:absolute;left:5%;top:36%;width:26%;height:3%;background:linear-gradient(#c89a60,#8a6034);border-radius:2px;box-shadow:0 6px 10px rgba(0,0,0,.4);z-index:2}
+.room .rposter{position:absolute;width:6.5%;box-shadow:0 6px 12px rgba(0,0,0,.5);border-radius:2px;z-index:1;font-size:5px;aspect-ratio:3/4;display:flex;align-items:flex-end;justify-content:center;color:#fff;font-weight:900;padding:2px;text-align:center}
+.room .shelf{position:absolute;left:5%;top:36%;width:24%;height:3%;background:linear-gradient(#c89a60,#8a6034);border-radius:2px;box-shadow:0 6px 10px rgba(0,0,0,.4);z-index:2}
 .room .shelf .bx{position:absolute;bottom:100%;width:22%;height:220%;border-radius:2px;box-shadow:inset -3px 0 0 rgba(0,0,0,.25)}
-.room .badges{position:absolute;left:5%;top:43%;width:26%;display:flex;flex-wrap:wrap;gap:2px;z-index:2;background:rgba(0,0,0,.25);border-radius:4px;padding:3px;min-height:14px}
+.room .badges{position:absolute;left:5%;top:43%;width:24%;display:flex;flex-wrap:wrap;gap:2px;z-index:2;background:rgba(0,0,0,.25);border-radius:4px;padding:3px;min-height:14px}
 .room .badges i{font-style:normal;font-size:9px}
 .room .bed{position:absolute;left:3%;bottom:6%;width:40%;height:24%;z-index:3}
 .room .bed .fr2{position:absolute;inset:18% 0 0 0;background:linear-gradient(#8a5a34,#5a3a20);border-radius:6px}
@@ -550,14 +570,12 @@ body.intro .screen,body.intro nav,body.intro #coin,body.intro #musBtn,body.intro
 .room .desk .lg{position:absolute;top:16%;bottom:0;width:8%;background:#6a4428}
 .room .desk .bind{position:absolute;left:12%;bottom:84%;width:44%;height:70%;background:#1d3a8a;border-radius:3px;display:flex;gap:4%;padding:5%;transform:perspective(200px) rotateX(35deg);transform-origin:bottom}
 .room .desk .bind img{flex:1;height:100%;object-fit:cover;border-radius:1px;min-width:0}
-.room .caseOLD{position:absolute;left:44%;bottom:5%;width:30%;height:22%;z-index:4;background:linear-gradient(135deg,rgba(200,230,255,.25),rgba(255,255,255,.08));border:2px solid rgba(220,240,255,.5);border-radius:5px;display:flex;align-items:flex-end;justify-content:space-around;padding:4% 3%;box-shadow:0 0 20px rgba(150,220,255,.25)}
-.room .case .slab{width:30%}
-.room .tv{position:absolute;right:8%;top:44%;width:22%;height:12%;background:#111;border:3px solid #333;border-radius:5px;z-index:2;overflow:hidden}
+.room .tv{position:absolute;right:6%;top:52%;width:20%;height:9%;background:#111;border:3px solid #333;border-radius:5px;z-index:2;overflow:hidden}
 .room .tv i{position:absolute;inset:0;background:linear-gradient(135deg,#1e3a8a,#e8455a);opacity:.85;animation:tvf 3s infinite}
 @keyframes tvf{50%{opacity:.6;filter:hue-rotate(60deg)}}
 .room .fridge{position:absolute;left:74%;bottom:28%;width:8%;height:13%;background:linear-gradient(#e8e8f0,#b8b8c8);border-radius:3px;z-index:2}
 .room .rug{position:absolute;left:22%;bottom:3%;width:56%;height:14%;border-radius:50%;background:radial-gradient(ellipse,#e8455a 0 30%,#fff 30% 36%,#e8455a 36% 60%,#ffd76a 60% 66%,#c8303f 66%);opacity:.85;z-index:1}
-.room .lamp{position:absolute;inset:0;background:radial-gradient(45% 35% at 70% 0%,rgba(255,220,150,.35),transparent 70%);z-index:5;pointer-events:none;mix-blend-mode:screen}
+.room .lamp{position:absolute;inset:0;background:radial-gradient(45% 35% at 50% 0%,rgba(255,220,150,.35),transparent 70%);z-index:5;pointer-events:none;mix-blend-mode:screen}
 .room .me{position:absolute;left:46%;bottom:22%;z-index:5}
 .room .vis{position:absolute;right:6%;bottom:22%;z-index:6;display:flex;flex-direction:column;align-items:flex-end}
 .room .vis .bubble{font-size:11px;padding:7px 10px;max-width:190px;margin:0 0 6px}
@@ -647,7 +665,7 @@ body.intro .screen,body.intro nav,body.intro #coin,body.intro #musBtn,body.intro
   </div>
 </section>
 <section class="screen sub" id="scrQuests"><header class="top"><button class="backBtn" data-home>‹ HOME</button><span><b>QUESTS</b></span></header><div class="scroll" id="questBody"></div></section>
-<section class="screen sub" id="scrShop"><header class="top"><button class="backBtn" data-home>‹ HOME</button><span><b>SHOP</b></span></header><div class="scroll" id="shopBody"></div></section>
+<section class="screen sub" id="scrShop"><header class="top"><button class="backBtn" data-home>‹ HOME</button><span>CARD <b>SHOP</b></span></header><div class="scroll" id="shopBody"></div></section>
 <section class="screen sub" id="scrMarket"><header class="top"><button class="backBtn" data-home>‹ HOME</button><span><b>MARKET</b></span></header><div class="scroll" id="marketBody"></div></section>
 <section class="screen sub" id="scrGyms"><header class="top"><button class="backBtn" data-home>‹ HOME</button><span><b>GYMS</b></span></header><div class="scroll" id="gymBody"></div></section>
 <section class="screen sub" id="scrHof"><header class="top"><button class="backBtn" data-home>‹ HOME</button><span>MY <b>ROOM</b></span></header><div class="scroll" id="hofBody"></div></section>
@@ -738,7 +756,7 @@ const setOf=id=>id.slice(0,id.lastIndexOf('-'));
 const NOW=()=>Date.now();
 const HOUR=36e5,DAY=864e5,MIN=6e4;
 const UNLOCK_PCT=.95;
-/* =================== STATE (same save slot as v8/v9, old saves keep working) =================== */
+/* =================== STATE (same save slot as before) =================== */
 const KEY='packrip_game_v2';
 const GP0=()=>({1:{p:0,h:0,u:0},2:{p:0,h:0,u:0},3:{p:0,h:0,u:0},4:{p:0,h:0,u:0}});
 const S0=()=>({player:null,coins:60,xp:0,rep:0,packs:0,cards:0,holos:0,ultras:0,gods:0,sinceHolo:0,lastHit:false,
@@ -746,7 +764,7 @@ const S0=()=>({player:null,coins:60,xp:0,rep:0,packs:0,cards:0,holos:0,ultras:0,
  slabs:[],subs:[],psaSubs:0,tot:{},seenUnlock:['base1'],seenGen:[1],inv:{},free:0,sealed:[],mis:[],badges:[],favs:[],
  story:0,storyG:{1:0,2:0,3:0,4:0},gp:GP0(),cols:[],ach:[],bounties:[],daily:{day:'',keys:[],p:{},claimed:[]},
  shop:{owned:false,disp:0,light:0,store:0,guide:false,partner:false,last:NOW()},shelf:[],
- machine:{owned:false,run:null,last:null},music:true,prestige:0,
+ machine:{owned:false,run:null,last:null},music:true,prestige:0,pbg:0,gcase:null,
  rev:{},ms:[],gymCd:{},room:{frames:0,lamp:false,console:false,fridge:false,rug:false,bed:false,wall:0},
  rv:null,rvPending:null,hw:null,streak:0,lastLogin:-1,trd:[],ritual:'',
  grail:null,lastOak:0,lastPocket:0,lastJob:0,lastQuiz:0,lastHL:0,lastTourney:0,lastDay:'',bgDex:6,
@@ -757,7 +775,12 @@ S.gp=Object.assign(GP0(),S.gp||{});
 if(S.story&&!S.storyG[1])S.storyG[1]=S.story;
 S.subs=S.subs.map(s=>s.sls?s:{sls:[s.sl],ready:s.ready,tier:s.tier});
 if(S.player&&S.player.look==null)S.player.look={boy:0,girl:1,hannes:2}[S.player.g]||0;
-const save=()=>{try{localStorage.setItem(KEY,JSON.stringify(S))}catch(e){}};
+let _uv=0;const save=()=>{_uv++;try{localStorage.setItem(KEY,JSON.stringify(S))}catch(e){}};
+/* =================== PROFILE BACKGROUNDS =================== */
+const PBGS=[['Classic','linear-gradient(135deg,#fff,#dfe6ff)'],['Pokéball','linear-gradient(180deg,#e83838 0 46%,#181818 46% 54%,#f4f4f4 54%)'],['Sunset','linear-gradient(160deg,#ffcf5a,#ff6a3d 55%,#8a2a6a)'],['Ocean','linear-gradient(160deg,#9ef0ff,#2f7ad0 60%,#0c2a5a)'],
+ ['Forest','linear-gradient(160deg,#c8f0a0,#3a9a4a 60%,#14401e)'],['Night','radial-gradient(circle at 70% 25%,#fff 0 4%,transparent 5%),radial-gradient(circle at 25% 60%,#fff 0 2%,transparent 3%),linear-gradient(160deg,#2a2a6a,#0a0a20)'],
+ ['Holo','linear-gradient(125deg,#ff9de6,#ffe36a,#6affd5,#6a8bff,#ff9de6)'],['Gold','linear-gradient(135deg,#fff3c4,#ffd76a 40%,#c8901a 70%,#fff0b0)'],['Lava','linear-gradient(160deg,#ffd06a,#e8455a 50%,#2a0a0a)'],['Ice','linear-gradient(160deg,#ffffff,#bfe3ff 50%,#7ab0e0)'],['Shop','linear-gradient(160deg,#8a5a30,#3a2216)'],['Psychic','linear-gradient(160deg,#ffb0f0,#9a4ad0 60%,#2a0a4a)']];
+function applyPbg(){document.documentElement.style.setProperty('--pbg',(PBGS[S.pbg]||PBGS[0])[1])}
 /* =================== SAVE + TRADE CODES =================== */
 const b64e=u=>{let s='';for(let i=0;i<u.length;i+=8192)s+=String.fromCharCode.apply(null,u.subarray(i,i+8192));return btoa(s).replace(/\+/g,'-').replace(/\//g,'_').replace(/=+$/,'')};
 const b64d=s=>{s=s.replace(/-/g,'+').replace(/_/g,'/');while(s.length%4)s+='=';const b=atob(s);const u=new Uint8Array(b.length);for(let i=0;i<b.length;i++)u[i]=b.charCodeAt(i);return u};
@@ -780,6 +803,7 @@ function saveCodeModal(){
 function loadCodeModal(){
  modal(`<div class="em">🔑</div><h2>Enter save code</h2><p>Paste your code. This replaces the game on this device. Codes from older versions work too.</p><textarea id="lcT" placeholder="PRZ-…"></textarea><button class="btn" id="lcGo">LOAD MY GAME</button><button class="btn ghost" onclick="closeModal()">CANCEL</button>`);
  $('#lcGo').onclick=async()=>{try{const o=await readCode($('#lcT').value);localStorage.setItem(KEY,JSON.stringify(o));toast('Save loaded ✓');setTimeout(()=>location.reload(),500)}catch(e){toast('That code does not work. Check that you copied all of it.')}}}
+function resetModal(){modal(`<div class="em">⚠️</div><h2>Reset the whole game?</h2><p>This deletes <b>everything</b>: cards, slabs, money, levels, badges and your room. You start again from the intro.<br><br>Tip: copy your save code first if you might want it back.</p><button class="btn ghost" id="rsCode">💾 GET SAVE CODE FIRST</button><button class="btn buy" id="rsGo">YES, RESET EVERYTHING</button><button class="btn ghost" onclick="closeModal()">CANCEL</button>`);$('#rsCode').onclick=saveCodeModal;$('#rsGo').onclick=()=>{localStorage.removeItem(KEY);location.reload()}}
 /* =================== CARD DATA =================== */
 const CACHE='packrip_cards7_';const memo={};
 function rarityTier(r){r=(r||'').toLowerCase();
@@ -845,6 +869,8 @@ const QTYS=[1,2,5,10,20,50];
 const QLV={1:1,2:2,5:5,10:7,20:10,50:100};
 const qOk=n=>!!S.prestige||lvFromXP(S.xp).L>=QLV[n];
 const multiPrice=(set,n)=>Math.round(packPrice(set)*n*MULTI[n]);
+/* free vouchers + sealed packs are used first, the rest is paid */
+function multiCost(set,n){const inv=Math.min(n,S.inv[set.id]||0),fr=Math.min(n-inv,S.free),pay=n-inv-fr;return {inv,fr,pay,cost:pay>0?Math.round(packPrice(set)*pay*MULTI[n]):0}}
 const sealedMax=()=>(hasBadge('glacier')?.9:.6)+(hasBadge('relic')?.1:0);
 const sealedVal=s=>Math.round(s.base*(1+Math.min(sealedMax(),(NOW()-s.bought)/HOUR*.005)));
 const sealedDisc=()=>hasBadge('mineral')?.85:1;
@@ -884,12 +910,16 @@ function isBroke(){return S.coins<minPackPrice()&&S.free<1&&!Object.values(S.inv
 function brokeCheck(){if(isBroke())setTimeout(()=>toast('Low on cash? Odd jobs, minigames or Grandpa (Shop)'),2200)}
 const pname=()=>(S.player&&S.player.name)||'RED';
 /* =================== COLLECTION =================== */
-function addRaw(c,fake){const s=setOf(c.id);S.coll[s]=S.coll[s]||{};S.coll[s][c.id]=(S.coll[s][c.id]||0)+1;S.seen[s]=S.seen[s]||{};S.seen[s][c.id]=1;S.nm[c.id]=c.name;
+function addRaw(c,fake){_uv++;const s=setOf(c.id);S.coll[s]=S.coll[s]||{};S.coll[s][c.id]=(S.coll[s][c.id]||0)+1;S.seen[s]=S.seen[s]||{};S.seen[s][c.id]=1;S.nm[c.id]=c.name;
  if(fake){S.fakes[c.id]=(S.fakes[c.id]||0)+1}}
 function rawCount(id){const s=setOf(id);return (S.coll[s]||{})[id]||0}
-function takeRaw(id){const s=setOf(id),n=rawCount(id);if(n<1)return null;const f=S.fakes[id]||0;const isFake=f>0&&Math.random()<f/n;
+function takeRaw(id){_uv++;const s=setOf(id),n=rawCount(id);if(n<1)return null;const f=S.fakes[id]||0;const isFake=f>0&&Math.random()<f/n;
  S.coll[s][id]=n-1;if(isFake)S.fakes[id]=f-1;else if(f>S.coll[s][id])S.fakes[id]=S.coll[s][id];return isFake}
 const seenCount=id=>Object.keys(S.seen[id]||{}).length;
+/* cards you OWN right now (raw, slab or misprint) – this is what unlocks sets */
+function ownedSet(id){const o=new Set();Object.entries(S.coll[id]||{}).forEach(([k,n])=>{if(n>0)o.add(k)});S.slabs.forEach(s=>{if(!s.fake&&setOf(s.id)===id)o.add(s.id)});S.mis.forEach(m=>{if(setOf(m.id)===id)o.add(m.id)});return o}
+const ownCount=id=>ownedSet(id).size;
+const isOwned=cid=>rawCount(cid)>0||S.slabs.some(s=>!s.fake&&s.id===cid)||S.mis.some(m=>m.id===cid);
 function allItems(){const out=[];
  Object.keys(S.coll).forEach(sid=>{const m=memo[sid];if(!m)return;Object.entries(S.coll[sid]).forEach(([id,n])=>{if(n>0&&m.byId[id]){const c=m.byId[id];out.push({k:'raw',key:'r:'+id,c,id,cnt:n,val:cardVal(c),name:c.name,img:c.s,set:sid})}})});
  S.slabs.forEach(sl=>out.push({k:'slab',key:'s:'+sl.uid,sl,val:cardVal(sl,{grade:sl.grade}),name:sl.name,img:sl.s,set:setOf(sl.id),grade:sl.grade}));
@@ -897,11 +927,22 @@ function allItems(){const out=[];
  S.sealed.forEach(s=>out.push({k:'seal',key:'x:'+s.uid,s,val:sealedVal(s),name:setById[s.set].n+' '+(s.kind==='box'?'Booster Box':'Bundle'),img:logoURL(s.set),set:s.set}));
  return out}
 const collValue=()=>allItems().reduce((a,i)=>a+i.val*(i.cnt||1),0);
+const bestItem=()=>allItems().filter(i=>i.k!=='seal').sort((a,b)=>b.val-a.val)[0];
 function removeItem(it){
  if(it.k==='raw')return {fake:!!takeRaw(it.id)};
  if(it.k==='slab'){S.slabs=S.slabs.filter(s=>s.uid!==it.sl.uid);S.favs=S.favs.filter(u=>u!==it.sl.uid);return {fake:!!it.sl.fake}}
  if(it.k==='mis'){S.mis=S.mis.filter(s=>s.uid!==it.m.uid);return {fake:false}}
  if(it.k==='seal'){S.sealed=S.sealed.filter(s=>s.uid!==it.s.uid);return {fake:false}}}
+/* ---- would selling this lock a set? ---- */
+function wouldLock(it){if(!it||it.k==='seal')return[];_uv++;const before=unlockedSets().map(s=>s.id);let undo;
+ if(it.k==='raw'){const s=setOf(it.id);if(!rawCount(it.id))return[];S.coll[s][it.id]--;undo=()=>S.coll[s][it.id]++}
+ else if(it.k==='slab'){const i=S.slabs.findIndex(x=>x.uid===it.sl.uid);if(i<0)return[];const [x]=S.slabs.splice(i,1);undo=()=>S.slabs.splice(i,0,x)}
+ else if(it.k==='mis'){const i=S.mis.findIndex(x=>x.uid===it.m.uid);if(i<0)return[];const [x]=S.mis.splice(i,1);undo=()=>S.mis.splice(i,0,x)}
+ else return[];
+ _uv++;const after=new Set(unlockedSets().map(s=>s.id));undo();_uv++;return before.filter(id=>!after.has(id)).map(id=>setById[id].n)}
+function guard(it,fn,cancel){const l=wouldLock(it);if(!l.length)return fn();
+ modal(`<div class="em">🔒</div><h2>This will lock ${l.length>1?l.length+' sets':'a set'}!</h2><p>Without <b>${esc(it.name)}</b> you no longer own enough cards to keep these sets unlocked:<br><br><b style="color:#ff8a8a">${l.map(esc).join('<br>')}</b><br><br>You can win them back by collecting the card again.</p><button class="btn buy" id="gdY">SELL ANYWAY</button><button class="btn ghost" id="gdN">KEEP THE CARD</button>`);
+ $('#gdY').onclick=()=>{closeModal();fn()};$('#gdN').onclick=()=>{closeModal();cancel&&cancel()}}
 const uid=()=>NOW().toString(36)+Math.floor(Math.random()*1e6).toString(36);
 /* =================== AUDIO =================== */
 let AC=null;
@@ -957,7 +998,7 @@ function toast(t){const e=$('#toast');e.textContent=t;e.classList.add('on');clea
 function modal(html){$('#mbox').innerHTML=html;$('#modal').classList.add('on')}
 function closeModal(){$('#modal').classList.remove('on')}
 $('#modal').addEventListener('click',e=>{if(e.target.id==='modal')closeModal()});
-/* =================== THE CARD SHOP =================== */
+/* =================== THE CARD SHOP BACKGROUND =================== */
 function mulberry(a){return function(){a|=0;a=a+0x6D2B79F5|0;let t=Math.imul(a^a>>>15,1|a);t=t+Math.imul(t^t>>>7,61|t)^t;return((t^t>>>14)>>>0)/4294967296}}
 function paintShop(){const c=$('#shopBg'),x=c.getContext('2d'),R=mulberry(1999);const q=(a,b)=>a+R()*(b-a);x.save();x.scale(2,2);const W=540,H=960;
  let g=x.createLinearGradient(0,0,0,H);g.addColorStop(0,'#3a2216');g.addColorStop(.55,'#4a2c1a');g.addColorStop(1,'#1a0f09');x.fillStyle=g;x.fillRect(0,0,W,H);
@@ -1055,16 +1096,17 @@ document.addEventListener('touchend',()=>{ac();askGyro()},{once:true});
 document.addEventListener('click',()=>{ac();askGyro()},{once:true});
 function setBgMon(dex,big){const im=$('#bgMon');if(dex&&im.dataset.dex!=String(dex)){im.dataset.dex=dex;const n=new Image();n.onload=()=>{im.src=n.src};n.src=artURL(dex)}im.classList.toggle('big',!!big)}
 function applyTheme(set,open){const r=document.documentElement.style;r.setProperty('--c1',set.c[0]);r.setProperty('--c2',set.c[1]);r.setProperty('--c3',set.c[2]);if(open!==undefined){r.setProperty('--bgh',set.h);r.setProperty('--bgs','52%');document.body.classList.toggle('opening',!!open)}}
-/* =================== PROGRESSION =================== */
+/* =================== PROGRESSION (based on cards you OWN) =================== */
 const setTotal=id=>memo[id]?memo[id].cards.length:(S.tot[id]||0);
 const unlockNeed=id=>Math.ceil(setTotal(id)*UNLOCK_PCT);
 const hasPSA10=id=>S.slabs.some(s=>setOf(s.id)===id&&s.grade===10&&!s.fake);
 const setComplete=id=>{const t=setTotal(id);return t>0&&seenCount(id)>=t};
-const setUnlockDone=id=>{const t=setTotal(id);return t>0&&seenCount(id)>=unlockNeed(id)};
+const setUnlockDone=id=>{const t=setTotal(id);return t>0&&ownCount(id)>=unlockNeed(id)};
 const setCleared=id=>setUnlockDone(id)||hasPSA10(id);
-const isUnlocked=i=>i===0||(i>0&&setCleared(SETS[i-1].id));
-const unlockedSets=()=>SETS.filter((s,i)=>isUnlocked(i));
-const genOpen=g=>SETS.some((s,i)=>s.g===g&&isUnlocked(i));
+let _uc=null,_ucv=-1;
+const unlockedSets=()=>{if(_ucv===_uv&&_uc)return _uc;const out=[];for(let i=0;i<SETS.length;i++){if(i===0||setCleared(SETS[i-1].id))out.push(SETS[i]);else break}_uc=out;_ucv=_uv;return out};
+const isUnlocked=i=>i>=0&&i<unlockedSets().length;
+const genOpen=g=>unlockedSets().some(s=>s.g===g);
 const maxGen=()=>genOpen(4)?4:genOpen(3)?3:genOpen(2)?2:1;
 const gensOpen=()=>GL.filter(genOpen);
 function masterProg(id){const m=memo[id],set=setById[id];if(!m)return null;
@@ -1171,13 +1213,17 @@ async function openSet(id){
  catch(e){$('#loader').innerHTML=`<div class="err">Could not load ${curSet.n}.<br>Check your internet connection.<br><br><button class="btn ghost" onclick="location.reload()">TRY AGAIN</button></div>`}}
 function renderQty(){if(!qOk(qtySel))qtySel=1;
  $('#qty').innerHTML=QTYS.map(n=>{const ok=qOk(n);return `<button class="${n===qtySel?'on':''} ${ok?'':'lk'}" data-q="${n}">${ok?n+'×':'🔒'+n}</button>`}).join('');
- const mb=$('#multiBtn');if(qtySel>1){mb.style.display='';mb.textContent=`RIP ${qtySel} PACKS ${OUT(multiPrice(curSet,qtySel))}`}else mb.style.display='none';
- $('#weighBtn').style.display=qtySel>1?'none':'';$('#swapBtn').style.display=qtySel>1?'none':'';
- const off=Math.round((1-MULTI[qtySel])*100);$('#packPrice').innerHTML=qtySel>1?`${qtySel} packs${off?` · ${off}% off`:''} · half XP`:priceText()}
+ const mb=$('#multiBtn');
+ if(qtySel>1){const mc=multiCost(curSet,qtySel);mb.style.display='';mb.className='sbtn '+(mc.cost?'buy':'earn');mb.textContent=`RIP ${qtySel} PACKS ${mc.cost?OUT(mc.cost):'· FREE'}`;
+  const fr=mc.inv+mc.fr,off=Math.round((1-MULTI[qtySel])*100);
+  $('#packPrice').innerHTML=`${qtySel} packs${fr?` · <span class="money in">${fr} free/sealed used</span>`:''}${off&&mc.pay?` · ${off}% off`:''} · half XP`}
+ else{mb.style.display='none';$('#packPrice').innerHTML=priceText()}
+ $('#weighBtn').style.display=qtySel>1?'none':'';$('#swapBtn').style.display=qtySel>1?'none':''}
 $('#qty').addEventListener('click',e=>{const b=e.target.closest('[data-q]');if(!b||opened||(current&&current.paid))return;const n=+b.dataset.q;
  if(!qOk(n)){sfx.bad();toast(n===50?`50 packs at once unlocks at level 100 (max level)`:`${n} packs at once unlocks at level ${QLV[n]} · you are level ${lvFromXP(S.xp).L}`);return}
  qtySel=n;blip();renderQty();packWrap.classList.toggle('float',true)});
-$('#multiBtn').onclick=()=>{if(!curSet||opened||qtySel<2||!qOk(qtySel))return;const p=multiPrice(curSet,qtySel);if(!spend(p))return;ripMulti(qtySel)};
+$('#multiBtn').onclick=()=>{if(!curSet||opened||qtySel<2||!qOk(qtySel))return;const mc=multiCost(curSet,qtySel);if(mc.cost&&!spend(mc.cost))return;
+ if(mc.inv)S.inv[curSet.id]-=mc.inv;if(mc.fr)S.free-=mc.fr;save();if(mc.inv+mc.fr)toast(`${mc.inv+mc.fr} free/sealed pack${mc.inv+mc.fr>1?'s':''} used`);ripMulti(qtySel)};
 function priceText(){const p=packPrice(curSet),inv=S.inv[curSet.id]||0;
  return current&&current.paid?'<span class="money in">PAID ✓</span> · RIP IT':S.free>0?`<span class="money in">FREE PACK</span> · ${S.free} voucher${S.free>1?'s':''} left`:inv>0?`<span class="money in">${inv} SEALED</span> in your stash`:`This pack costs <span class="money out">${OUT(p)}</span>`}
 function priceLabel(){$('#weighBtn').disabled=!!(current&&current.weighed);$('#swapBtn').disabled=!!(current&&current.paid);renderQty()}
@@ -1311,7 +1357,7 @@ function showSummary(){
  const price=packPrice(curSet);
  $('#sumTitle').textContent=current.god?'GOD PACK!':r.best&&r.best.r==='ultra'?'Big hit!':r.holo?'Nice pull!':'Your pack';
  $('#sumSub').textContent=`${curSet.n.toUpperCase()} · ${newSet.size} NEW FOR YOUR BINDER`;
- $('#sumVal').innerHTML=`Pack value <span class="money ${r.pv>=price?'in':''}">${fmt(r.pv)}</span> · pack price ${fmt(price)}<br><span style="color:var(--mut);font-weight:600">${seenCount(curSet.id)}/${setTotal(curSet.id)} registered · next set at ${unlockNeed(curSet.id)}</span>`;
+ $('#sumVal').innerHTML=`Pack value <span class="money ${r.pv>=price?'in':''}">${fmt(r.pv)}</span> · pack price ${fmt(price)}<br><span style="color:var(--mut);font-weight:600">You own ${ownCount(curSet.id)}/${setTotal(curSet.id)} · next set at ${unlockNeed(curSet.id)}</span>`;
  $('#sumGrid').innerHTML=current.cards.map((x,i)=>`<div class="mini ${x.c.r} ${x.mis?'mp-'+x.mis:''}" style="animation-delay:${i*45}ms"><img src="${x.c.s}">${newSet.has(x.c.id)?'<span class="nw">NEW</span>':''}<span class="pv">${fmt(cardVal(x.c,{mis:x.mis?1:0}))}</span></div>`).join('');
  const hits=current.cards.filter(x=>!x.mis&&(x.c.r==='holo'||x.c.r==='ultra')&&rawCount(x.c.id)>0).map(x=>x.c);
  $('#gradeHit').style.display=hits.length?'':'none';$('#gradeHit').textContent=hits.length>1?`SEND ${hits.length} HITS TO PSA`:'SEND HIT TO PSA';
@@ -1322,7 +1368,7 @@ const uniq=a=>{const s=new Set();return a.filter(c=>!s.has(c.id)&&s.add(c.id))};
 $('#nextPack').onclick=()=>{$('#summary').classList.remove('on');$('#setLogoTop').style.opacity=1;newPack()};
 $('#toAlbum').onclick=()=>{albumSet=curSet.id;filt='all';go('scrAlbum')};
 $('#backSets').onclick=()=>{if(T.active)return;go('scrSets')};
-/* =================== MULTI RIP (2 / 5 / 10 / 20, level locked) =================== */
+/* =================== MULTI RIP =================== */
 async function ripMulti(n){
  const set=curSet,D=curData;const packs=[];for(let i=0;i<n;i++)packs.push(buildPack(D,set));
  const seenBefore=new Set(Object.keys(S.seen[set.id]||{}));
@@ -1348,7 +1394,7 @@ async function ripMulti(n){
  const best=all.slice().sort((a,b)=>cardVal(b.c,{mis:b.mis?1:0})-cardVal(a.c,{mis:a.mis?1:0}))[0];
  const newN=new Set(all.filter(x=>!seenBefore.has(x.c.id)).map(x=>x.c.id)).size;
  const hitsList=uniq(all.filter(x=>!x.mis&&(x.c.r==='holo'||x.c.r==='ultra')).map(x=>x.c)).filter(c=>rawCount(c.id)>0);
- M.innerHTML=`<div class="mh">${n} PACKS RIPPED<small>${hits} HIT${hits===1?'':'S'} · ${newN} NEW · VALUE <span class="money ${tot>=price?'in':'out'}">${fmt(tot)}</span> FOR ${fmt(price)}</small></div>
+ M.innerHTML=`<div class="mh">${n} PACKS RIPPED<small>${hits} HIT${hits===1?'':'S'} · ${newN} NEW · VALUE <span class="money ${tot>=price?'in':'out'}">${fmt(tot)}</span></small></div>
   <div id="mStage"><div id="mHit"></div><div class="mrows">${packs.map((p,i)=>`<div class="mrowl"><span>PACK ${i+1}${p.god?' · GOD PACK':''}</span><span class="money in">${fmt(res[i].pv)}</span></div><div class="mrow">${p.cards.map(x=>`<img loading="lazy" class="${x.c.r==='holo'?'h':x.c.r==='ultra'?'u':''}" src="${x.c.s}">`).join('')}</div>`).join('')}</div></div>
   <div class="two" style="width:100%;max-width:440px;flex:none">${hitsList.length?`<button class="btn ghost" id="mPSA">📮 PSA (${hitsList.length})</button>`:''}<button class="btn" id="mDone">DONE</button></div>`;
  const hc=$('#mHit');const el=document.createElement('div');el.className='card live '+best.c.r+(best.mis?' mp-'+best.mis:'');el.innerHTML=cardHTML(best.c,{mis:best.mis,tag:1});el._base='';hc.appendChild(el);bindTilt2(el);
@@ -1359,7 +1405,7 @@ function bindTilt2(el){let raf=0;el.onpointermove=e=>{el._touch=true;const r=el.
  el.onpointerleave=el.onpointerup=()=>{el._touch=false;el.style.transition='transform .5s';el.style.transform=''}}
 /* =================== UNLOCKS =================== */
 const PROF={2:'Elm',3:'Birch',4:'Rowan'},NEWMON={2:100,3:135,4:107},GEM={2:'🌙',3:'🌋',4:'💎'};
-function checkUnlocks(){
+function checkUnlocks(){_uv++;
  SETS.forEach((s,i)=>{if(i>0&&isUnlocked(i)&&!S.seenUnlock.includes(s.id)){S.seenUnlock.push(s.id);save();
   if(!S.seenGen.includes(s.g)){S.seenGen.push(s.g);save();renderPosters();
    whenFree(()=>{flash(1,900);sfx.ultra();fanfare();burst(320,['#ffe07a','#fff','#9ef0ff','#ff9de6'],1.5);banner('GEN '+ROMAN[s.g]+' UNLOCKED');
@@ -1367,18 +1413,18 @@ function checkUnlocks(){
   else setTimeout(()=>{fanfare();burst(160,['#ffe07a','#fff'],1.1);banner('NEW SET!');toast(`🔓 ${s.n} unlocked`)},700)}})}
 /* =================== SETS SCREEN =================== */
 function renderSets(){
- document.body.classList.remove('opening');let h='';
+ document.body.classList.remove('opening');let h='';const U=new Set(unlockedSets().map(s=>s.id));
  GL.forEach(g=>{const open=genOpen(g);h+=`<div class="gen"><b>${open?'':'🔒 '}${GENS[g][0].toUpperCase()}</b><span>${GENS[g][1]}</span></div><div class="sets">`;
-  SETS.forEach((s,i)=>{if(s.g!==g)return;const un=isUnlocked(i),nxt=!un&&isUnlocked(i-1);const tot=setTotal(s.id),seen=seenCount(s.id),pct=tot?seen/tot*100:0;
+  SETS.forEach((s,i)=>{if(s.g!==g)return;const un=U.has(s.id),nxt=!un&&(i===0||U.has(SETS[i-1].id));const tot=setTotal(s.id),own=ownCount(s.id),pct=tot?own/tot*100:0;
    const prev=SETS[i-1];
    h+=`<button class="setT ${un?'':nxt?'locked next':'locked'}" data-i="${i}" style="--a:${s.c[0]};--b:${s.c[1]}">
     <img src="${logoURL(s.id)}" alt="" loading="lazy" onerror="this.style.display='none'">
     ${un?(S.ms.includes(s.id)?'<span class="done">MASTER</span>':setComplete(s.id)?'<span class="done">100%</span>':S.inv[s.id]?`<span class="own">${S.inv[s.id]} SEALED</span>`:''):'<span class="lk">🔒</span>'}
     <div><div class="nm">${s.n}</div>
-    ${un?`<div class="meta"><span>${s.y} · ${fmt(packPrice(s))}</span><span>${tot?seen+'/'+tot:''}</span></div><div class="pb"><i style="width:${pct}%"></i></div>`
-     :nxt?`<div class="req">Register <b>${prev&&setTotal(prev.id)?unlockNeed(prev.id):'95%'}</b> of ${prev.n}${prev&&setTotal(prev.id)?` (${seenCount(prev.id)} now)`:''}<br>or grade a <b>PSA 10</b> holo from it</div>`:`<div class="meta"><span>${s.y}</span></div>`}</div></button>`});
+    ${un?`<div class="meta"><span>${s.y} · ${fmt(packPrice(s))}</span><span>${tot?own+'/'+tot:''}</span></div><div class="pb"><i style="width:${pct}%"></i></div>`
+     :nxt?`<div class="req">Own <b>${prev&&setTotal(prev.id)?unlockNeed(prev.id):'95%'}</b> cards of ${prev.n}${prev&&setTotal(prev.id)?` (${ownCount(prev.id)} now)`:''}<br>or grade a <b>PSA 10</b> holo from it</div>`:`<div class="meta"><span>${s.y}</span></div>`}</div></button>`});
   h+='</div>'});
- $('#setList').innerHTML=h;$('#totPacks').innerHTML=`<b>${unlockedSets().length}</b>/${SETS.length}`}
+ $('#setList').innerHTML=h;$('#totPacks').innerHTML=`<b>${U.size}</b>/${SETS.length}`}
 $('#setList').addEventListener('click',e=>{const b=e.target.closest('.setT');if(!b)return;const i=+b.dataset.i;
  if(!isUnlocked(i)){toast('Locked · clear '+SETS[i-1].n+' first');return}openSet(SETS[i].id)});
 $('#randSet').onclick=()=>openSet(rnd(unlockedSets()).id);
@@ -1387,44 +1433,51 @@ let filt='all',albumSet=null,selMode=false,selPick=new Set();
 const FILTERS=[['all','All'],['own','In hand'],['miss','Missing'],['ultra','Ultra'],['holo','Holo'],['rare','Rare'],['uncommon','Uncommon'],['common','Common']];
 async function renderAlbum(){
  document.body.classList.remove('opening');
- if(albumSet!=='$all'&&(!albumSet||!isUnlocked(SETS.findIndex(s=>s.id===albumSet))))albumSet=(curSet&&curSet.id)||'base1';
- $('#setChips').innerHTML=`<button class="chip val ${albumSet==='$all'?'on':''}" data-set="$all">💰 TOP 20 BY VALUE</button>`+SETS.map((s,i)=>`<button class="chip ${s.id===albumSet?'on':''}" data-set="${s.id}" ${isUnlocked(i)?'':'style="opacity:.4"'}>${isUnlocked(i)?'':'🔒 '}${s.n}</button>`).join('');
+ const special=albumSet==='$raw'||albumSet==='$psa';
+ if(!special&&(!albumSet||!isUnlocked(SETS.findIndex(s=>s.id===albumSet))))albumSet=(curSet&&isUnlocked(SETS.indexOf(curSet))&&curSet.id)||'base1';
+ $('#setChips').innerHTML=`<button class="chip val ${albumSet==='$raw'?'on':''}" data-set="$raw">💰 TOP 20 RAW</button><button class="chip psa ${albumSet==='$psa'?'on':''}" data-set="$psa">🏅 TOP 20 PSA</button>`+SETS.map((s,i)=>`<button class="chip ${s.id===albumSet?'on':''}" data-set="${s.id}" ${isUnlocked(i)?'':'style="opacity:.4"'}>${isUnlocked(i)?'':'🔒 '}${s.n}</button>`).join('');
  const sc=$('#setChips .chip.on');if(sc)sc.scrollIntoView({inline:'center',block:'nearest'});
- $('#psaBatch').textContent=selMode?'✕ STOP SELECTING':'📮 SEND SEVERAL CARDS TO PSA';
+ $('#psaBatch').textContent=selMode?'✕ STOP SELECTING':'📮 SEND SEVERAL CARDS TO PSA';$('#psaBatch').style.display=albumSet==='$psa'?'none':'';
  $('#agrid').innerHTML='<div style="grid-column:1/-1;display:flex;justify-content:center;padding:40px"><div class="spin"></div></div>';$('#msLine').innerHTML='';
- if(albumSet==='$all')return renderAllValue();
+ if(special)return renderTop(albumSet);
  const set=setById[albumSet],me=albumSet;applyTheme(set);
  let D;try{D=await loadSet(me)}catch(e){$('#agrid').innerHTML='<div class="err" style="grid-column:1/-1">Needs internet to load this set.</div>';return}
  if(me!==albumSet)return;
- const coll=S.coll[me]||{},seen=S.seen[me]||{},reg=D.cards.filter(c=>seen[c.id]).length,rev=S.rev[me]||{};
- $('#albCount').innerHTML=`<b>${reg}</b> / ${D.cards.length}`;$('#albPct').textContent=Math.floor(reg/D.cards.length*100)+'%';$('#albBar').style.width=(reg/D.cards.length*100)+'%';
- $('#albSetName').textContent=`${set.n} · next set at ${unlockNeed(me)}`;
+ const coll=S.coll[me]||{},seen=S.seen[me]||{},own=ownedSet(me),rev=S.rev[me]||{};
+ $('#albCount').innerHTML=`own <b>${own.size}</b> / ${D.cards.length}`;$('#albPct').textContent=Math.floor(own.size/D.cards.length*100)+'%';$('#albBar').style.width=(own.size/D.cards.length*100)+'%';
+ $('#albSetName').textContent=`${set.n} · next set at ${unlockNeed(me)} owned`;
  const mp=masterProg(me);if(mp)$('#msLine').innerHTML=`👑 Master Set ${S.ms.includes(me)?'<b style="color:#ffd76a">COMPLETE</b>':`<b style="color:#fff">${mp.a}/${mp.b}</b>`} · ${mp.what}`;
  $('#chips').style.display='';$('#chips').innerHTML=FILTERS.map(([k,l])=>`<button class="chip ${k===filt?'on':''}" data-f="${k}">${l}</button>`).join('');
  const lbl={holo:'HOLO',ultra:'ULTRA',rare:'RARE'};
  const mis=S.mis.filter(m=>setOf(m.id)===me);
  let h=(filt==='all'||filt==='own')&&!selMode?mis.map(m=>`<div class="slot ${m.r} mp-${m.v}" data-mis="${m.uid}"><img src="${m.s}"><span class="rt mis">MISPRINT</span><span class="vl">${fmt(cardVal(m,{mis:1}))}</span></div>`).join(''):'';
- const list=D.cards.filter(c=>filt==='all'||(filt==='miss'&&!seen[c.id])||(filt==='own'&&coll[c.id])||c.r===filt);
- h+=list.map(c=>{const n=coll[c.id]||0,sn=seen[c.id];const can=selMode&&n>0&&(c.r==='holo'||c.r==='ultra');
-  return `<div class="slot ${c.r} ${sn?(n?'':'gone'):'miss'} ${selMode?(can?'selable':'dim'):''} ${selPick.has(c.id)?'picked':''}" data-id="${c.id}"><img src="${c.s}" loading="lazy">${!sn?'<span class="ms">MISSING</span>':''}${n&&lbl[c.r]?`<span class="rt ${c.r}">${lbl[c.r]}</span>`:''}${n>1?`<span class="cnt">×${n}</span>`:''}${rev[c.id]?'<span class="rv">REV</span>':''}<span class="no">#${c.n}</span>${n?`<span class="vl">${fmt(cardVal(c))}</span>`:''}</div>`}).join('');
+ const list=D.cards.filter(c=>filt==='all'||(filt==='miss'&&!own.has(c.id))||(filt==='own'&&coll[c.id])||c.r===filt);
+ h+=list.map(c=>{const n=coll[c.id]||0,sn=seen[c.id],o=own.has(c.id);const can=selMode&&n>0&&(c.r==='holo'||c.r==='ultra');
+  return `<div class="slot ${c.r} ${o?'':(sn?'gone':'miss')} ${selMode?(can?'selable':'dim'):''} ${selPick.has(c.id)?'picked':''}" data-id="${c.id}"><img src="${c.s}" loading="lazy">${!o?`<span class="ms">${sn?'SOLD':'MISSING'}</span>`:''}${n&&lbl[c.r]?`<span class="rt ${c.r}">${lbl[c.r]}</span>`:''}${n>1?`<span class="cnt">×${n}</span>`:''}${!n&&o?'<span class="cnt" style="background:#c41e2a;color:#fff">PSA</span>':''}${rev[c.id]?'<span class="rv">REV</span>':''}<span class="no">#${c.n}</span>${n?`<span class="vl">${fmt(cardVal(c))}</span>`:''}</div>`}).join('');
  $('#agrid').innerHTML=h||'<p class="empty" style="grid-column:1/-1">Nothing here. Yet.</p>'}
-async function renderAllValue(){await ensureLoaded();if(albumSet!=='$all')return;
- const allI=allItems().filter(i=>i.k!=='seal').sort((a,b)=>b.val-a.val);const tot=allI.reduce((a,i)=>a+i.val*(i.cnt||1),0);const cnt=allI.reduce((a,i)=>a+(i.cnt||1),0);const items=allI.slice(0,20);
- $('#albCount').innerHTML=`<b>${cnt}</b> cards`;$('#albSetName').textContent='Your top 20 most valuable cards';$('#albPct').textContent=fmt(tot);$('#albBar').style.width='100%';$('#chips').style.display='none';
+async function renderTop(kind){await ensureLoaded();if(albumSet!==kind)return;$('#chips').style.display='none';
+ if(kind==='$psa'){const all=S.slabs.filter(s=>!s.fake||true).map(sl=>({sl,val:cardVal(sl,{grade:sl.grade})})).sort((a,b)=>b.val-a.val);const tot=all.reduce((a,x)=>a+x.val,0);const items=all.slice(0,20);
+  $('#albCount').innerHTML=`<b>${all.length}</b> slabs`;$('#albSetName').textContent='Your top 20 graded PSA cards';$('#albPct').textContent=fmt(tot);$('#albBar').style.width='100%';
+  $('#agrid').innerHTML=items.length?items.map((x,i)=>`<div class="vslab" data-ps="${i}"><span class="rk">#${i+1}</span>${slabHTML(x.sl,{small:1})}<div class="vv">${fmt(x.val)}</div></div>`).join(''):'<p class="empty" style="grid-column:1/-1">No graded cards yet. Send holos to PSA from the Binder.</p>';
+  $('#agrid')._ps=items;return}
+ const allI=allItems().filter(i=>i.k==='raw'||i.k==='mis').sort((a,b)=>b.val-a.val);const tot=allI.reduce((a,i)=>a+i.val*(i.cnt||1),0);const cnt=allI.reduce((a,i)=>a+(i.cnt||1),0);const items=allI.slice(0,20);
+ $('#albCount').innerHTML=`<b>${cnt}</b> raw cards`;$('#albSetName').textContent='Your top 20 ungraded cards';$('#albPct').textContent=fmt(tot);$('#albBar').style.width='100%';
  $('#agrid').innerHTML=items.length?items.map((it,i)=>{const can=selMode&&it.k==='raw'&&(it.c.r==='holo'||it.c.r==='ultra');
-  return `<div class="slot ${it.k==='raw'?it.c.r:it.k==='slab'?'ultra':'holo'} ${it.k==='mis'?'mp-'+it.m.v:''} ${selMode?(can?'selable':'dim'):''} ${it.k==='raw'&&selPick.has(it.id)?'picked':''}" data-ai="${i}"><img src="${it.img}" loading="lazy"><span class="rk">#${i+1}</span>${it.k==='slab'?`<span class="cnt" style="background:#c41e2a;color:#fff">PSA ${it.grade}</span>`:it.k==='mis'?'<span class="cnt" style="background:#ff9de6">ERROR</span>':it.cnt>1?`<span class="cnt">×${it.cnt}</span>`:''}<span class="sn">${esc(setById[it.set].n)}</span><span class="vl">${fmt(it.val)}</span></div>`}).join(''):'<p class="empty" style="grid-column:1/-1">No cards yet. Go rip some packs!</p>';
+  return `<div class="slot ${it.k==='raw'?it.c.r:'holo'} ${it.k==='mis'?'mp-'+it.m.v:''} ${selMode?(can?'selable':'dim'):''} ${it.k==='raw'&&selPick.has(it.id)?'picked':''}" data-ai="${i}"><img src="${it.img}" loading="lazy"><span class="rk">#${i+1}</span>${it.k==='mis'?'<span class="cnt" style="background:#ff9de6">ERROR</span>':it.cnt>1?`<span class="cnt">×${it.cnt}</span>`:''}<span class="sn">${esc(setById[it.set].n)}</span><span class="vl">${fmt(it.val)}</span></div>`}).join(''):'<p class="empty" style="grid-column:1/-1">No cards yet. Go rip some packs!</p>';
  $('#agrid')._items=items}
-$('#setChips').addEventListener('click',e=>{const b=e.target.closest('.chip');if(!b)return;if(b.dataset.set!=='$all'&&!isUnlocked(SETS.findIndex(s=>s.id===b.dataset.set))){toast('Locked set');return}albumSet=b.dataset.set;renderAlbum()});
+$('#setChips').addEventListener('click',e=>{const b=e.target.closest('.chip');if(!b)return;const k=b.dataset.set;if(k[0]!=='$'&&!isUnlocked(SETS.findIndex(s=>s.id===k))){toast('Locked set');return}if(k==='$psa'&&selMode){selMode=false;selPick.clear();updSel()}albumSet=k;renderAlbum()});
 $('#chips').addEventListener('click',e=>{const b=e.target.closest('.chip');if(b){filt=b.dataset.f;renderAlbum()}});
 $('#psaBatch').onclick=()=>{selMode=!selMode;selPick.clear();updSel();renderAlbum();if(selMode)toast('Tap the holos you want to grade')};
 function updSel(){const bar=$('#selBar');bar.classList.toggle('on',selMode);$('#selN').textContent=`${selPick.size} card${selPick.size===1?'':'s'} selected`;
  const t=TIERS[0];$('#selFee').textContent=selPick.size?`Standard from ${fmt(batchFee(t,selPick.size))}${selPick.size>=5?' · 10% bulk discount':''}`:'Tap holos to pick them';$('#selGo').disabled=!selPick.size}
 $('#selCancel').onclick=()=>{selMode=false;selPick.clear();updSel();renderAlbum()};
 $('#selGo').onclick=()=>{const cards=[...selPick].map(cardById).filter(Boolean);if(!cards.length)return;selMode=false;selPick.clear();updSel();renderAlbum();psaTierModal(cards)};
-$('#agrid').addEventListener('click',e=>{const s=e.target.closest('.slot');if(!s)return;
+$('#agrid').addEventListener('click',e=>{
+ const ps=e.target.closest('[data-ps]');if(ps){const x=$('#agrid')._ps[+ps.dataset.ps];if(x)openSlab(x.sl);return}
+ const s=e.target.closest('.slot');if(!s)return;
  if(s.dataset.ai!=null){const it=$('#agrid')._items[+s.dataset.ai];if(!it)return;
   if(selMode){if(it.k==='raw'&&(it.c.r==='holo'||it.c.r==='ultra')){selPick.has(it.id)?selPick.delete(it.id):selPick.add(it.id);s.classList.toggle('picked');blip();updSel()}return}
-  if(it.k==='slab')return openSlab(it.sl);if(it.k==='mis')return openZoom(it.m,it.m.v);return openZoom(it.c)}
+  if(it.k==='mis')return openZoom(it.m,it.m.v);return openZoom(it.c)}
  if(s.dataset.mis){if(selMode)return;const m=S.mis.find(x=>x.uid===s.dataset.mis);if(m)openZoom(m,m.v);return}
  const c=memo[albumSet]&&memo[albumSet].byId[s.dataset.id];if(!c)return;
  if(selMode){if(rawCount(c.id)>0&&(c.r==='holo'||c.r==='ultra')){selPick.has(c.id)?selPick.delete(c.id):selPick.add(c.id);s.classList.toggle('picked');blip();updSel()}else toast('Only holos and ultra rares in hand');return}
@@ -1438,8 +1491,8 @@ function openZoom(c,misV){const z=$('#zcard');z.innerHTML='';const el=document.c
  if(n===0)a+=`<p class="empty" style="padding:12px">No copy in hand. It stays registered in your binder.</p>`;
  $('#zact').innerHTML=a;
  if($('#zPSA'))$('#zPSA').onclick=e=>{e.stopPropagation();$('#zoom').classList.remove('on');psaTierModal([c])};
- if($('#zQS'))$('#zQS').onclick=e=>{e.stopPropagation();quickSell(misV?{k:'mis',m:c,val:v,name:c.name}:{k:'raw',id:c.id,c,val:v,name:c.name});$('#zoom').classList.remove('on');renderAlbum()};
- if($('#zTr'))$('#zTr').onclick=e=>{e.stopPropagation();$('#zoom').classList.remove('on');tradeOut(c)};
+ if($('#zQS'))$('#zQS').onclick=e=>{e.stopPropagation();$('#zoom').classList.remove('on');const it=misV?{k:'mis',m:c,val:v,name:c.name}:{k:'raw',id:c.id,c,val:v,name:c.name};guard(it,()=>{quickSell(it);renderAlbum()})};
+ if($('#zTr'))$('#zTr').onclick=e=>{e.stopPropagation();$('#zoom').classList.remove('on');guard({k:'raw',id:c.id,c,name:c.name},()=>tradeOut(c))};
  bindTilt2(el);$('#zoom').classList.add('on');if(c.r==='holo'||c.r==='ultra')sfx.holo()}
 $('#zoom').addEventListener('click',e=>{if(e.target.id==='zoom'||e.target.id==='zinfo')$('#zoom').classList.remove('on')});
 function quickSell(it){
@@ -1512,47 +1565,61 @@ async function submitBatch(cards,t){
  let skip=false;psaEl.onclick=()=>skip=true;const rows=[...pStage.querySelectorAll('.row')];
  for(let i=0;i<rows.length;i++){rows[i].classList.add('on');await wait(skip?70:(i===2?1000:420));rows[i].classList.remove('on');rows[i].classList.add('done');rows[i].querySelector('small').textContent='DONE';tone([880+i*60],.12,.05)}
  psaEl.onclick=null;await wait(300);deliverBatch(sls)}
-async function deliverBatch(sls){for(let i=0;i<sls.length;i++)await deliver(sls[i],i,sls.length);closePSA();go('scrVault');setTimeout(()=>{checkUnlocks();checkAll()},300)}
-async function deliver(sl,i=0,n=1){
+/* the PSA return box: white with red stripes, cut the tape to open */
+async function openReturnBox(n,first){
+ psaHead('DELIVERY FROM PSA','Swipe across the tape');
+ pStage.innerHTML=`<div class="box" id="bx"><div class="top" id="bxTop"><div class="inside"></div><div class="flapA"></div><div class="flapB"></div><div class="tape">PSA · PSA · PSA · PSA</div><div class="cut"></div><div class="knife"></div></div><div class="front"><div class="stamp">PSA<small>PROFESSIONAL SPORTS AUTHENTICATOR</small></div><div class="fragile">FRAGILE</div><div class="sl">SHIP TO: ${esc(pname())}<br>${n>1?n+' GRADED CARDS':'CERT '+first.cert}</div></div></div>`;
+ const bx=$('#bx');bx.style.transform='translate(-50%,-260%)';await wait(30);bx.style.transform='translate(-50%,-50%)';await wait(450);thud();
+ await new Promise(res=>{const top=$('#bxTop'),cut=top.querySelector('.cut'),kn=top.querySelector('.knife');let down=false,p=0,lt=0;
+  bx.onpointerdown=e=>{const r=top.getBoundingClientRect();if(e.clientY>r.bottom+30)return;down=true;bx.setPointerCapture(e.pointerId);kn.style.animation='none';kn.style.opacity=1};
+  bx.onpointermove=e=>{if(!down)return;const r=top.getBoundingClientRect();p=Math.max(p,Math.min(1,(e.clientX-r.left)/r.width));cut.style.width=(p*100)+'%';kn.style.left=(p*100)+'%';const t=performance.now();if(t-lt>50){noise(.05,.35,3500,.8);lt=t}if(p>.85){down=false;res()}};
+  bx.onpointerup=()=>down=false;bx.onclick=()=>{if(p<.05){cut.style.width='100%';res()}}});
+ bx.onpointerdown=bx.onpointermove=bx.onclick=null;const top=$('#bxTop');top.querySelector('.knife').remove();top.querySelector('.tape').style.opacity=0;noise(.3,.6,2500,.9);buzz([20,20,30]);
+ await wait(200);bx.classList.add('open');await wait(550);bx.querySelector('.front').style.transform='translateY(120%)';bx.style.transition='opacity .5s';bx.style.opacity=0;await wait(500)}
+async function deliverBatch(sls){if(sls.length>1)await deliverMany(sls);else await deliver(sls[0]);closePSA();go('scrVault');setTimeout(()=>{checkUnlocks();checkAll()},300)}
+async function deliverMany(sls){
  psaEl.classList.add('on');$('#nav').classList.add('hide');$('#coin').style.opacity=0;pFoot.innerHTML='';
- const tag=n>1?` · ${i+1}/${n}`:'';
- if(i===0){
-  psaHead('DELIVERY!','Swipe across the tape');
-  pStage.innerHTML=`<div id="psaSlab">${slabHTML(sl,{cover:1,void:sl.counterfeit})}</div><div class="box" id="bx"><div class="top" id="bxTop"><div class="inside"></div><div class="flapA"></div><div class="flapB"></div><div class="tape">PSA · PSA · PSA</div><div class="cut"></div><div class="knife"></div></div><div class="front"><div class="stamp">PSA</div><div class="fragile">FRAGILE</div><div class="sl">SHIP TO: ${esc(pname())}<br>${n>1?n+' SLABS':'CERT '+sl.cert}</div></div></div>`;
-  const bx=$('#bx'),sw=$('#psaSlab');sw.style.transform='translate(-50%,-10%) scale(.85)';sw.style.opacity=0;sw.style.pointerEvents='none';
-  bx.style.transform='translate(-50%,-260%)';await wait(30);bx.style.transform='translate(-50%,-50%)';await wait(450);thud();
-  await new Promise(res=>{const top=$('#bxTop'),cut=top.querySelector('.cut'),kn=top.querySelector('.knife');let down=false,p=0,lt=0;
-   bx.onpointerdown=e=>{const r=top.getBoundingClientRect();if(e.clientY>r.bottom+30)return;down=true;bx.setPointerCapture(e.pointerId);kn.style.animation='none';kn.style.opacity=1};
-   bx.onpointermove=e=>{if(!down)return;const r=top.getBoundingClientRect();p=Math.max(p,Math.min(1,(e.clientX-r.left)/r.width));cut.style.width=(p*100)+'%';kn.style.left=(p*100)+'%';const t=performance.now();if(t-lt>50){noise(.05,.35,3500,.8);lt=t}if(p>.85){down=false;res()}};
-   bx.onpointerup=()=>down=false;bx.onclick=()=>{if(p<.05){cut.style.width='100%';res()}}});
-  bx.onpointerdown=bx.onpointermove=bx.onclick=null;const top=$('#bxTop');top.querySelector('.knife').remove();top.querySelector('.tape').style.opacity=0;noise(.3,.6,2500,.9);buzz([20,20,30]);
-  await wait(200);bx.classList.add('open');await wait(500);
-  sw.style.zIndex=4;sw.style.opacity=1;sw.style.transform='translate(-50%,-62%) scale(.85)';sfx.slide();
-  await wait(650);bx.querySelector('.front').style.transform='translateY(120%)';bx.style.transition='opacity .5s';bx.style.opacity=0;sw.style.transform='translate(-50%,-50%) scale(1)';await wait(650);
- }else{
-  pStage.innerHTML=`<div id="psaSlab" style="opacity:0;transform:translate(-50%,40%) scale(.85)">${slabHTML(sl,{cover:1,void:sl.counterfeit})}</div>`;const sw=$('#psaSlab');await wait(30);sfx.slide();sw.style.opacity=1;sw.style.transform='translate(-50%,-50%) scale(1)';await wait(600)}
- const sw=$('#psaSlab');
- psaHead(esc(sl.name.toUpperCase())+tag,'Tap the slab to reveal your grade');sw.style.pointerEvents='';
+ await openReturnBox(sls.length,sls[0]);
+ const n=sls.length,cols=n<=2?2:n<=6?3:4;
+ pStage.innerHTML=`<div class="pgrid" style="grid-template-columns:repeat(${cols},minmax(0,${n<=2?130:n<=6?100:76}px))">${sls.map((sl,i)=>`<div class="pg" style="animation-delay:${i*70}ms">${slabHTML(sl,{cover:1,void:sl.counterfeit,small:1})}<div class="gl" id="pgl${i}"></div></div>`).join('')}</div>`;
+ sfx.slide();psaHead(`${n} SLABS`,'Tap to reveal all grades at once');
+ await new Promise(r=>{pFoot.innerHTML=`<button class="btn" id="pAll">REVEAL ALL ${n}</button>`;$('#pAll').onclick=r;pStage.onclick=r});pStage.onclick=null;pFoot.innerHTML='';
+ tone([220,247,262,294,330,349,392],.18,.06,'square',.12);await wait(700);
+ const covers=[...pStage.querySelectorAll('.cover')];let best=0,fakes=0,sum=0;
+ for(let i=0;i<n;i++){const sl=sls[i];covers[i].classList.add('off');const gl=$('#pgl'+i);
+  if(sl.counterfeit){fakes++;gl.style.color='#ff8a8a';gl.textContent='FAKE'}else{S.slabs.push(sl);best=Math.max(best,sl.grade);const v=cardVal(sl,{grade:sl.grade});sum+=v;gl.textContent=`PSA ${sl.grade} · ${fmt(v)}`;if(sl.grade===10){addXP(80);if(S.grail&&S.grail.id===sl.id){S.stats.grails++;const gr=S.grail;S.grail=null;setTimeout(()=>{addCoins(200);addXP(300);toast(`🏆 Holy Grail! PSA 10 ${gr.name} · +$200`)},1500)}}else if(sl.grade===9)addXP(30)}
+  tone([700+i*40],.08,.04);await wait(120)}
+ save();const n10=sls.filter(s=>!s.counterfeit&&s.grade===10).length;
+ if(n10){flash(1,900);sfx.ultra();burst(300,['#ffe36a','#fff','#ffb43b','#9ef0ff'],1.5);banner(n10>1?n10+'× GEM MINT!':'GEM MINT 10')}else if(best>=9){sfx.holo();burst(140,['#9ef0ff','#fff'],1);banner('BEST: MINT 9')}else{tone([523,494],.5,.08,'triangle',.18);banner('BEST: PSA '+best)}
+ if(fakes)setTimeout(()=>sfx.bad(),600);
+ psaHead(`${n-fakes} SLAB${n-fakes===1?'':'S'} GRADED`,`Total ${fmt(sum)}${fakes?` · ${fakes} fake${fakes>1?'s':''} rejected`:''}`);
+ pStage.querySelectorAll('.pg .slab').forEach(b=>bindTilt(b));
+ await new Promise(r=>{pFoot.innerHTML=`<button class="btn" id="pKeep">ADD ALL TO VAULT</button>`;$('#pKeep').onclick=r})}
+async function deliver(sl){
+ psaEl.classList.add('on');$('#nav').classList.add('hide');$('#coin').style.opacity=0;pFoot.innerHTML='';
+ await openReturnBox(1,sl);
+ pStage.innerHTML=`<div id="psaSlab" style="opacity:0;transform:translate(-50%,-30%) scale(.85)">${slabHTML(sl,{cover:1,void:sl.counterfeit})}</div>`;const sw=$('#psaSlab');await wait(30);sfx.slide();sw.style.opacity=1;sw.style.transform='translate(-50%,-50%) scale(1)';await wait(600);
+ psaHead(esc(sl.name.toUpperCase()),'Tap the slab to reveal your grade');
  const slabEl=sw.querySelector('.slab');bindTilt(slabEl);await new Promise(res=>slabEl.onclick=res);slabEl.onclick=null;
  tone([220,247,262,294,330,349,392],.18,.06,'square',.12);await wait(900);slabEl.querySelector('.cover').classList.add('off');
- const more=i<n-1;
  if(sl.counterfeit){sfx.bad();slabEl.classList.add('cracking');buzz([100,60,100]);banner('FAKE!');
-  psaHead('AUTHENTICATION FAILED'+tag,'This card is counterfeit');save();
-  await new Promise(r=>{pFoot.innerHTML=`<p class="empty" style="padding:8px">Someone sold you a fake. The card is worthless.</p><button class="btn" id="pKeep">${more?'NEXT SLAB ›':'BIN IT'}</button>`;$('#pKeep').onclick=r});return}
+  psaHead('AUTHENTICATION FAILED','This card is counterfeit');save();
+  await new Promise(r=>{pFoot.innerHTML=`<p class="empty" style="padding:8px">Someone sold you a fake. The card is worthless.</p><button class="btn" id="pKeep">BIN IT</button>`;$('#pKeep').onclick=r});return}
  S.slabs.push(sl);const g=sl.grade;save();
  if(g===10){flash(1,900);sfx.ultra();buzz([80,50,120,50,200]);burst(320,['#ffe36a','#fff','#ffb43b','#9ef0ff'],1.5);banner('GEM MINT 10');$('#rays').style.opacity=1;setTimeout(()=>$('#rays').style.opacity=0,3000);addXP(80)}
  else if(g===9){flash(.6,600);sfx.holo();burst(140,['#9ef0ff','#fff','#ffe07a'],1);banner('MINT 9');addXP(30)}
  else if(g>=7){tone([784,988,1175],.5,.08,'sine',.08);banner(GRADE_NAME[g]+' '+g)}
  else if(g>=4){tone([523,494],.5,.08,'triangle',.18);banner(GRADE_NAME[g]+' '+g)}
  else{tone([392,370,349,330],.5,.12,'triangle',.28);slabEl.classList.add('cracking');buzz([100,60,100]);banner(g<=1.5?'OUCH… '+g:GRADE_NAME[g]+' '+g)}
- psaHead(`PSA ${g} · ${GRADE_LONG[g].toUpperCase()}${tag}`,`Worth ${fmt(cardVal(sl,{grade:g}))} · final grade`);
+ psaHead(`PSA ${g} · ${GRADE_LONG[g].toUpperCase()}`,`Worth ${fmt(cardVal(sl,{grade:g}))} · final grade`);
  if(g===10&&S.grail&&S.grail.id===sl.id){S.stats.grails++;const gr=S.grail;S.grail=null;save();setTimeout(()=>{addCoins(200);addXP(300);toast(`🏆 Holy Grail! PSA 10 ${gr.name} · +$200`)},1800)}
- await new Promise(r=>{pFoot.innerHTML=`<button class="btn" id="pKeep">${more?`NEXT SLAB (${i+2}/${n}) ›`:'ADD TO VAULT'}</button>`;$('#pKeep').onclick=r})}
-function closePSA(){psaEl.classList.remove('on');$('#nav').classList.remove('hide');$('#coin').style.opacity=1;pStage.innerHTML='';pFoot.innerHTML='';psaEl.onclick=null}
+ await new Promise(r=>{pFoot.innerHTML=`<button class="btn" id="pKeep">ADD TO VAULT</button>`;$('#pKeep').onclick=r})}
+function closePSA(){psaEl.classList.remove('on');$('#nav').classList.remove('hide');$('#coin').style.opacity=1;pStage.innerHTML='';pFoot.innerHTML='';psaEl.onclick=null;pStage.onclick=null}
 function checkSubs(){const ready=S.subs.filter(s=>s.ready<=NOW()).length;document.querySelector('nav button[data-s="scrVault"]').classList.toggle('alert',ready>0);return ready}
 function renderSubs(){
- $('#subsBox').innerHTML=S.subs.length?`<div class="pnl"><h4>AT PSA</h4>${S.subs.map((s,i)=>{const left=s.ready-NOW();return `<div class="row2"><img class="th" src="${s.sls[0].s}"><div class="tx"><b>${s.sls.length>1?s.sls.length+' cards · '+esc(s.sls[0].name)+' + more':esc(s.sls[0].name)}</b><small>${s.tier} · ${left>0?'back in '+Math.ceil(left/MIN)+' min':'📦 package arrived'}</small></div>${left>0?`<button class="sbtn g" disabled>WAIT</button>`:`<button class="sbtn" data-sub="${i}">OPEN</button>`}</div>`}).join('')}</div>`:''}
-$('#subsBox').addEventListener('click',e=>{const b=e.target.closest('[data-sub]');if(!b)return;const s=S.subs[+b.dataset.sub];if(!s||s.ready>NOW())return;S.subs.splice(+b.dataset.sub,1);save();checkSubs();deliverBatch(s.sls)});
+ const ready=S.subs.filter(s=>s.ready<=NOW());const nr=ready.reduce((a,s)=>a+s.sls.length,0);
+ $('#subsBox').innerHTML=S.subs.length?`<div class="pnl"><h4>AT PSA</h4>${S.subs.map((s,i)=>{const left=s.ready-NOW();return `<div class="row2"><img class="th" src="${s.sls[0].s}"><div class="tx"><b>${s.sls.length>1?s.sls.length+' cards · '+esc(s.sls[0].name)+' + more':esc(s.sls[0].name)}</b><small>${s.tier} · ${left>0?'back in '+Math.ceil(left/MIN)+' min':'📦 package arrived'}</small></div>${left>0?`<button class="sbtn g" disabled>WAIT</button>`:''}</div>`}).join('')}${ready.length?`<button class="btn" id="openAllSubs">📦 OPEN ${ready.length>1?'ALL '+ready.length+' PACKAGES':'PACKAGE'} · ${nr} SLAB${nr>1?'S':''}</button>`:''}</div>`:''}
+$('#subsBox').addEventListener('click',e=>{if(!e.target.closest('#openAllSubs'))return;const ready=S.subs.filter(s=>s.ready<=NOW());if(!ready.length)return;S.subs=S.subs.filter(s=>s.ready>NOW());save();checkSubs();deliverBatch(ready.flatMap(s=>s.sls))});
 /* =================== VAULT =================== */
 let vSort='val';
 function renderVault(){
@@ -1561,7 +1628,7 @@ function renderVault(){
  $('#vStats').innerHTML=[[sl.length,'Slabs'],[sl.filter(s=>s.grade===10).length,'PSA 10s'],[avg,'Avg'],[S.psaSubs,'Subs']].map(([v,l])=>`<div class="stat"><b>${v}</b><span>${l}</span></div>`).join('');
  $('#vChips').innerHTML=[['val','Value'],['new','Newest'],['hi','Grade']].map(([k,l])=>`<button class="chip ${k===vSort?'on':''}" data-v="${k}">${l}</button>`).join('');
  const list=[...sl];if(vSort==='hi')list.sort((a,b)=>b.grade-a.grade||b.d-a.d);else if(vSort==='new')list.sort((a,b)=>b.d-a.d);else list.sort((a,b)=>cardVal(b,{grade:b.grade})-cardVal(a,{grade:a.grade}));
- $('#vGrid').innerHTML=list.length?list.map(s=>`<div class="v ${S.favs.includes(s.uid)?'fav':''}" data-uid="${s.uid}">${S.favs.includes(s.uid)?'<span class="star">⭐</span>':''}${slabHTML(s,{small:1})}<div class="when">${(setById[setOf(s.id)]||{n:''}).n}<br><b>${fmt(cardVal(s,{grade:s.grade}))}</b></div></div>`).join(''):`<p class="empty" style="grid-column:1/-1">No slabs yet.<br>Open the Binder, tap "Send several cards to PSA" and pick your holos.</p>`;
+ $('#vGrid').innerHTML=list.length?list.slice(0,60).map(s=>`<div class="v ${S.favs.includes(s.uid)?'fav':''}" data-uid="${s.uid}">${S.favs.includes(s.uid)?'<span class="star">⭐</span>':''}${slabHTML(s,{small:1})}<div class="when">${(setById[setOf(s.id)]||{n:''}).n}<br><b>${fmt(cardVal(s,{grade:s.grade}))}</b></div></div>`).join(''):`<p class="empty" style="grid-column:1/-1">No slabs yet.<br>Open the Binder, tap "Send several cards to PSA" and pick your holos.</p>`;
  $('#sealBox').innerHTML=S.sealed.length?`<div class="pnl">${S.sealed.map(s=>{const set=setById[s.set],v=sealedVal(s);return `<div class="row2"><div class="ic">${s.kind==='box'?'📦':'🎁'}</div><div class="tx"><b>${set.n} ${s.kind==='box'?'Booster Box':'Bundle'}</b><small>${s.packs} packs · paid ${fmt(s.base)} · now <span style="color:#6ff0a0">${fmt(v)}</span>${v>=s.base*(1+sealedMax())?' (max)':''}</small></div><button class="sbtn" data-open="${s.uid}">OPEN</button></div>`}).join('')}</div>`:'<p class="empty">No sealed product yet. Buy bundles and boxes in the Shop.</p>'}
 $('#vChips').addEventListener('click',e=>{const b=e.target.closest('.chip');if(b){vSort=b.dataset.v;renderVault()}});
 $('#sealBox').addEventListener('click',e=>{const b=e.target.closest('[data-open]');if(!b)return;const s=S.sealed.find(x=>x.uid===b.dataset.open);if(!s)return;
@@ -1571,9 +1638,9 @@ $('#vGrid').addEventListener('click',e=>{const v=e.target.closest('.v');if(!v)re
 function openSlab(sl){
  const val=cardVal(sl,{grade:sl.grade}),fav=S.favs.includes(sl.uid);$('#zslab').innerHTML=slabHTML(sl);bindTilt($('#zslab .slab'));
  $('#vinfo').innerHTML=`<b>PSA ${sl.grade} · ${GRADE_LONG[sl.grade]}</b>${esc(sl.name)} · ${(setById[setOf(sl.id)]||{n:''}).n}<br>Cert #${sl.cert} · graded for life<br><span class="v">Market ${fmt(val)}</span>`;
- $('#vact').innerHTML=`<button class="btn ${fav?'ghost':''}" id="vFav">${fav?'★ REMOVE FROM GLASS CASE':'★ PUT IN MY ROOM\'S GLASS CASE'}</button><button class="btn earn" id="vQS">QUICK SELL ${IN(val*.45)}</button>`;
- $('#vFav').onclick=e2=>{e2.stopPropagation();if(fav)S.favs=S.favs.filter(u=>u!==sl.uid);else{if(S.favs.length>=3){toast('Glass case is full (3). Remove one first.');return}S.favs.push(sl.uid);fanfare()}save();$('#vzoom').classList.remove('on');renderVault();checkAll()};
- $('#vQS').onclick=e2=>{e2.stopPropagation();quickSell({k:'slab',sl,val,name:sl.name});$('#vzoom').classList.remove('on');renderVault()};
+ $('#vact').innerHTML=`<button class="btn ${fav?'ghost':''}" id="vFav">${fav?'★ REMOVE FROM SHOWCASE SHELF':'★ PUT ON MY SHOWCASE SHELF'}</button><button class="btn earn" id="vQS">QUICK SELL ${IN(val*.45)}</button>`;
+ $('#vFav').onclick=e2=>{e2.stopPropagation();if(fav)S.favs=S.favs.filter(u=>u!==sl.uid);else{if(S.favs.length>=3){toast('Showcase shelf is full (3). Remove one first.');return}S.favs.push(sl.uid);fanfare()}save();$('#vzoom').classList.remove('on');renderVault();checkAll()};
+ $('#vQS').onclick=e2=>{e2.stopPropagation();$('#vzoom').classList.remove('on');const it={k:'slab',sl,val,name:sl.name};guard(it,()=>{quickSell(it);renderVault()})};
  $('#vzoom').classList.add('on')}
 $('#vzoom').addEventListener('click',e=>{if(e.target.id==='vzoom'||e.target.id==='vinfo')$('#vzoom').classList.remove('on')});
 /* =================== CARD SHOWS =================== */
@@ -1608,7 +1675,7 @@ function itemTag(it){return it.k==='slab'?`PSA ${it.grade}`:it.k==='mis'?'ERROR'
 async function setupTable(show){
  $('#showList').style.display='none';const st=$('#showStage');st.style.display='flex';st.innerHTML='<div style="flex:1;display:flex;align-items:center;justify-content:center"><div class="spin"></div></div>';
  await ensureLoaded();
- const items=allItems().sort((a,b)=>b.val-a.val);const sel=new Set(items.slice(0,Math.min(8,items.length)).filter(i=>i.val>=1).map(i=>i.key));
+ const items=allItems().sort((a,b)=>b.val-a.val).slice(0,60);const sel=new Set(items.slice(0,Math.min(8,items.length)).filter(i=>i.val>=1).map(i=>i.key));
  $('#showHead').innerHTML=`${show.e} <b>${show.n.toUpperCase()}</b>`;const fee=showFee(show);
  const draw=()=>{st.innerHTML=`<div class="showTop"><span>SET UP YOUR TABLE</span><span><b>${sel.size}</b>/8</span></div>
   <div class="scroll" style="margin-top:8px"><div class="pick">${items.map(it=>`<div class="p ${sel.has(it.key)?'on':''} ${it.k==='mis'?'mp-'+it.m.v:''}" data-k="${it.key}">${itemThumb(it)}<span class="ck">✓</span><span class="pv">${itemTag(it)?itemTag(it)+' · ':''}${fmt(it.val)}</span></div>`).join('')||'<p class="empty" style="grid-column:1/-1">Nothing to sell yet. You can still walk the aisles and buy.</p>'}</div></div>
@@ -1667,7 +1734,8 @@ function haggleView(who,line){
   haggleView(who,rnd(['Hmm… best I can do is {o}.','Okay, okay. {o}?','{o}. That\'s my limit.']).replace('{o}',fmt(who.offer)))}}
 function leave(who,line){const av=document.querySelector('.av');if(av)av.classList.add('leave');const bb=document.querySelector('.bubble');if(bb)bb.textContent=line;
  document.querySelector('.ctrl').innerHTML=`<div class="two"><button class="btn ghost" id="aisle">🛒 AISLES</button><button class="btn" id="nxt">NEXT VISITOR</button></div>`;bindShowCtl()}
-function doSale(who,price,countered){
+function doSale(who,price,countered){guard(who.it,()=>doSale2(who,price,countered),()=>leave(who,'No problem. Maybe next time!'))}
+function doSale2(who,price,countered){
  const it=who.it,r=removeItem(it);it.sold=true;
  if(r&&r.fake&&(it.k==='slab'||Math.random()<.5)){sfx.bad();buzz([80,40,80]);addRep(-3);
   leave(who,it.k==='slab'?'Wait… "P.S.A"? This slab is FAKE! Security! 😠':'This is a FAKE card! Shame on you.');toast('Fake detected · confiscated · reputation −3');save();return}
@@ -1687,7 +1755,7 @@ function tradeOffer(who){
   <div class="deal"><div class="dimg" style="width:110px" id="tSlab">${slabHTML(sl,{small:1})}</div><div class="dtx"><b>Their slab</b>worth ${fmt(claim)} if real<br><br><b>Your ${itemTag(it)||'card'}</b>${esc(it.name)} · ${fmt(it.val)}</div></div>`,
   `<div class="two"><button class="btn ghost" id="tNo">NO THANKS</button><button class="btn" id="tYes">TRADE</button></div>`);
  $('#tSlab').onclick=()=>{$('#zslab').innerHTML=slabHTML(sl);bindTilt($('#zslab .slab'));$('#vinfo').innerHTML=`<b>Inspect the slab</b>Check the logo, the font, the grade text and the cert number.<br>Real PSA certs have 9 digits.`;$('#vact').innerHTML='';$('#vzoom').classList.add('on')};
- $('#tYes').onclick=()=>{removeItem(it);it.sold=true;S.slabs.push(sl);save();sfx.cash();leave(who,scam?'Pleasure! 😏 *walks away very fast*':'Great trade, enjoy it! 🤝');if(!scam)addRep(.5)};
+ $('#tYes').onclick=()=>guard(it,()=>{removeItem(it);it.sold=true;S.slabs.push(sl);save();sfx.cash();leave(who,scam?'Pleasure! 😏 *walks away very fast*':'Great trade, enjoy it! 🤝');if(!scam)addRep(.5)});
  $('#tNo').onclick=()=>{if(scam){S.stats.scams++;addRep(2);addXP(40);sfx.holo();toast('You spotted a fake slab! Reputation +2');leave(who,'Uh… never mind 😬');checkAll()}else leave(who,'Suit yourself!');save()}}
 function bindShowCtl(){if($('#nxt'))$('#nxt').onclick=nextBuyer;if($('#aisle'))$('#aisle').onclick=aisles}
 function knowsValue(){return S.shop.guide||hasBadge('marsh')}
@@ -1711,11 +1779,11 @@ function aisles(){
   bindShowCtl();
   document.querySelectorAll('.dl[data-d]').forEach(el=>el.onclick=()=>{const d=SH.dealers[+el.dataset.d];if(d.bought)return;
    modal(`<div style="width:56%;margin:0 auto"><img src="${d.c.l}" style="width:100%;border-radius:8px"></div><h2 style="margin-top:12px">${esc(d.c.name)}</h2><p>${setById[setOf(d.c.id)].n} · ${tierName[d.c.r]}<br>Dealer asks <span class="money out">${fmt(d.price)}</span></p><button class="btn buy" id="dBuy" ${S.coins<d.price?'disabled':''}>BUY ${OUT(d.price)}</button><button class="btn ghost" onclick="closeModal()">PASS</button>`);
-   $('#dBuy').onclick=()=>{if(!spend(d.price))return;d.bought=true;addRaw(d.c,d.fake);S.stats.bought++;prog('bought',1);save();closeModal();sfx.cash();toast(d.gem||d.fake?'Bargain! 🔥':'Bought '+d.c.name);draw();checkAll()}});
+   $('#dBuy').onclick=()=>{if(!spend(d.price))return;d.bought=true;addRaw(d.c,d.fake);S.stats.bought++;prog('bought',1);save();closeModal();sfx.cash();toast(d.gem||d.fake?'Bargain! 🔥':'Bought '+d.c.name);draw();checkUnlocks();checkAll()}});
   const bx=document.querySelector('.dl[data-box]');if(bx)bx.onclick=()=>{if(SH.box.bought)return;
    modal(`<div class="em">🎁</div><h2>Mystery box</h2><p>${SH.show.boxN} random cards from your unlocked sets.</p><button class="btn buy" id="bxY">BUY ${OUT(SH.box.price)}</button><button class="btn ghost" onclick="closeModal()">PASS</button>`);
    $('#bxY').onclick=()=>{if(!spend(SH.box.price))return;SH.box.bought=true;const cs=boxContents(SH.box.pool);cs.forEach(c=>addRaw(c));S.stats.bought++;prog('bought',1);save();
-    modal(`<div class="em">🎁</div><h2>Mystery box</h2><div class="grid5" style="margin-top:12px">${cs.map((c,i)=>`<div class="mini ${c.r}" style="animation-delay:${i*120}ms"><img src="${c.s}"><span class="pv">${fmt(cardVal(c))}</span></div>`).join('')}</div><p>Total value <b>${fmt(cs.reduce((a,c)=>a+cardVal(c),0))}</b> · paid ${fmt(SH.box.price)}</p><button class="btn" onclick="closeModal()">NICE</button>`);sfx.holo();draw();checkAll()}}};
+    modal(`<div class="em">🎁</div><h2>Mystery box</h2><div class="grid5" style="margin-top:12px">${cs.map((c,i)=>`<div class="mini ${c.r}" style="animation-delay:${i*120}ms"><img src="${c.s}"><span class="pv">${fmt(cardVal(c))}</span></div>`).join('')}</div><p>Total value <b>${fmt(cs.reduce((a,c)=>a+cardVal(c),0))}</b> · paid ${fmt(SH.box.price)}</p><button class="btn" onclick="closeModal()">NICE</button>`);sfx.holo();draw();checkUnlocks();checkAll()}}};
  draw()}
 function endShow(){
  const dr=Math.round((S.rep-SH.rep0)*10)/10;addXP(30);save();
@@ -1723,7 +1791,7 @@ function endShow(){
  `<div class="two"><button class="btn" id="shDone">PACK UP</button></div>`);$('#shDone').onclick=()=>{SH=null;renderShowList()};checkAll()}
 /* =================== DAILY MISSIONS =================== */
 const DPOOL=[{k:'rip',t:'Rip 3 packs',n:3,r:8,g:1},{k:'holo',t:'Pull a holo',n:1,r:12,g:1},{k:'sell',t:'Sell 2 items at a card show',n:2,r:12,g:1},{k:'earn',t:'Earn $30 at card shows',n:30,r:15,g:1},
- {k:'grade',t:'Send a card to PSA',n:1,r:10,g:1},{k:'show',t:'Visit a card show',n:1,r:6,g:1},{k:'job',t:'Do an odd job at Gary\'s',n:1,r:5,g:1},{k:'bounty',t:'Complete a bounty',n:1,r:15,g:1},{k:'bought',t:'Buy something from a dealer',n:1,r:8,g:1},{k:'quiz',t:'Name 3 Pokémon in the quiz',n:3,r:8,g:1},
+ {k:'grade',t:'Send a card to PSA',n:1,r:10,g:1},{k:'show',t:'Visit a card show',n:1,r:6,g:1},{k:'job',t:'Do an odd job at Gary\'s',n:1,r:5,g:1},{k:'bounty',t:'Complete a bounty',n:1,r:15,g:1},{k:'bought',t:'Buy something from a dealer or Gary\'s case',n:1,r:8,g:1},{k:'quiz',t:'Name 3 Pokémon in the quiz',n:3,r:8,g:1},
  {k:'rip2',t:'Johto: rip 3 Gen II packs',n:3,r:14,g:2},{k:'holo2',t:'Johto: pull 2 Gen II holos',n:2,r:24,g:2},
  {k:'rip3',t:'Hoenn: rip 3 Gen III packs',n:3,r:18,g:3},{k:'holo3',t:'Hoenn: pull 2 Gen III holos',n:2,r:30,g:3},
  {k:'rip4',t:'Sinnoh: rip 3 Gen IV packs',n:3,r:22,g:4},{k:'holo4',t:'Sinnoh: pull 2 Gen IV holos',n:2,r:36,g:4}];
@@ -1790,8 +1858,8 @@ const ACH=[['first','First rip','Open your first pack',()=>S.packs>=1,5,1],['p10
  ['g10','Gem Mint','Get a PSA 10',()=>S.slabs.some(s=>s.grade===10&&!s.fake),60,1],['g1','Ouch','Get a PSA 1',()=>S.slabs.some(s=>s.grade===1),20,1],['bulk5','Bulk submitter','Send 5+ cards to PSA at once',()=>!!S.flags.bulk5,60,1],
  ['sale','First sale','Sell at a card show',()=>S.stats.sold>=1,10,1],['k1','Big business','Earn $1,000 selling',()=>S.stats.earned>=1000,100,1],['scam','Not today','Spot a fake slab',()=>S.stats.scams>=1,30,1],['comp','Completionist','Complete a set 100%',()=>SETS.some(s=>setComplete(s.id)),80,1],
  ['mis','Factory error','Pull a misprint',()=>S.stats.mis>=1,40,1],['shop','Open for business','Own a card shop',()=>S.shop.owned,50,1],['kchamp','Kanto Champion','Earn all 8 Kanto badges',()=>regionBadges(1)>=8,250,1],
- ['quiz','Pokédex brain','Name 50 Pokémon in the quiz',()=>S.stats.quiz>=50,60,1],['show3','Glass case','Fill your room\'s glass case',()=>S.favs.length>=3,40,1],['mach','Automation','Buy the pack machine',()=>S.machine.owned,200,1],
- ['m50','Case breaker','Rip 50 packs at once',()=>!!S.flags.m50,120,1],['saved','Safe keeping','Copy your save code',()=>!!S.flags.saved,10,1],
+ ['quiz','Pokédex brain','Name 50 Pokémon in the quiz',()=>S.stats.quiz>=50,60,1],['show3','Showcase','Fill your room\'s showcase shelf',()=>S.favs.length>=3,40,1],['mach','Automation','Buy the pack machine',()=>S.machine.owned,200,1],
+ ['m50','Case breaker','Rip 50 packs at once',()=>!!S.flags.m50,120,1],['saved','Safe keeping','Copy your save code',()=>!!S.flags.saved,10,1],['gcase','Window shopper','Buy a card from Gary\'s glass case',()=>!!S.flags.gcase,20,1],
  ['duel','Rival beaten','Win a weekly duel against your rival',()=>S.stats.duels>=1,80,1],['trade','Trader','Send or receive a trade code',()=>S.stats.trades>=1,30,1],['deco','Interior designer','Buy 3 upgrades for your room',()=>roomUps()>=3,60,1],
  ['streak','Loyal collector','Log in 7 days in a row',()=>S.streak>=7,100,1],['msone','Master collector','Complete a Master Set',()=>S.ms.length>=1,400,1],['ritual','Superstitious','Pick a lucky opening ritual',()=>!!S.ritual,10,1],
  ['grail','Holy Grail','Land your grail as PSA 10',()=>S.stats.grails>=1,300,1],
@@ -1811,10 +1879,11 @@ const bountyMult=()=>hasBadge('hive')?1.25:1;
 function ensureBounties(){const slots=2+(gensOpen().length-1)+(hasBadge('soul')?1:0)+(hasBadge('fen')?1:0);S.bounties=S.bounties.filter(b=>b.until>NOW());
  const pool=[];unlockedSets().forEach(s=>{const m=memo[s.id];if(m)pool.push(...m.P.rare,...m.P.rare,...m.P.holo)});
  let g=0;while(S.bounties.length<slots&&pool.length&&g++<50){const c=rnd(pool);if(S.bounties.some(b=>b.id===c.id))continue;S.bounties.push({id:c.id,name:c.name,img:c.s,reward:Math.round(cardVal(c)*1.7+2),until:NOW()+48*HOUR})}save()}
-function handBounty(i){const b=S.bounties[i];if(!b||rawCount(b.id)<1)return;const fake=takeRaw(b.id);S.bounties.splice(i,1);
+function handBounty(i){const b=S.bounties[i];if(!b||rawCount(b.id)<1)return;guard({k:'raw',id:b.id,name:b.name},()=>{
+ const fake=takeRaw(b.id);S.bounties.splice(i,1);
  if(fake){sfx.bad();addRep(-2);modal(`<div class="em">😠</div><h2>That's a fake</h2><p>The collector checked your ${esc(b.name)} under a loupe. Counterfeit. No reward.</p><button class="btn" onclick="closeModal()">OUCH</button>`)}
- else{const rw=Math.round(b.reward*bountyMult());addCoins(rw);addXP(40);addRep(1);prog('bounty',1);sfx.cash();toast(`Bounty done · ${IN(rw)}`)}save();renderQuests();checkAll()}
-/* =================== GYMS (harder: level gate + best-of-3 battle) =================== */
+ else{const rw=Math.round(b.reward*bountyMult());addCoins(rw);addXP(40);addRep(1);prog('bounty',1);sfx.cash();toast(`Bounty done · ${IN(rw)}`)}save();renderQuests();checkAll()})}
+/* =================== GYMS (level gate + best-of-3 battle) =================== */
 const GYMS=[
  {g:1,k:'brock',n:'Brock',city:'Pewter City',type:'Fighting',need:12,lv:3,b:'boulder',bn:'Boulder Badge',bd:'+5% on every card show sale',em:'🪨'},
  {g:1,k:'misty',n:'Misty',city:'Cerulean City',type:'Water',need:25,lv:5,b:'cascade',bn:'Cascade Badge',bd:'+$5 daily allowance',em:'💧'},
@@ -1882,6 +1951,21 @@ async function gymBattle(x){
  else{S.gymCd[x.k]=NOW()+15*MIN;save()}
  $('#bRes').innerHTML=`<div class="bubble" style="margin:14px auto 0">${won?`"Your team is impressive. Take this." <br><b>${x.bn}</b>: ${x.bd}`:`"Not good enough yet. Come back stronger." <br>Rematch in 15 minutes. Grade or upgrade your ${x.type==='Holo'||x.type==='Ultra'?'':x.type+' '}cards.`}</div><button class="btn" id="bOk">${won?'AWESOME':'OK'}</button>`;
  $('#bOk').onclick=()=>{mg.classList.remove('on');mg.innerHTML='';$('#nav').classList.remove('hide');renderGyms();checkAll()}}
+/* =================== GARY'S GLASS CASE (buy holos) =================== */
+const GC_SLOT=6*HOUR;
+function gcEnsure(){const slot=Math.floor(NOW()/GC_SLOT);if(S.gcase&&S.gcase.slot===slot&&S.gcase.items.length)return;
+ const holo=[],ultra=[];unlockedSets().forEach(s=>{const m=memo[s.id];if(m){holo.push(...m.P.holo);ultra.push(...m.P.ultra)}});if(!holo.length&&!ultra.length){S.gcase=null;return}
+ const used=new Set(),items=[];let g=0;
+ while(items.length<20&&g++<300){const c=(Math.random()<.12&&ultra.length)?rnd(ultra):rnd(holo.length?holo:ultra);if(used.has(c.id))continue;used.add(c.id);items.push({id:c.id,p:Math.round(cardVal(c)*rr(1.05,1.35)*100)/100,b:false,m:false})}
+ if(Math.random()<.5){const miss=[...holo,...ultra].filter(c=>!isOwned(c.id)&&!used.has(c.id));if(miss.length){const c=rnd(miss);const k=Math.floor(Math.random()*items.length);items[k]={id:c.id,p:Math.round(cardVal(c)*5*100)/100,b:false,m:true}}}
+ S.gcase={slot,items};save()}
+function gcHTML(){gcEnsure();if(!S.gcase)return'<p class="empty">Unlock sets to fill Gary\'s case.</p>';
+ const left=GC_SLOT-(NOW()%GC_SLOT),hrs=Math.floor(left/HOUR),mins=Math.ceil((left%HOUR)/MIN);
+ return `<p style="margin:0 0 10px">20 holos and ultra rares from your unlocked sets. Restocks in ${hrs?hrs+'h ':''}${mins}min. ${S.gcase.items.some(x=>x.m&&!x.b)?'<b style="color:#ff9de6">A card you are missing is in the case today!</b>':''}</p>
+ <div class="dgrid c4">${S.gcase.items.map((x,i)=>{const c=cardById(x.id);if(!c)return'';const miss=!isOwned(c.id);return `<div class="dl ${c.r} ${x.m&&!x.b?'missing':''} ${x.b?'boughtx':''}" data-gc="${i}">${miss&&!x.b?'<span class="mtag">MISSING</span>':''}<img src="${c.s}" loading="lazy"><div class="pr">${x.b?'SOLD':OUT(x.p)}</div><div class="hv">mkt ${fmt(cardVal(c))}</div></div>`}).join('')}</div>`}
+function gcBuy(i){const x=S.gcase.items[i];if(!x||x.b)return;const c=cardById(x.id);if(!c)return;const v=cardVal(c);
+ modal(`<div style="width:56%;margin:0 auto"><img src="${c.l}" onerror="this.src='${c.s}'" style="width:100%;border-radius:8px"></div><h2 style="margin-top:12px">${esc(c.name)}</h2><p>${setById[setOf(c.id)].n} · ${tierName[c.r]}<br>Market ${fmt(v)} · Gary asks <span class="money out">${fmt(x.p)}</span>${x.m?'<br><br><b style="color:#ff9de6">"I know you\'re missing this one, kid. That\'s why it costs 5×." 😏</b>':''}</p><button class="btn buy" id="gcY" ${S.coins<x.p?'disabled':''}>BUY ${OUT(x.p)}</button><button class="btn ghost" onclick="closeModal()">PASS</button>`);
+ $('#gcY').onclick=()=>{if(!spend(x.p))return;x.b=true;addRaw(c);S.stats.bought++;S.flags.gcase=1;prog('bought',1);addXP(10);save();closeModal();sfx.cash();burst(60,['#ffe07a','#9ef0ff','#fff'],.8);toast(`${c.name} added to your binder`);renderShop();checkUnlocks();checkAll()}}
 /* =================== SHOP / JOBS / SHELF / TOURNEY =================== */
 const UPG={disp:{n:'Display case',c:[0,160,320,640,1200],max:5,d:'+$1.50/h and +1 shelf slot each level'},light:{n:'Lighting',c:[120,300,700],max:3,d:'+15% income each level'},store:{n:'Storage room',c:[60,150,400],max:3,d:'Income piles up longer while you are away'}};
 const shopRate=()=>S.shop.owned?S.shop.disp*1.5*(1+.15*S.shop.light)*(hasBadge('rainbow')?1.25:1)+(hasBadge('dynamo')?3:0):0;
@@ -1902,14 +1986,14 @@ function shelfAdd(){const items=allItems().filter(i=>i.k!=='seal'&&i.val>=1).sor
  modal(`<h2>Put on your shelf</h2><p>Customers buy it while you're away.</p><div class="pick" style="margin-top:12px">${items.map((it,i)=>`<div class="p" data-si="${i}">${itemThumb(it)}<span class="pv">${itemTag(it)?itemTag(it)+' · ':''}${fmt(it.val)}</span></div>`).join('')}</div><button class="btn ghost" onclick="closeModal()">CANCEL</button>`);
  document.querySelectorAll('[data-si]').forEach(el=>el.onclick=()=>{const it=items[+el.dataset.si];
   modal(`<h2>${esc(it.name)}</h2><p>Market ${fmt(it.val)}. Pick a price:</p>${PRICEF.map(([f,l,m],i)=>`<button class="opt" data-pf="${i}"><div class="tx"><b>${l} · ${Math.round(f*hb*100)}%</b><small>sells in about ${m} min</small></div><div class="pr in">${IN(it.val*f*hb)}</div></button>`).join('')}<button class="btn ghost" onclick="closeModal()">CANCEL</button>`);
-  document.querySelectorAll('[data-pf]').forEach(b=>b.onclick=()=>{const [f,,m]=PRICEF[+b.dataset.pf];let snap;
+  document.querySelectorAll('[data-pf]').forEach(b=>b.onclick=()=>{const [f,,m]=PRICEF[+b.dataset.pf];closeModal();guard(it,()=>{let snap;
    if(it.k==='raw'){const fk=takeRaw(it.id);snap={k:'raw',id:it.id,fake:!!fk}}else if(it.k==='slab'){removeItem(it);snap={k:'slab',sl:it.sl,fake:!!it.sl.fake}}else{removeItem(it);snap={k:'mis',m:it.m}}
-   S.shelf.push({uid:uid(),snap,name:it.name,img:it.img,price:Math.round(it.val*f*hb*100)/100,ready:NOW()+m*MIN*rr(.6,1.4)});save();closeModal();sfx.cash();renderShop()})})}
+   S.shelf.push({uid:uid(),snap,name:it.name,img:it.img,price:Math.round(it.val*f*hb*100)/100,ready:NOW()+m*MIN*rr(.6,1.4)});save();sfx.cash();renderShop()})})})}
 function shelfCollect(i){const x=S.shelf[i];if(!x||x.ready>NOW())return;S.shelf.splice(i,1);
  if(x.snap.fake){addRep(-2);sfx.bad();modal(`<div class="em">😠</div><h2>Refund!</h2><p>The buyer brought back the ${esc(x.name)}: it's a fake. You refunded them. Reputation −2.</p><button class="btn" onclick="closeModal()">UGH</button>`)}
  else{addCoins(x.price);S.stats.sold++;S.stats.earned+=x.price;addRep(.3);addXP(8);sfx.cash()}save();renderShop()}
 function shelfPull(i){const x=S.shelf[i];if(!x)return;S.shelf.splice(i,1);const s=x.snap;
- if(s.k==='raw'){const c=cardById(s.id);if(c)addRaw(c,s.fake)}else if(s.k==='slab')S.slabs.push(s.sl);else S.mis.push(s.m);save();renderShop()}
+ if(s.k==='raw'){const c=cardById(s.id);if(c)addRaw(c,s.fake)}else if(s.k==='slab')S.slabs.push(s.sl);else S.mis.push(s.m);save();renderShop();checkUnlocks()}
 function tourney(){if(!tourneyReady())return;const cost=30;
  modal(`<div class="em">🏆</div><h2>Tournament night</h2><p>Host a tournament at your shop. You pay <span class="money out">${fmt(cost)}</span> for prizes, players pay $6 entry. More reputation brings more players.</p><button class="btn buy" id="tY">HOST ${OUT(cost)}</button><button class="btn ghost" onclick="closeModal()">NOT NOW</button>`);
  $('#tY').onclick=()=>{if(!spend(cost))return;S.lastTourney=NOW();const n=Math.min(24,6+Math.floor(S.rep/4)+Math.floor(Math.random()*4));const inc=n*6;
@@ -1925,13 +2009,15 @@ function doJob(){if(!jobReady())return;const pool=[];Object.values(memo).forEach
  const fin=()=>{S.lastJob=NOW();S.stats.jobs++;prog('job',1);const pay=Math.max(.5,ok*.5);addXP(ok*2);save();modal(`<div class="em">🧹</div><h2>Shift done</h2><p>${ok}/8 sorted right.</p><button class="btn earn" id="jP">GET PAID ${IN(pay)}</button>`);$('#jP').onclick=()=>{addCoins(pay);closeModal();renderShop();checkAll()}};
  draw()}
 function bulkInfo(){let n=0,v=0;Object.keys(S.coll).forEach(sid=>{const m=memo[sid];if(!m)return;Object.entries(S.coll[sid]).forEach(([id,c])=>{const card=m.byId[id];if(card&&c>1&&(card.r==='common'||card.r==='uncommon')){n+=c-1;v+=(c-1)*cardVal(card)*.5}})});return {n,v:Math.round(v*100)/100}}
-function renderShop(){const bi=bulkInfo();let h=`<div class="pnl"><h4>🧑‍🦳 GARY'S CARD SHOP · EARN MONEY</h4>
+async function renderShop(){if(!$('#shopBody').innerHTML)$('#shopBody').innerHTML='<div style="display:flex;justify-content:center;padding:40px"><div class="spin"></div></div>';await ensureLoaded();
+ const bi=bulkInfo();let h=`<div class="pnl gold"><h4>💎 GARY'S GLASS CASE · BUY HOLOS</h4>${gcHTML()}</div>
+ <div class="pnl"><h4>🧑‍🦳 GARY'S CARD SHOP · EARN MONEY</h4>
  <div class="row2"><div class="ic">🧹</div><div class="tx"><b>Odd job: sort bulk</b><small>8 cards, $0.50 for each one right. ${jobReady()?'Ready now.':'Back in '+Math.ceil((3*MIN-(NOW()-S.lastJob))/1000)+'s'}</small></div><button class="sbtn earn" id="job" ${jobReady()?'':'disabled'}>WORK</button></div>
  <div class="row2"><div class="ic">📦</div><div class="tx"><b>Sell bulk duplicates</b><small>${bi.n} spare commons/uncommons · Gary pays 50%</small></div><button class="sbtn earn" id="bulk" ${bi.n?'':'disabled'}>${IN(bi.v)}</button></div>
  ${isBroke()?`<div class="row2"><div class="ic">👴</div><div class="tx"><b>Ask Grandpa for pocket money</b><small>${pocketReady()?'"Don\'t tell Grandma."':'Try again in '+Math.ceil((20*MIN-(NOW()-S.lastPocket))/MIN)+' min.'}</small></div><button class="sbtn earn" id="pocket" ${pocketReady()?'':'disabled'}>+$12</button></div>`:''}</div>`;
  const sd=sealedDisc();
  h+=`<h3 class="sec">Buy sealed product</h3><div class="pnl"><p style="margin-top:0">Sealed product gains up to +${Math.round(sealedMax()*100)}% in value over time. Open it any time or sell it at card shows.${sd<1?' <b style="color:#6ff0a0">Mineral Badge: −15%</b>':''}</p>${unlockedSets().map(s=>{const p=packPrice(s),b6=Math.round(6*p*.9*sd),b18=Math.round(18*p*.85*sd);return `<div class="row2"><div class="tx"><b>${s.n}</b><small>Bundle 6 packs · Box 18 packs</small></div><button class="sbtn buy" data-buy="${s.id}|bundle|6|${b6}">${OUT(b6)}</button><button class="sbtn buy" data-buy="${s.id}|box|18|${b18}">${OUT(b18)}</button></div>`}).join('')}</div>`;
- h+=`<h3 class="sec">Your card shop</h3>`;
+ h+=`<h3 class="sec">Your own card shop</h3>`;
  if(!S.shop.owned)h+=`<div class="pnl gold"><div class="big">Open your own shop</div><p>Passive income, a consignment shelf and tournament nights. Needs level <b>6</b>.</p><button class="btn buy" id="buyShop" ${rankIdx()>=1&&S.coins>=250?'':'disabled'}>SIGN THE LEASE ${OUT(250)}</button></div>`;
  else{const pend=shopPending();h+=`<div class="pnl gold"><div class="row2"><div class="ic">🏪</div><div class="tx"><b>${fmt(shopRate())} per hour</b><small>Fills up for ${shopCap()} hours · ${fmt(pend)} waiting</small></div><button class="sbtn earn" id="collect" ${pend>=.01?'':'disabled'}>${IN(pend)}</button></div></div>`;
   const slots=shelfSlots();h+=`<div class="pnl"><h4>CONSIGNMENT SHELF · ${S.shelf.length}/${slots}</h4>${S.shelf.map((x,i)=>{const left=x.ready-NOW();return `<div class="row2"><img class="th" src="${x.img}"><div class="tx"><b>${esc(x.name)}</b><small>${left>0?'on sale · about '+Math.ceil(left/MIN)+' min':'Sold!'}</small></div>${left>0?`<button class="sbtn g" data-pull="${i}">TAKE BACK</button>`:`<button class="sbtn earn" data-sold="${i}">${IN(x.price)}</button>`}</div>`}).join('')}${S.shelf.length<slots?'<button class="btn ghost" id="shelfAdd">+ PUT A CARD ON SALE</button>':''}</div>`;
@@ -1941,7 +2027,8 @@ function renderShop(){const bi=bulkInfo();let h=`<div class="pnl"><h4>🧑‍�
   <div class="row2"><div class="tx"><b>PSA partner account</b><small>−15% on every grading fee</small></div>${S.shop.partner?'<button class="sbtn g" disabled>OWNED</button>':`<button class="sbtn buy" data-up="partner">${OUT(250)}</button>`}</div></div>`;
   h+=`<div class="pnl ${S.machine.owned?'grn':'gold'}"><h4>⚙ AUTO PACK MACHINE</h4><p>Pick a set and how many packs. It opens them by itself while you do other things (very little XP).</p>${S.machine.owned?`<button class="btn" data-go2="scrMachine">OPEN MACHINE</button>`:`<button class="btn buy" id="buyMach" ${S.coins>=10000?'':'disabled'}>BUY ${OUT(10000)}</button>`}</div>`}
  $('#shopBody').innerHTML=h}
-$('#shopBody').addEventListener('click',e=>{const t=e.target.closest('button');if(!t||t.disabled)return;
+$('#shopBody').addEventListener('click',e=>{const gc=e.target.closest('[data-gc]');if(gc){gcBuy(+gc.dataset.gc);return}
+ const t=e.target.closest('button');if(!t||t.disabled)return;
  if(t.dataset.go2){go(t.dataset.go2);return}
  if(t.id==='job'){doJob();return}
  if(t.id==='bulk'){const bi=bulkInfo();Object.keys(S.coll).forEach(sid=>{const m=memo[sid];if(!m)return;Object.entries(S.coll[sid]).forEach(([id,c])=>{const card=m.byId[id];if(card&&c>1&&(card.r==='common'||card.r==='uncommon')){S.coll[sid][id]=1;if((S.fakes[id]||0)>1)S.fakes[id]=1}})});addCoins(bi.v);sfx.cash();save();renderShop();return}
@@ -2063,7 +2150,7 @@ function tradeOut(c){
 async function tradeIn(code){try{const o=await unpackObj(code,'PRT');if(!o||!o.t||!o.c||!o.c.id)throw 0;
  if(S.trd.includes(o.u)){toast('This trade code was already used');return}
  S.trd.push(o.u);addRaw(o.c,o.f);S.stats.trades++;save();loadSet(setOf(o.c.id)).catch(()=>{});
- sfx.holo();burst(140,['#9ef0ff','#ffe07a','#fff'],1);modal(`<div class="em">🎁</div><h2>Trade received!</h2><div style="width:50%;margin:10px auto 0"><img src="${o.c.l||o.c.s}" style="width:100%;border-radius:8px"></div><p><b>${esc(o.from||'A friend')}</b> sent you <b>${esc(o.c.name)}</b>. It's in your binder.</p><button class="btn" onclick="closeModal()">THANKS!</button>`);checkAll()}
+ sfx.holo();burst(140,['#9ef0ff','#ffe07a','#fff'],1);modal(`<div class="em">🎁</div><h2>Trade received!</h2><div style="width:50%;margin:10px auto 0"><img src="${o.c.l||o.c.s}" style="width:100%;border-radius:8px"></div><p><b>${esc(o.from||'A friend')}</b> sent you <b>${esc(o.c.name)}</b>. It's in your binder.</p><button class="btn" onclick="closeModal()">THANKS!</button>`);checkUnlocks();checkAll()}
  catch(e){toast('That trade code does not work. Check you copied all of it.')}}
 async function renderRival(){$('#rivalBody').innerHTML='<div style="display:flex;justify-content:center;padding:40px"><div class="spin"></div></div>';await ensureLoaded();rvEnsure();
  const r=S.rv,feed=rvFeed();const me=r.mine,he=r.his;const lead=me&&he&&me.v>he.v;
@@ -2085,14 +2172,15 @@ async function renderHof(){$('#hofBody').innerHTML='<div style="display:flex;jus
  const furn=RUP.reduce((a,u)=>a+(S.room[u[0]]?u[3]:0),0)+FRAMEC.slice(0,S.room.frames).reduce((a,b)=>a+b,0);
  const dispV=(hero?hero.val:0)+items.reduce((a,i)=>a+i.val,0)+favs.reduce((a,s)=>a+cardVal(s,{grade:s.grade}),0)+seals.reduce((a,s)=>a+sealedVal(s),0);
  const roomV=dispV+furn;
- const vis=[{who:'mom',t:`"${esc(pname())}, clean your room! …Okay, the frames look nice."`}];
- if(S.rv&&S.rv.his)vis.push({who:'rival',t:`"Nice room. My ${esc(S.rv.his.name)} would look better on that wall."`});
+ const vis=[{who:'mom',t:`"${esc(pname())}, clean your room! …Okay, the showcase looks nice."`}];
+ if(S.rv&&S.rv.his)vis.push({who:'rival',t:`"Nice room. My ${esc(S.rv.his.name)} would look better in that cabinet."`});
  if(setComplete('base1'))vis.push({who:'gpa',t:'"My old Base Set, complete again… I\'m so proud of you." 🥲'});
- if(favs.length)vis.push({who:'oak',t:`"A PSA ${favs[0].grade} ${esc(favs[0].name)}! Remarkable research specimen."`});
+ if(hero)vis.push({who:'oak',t:`"${esc(hero.name)} under glass! Remarkable research specimen."`});
  if(playerLook()!==2)vis.push({who:2,t:'"Bro. This is the best card room I have ever seen."'});
  const v=rnd(vis);
  const posters=gensOpen().map((g,i)=>`<div class="rposter" style="left:${5+i*6.5}%;top:50%;transform:rotate(${[-3,2,-2,3][i]}deg);background:linear-gradient(160deg,${PCOL[g][0]},${PCOL[g][1]})">${REGION[g].toUpperCase()}</div>`).join('');
  const bdg=GYMS.filter(x=>hasBadge(x.b)).map(x=>`<i>${x.em}</i>`).join('');
+ const shelfFavs=favs.filter(f=>!(hero&&hero.k==='slab'&&hero.sl.uid===f.uid));
  $('#hofBody').innerHTML=`<div class="room" style="--wa:${w[0]};--wb:${w[1]};--sky:${day?'linear-gradient(#7ec8ff,#d8f0ff)':'radial-gradient(circle at 70% 30%,#fff 0 3%,transparent 4%),radial-gradient(circle at 30% 60%,#fff 0 1.5%,transparent 2.5%),linear-gradient(#0a1030,#1a2350)'};--sheet:${S.room.bed?'linear-gradient(135deg,#ff7a2a,#e8455a,#ffcf3a)':'#3058c8'}">
   <div class="wall"></div><div class="base"></div><div class="floor"></div><div class="win"></div>
   <div class="frames" style="--fc:${nF>8?3:2}">${Array.from({length:nF},(_,i)=>{const it=items[i];return it?`<div class="fr" data-fi="${i}"><img src="${it.img}">${it.k==='slab'?`<span class="gt">PSA ${it.grade}</span>`:''}</div>`:'<div class="fr em"></div>'}).join('')}</div>
@@ -2100,36 +2188,40 @@ async function renderHof(){$('#hofBody').innerHTML='<div style="display:flex;jus
   ${S.ms.length?`<div class="troph">${S.ms.map(()=>'🏆').join('')}</div>`:''}
   <div class="shelf">${seals.map((s,i)=>`<div class="bx" style="left:${4+i*24}%;background:linear-gradient(${setById[s.set].c[0]},${setById[s.set].c[1]})"></div>`).join('')}</div>
   <div class="badges">${bdg||'<i style="opacity:.5;font-size:7px;color:#fff">BADGES</i>'}</div>
-  <div class="tv"><i></i></div>${S.room.console?'<div style="position:absolute;right:13%;top:57%;font-size:14px;z-index:3">🎮</div>':''}
+  <div class="hero"><div class="crown">👑 SHOWCASE</div><div class="glassbox" id="heroEl">${hero?`<div class="main">${hero.k==='slab'?slabHTML(hero.sl,{small:1}):`<div class="gframe"><img src="${hero.img}"></div>`}</div><div class="stand"></div><div class="plaque">${esc(hero.name)}${hero.k==='slab'?' · PSA '+hero.grade:''}<b>${fmt(hero.val)}</b></div>`:'<div class="plaque">YOUR BEST CARD<b>GOES HERE</b></div>'}<div class="gshelf" id="caseEl">${shelfFavs.map(s=>slabHTML(s,{small:1})).join('')||'<span class="emp">★ PICK 3 SLABS IN THE VAULT</span>'}</div></div><div class="base2"></div></div>
+  <div class="tv"><i></i></div>${S.room.console?'<div style="position:absolute;right:13%;top:62%;font-size:14px;z-index:3">🎮</div>':''}
   ${S.room.fridge?'<div class="fridge"></div>':''}${S.room.rug?'<div class="rug"></div>':''}
   <div class="bed"><div class="fr2"></div><div class="mat"></div><div class="pil"></div></div>
   <div class="desk"><div class="tp"></div><div class="lg" style="left:4%"></div><div class="lg" style="right:4%"></div><div class="bind">${raws.map(r=>`<img src="${r.img}">`).join('')}</div></div>
-  <div class="hero"><div class="crown">👑 SHOWCASE</div><div class="glassbox" id="heroEl">${hero?`<div class="main">${hero.k==='slab'?slabHTML(hero.sl,{small:1}):`<div class="gframe"><img src="${hero.img}"></div>`}</div><div class="stand"></div><div class="plaque">${esc(hero.name)}${hero.k==='slab'?' · PSA '+hero.grade:''}<b>${fmt(hero.val)}</b></div>`:'<div class="plaque">YOUR BEST CARD<b>GOES HERE</b></div>'}<div class="gshelf" id="caseEl">${favs.filter(f=>!(hero&&hero.k==='slab'&&hero.sl.uid===f.uid)).map(s=>slabHTML(s,{small:1})).join('')||'<span class="emp">★ PICK 3 SLABS IN THE VAULT</span>'}</div></div><div class="base2"></div></div>
   <div class="me">${sprite(playerLook(),4)}</div>
   <div class="vis"><div class="bubble">${v.t}</div>${sprite(v.who,3)}</div>
   ${S.room.lamp?'<div class="lamp"></div>':''}
   <div class="rv">ROOM VALUE ${fmt(roomV)}</div></div>
- <div class="two"><button class="btn ghost" id="rShare">📸 SHARE MY ROOM</button><button class="btn ghost" id="rCase">★ GLASS CASE</button></div>
+ <div class="two"><button class="btn ghost" id="rShare">📸 SHARE MY ROOM</button><button class="btn ghost" id="rCase">★ SHOWCASE SHELF</button></div>
  <h3 class="sec">Upgrade your room</h3><div class="pnl">
   <div class="row2"><div class="ic">🖼️</div><div class="tx"><b>Frame wall · ${nF} frames</b><small>Your next most valuable cards hang here automatically. Your #1 card always sits in the lit showcase.</small></div>${S.room.frames>=3?'<button class="sbtn g" disabled>MAX</button>':`<button class="sbtn buy" data-ru="frames">${OUT(FRAMEC[S.room.frames])}</button>`}</div>
   ${RUP.map(([k,n,d,c])=>`<div class="row2"><div class="ic">${{lamp:'💡',rug:'🟥',console:'🎮',fridge:'🧊',bed:'🛏️'}[k]}</div><div class="tx"><b>${n}</b><small>${d}</small></div>${S.room[k]?'<button class="sbtn g" disabled>OWNED</button>':`<button class="sbtn buy" data-ru="${k}">${OUT(c)}</button>`}</div>`).join('')}
   <div class="row2"><div class="ic">🎨</div><div class="tx"><b>New wallpaper</b><small>Cycle through 4 colours</small></div><button class="sbtn buy" data-ru="wall">${OUT(100)}</button></div></div>`;
  $('#hofBody').querySelectorAll('[data-fi]').forEach(el=>el.onclick=()=>{const it=items[+el.dataset.fi];if(it.k==='slab')openSlab(it.sl);else if(it.k==='mis')openZoom(it.m,it.m.v);else openZoom(it.c)});
- $('#caseEl').onclick=e=>{e.stopPropagation();go('scrVault')};const he=$('#heroEl');if(he&&hero)he.onclick=()=>{if(hero.k==='slab')openSlab(hero.sl);else if(hero.k==='mis')openZoom(hero.m,hero.m.v);else openZoom(hero.c)};$('#rCase').onclick=()=>go('scrVault');
- $('#rShare').onclick=async()=>{const t=`My PACK RIP room is worth ${fmt(roomV)}! ${favs.length?'Glass case: '+favs.map(s=>'PSA '+s.grade+' '+s.name).join(', ')+'. ':''}${S.badges.length} badges, level ${level()}. Beat that!`;
+ $('#caseEl').onclick=e=>{e.stopPropagation();go('scrVault')};$('#rCase').onclick=()=>go('scrVault');
+ const he=$('#heroEl');if(he&&hero)he.onclick=()=>{if(hero.k==='slab')openSlab(hero.sl);else if(hero.k==='mis')openZoom(hero.m,hero.m.v);else openZoom(hero.c)};
+ $('#rShare').onclick=async()=>{const t=`My PACK RIP room is worth ${fmt(roomV)}! ${hero?'Showcase: '+hero.name+' ('+fmt(hero.val)+'). ':''}${S.badges.length} badges, level ${level()}. Beat that!`;
   if(navigator.share)navigator.share({title:'My PACK RIP room',text:t}).catch(()=>{});else{try{await navigator.clipboard.writeText(t);toast('Copied! Take a screenshot to show the room too.')}catch(e){toast(t)}}};
  $('#hofBody').querySelectorAll('[data-ru]').forEach(b=>b.onclick=()=>{const k=b.dataset.ru;
   if(k==='frames'){if(!spend(FRAMEC[S.room.frames]))return;S.room.frames++}
   else if(k==='wall'){if(!spend(100))return;S.room.wall++}
   else{const u=RUP.find(x=>x[0]===k);if(!spend(u[3]))return;S.room[k]=true}
   addXP(20);save();sfx.holo();renderHof();checkAll()})}
+/* =================== PROFILE BACKGROUND PICKER =================== */
+function pbgModal(){modal(`<h2>Profile background</h2><p>Pick a background for your trainer picture.</p><div class="pbgs">${PBGS.map(([n,bg],i)=>`<button class="${i===S.pbg?'on':''}" data-pb="${i}" style="background:${bg}" title="${n}">${sprite(playerLook(),2)}</button>`).join('')}</div><button class="btn ghost" onclick="closeModal()">DONE</button>`);
+ $('#mbox').querySelectorAll('[data-pb]').forEach(b=>b.onclick=()=>{S.pbg=+b.dataset.pb;save();applyPbg();blip();$('#mbox').querySelectorAll('[data-pb]').forEach(x=>x.classList.toggle('on',x===b))})}
 /* =================== HOME =================== */
 function renderHome(){
  document.body.classList.remove('opening');
  rollDaily();rvEnsure();hwEnsure();if(S.rvPending)rvSettle();
  const L=level(),lf=lvFromXP(S.xp),capped=lf.L>capLv(),cv=collValue();
- const ev=evNow();
- let h=`<div class="trainer"><div class="spr">${sprite(playerLook(),4)}</div>${(()=>{const b=allItems().filter(i=>i.k!=='seal').sort((a,b)=>b.val-a.val)[0];return b?`<div class="bestc" data-best="1"><i>👑</i><img src="${b.img}"><span>${fmt(b.val)}</span></div>`:''})()}<div style="flex:1"><div class="tn">${S.prestige?'★'.repeat(Math.min(3,S.prestige))+' ':''}${esc(pname())}</div><div class="tr"><span class="lvl">LV ${L}</span>${title(L).toUpperCase()} · ⭐ ${S.rep.toFixed(1)} · ${REGION[maxGen()].toUpperCase()}</div><div class="mbar xpbar"><i style="width:${capped||L>=100?100:lf.rem/lf.need*100}%"></i></div><p style="color:var(--mut);font-size:11px;margin-top:4px;text-shadow:0 1px 4px #000">${L>=100?'Max level · start a New Game+ season in Stats':capped?`Max level in ${REGION[maxGen()]} · unlock ${REGION[maxGen()+1]} to keep leveling`:`${lf.rem} / ${lf.need} XP to level ${L+1}`}</p></div></div>
+ const ev=evNow();const b=bestItem();
+ let h=`<div class="trainer"><div class="spr" id="pbgBtn">${sprite(playerLook(),4)}</div>${b?`<div class="bestc" data-best="1"><i>👑</i><img src="${b.img}"><span>${fmt(b.val)}</span></div>`:''}<div style="flex:1;min-width:0"><div class="tn">${S.prestige?'★'.repeat(Math.min(3,S.prestige))+' ':''}${esc(pname())}</div><div class="tr"><span class="lvl">LV ${L}</span>${title(L).toUpperCase()} · ⭐ ${S.rep.toFixed(1)} · ${REGION[maxGen()].toUpperCase()}</div><div class="mbar xpbar"><i style="width:${capped||L>=100?100:lf.rem/lf.need*100}%"></i></div><p style="color:var(--mut);font-size:11px;margin-top:4px;text-shadow:0 1px 4px #000">${L>=100?'Max level · start a New Game+ season in Stats':capped?`Max level in ${REGION[maxGen()]} · unlock ${REGION[maxGen()+1]} to keep leveling`:`${lf.rem} / ${lf.need} XP to level ${L+1}`}</p></div></div>
  <div class="kpis"><div class="kpi"><b>${fmt(S.coins)}</b><span>Cash</span></div><div class="kpi"><b>${fmt(cv)}</b><span>Collection value</span></div></div>`;
  if(ev)h+=`<div class="pnl ev"><h4>WEEKEND EVENT · ENDS SUNDAY</h4><div class="big">${EVS[ev][0]}</div><p>${EVS[ev][1]}</p></div>`;
  if(crashToday())h+=`<div class="pnl red"><h4>📉 MARKET CRASH</h4><p>All cards trade 30% lower today. Good day to buy, bad day to sell.</p></div>`;
@@ -2139,6 +2231,7 @@ function renderHome(){
  if(oakReady())h+=`<div class="pnl gold"><div class="row2"><div class="ic">🎓</div><div class="tx"><b>Professor Oak's weekly gift</b><small>A free sealed bundle is waiting.</small></div><button class="sbtn earn" id="oak">CLAIM</button></div></div>`;
  if(isBroke())h+=`<div class="pnl red"><h4>LOW ON CASH</h4><p>Odd jobs and Grandpa in the Shop, minigames below, or quick sell a card.</p></div>`;
  if(S.free>0||Object.values(S.inv).some(n=>n>0))h+=`<div class="pnl" data-go="scrSets"><div class="row2"><div class="ic">🎟️</div><div class="tx"><b>Packs waiting</b><small>${S.free?S.free+' free voucher'+(S.free>1?'s':''):''}${S.free&&Object.values(S.inv).some(n=>n>0)?' · ':''}${Object.entries(S.inv).filter(([k,n])=>n>0).map(([k,n])=>n+'× '+setById[k].n).join(', ')}</small></div><button class="sbtn">RIP</button></div></div>`;
+ if(S.gcase&&S.gcase.items.some(x=>x.m&&!x.b))h+=`<div class="pnl ev" data-go="scrShop"><div class="row2"><div class="ic">💎</div><div class="tx"><b>Gary has a card you're missing</b><small>It's in his glass case today. Pricey, though.</small></div><button class="sbtn">LOOK</button></div></div>`;
  const nq=QTYS.find(q=>!qOk(q));if(nq)h+=`<div class="pnl"><div class="row2"><div class="ic">📦</div><div class="tx"><b>Next unlock: open ${nq} packs at once</b><small>${nq===50?'Reach max level 100':'Reach level '+QLV[nq]} · you are level ${lvFromXP(S.xp).L}</small></div><span class="tag">🔒 LV ${QLV[nq]}</span></div></div>`;
  const sr=storyReady();if(sr)h+=`<div class="pnl gold" data-go="scrQuests"><h4>📜 STORY</h4><div class="big">${sr} chapter${sr>1?'s':''} ready to claim</div></div>`;
  const r=S.rv;if(r)h+=`<div class="pnl" data-go="scrRival"><div class="row2"><div class="ic" style="width:44px">${sprite('rival',3)}</div><div class="tx"><b>Weekly duel vs ${RIVAL} · ${daysLeft()}d left</b><small>Your best: ${r.mine?esc(r.mine.name)+' '+fmt(r.mine.v):'none yet'} · his: ${r.his?esc(r.his.name)+' '+fmt(r.his.v):'?'}</small></div><span class="tag ${r.mine&&r.his&&r.mine.v>r.his.v?'':'r'}">${r.mine&&r.his&&r.mine.v>r.his.v?'LEADING':'BEHIND'}</span></div></div>`;
@@ -2148,7 +2241,7 @@ function renderHome(){
  if(!ev)h+=`<p class="empty" style="padding:10px 0 0;font-size:11px;text-shadow:0 1px 4px #000">Next weekend event (Fri–Sun): ${EVS[evNext()][0]}</p>`;
  const qd=storyReady()+colsReady()+dailyReady();const maxB=gensOpen().length*8;
  const tile=(go,ic,t,dot,off)=>`<button class="tile ${off?'off':''}" ${off?`data-lock="${off}"`:`data-go="${go}"`}>${dot?'<span class="dot"></span>':''}<i>${ic}</i>${t}</button>`;
- h+=`<div class="tiles">${tile('scrQuests','📜','QUESTS',qd)}${tile('scrShop','🏪','SHOP',(S.shop.owned&&shopPending()>=1)||jobReady()||shelfSold())}${tile('scrHof','🛏️','MY ROOM')}
+ h+=`<div class="tiles">${tile('scrQuests','📜','QUESTS',qd)}${tile('scrShop','🏪','CARD SHOP',(S.shop.owned&&shopPending()>=1)||jobReady()||shelfSold())}${tile('scrHof','🛏️','MY ROOM')}
   ${tile('scrGyms','🏅','GYMS '+GYMS.filter(x=>hasBadge(x.b)&&genOpen(x.g)).length+'/'+maxB)}${tile('scrRival','⚔️','RIVAL & TRADES',r&&r.his&&(!r.mine||r.mine.v<r.his.v))}${tile('scrMarket','📈','MARKET')}
   ${tile('quiz','❓','WHO\'S THAT POKéMON?',quizReady(),rankIdx()<1?'Reach level 6 to unlock':(!quizReady()?'Next quiz in '+Math.ceil((8*MIN-(NOW()-S.lastQuiz))/MIN)+' min':0))}
   ${tile('hl','⚖️','HIGHER OR LOWER',hlReady(),rankIdx()<2?'Reach level 18 to unlock':(!hlReady()?'Next round in '+Math.ceil((10*MIN-(NOW()-S.lastHL))/MIN)+' min':0))}
@@ -2158,13 +2251,13 @@ function renderHome(){
 let homeSig='';
 function renderHomeLive(){const sig=[S.subs.filter(s=>s.ready<=NOW()).length,jobReady(),oakReady(),isBroke(),quizReady(),hlReady(),shelfSold(),!!S.machine.run].join();if(sig!==homeSig){homeSig=sig;renderHome()}}
 $('#homeBody').addEventListener('click',e=>{const l=e.target.closest('[data-lock]');if(l){toast(l.dataset.lock);return}
+ if(e.target.closest('#pbgBtn')){pbgModal();return}
+ const bb=e.target.closest('[data-best]');if(bb){const b=bestItem();if(b){if(b.k==='slab')openSlab(b.sl);else if(b.k==='mis')openZoom(b.m,b.m.v);else openZoom(b.c)}return}
  const g=e.target.closest('[data-go]');if(g){const k=g.dataset.go;if(k==='quiz')return quiz();if(k==='hl')return higherLower();go(k);return}
  const c=e.target.closest('[data-claim]');if(c){const d=DPOOL.find(x=>x.k===c.dataset.claim);if(S.daily.claimed.includes(d.k))return;S.daily.claimed.push(d.k);addCoins(dReward(d));addXP(50);sfx.cash();save();renderHome();return}
  if(e.target.closest('#oak')){const s=rnd(unlockedSets());S.sealed.push({uid:uid(),set:s.id,kind:'bundle',packs:6,base:6*packPrice(s),bought:NOW()});S.lastOak=NOW();save();sfx.ultra();burst(120,['#ffe07a','#fff'],1);modal(`<div class="em">${sprite('oak',5)}</div><h2>Professor Oak</h2><p>"A true researcher needs samples!"<br>You got a sealed <b>${s.n} bundle</b>. It's in your Vault.</p><button class="btn" onclick="closeModal()">THANK YOU PROFESSOR</button>`);renderHome();return}
- if(e.target.closest('#grailPick')){pickGrail();return}
- const bb=e.target.closest('[data-best]');if(bb){const b=allItems().filter(i=>i.k!=='seal').sort((a,b)=>b.val-a.val)[0];if(b){if(b.k==='slab')openSlab(b.sl);else if(b.k==='mis')openZoom(b.m,b.m.v);else openZoom(b.c)}}});
+ if(e.target.closest('#grailPick')){pickGrail();return}});
 $('#saveBtn').onclick=saveCodeModal;
-function resetModal(){modal(`<div class="em">⚠️</div><h2>Reset the whole game?</h2><p>This deletes <b>everything</b>: cards, slabs, money, levels, badges and your room. You start again from the intro.<br><br>Tip: copy your save code first if you might want it back.</p><button class="btn ghost" id="rsCode">💾 GET SAVE CODE FIRST</button><button class="btn buy" id="rsGo">YES, RESET EVERYTHING</button><button class="btn ghost" onclick="closeModal()">CANCEL</button>`);$('#rsCode').onclick=saveCodeModal;$('#rsGo').onclick=()=>{localStorage.removeItem(KEY);location.reload()}}
 $('#resetTop').onclick=resetModal;
 async function pickGrail(){await ensureLoaded();const pool=[];unlockedSets().forEach(s=>{const m=memo[s.id];if(m)pool.push(...m.P.ultra)});pool.sort((a,b)=>cardVal(b)-cardVal(a));
  modal(`<h2>Choose your grail</h2><p>Only ultra rares from unlocked sets.</p><div class="grid5" style="grid-template-columns:repeat(3,1fr);margin-top:12px">${pool.slice(0,15).map(c=>`<div class="mini ultra" data-g="${c.id}" style="cursor:pointer"><img src="${c.s}"><span class="pv">${fmt(cardVal(c,{grade:10}))}</span></div>`).join('')}</div><button class="btn ghost" onclick="closeModal()">CANCEL</button>`);
@@ -2189,9 +2282,12 @@ $('#questBody').addEventListener('click',e=>{
  const sb=e.target.closest('[data-st]');if(sb){const g=+sb.dataset.st,st=STORY[g].chapters[S.storyG[g]||0];if(!st||!st.ok())return;const r=st.r;
   if(r.c)addCoins(r.c);if(r.free){S.free+=r.free;toast(`+${r.free} free packs`)}if(r.seal){const s=setById[r.seal];S.sealed.push({uid:uid(),set:s.id,kind:r.kind,packs:18,base:18*packPrice(s),bought:NOW()});toast(`Sealed ${s.n} box added to your Vault`)}
   S.storyG[g]=(S.storyG[g]||0)+1;if(g===1)S.story=S.storyG[1];addXP(80*g);save();sfx.holo();burst(120,['#ffe07a','#fff'],1);renderQuests();checkAll();return}
- if(e.target.closest('#hwGo')){const hc=hwCards();if(hc.length<3)return;let tot=0,fake=false;hc.forEach(c=>{tot+=cardVal(c);if(takeRaw(c.id))fake=true});S.hw.done=true;
-  if(fake){sfx.bad();addRep(-2);modal(`<div class="em">😑</div><h2>${hwName()} is not amused</h2><p>One of the cards was a fake. He keeps the real ones and pays nothing this week.</p><button class="btn" onclick="closeModal()">SORRY</button>`)}
-  else{const pay=Math.round((tot*2.5+25)*100)/100;addCoins(pay);addXP(150);sfx.cash();modal(`<div class="em">${sprite(2,5)}</div><h2>${hwName()}</h2><p>"Psychic cards are the best cards. Everyone knows that."<br><span class="money in">+${fmt(pay)}</span> · +150 XP</p><button class="btn" onclick="closeModal()">NICE</button>`)}save();renderQuests();return}
+ if(e.target.closest('#hwGo')){const hc=hwCards();if(hc.length<3)return;
+  _uv++;const before=unlockedSets().map(s=>s.id);hc.forEach(c=>{S.coll[setOf(c.id)][c.id]--});_uv++;const after=new Set(unlockedSets().map(s=>s.id));hc.forEach(c=>{S.coll[setOf(c.id)][c.id]++});_uv++;const lost=before.filter(x=>!after.has(x)).map(x=>setById[x].n);
+  const go2=()=>{let tot=0,fake=false;hc.forEach(c=>{tot+=cardVal(c);if(takeRaw(c.id))fake=true});S.hw.done=true;
+   if(fake){sfx.bad();addRep(-2);modal(`<div class="em">😑</div><h2>${hwName()} is not amused</h2><p>One of the cards was a fake. He keeps the real ones and pays nothing this week.</p><button class="btn" onclick="closeModal()">SORRY</button>`)}
+   else{const pay=Math.round((tot*2.5+25)*100)/100;addCoins(pay);addXP(150);sfx.cash();modal(`<div class="em">${sprite(2,5)}</div><h2>${hwName()}</h2><p>"Psychic cards are the best cards. Everyone knows that."<br><span class="money in">+${fmt(pay)}</span> · +150 XP</p><button class="btn" onclick="closeModal()">NICE</button>`)}save();renderQuests()};
+  if(lost.length){modal(`<div class="em">🔒</div><h2>This will lock ${lost.length>1?lost.length+' sets':'a set'}!</h2><p>Handing in these 3 cards means you no longer own enough for:<br><br><b style="color:#ff8a8a">${lost.join('<br>')}</b></p><button class="btn buy" id="gdY">HAND IN ANYWAY</button><button class="btn ghost" onclick="closeModal()">KEEP THE CARDS</button>`);$('#gdY').onclick=()=>{closeModal();go2()}}else go2();return}
  const b=e.target.closest('[data-b]');if(b){handBounty(+b.dataset.b);return}
  const c=e.target.closest('[data-col]');if(c&&!c.disabled){const col=COLS.find(x=>x[0]===c.dataset.col);if(S.cols.includes(col[0]))return;S.cols.push(col[0]);addCoins(col[2]);S.free++;addXP(80);save();sfx.holo();toast(`${col[0]} complete · +1 free pack`);renderQuests();checkAll()}});
 /* =================== MARKET / STATS =================== */
@@ -2201,7 +2297,7 @@ async function renderMarket(){$('#marketBody').innerHTML='<div style="display:fl
  <h3 class="sec">🔥 Hot today</h3><div class="pnl">${hot.map(c=>`<div class="row2"><img class="th" src="${c.s}"><div class="tx"><b>${esc(c.name)}</b><small>${setById[setOf(c.id)].n} · you have ${rawCount(c.id)}</small></div><span class="money in">${fmt(cardVal(c))}</span></div>`).join('')||'<p>Open some sets to see the market.</p>'}</div>
  <h3 class="sec">Your most valuable items</h3><div class="pnl">${items.map((it,i)=>`<div class="row2"><img class="th" src="${it.img}" style="${it.k==='seal'?'object-fit:contain;background:#222':''}"><div class="tx"><b>${esc(it.name)}${it.k==='slab'?' <span class="tag">PSA '+it.grade+'</span>':it.k==='mis'?' <span class="tag p">ERROR</span>':''}${it.cnt>1?' ×'+it.cnt:''}</b><small>Market ${fmt(it.val)}</small></div>${it.k==='seal'?'':`<button class="sbtn earn" data-qs="${i}">SELL ${IN(it.val*.45)}</button>`}</div>`).join('')||'<p>Nothing yet.</p>'}</div>
  <p class="empty" style="font-size:11px">Quick sell pays 45% of market. Card shows and your shop shelf pay much more.</p>`;
- $('#marketBody').querySelectorAll('[data-qs]').forEach(b=>b.onclick=()=>{const it=items[+b.dataset.qs];modal(`<h2>Quick sell?</h2><p><b>${esc(it.name)}</b><br>Gary pays <span class="money in">${fmt(it.val*.45)}</span> (market ${fmt(it.val)}).</p><button class="btn earn" id="qsY">SELL ${IN(it.val*.45)}</button><button class="btn ghost" onclick="closeModal()">KEEP</button>`);$('#qsY').onclick=()=>{closeModal();quickSell(it);renderMarket()}})}
+ $('#marketBody').querySelectorAll('[data-qs]').forEach(b=>b.onclick=()=>{const it=items[+b.dataset.qs];modal(`<h2>Quick sell?</h2><p><b>${esc(it.name)}</b><br>Gary pays <span class="money in">${fmt(it.val*.45)}</span> (market ${fmt(it.val)}).</p><button class="btn earn" id="qsY">SELL ${IN(it.val*.45)}</button><button class="btn ghost" onclick="closeModal()">KEEP</button>`);$('#qsY').onclick=()=>{closeModal();guard(it,()=>{quickSell(it);renderMarket()})}})}
 function lookGrid(sel){return `<div class="looks">${LOOKS.map((l,i)=>`<button data-lk="${i}" class="${i===sel?'on':''}">${sprite(i,3)}${l.n}</button>`).join('')}</div>`}
 function renderStats(){let own=0;Object.values(S.coll).forEach(s=>Object.values(s).forEach(n=>own+=n));
  const st=[[S.packs,'Packs ripped'],[S.cards,'Cards pulled'],[own,'Cards in hand'],[S.holos,'Holos'],[S.ultras,'Ultra rares'],[S.gods,'God packs'],[S.stats.mis,'Misprints'],[S.sinceHolo,'Packs since holo'],
@@ -2209,19 +2305,19 @@ function renderStats(){let own=0;Object.values(S.coll).forEach(s=>Object.values(
   [S.stats.sold,'Items sold'],[fmt(S.stats.earned),'Sales earnings'],[S.stats.graded,'Cards graded'],[S.slabs.filter(s=>s.grade===10&&!s.fake).length,'PSA 10s'],[S.stats.quiz,'Quiz correct'],[S.stats.duels,'Duels won'],[S.stats.trades,'Trades'],[unlockedSets().length+'/'+SETS.length,'Sets unlocked']];
  const L100=level()>=100;
  $('#statsBody').innerHTML=`<div class="pnl gold"><h4>💾 SAVE CODE</h4><p>Your game is saved on this device automatically. To be safe (new phone, cleared Safari data, other link), copy your save code and paste it back any time.</p><div class="two"><button class="btn" id="stSave">GET SAVE CODE</button><button class="btn ghost" id="stLoad">ENTER CODE</button></div></div>
- <div class="pnl"><h4>🧑 YOUR LOOK</h4><div class="row2"><div class="ic" style="width:50px">${sprite(playerLook(),3)}</div><div class="tx"><b>${esc(pname())} · ${LOOKS[playerLook()].n}</b><small>Change your look any time</small></div><button class="sbtn g" id="stLook">CHANGE</button></div></div>
- <div class="pnl"><h4>📦 OPEN SEVERAL PACKS AT ONCE</h4>${QTYS.filter(q=>q>1).map(q=>`<div class="row2"><div class="tx"><b>${q} packs at once</b><small>${q===50?'Max level 100':'Level '+QLV[q]}</small></div><span class="tag ${qOk(q)?'':'r'}">${qOk(q)?'UNLOCKED':'🔒 LOCKED'}</span></div>`).join('')}</div>
+ <div class="pnl"><h4>🧑 YOUR LOOK</h4><div class="row2"><div class="ic" style="width:56px;height:56px;border-radius:14px;background:var(--pbg);display:flex;align-items:flex-end;justify-content:center;overflow:hidden">${sprite(playerLook(),3)}</div><div class="tx"><b>${esc(pname())} · ${LOOKS[playerLook()].n}</b><small>Background: ${(PBGS[S.pbg]||PBGS[0])[0]}</small></div><button class="sbtn g" id="stLook">LOOK</button><button class="sbtn g" id="stPbg">🎨 BG</button></div></div>
+ <div class="pnl"><h4>📦 OPEN SEVERAL PACKS AT ONCE</h4><p style="margin-top:0">Free vouchers and sealed packs are always used first.</p>${QTYS.filter(q=>q>1).map(q=>`<div class="row2"><div class="tx"><b>${q} packs at once</b><small>${q===50?'Max level 100':'Level '+QLV[q]}</small></div><span class="tag ${qOk(q)?'':'r'}">${qOk(q)?'UNLOCKED':'🔒 LOCKED'}</span></div>`).join('')}</div>
  <div class="pnl"><h4>🍀 LUCKY OPENING RITUAL</h4><p>Pure superstition: it doesn't change the odds, but the game remembers your way and celebrates it.</p>${[['','No ritual'],['t','Always tear the top'],['b','Always tear the bottom']].map(([k,n])=>`<button class="opt ${S.ritual===k?'on':''}" data-rit="${k}"><div class="tx"><b>${n}</b></div>${S.ritual===k?'<div class="pr in">✓</div>':''}</button>`).join('')}</div>
  ${L100?`<div class="pnl ev"><h4>✨ NEW GAME+ SEASON</h4><p>You reached level 100. Start a new season: your level resets to 1, you keep every card, slab, badge and dollar, and you earn a gold ★ next to your name. All pack amounts stay unlocked.</p><button class="btn" id="stPrest">START SEASON ${S.prestige+2}</button></div>`:''}
  <div class="sgrid">${st.map(([v,l])=>`<div class="stat"><b>${v}</b><span>${l}</span></div>`).join('')}</div>
  <h3 class="sec">Best pulls</h3>${S.hist.length?`<div class="pnl">${S.hist.slice(0,12).map(h=>`<div class="row2"><img class="th" src="${h.img}"><div class="tx"><b>${esc(h.name)}</b><small>${setById[h.set].n} · Pack #${h.p} · ${tierName[h.r]}${h.god?' · GOD PACK':''}</small></div></div>`).join('')}</div>`:'<p class="empty">No holos yet.</p>'}
  <h3 class="sec">Rules of the game</h3><div class="odds">Packs: <b>10 cards</b>, no duplicates inside one pack. Rare slot: <b>12.5% holo</b>, <b>1% ultra rare</b>. One <b>God Pack</b> in every 200. Misprints about 1 in 170 cards.<br>
  Levels <b>1 to 100</b>. Each region has a cap: Kanto 30, Johto 55, Hoenn 80, Sinnoh 100. Ripping by hand gives full XP, several packs at once give half, the machine gives very little.<br>
- Opening several packs at once unlocks step by step: <b>2 packs at level 2</b>, <b>5 at level 5</b>, <b>10 at level 7</b>, <b>20 at level 10</b>, <b>50 at max level 100</b>.<br>
- The next set unlocks at <b>95%</b> of the current set, or with a <b>PSA 10 holo</b> from it.<br>
+ Opening several packs at once unlocks step by step: <b>2 at level 2</b>, <b>5 at level 5</b>, <b>10 at level 7</b>, <b>20 at level 10</b>, <b>50 at max level 100</b>.<br>
+ The next set unlocks when you <b>own 95%</b> of the current set, or a <b>PSA 10 holo</b> from it. If you sell cards and drop below that, the next set locks again. The game warns you before.<br>
  Gyms are best-of-3 battles with a level requirement. Weekend events run Friday to Sunday.</div>
- <button class="btn ghost" id="resetBtn">RESET EVERYTHING</button>`;
- $('#stSave').onclick=saveCodeModal;$('#stLoad').onclick=loadCodeModal;
+ <button class="btn ghost" id="resetBtn" style="color:#ff8a8a">⟲ RESET EVERYTHING</button>`;
+ $('#stSave').onclick=saveCodeModal;$('#stLoad').onclick=loadCodeModal;$('#stPbg').onclick=()=>{pbgModal()};
  $('#stLook').onclick=()=>{modal(`<h2>Pick your look</h2><div style="margin-top:12px">${lookGrid(playerLook())}</div><button class="btn ghost" onclick="closeModal()">CLOSE</button>`);$('#mbox').querySelectorAll('[data-lk]').forEach(b=>b.onclick=()=>{S.player.look=+b.dataset.lk;save();closeModal();blip();renderStats()})};
  $('#statsBody').querySelectorAll('[data-rit]').forEach(b=>b.onclick=()=>{S.ritual=b.dataset.rit;save();blip();renderStats();checkAll()});
  if($('#stPrest'))$('#stPrest').onclick=()=>{S.prestige++;S.xp=0;save();fanfare();flash(1,800);burst(260,['#ffe07a','#fff'],1.4);toast(`Season ${S.prestige+1} started!`);renderStats()};
@@ -2283,10 +2379,10 @@ function dailyBonus(){
   if(!first){if(sr==='box'){const s=rnd(unlockedSets());S.sealed.push({uid:uid(),set:s.id,kind:'box',packs:18,base:18*packPrice(s),bought:NOW()});srTxt=`a sealed <b>${s.n} booster box</b> (day 7!)`}
    else{S.coins+=sr;srTxt=`<span class="money in">${IN(sr)}</span> streak bonus`}}
   const al=first?0:15+(hasBadge('cascade')?5:0)+(hasBadge('plain')?10:0)+(hasBadge('coal')?15:0);const fp=1+(hasBadge('rising')?1:0);S.lastDay=dayKey();S.free+=fp;if(al)S.coins+=al;save();updCoin();
-  setTimeout(()=>modal(first?`<div class="em">${sprite('gpa',5)}</div><h2>Grandpa</h2><p>"${esc(pname())}! Here's my old binder from 1999. Let's fill it together!"<br><br>You have <b>$60</b> and <b>1 free pack</b>.<br>Register 95% of a set to unlock the next one.<br><br>Tip: tap <b>💾 SAVE</b> on the home screen any time to get your save code.</p><button class="btn" onclick="closeModal();go('scrSets')">LET'S RIP</button>`
+  setTimeout(()=>modal(first?`<div class="em">${sprite('gpa',5)}</div><h2>Grandpa</h2><p>"${esc(pname())}! Here's my old binder from 1999. Let's fill it together!"<br><br>You have <b>$60</b> and <b>1 free pack</b>.<br>Own 95% of a set to unlock the next one.<br><br>Tip: tap <b>💾 SAVE</b> on the home screen any time to get your save code.</p><button class="btn" onclick="closeModal();go('scrSets')">LET'S RIP</button>`
    :`<div class="em">🔥</div><h2>Day ${S.streak} streak!</h2><p><span class="money in">${IN(al)}</span> allowance, <b>${fp} free pack${fp>1?'s':''}</b>${srTxt?' and '+srTxt:''}.<br>${(S.streak%7)?`${7-(S.streak%7)} more day${7-(S.streak%7)>1?'s':''} until a free booster box.`:''}<br>New daily missions are up.</p><button class="btn" onclick="closeModal()">NICE</button>`),400)}}
 function boot(){
- paintShop();musBtnUpd();
+ paintShop();musBtnUpd();applyPbg();
  SETS.forEach(s=>loadCached(s.id));rollDaily();updCoin();updPill();setBgMon(S.bgDex||6,false);renderPosters();
  const start=()=>{dailyBonus();renderHome();checkSubs();checkUnlocks();checkAll();
   unlockedSets().forEach(s=>{if(!memo[s.id])loadSet(s.id).then(()=>{save();if($('#scrHome').classList.contains('on'))renderHome()}).catch(()=>{})})};
