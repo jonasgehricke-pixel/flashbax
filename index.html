@@ -110,7 +110,7 @@ header.top b{color:var(--txt)}
 .mbar i{display:block;height:100%;background:linear-gradient(90deg,#ffb43b,#ffe48a,#9ef0ff);border-radius:6px}
 .xpbar i{background:linear-gradient(90deg,#5aa0ff,#9ef0ff)}
 .tag{display:inline-block;font-size:9px;font-weight:900;letter-spacing:.1em;padding:2px 6px;border-radius:6px;background:#ffd76a;color:#000;vertical-align:middle;margin-left:4px}
-.tag.r{background:#ff3b5c;color:#fff}.tag.p{background:linear-gradient(90deg,#ffe07a,#ff9de6)}.tag.g2{background:#c9b6ff}.tag.g3{background:#9ff0d0}.tag.g4{background:#ffb3a0}
+.tag.r{background:#ff3b5c;color:#fff}.tag.p{background:linear-gradient(90deg,#ffe07a,#ff9de6)}.tag.g2{background:#c9b6ff}.tag.g3{background:#9ff0d0}.tag.g4{background:#ffb3a0}.tag.g5{background:linear-gradient(90deg,#ffe07a,#9ef0ff)}
 h3.sec{margin:22px 0 8px;font-size:11px;letter-spacing:.22em;color:var(--mut);text-transform:uppercase;text-shadow:0 1px 6px #000}
 .empty{color:var(--mut);font-size:13px;text-align:center;padding:22px;line-height:1.55}
 .gen{margin:24px 0 12px;display:flex;align-items:baseline;gap:10px;text-shadow:0 1px 6px #000}
@@ -338,7 +338,6 @@ nav button.alert .dot{display:block}
 .rawc .cntB{position:absolute;top:-12px;right:-12px;z-index:3;background:#ffd76a;color:#000;font-weight:900;font-size:14px;padding:6px 10px;border-radius:20px}
 .sleeve{position:absolute;inset:-3% -3% -6% -3%;border-radius:3px;background:linear-gradient(110deg,rgba(255,255,255,.08),rgba(255,255,255,.3) 45%,rgba(255,255,255,.06) 55%);border:1px solid rgba(255,255,255,.35);transform:translateY(-140%);transition:transform .5s cubic-bezier(.3,0,.2,1)}
 .toploader{position:absolute;inset:-8% -9% -10% -9%;border-radius:6px;border:5px solid rgba(220,235,255,.35);background:linear-gradient(120deg,rgba(255,255,255,.1),rgba(255,255,255,.28) 40%,rgba(255,255,255,.05) 60%);transform:translateY(-160%);transition:transform .55s cubic-bezier(.3,0,.2,1)}
-/* PSA style mailer: white with red stripes */
 .mailer{position:absolute;left:50%;top:50%;width:96%;height:74%;transform:translate(-50%,130%);transition:transform .6s cubic-bezier(.2,1,.3,1);z-index:3}
 .mailer .body{position:absolute;inset:0;border-radius:6px;background:linear-gradient(180deg,transparent 0 12%,#d2232a 12% 17%,transparent 17% 83%,#d2232a 83% 88%,transparent 88%),linear-gradient(160deg,#ffffff,#eceef1);box-shadow:0 20px 40px rgba(0,0,0,.5),inset 0 0 0 1px rgba(0,0,0,.08)}
 .mailer .body::after{content:"PSA";position:absolute;right:7%;bottom:22%;font:900 italic 26px/1 Helvetica,Arial;color:#d2232a;letter-spacing:.04em}
@@ -356,7 +355,6 @@ nav button.alert .dot{display:block}
 .track .row.done i{background:#3ddc84;border-color:#3ddc84;color:#06240f}
 .track .row.done i::after{content:"✓";font-weight:900}
 .track .row small{margin-left:auto;font-size:10px;letter-spacing:.12em;color:var(--mut);font-weight:600}
-/* PSA style return box: white with red stripes */
 .box{position:absolute;left:50%;top:58%;width:100%;transform:translate(-50%,-50%);transition:transform .6s cubic-bezier(.3,1.5,.5,1)}
 .box .top{position:relative;height:110px;clip-path:polygon(7% 0,93% 0,100% 100%,0 100%);background:#f2f3f5}
 .box .top .inside{position:absolute;inset:0;background:linear-gradient(180deg,#bfc3ca,#e9ebee)}
@@ -418,12 +416,12 @@ nav button.alert .dot{display:block}
 .pick .p .ck{position:absolute;top:4px;right:4px;width:20px;height:20px;border-radius:50%;background:#ffd76a;color:#000;font-weight:900;font-size:12px;display:none;align-items:center;justify-content:center}
 .pick .p.on .ck{display:flex}
 .dgrid{display:grid;grid-template-columns:repeat(3,1fr);gap:10px}
-.dgrid.c4{grid-template-columns:repeat(4,1fr);gap:8px}
+.dgrid.c5{grid-template-columns:repeat(5,1fr);gap:7px}
 .dl{position:relative;border-radius:10px;overflow:hidden;background:var(--panel);border:1px solid var(--line);padding-bottom:6px;text-align:center}
 .dl img{width:100%;aspect-ratio:63/88;object-fit:cover;display:block}
-.dl .pr{font-weight:900;color:#fff;font-size:11px;margin:6px 5px 0;padding:4px 0;border-radius:8px;background:linear-gradient(135deg,#ff7a8a,#e8455a)}
+.dl .pr{font-weight:900;color:#fff;font-size:10.5px;margin:6px 4px 0;padding:4px 0;border-radius:8px;background:linear-gradient(135deg,#ff7a8a,#e8455a)}
 .dl .hv{font-size:9px;color:var(--mut);margin-top:3px}
-.dl .mtag{position:absolute;top:4px;left:4px;font-size:8px;font-weight:900;padding:2px 5px;border-radius:5px;background:linear-gradient(90deg,#ff9de6,#ffe07a);color:#000;z-index:2}
+.dl .mtag{position:absolute;top:4px;left:4px;font-size:7.5px;font-weight:900;padding:2px 4px;border-radius:5px;background:linear-gradient(90deg,#ff9de6,#ffe07a);color:#000;z-index:2}
 .dl.missing{box-shadow:0 0 0 2px #ff9de6,0 0 14px rgba(255,157,230,.45)}
 .dl.ultra{box-shadow:0 0 0 1.5px #ffd76a}
 .dl.boughtx{opacity:.25;pointer-events:none}
@@ -524,7 +522,6 @@ body.intro .screen,body.intro nav,body.intro #coin,body.intro #musBtn,body.intro
 .nameIn input{width:100%;max-width:320px;border:2px solid rgba(16,16,32,.15);border-radius:16px;background:#fff;padding:14px;font-size:20px;font-weight:900;letter-spacing:.12em;text-transform:uppercase;text-align:center;color:#101020}
 .nameIn .pre{display:flex;gap:8px;flex-wrap:wrap;justify-content:center}
 .nameIn .pre button{border:1px solid rgba(16,16,32,.15);border-radius:20px;background:#fff;font-size:12px;font-weight:800;letter-spacing:.1em;padding:8px 14px;color:#101020}
-/* room */
 .room{position:relative;width:100%;aspect-ratio:3/4;border-radius:20px;overflow:hidden;box-shadow:0 20px 50px rgba(0,0,0,.6);margin-top:6px;background:#2a1f2e}
 .room .wall{position:absolute;left:0;right:0;top:0;height:62%;background:linear-gradient(180deg,var(--wa,#3b5f8f),var(--wb,#2d4a72))}
 .room .wall::after{content:"";position:absolute;inset:0;background:repeating-linear-gradient(90deg,rgba(255,255,255,.035) 0 22px,transparent 22px 44px)}
@@ -559,7 +556,7 @@ body.intro .screen,body.intro nav,body.intro #coin,body.intro #musBtn,body.intro
 .room .rposter{position:absolute;width:6.5%;box-shadow:0 6px 12px rgba(0,0,0,.5);border-radius:2px;z-index:1;font-size:5px;aspect-ratio:3/4;display:flex;align-items:flex-end;justify-content:center;color:#fff;font-weight:900;padding:2px;text-align:center}
 .room .shelf{position:absolute;left:5%;top:36%;width:24%;height:3%;background:linear-gradient(#c89a60,#8a6034);border-radius:2px;box-shadow:0 6px 10px rgba(0,0,0,.4);z-index:2}
 .room .shelf .bx{position:absolute;bottom:100%;width:22%;height:220%;border-radius:2px;box-shadow:inset -3px 0 0 rgba(0,0,0,.25)}
-.room .badges{position:absolute;left:5%;top:43%;width:24%;display:flex;flex-wrap:wrap;gap:2px;z-index:2;background:rgba(0,0,0,.25);border-radius:4px;padding:3px;min-height:14px}
+.room .badges{position:absolute;left:5%;top:42%;width:24%;display:flex;flex-wrap:wrap;gap:2px;z-index:2;background:rgba(0,0,0,.25);border-radius:4px;padding:3px;min-height:14px}
 .room .badges i{font-style:normal;font-size:9px}
 .room .bed{position:absolute;left:3%;bottom:6%;width:40%;height:24%;z-index:3}
 .room .bed .fr2{position:absolute;inset:18% 0 0 0;background:linear-gradient(#8a5a34,#5a3a20);border-radius:6px}
@@ -590,7 +587,7 @@ body.intro .screen,body.intro nav,body.intro #coin,body.intro #musBtn,body.intro
 <button id="musBtn" aria-label="Music">♪</button>
 <div id="machPill">⚙ MACHINE RUNNING</div>
 <section class="screen on" id="scrHome">
-  <header class="top"><span class="brand">PACK<i>RIP</i></span><span style="display:flex;gap:6px"><button class="backBtn" id="saveBtn">💾 SAVE</button><button class="backBtn" id="resetTop" style="color:#ff8a8a">⟲ RESET</button></span></header>
+  <header class="top"><span class="brand">PACK<i>RIP</i></span><button class="backBtn" id="saveBtn">💾 SAVE</button></header>
   <div class="scroll" id="homeBody"></div>
 </section>
 <section class="screen" id="scrSets">
@@ -737,11 +734,14 @@ const SETS=[
  {g:4,id:'pl2',n:'Rising Rivals',y:2009,h:15,sm:1,c:['#c8502a','#2a1006','#ffd0a0'],e:1},
  {g:4,id:'pl3',n:'Supreme Victors',y:2009,h:45,sm:1.1,c:['#b8892a','#2a1b04','#fff0b0'],e:1},
  {g:4,id:'pl4',n:'Arceus',y:2009,h:50,sm:1.25,c:['#d8c070','#2a2410','#ffffff'],e:1},
+ {g:5,id:'g1',n:'Generations · 20th Anniversary',y:2016,h:350,sm:1.5,c:['#c8282a','#1a1a2a','#ffffff'],ch:['Charizard','Mewtwo']},
+ {g:5,id:'cel25',n:'Celebrations · 25th Anniversary',y:2021,h:48,sm:1.8,c:['#d8a020','#1a1030','#fff3b0'],ch:['Charizard','Pikachu','Mew']},
 ];
-const GL=[1,2,3,4];
-const GENS={1:['Generation I','Kanto · 1999–2000'],2:['Generation II','Johto · 2000–2003'],3:['Generation III','Hoenn · 2003–2007'],4:['Generation IV','Sinnoh · 2007–2009']};
-const ROMAN={1:'I',2:'II',3:'III',4:'IV'};
-const REGION={1:'Kanto',2:'Johto',3:'Hoenn',4:'Sinnoh',5:'Unova'};
+const GL=[1,2,3,4,5];
+const G4=[1,2,3,4];
+const GENS={1:['Generation I','Kanto · 1999–2000'],2:['Generation II','Johto · 2000–2003'],3:['Generation III','Hoenn · 2003–2007'],4:['Generation IV','Sinnoh · 2007–2009'],5:['Special Sets','Anniversary · 2016–2026']};
+const ROMAN={1:'I',2:'II',3:'III',4:'IV',5:'★'};
+const REGION={1:'Kanto',2:'Johto',3:'Hoenn',4:'Sinnoh',5:'Special'};
 const setById={};SETS.forEach(s=>setById[s.id]=s);
 const $=s=>document.querySelector(s);
 const rnd=a=>a[Math.floor(Math.random()*a.length)];
@@ -758,17 +758,17 @@ const HOUR=36e5,DAY=864e5,MIN=6e4;
 const UNLOCK_PCT=.95;
 /* =================== STATE (same save slot as before) =================== */
 const KEY='packrip_game_v2';
-const GP0=()=>({1:{p:0,h:0,u:0},2:{p:0,h:0,u:0},3:{p:0,h:0,u:0},4:{p:0,h:0,u:0}});
+const GP0=()=>({1:{p:0,h:0,u:0},2:{p:0,h:0,u:0},3:{p:0,h:0,u:0},4:{p:0,h:0,u:0},5:{p:0,h:0,u:0}});
 const S0=()=>({player:null,coins:60,xp:0,rep:0,packs:0,cards:0,holos:0,ultras:0,gods:0,sinceHolo:0,lastHit:false,
  coll:{},seen:{},nm:{},fakes:{},perSet:{},hist:[],godAt:1+Math.floor(Math.random()*200),
  slabs:[],subs:[],psaSubs:0,tot:{},seenUnlock:['base1'],seenGen:[1],inv:{},free:0,sealed:[],mis:[],badges:[],favs:[],
  story:0,storyG:{1:0,2:0,3:0,4:0},gp:GP0(),cols:[],ach:[],bounties:[],daily:{day:'',keys:[],p:{},claimed:[]},
  shop:{owned:false,disp:0,light:0,store:0,guide:false,partner:false,last:NOW()},shelf:[],
- machine:{owned:false,run:null,last:null},music:true,prestige:0,pbg:0,gcase:null,
+ machine:{owned:false,run:null,last:null},music:true,prestige:0,pbg:0,gcase:null,games:[],spec:[],specFor:[],
  rev:{},ms:[],gymCd:{},room:{frames:0,lamp:false,console:false,fridge:false,rug:false,bed:false,wall:0},
  rv:null,rvPending:null,hw:null,streak:0,lastLogin:-1,trd:[],ritual:'',
  grail:null,lastOak:0,lastPocket:0,lastJob:0,lastQuiz:0,lastHL:0,lastTourney:0,lastDay:'',bgDex:6,
- stats:{sold:0,earned:0,shows:0,bought:0,graded:0,scams:0,mis:0,grails:0,jobs:0,spent:0,quiz:0,hl:0,machine:0,duels:0,trades:0},flags:{}});
+ stats:{sold:0,earned:0,shows:0,bought:0,graded:0,scams:0,mis:0,grails:0,jobs:0,spent:0,quiz:0,hl:0,machine:0,duels:0,trades:0,crates:0},flags:{}});
 let S=Object.assign(S0(),JSON.parse(localStorage.getItem(KEY)||'{}'));
 ['stats','shop','daily','machine','storyG','room'].forEach(k=>S[k]=Object.assign(S0()[k],S[k]));
 S.gp=Object.assign(GP0(),S.gp||{});
@@ -803,11 +803,11 @@ function saveCodeModal(){
 function loadCodeModal(){
  modal(`<div class="em">🔑</div><h2>Enter save code</h2><p>Paste your code. This replaces the game on this device. Codes from older versions work too.</p><textarea id="lcT" placeholder="PRZ-…"></textarea><button class="btn" id="lcGo">LOAD MY GAME</button><button class="btn ghost" onclick="closeModal()">CANCEL</button>`);
  $('#lcGo').onclick=async()=>{try{const o=await readCode($('#lcT').value);localStorage.setItem(KEY,JSON.stringify(o));toast('Save loaded ✓');setTimeout(()=>location.reload(),500)}catch(e){toast('That code does not work. Check that you copied all of it.')}}}
-function resetModal(){modal(`<div class="em">⚠️</div><h2>Reset the whole game?</h2><p>This deletes <b>everything</b>: cards, slabs, money, levels, badges and your room. You start again from the intro.<br><br>Tip: copy your save code first if you might want it back.</p><button class="btn ghost" id="rsCode">💾 GET SAVE CODE FIRST</button><button class="btn buy" id="rsGo">YES, RESET EVERYTHING</button><button class="btn ghost" onclick="closeModal()">CANCEL</button>`);$('#rsCode').onclick=saveCodeModal;$('#rsGo').onclick=()=>{localStorage.removeItem(KEY);location.reload()}}
+function resetModal(){modal(`<div class="em">⚠️</div><h2>Reset the whole game?</h2><p>This deletes <b>everything</b>: cards, slabs, games, money, levels, badges and your room. You start again from the intro.<br><br>Tip: copy your save code first if you might want it back.</p><button class="btn ghost" id="rsCode">💾 GET SAVE CODE FIRST</button><button class="btn buy" id="rsGo">YES, RESET EVERYTHING</button><button class="btn ghost" onclick="closeModal()">CANCEL</button>`);$('#rsCode').onclick=saveCodeModal;$('#rsGo').onclick=()=>{localStorage.removeItem(KEY);location.reload()}}
 /* =================== CARD DATA =================== */
 const CACHE='packrip_cards7_';const memo={};
 function rarityTier(r){r=(r||'').toLowerCase();
- if(r&&/(ex|star|secret|shining|ultra|crystal|legend|lv\.?\s?x)/.test(r))return 'ultra';
+ if(r&&/(ex|star|secret|shining|ultra|crystal|legend|lv\.?\s?x|classic)/.test(r))return 'ultra';
  if(r.includes('holo'))return 'holo';if(r.includes('rare'))return 'rare';if(r.includes('uncommon'))return 'uncommon';return 'common'}
 async function fetchJSON(url,ms=15000){const c=new AbortController();const t=setTimeout(()=>c.abort(),ms);try{const r=await fetch(url,{signal:c.signal});if(!r.ok)throw new Error(r.status);return await r.json()}finally{clearTimeout(t)}}
 function loadCached(id){if(memo[id])return memo[id];const c=localStorage.getItem(CACHE+id);if(!c)return null;try{return memo[id]=finalize(id,JSON.parse(c))}catch(e){return null}}
@@ -831,6 +831,7 @@ function finalize(id,cards){
   picked.forEach(c=>{P[c.r]=P[c.r].filter(x=>x!==c);c.r='ultra';P.ultra.push(c)})}
  if(!P.ultra.length&&P.holo.length){const c=P.holo.pop();c.r='ultra';P.ultra.push(c)}
  if(!P.holo.length&&P.rare.length){P.holo=P.rare.splice(0,Math.ceil(P.rare.length/3));P.holo.forEach(c=>c.r='holo')}
+ if(!P.common.length)P.common=P.uncommon.length?P.uncommon:P.rare;if(!P.uncommon.length)P.uncommon=P.common;if(!P.rare.length)P.rare=P.holo;
  S.tot[id]=cards.length;
  return {id,cards,P,byId:Object.fromEntries(cards.map(c=>[c.id,c]))};
 }
@@ -859,17 +860,16 @@ function hotIds(){if(hotDay===dayN()&&hotSet.size)return hotSet;hotDay=dayN();ho
  pool.sort((a,b)=>hsh(a.id+'h'+dayN())-hsh(b.id+'h'+dayN()));pool.slice(0,4).forEach(c=>hotSet.add(c.id));return hotSet}
 function mkt(id){let f=1+((hsh(id+':'+dayN())%1000)/1000-.5)*.2;if(hotIds().has(id))f*=1.8;if(crashToday())f*=.7;return f}
 function cardVal(c,o={}){const set=setById[setOf(c.id)]||{sm:1};let v=TIER[c.r]*(set.sm||1)*pop(c.name)*mkt(c.id);
- if(c.t==='Trainer'||c.t==='Energy')v*=.6;if(o.grade)v*=(o.grade===10&&c.r==='ultra')?8:GM[o.grade];if(o.mis)v*=4;
+ if(c.t==='Trainer'||c.t==='Energy')v*=.6;if(o.grade)v*=(o.grade===10&&c.r==='ultra')?8:GM[o.grade];if(o.mis)v*=4;if(c.sp)v*=3;
  if(evNow()==='zard'&&/charizard/i.test(c.name))v*=1.5;
  return Math.max(.02,Math.round(v*100)/100)}
 const packPrice=set=>Math.max(3,Math.round(6*set.sm*(hasBadge('volcano')?.9:1)));
 /* Multi-open: locked behind levels */
 const MULTI={1:1,2:.99,5:.97,10:.95,20:.92,50:.88};
 const QTYS=[1,2,5,10,20,50];
-const QLV={1:1,2:2,5:5,10:7,20:10,50:100};
+const QLV={1:1,2:20,5:30,10:40,20:50,50:70};
 const qOk=n=>!!S.prestige||lvFromXP(S.xp).L>=QLV[n];
 const multiPrice=(set,n)=>Math.round(packPrice(set)*n*MULTI[n]);
-/* free vouchers + sealed packs are used first, the rest is paid */
 function multiCost(set,n){const inv=Math.min(n,S.inv[set.id]||0),fr=Math.min(n-inv,S.free),pay=n-inv-fr;return {inv,fr,pay,cost:pay>0?Math.round(packPrice(set)*pay*MULTI[n]):0}}
 const sealedMax=()=>(hasBadge('glacier')?.9:.6)+(hasBadge('relic')?.1:0);
 const sealedVal=s=>Math.round(s.base*(1+Math.min(sealedMax(),(NOW()-s.bought)/HOUR*.005)));
@@ -884,7 +884,7 @@ function addCoins(v,quiet){v=Math.round(v*100)/100;S.coins=Math.round((S.coins+v
 function spend(v,quiet){v=Math.round(v*100)/100;if(S.coins+1e-9<v){toast(`Not enough money · you need ${fmt(v)}`);brokeCheck();return false}S.coins=Math.round((S.coins-v)*100)/100;S.stats.spent+=v;updCoin();if(!quiet)flyVal(-v);save();return true}
 const LVNEED=L=>Math.round(12*Math.pow(L,1.2));
 function lvFromXP(x){let L=1;while(L<100&&x>=LVNEED(L)){x-=LVNEED(L);L++}return {L,rem:x,need:LVNEED(L)}}
-const CAP={1:30,2:55,3:80,4:100};
+const CAP={1:30,2:55,3:80,4:100,5:100};
 const capLv=()=>CAP[maxGen()];
 const level=()=>Math.min(capLv(),lvFromXP(S.xp).L);
 const TITLES=[[1,'Rookie'],[10,'Hobbyist'],[20,'Collector'],[30,'Dealer'],[40,'Expert'],[50,'Veteran'],[60,'Elite'],[70,'Champion'],[80,'Legend'],[90,'Grandmaster'],[100,'Pokémon Master']];
@@ -902,7 +902,7 @@ function addXP(n,quiet){const b=level(),br=rankIdx();S.xp+=Math.round(n*xpMult()
  const un=ar>br?UNL.filter(u=>u[0]>br&&u[0]<=ar).map(u=>u[1]):[];
  if(a%10===0||un.length)whenFree(()=>{modal(`<div class="em">🏅</div><h2>Level ${a}${a%10===0?' · '+title(a):''}</h2><p>${esc(pname())} reached <b>level ${a}</b>.${un.length?'<br><br>Unlocked:<br><b>'+un.join('<br>')+'</b>':''}</p><button class="btn" onclick="closeModal()">NICE</button>`);fanfare();burst(200,['#ffe07a','#fff','#9ef0ff'],1.2)});
  else if(!mu.length){toast(`⬆ Level ${a}!`);tone([784,1047],.2,.05,'triangle',.08)}}
-const busy=()=>['#multi','#reveal','#psa','#intro','#mg'].some(s=>{const e=$(s);return e&&e.classList.contains('on')});
+const busy=()=>['#multi','#reveal','#psa','#intro','#mg','#modal'].some(s=>{const e=$(s);return e&&e.classList.contains('on')});
 function whenFree(fn){const t=()=>busy()?setTimeout(t,600):fn();setTimeout(t,500)}
 function addRep(n){if(n>0)n*=hasBadge('earth')?1.25:1;S.rep=Math.max(0,Math.round((S.rep+n)*10)/10);save()}
 function minPackPrice(){return Math.min(...unlockedSets().map(packPrice))}
@@ -916,8 +916,7 @@ function rawCount(id){const s=setOf(id);return (S.coll[s]||{})[id]||0}
 function takeRaw(id){_uv++;const s=setOf(id),n=rawCount(id);if(n<1)return null;const f=S.fakes[id]||0;const isFake=f>0&&Math.random()<f/n;
  S.coll[s][id]=n-1;if(isFake)S.fakes[id]=f-1;else if(f>S.coll[s][id])S.fakes[id]=S.coll[s][id];return isFake}
 const seenCount=id=>Object.keys(S.seen[id]||{}).length;
-/* cards you OWN right now (raw, slab or misprint) – this is what unlocks sets */
-function ownedSet(id){const o=new Set();Object.entries(S.coll[id]||{}).forEach(([k,n])=>{if(n>0)o.add(k)});S.slabs.forEach(s=>{if(!s.fake&&setOf(s.id)===id)o.add(s.id)});S.mis.forEach(m=>{if(setOf(m.id)===id)o.add(m.id)});return o}
+function ownedSet(id){const o=new Set();Object.entries(S.coll[id]||{}).forEach(([k,n])=>{if(n>0)o.add(k)});S.slabs.forEach(s=>{if(!s.fake&&!s.sp&&setOf(s.id)===id)o.add(s.id)});S.mis.forEach(m=>{if(setOf(m.id)===id)o.add(m.id)});return o}
 const ownCount=id=>ownedSet(id).size;
 const isOwned=cid=>rawCount(cid)>0||S.slabs.some(s=>!s.fake&&s.id===cid)||S.mis.some(m=>m.id===cid);
 function allItems(){const out=[];
@@ -926,14 +925,13 @@ function allItems(){const out=[];
  S.mis.forEach(m=>out.push({k:'mis',key:'m:'+m.uid,m,val:cardVal(m,{mis:1}),name:m.name,img:m.s,set:setOf(m.id)}));
  S.sealed.forEach(s=>out.push({k:'seal',key:'x:'+s.uid,s,val:sealedVal(s),name:setById[s.set].n+' '+(s.kind==='box'?'Booster Box':'Bundle'),img:logoURL(s.set),set:s.set}));
  return out}
-const collValue=()=>allItems().reduce((a,i)=>a+i.val*(i.cnt||1),0);
+const collValue=()=>allItems().reduce((a,i)=>a+i.val*(i.cnt||1),0)+gamesValue();
 const bestItem=()=>allItems().filter(i=>i.k!=='seal').sort((a,b)=>b.val-a.val)[0];
 function removeItem(it){
  if(it.k==='raw')return {fake:!!takeRaw(it.id)};
- if(it.k==='slab'){S.slabs=S.slabs.filter(s=>s.uid!==it.sl.uid);S.favs=S.favs.filter(u=>u!==it.sl.uid);return {fake:!!it.sl.fake}}
- if(it.k==='mis'){S.mis=S.mis.filter(s=>s.uid!==it.m.uid);return {fake:false}}
+ if(it.k==='slab'){_uv++;S.slabs=S.slabs.filter(s=>s.uid!==it.sl.uid);S.favs=S.favs.filter(u=>u!==it.sl.uid);return {fake:!!it.sl.fake}}
+ if(it.k==='mis'){_uv++;S.mis=S.mis.filter(s=>s.uid!==it.m.uid);return {fake:false}}
  if(it.k==='seal'){S.sealed=S.sealed.filter(s=>s.uid!==it.s.uid);return {fake:false}}}
-/* ---- would selling this lock a set? ---- */
 function wouldLock(it){if(!it||it.k==='seal')return[];_uv++;const before=unlockedSets().map(s=>s.id);let undo;
  if(it.k==='raw'){const s=setOf(it.id);if(!rawCount(it.id))return[];S.coll[s][it.id]--;undo=()=>S.coll[s][it.id]++}
  else if(it.k==='slab'){const i=S.slabs.findIndex(x=>x.uid===it.sl.uid);if(i<0)return[];const [x]=S.slabs.splice(i,1);undo=()=>S.slabs.splice(i,0,x)}
@@ -1035,8 +1033,8 @@ function paintShop(){const c=$('#shopBg'),x=c.getContext('2d'),R=mulberry(1999);
  [W*.2,W*.5,W*.8].forEach(lx=>{g=x.createRadialGradient(lx,40,0,lx,40,320);g.addColorStop(0,'rgba(255,200,120,.3)');g.addColorStop(1,'rgba(255,200,120,0)');x.fillStyle=g;x.fillRect(0,0,W,H);
   x.fillStyle='#1a1008';x.fillRect(lx-1,0,2,24);x.fillStyle='#2a1a10';x.beginPath();x.moveTo(lx-16,34);x.lineTo(lx+16,34);x.lineTo(lx+8,22);x.lineTo(lx-8,22);x.fill();x.fillStyle='#ffe2a0';x.beginPath();x.arc(lx,36,6,0,7);x.fill()});
  g=x.createRadialGradient(W/2,H*.45,H*.25,W/2,H*.45,H*.8);g.addColorStop(0,'rgba(0,0,0,0)');g.addColorStop(1,'rgba(0,0,0,.55)');x.fillStyle=g;x.fillRect(0,0,W,H);x.restore()}
-const PCOL={1:['#e03838','#ffcb05'],2:['#d79a1e','#5b3aa6'],3:['#1a9a5a','#c42a3a'],4:['#4a6ab0','#e8d0ff']};
-function renderPosters(){$('#posters').innerHTML=gensOpen().map((g,i)=>`<div class="poster" style="--r:${[-4,3,-2,5][i]}deg;background:linear-gradient(160deg,${PCOL[g][0]},${PCOL[g][1]})">GEN ${ROMAN[g]}<br>${REGION[g].toUpperCase()}</div>`).join('')}
+const PCOL={1:['#e03838','#ffcb05'],2:['#d79a1e','#5b3aa6'],3:['#1a9a5a','#c42a3a'],4:['#4a6ab0','#e8d0ff'],5:['#d8a020','#c8282a']};
+function renderPosters(){$('#posters').innerHTML=gensOpen().map((g,i)=>`<div class="poster" style="--r:${[-4,3,-2,5,-3][i]}deg;background:linear-gradient(160deg,${PCOL[g][0]},${PCOL[g][1]})">${g<5?'GEN '+ROMAN[g]+'<br>':''}${REGION[g].toUpperCase()}</div>`).join('')}
 const WALK=['🧑‍🦱','👩','🧔','👦','👧','🧑‍🦰','👨‍🦳','🧑'];
 setInterval(()=>{if(!document.body.classList.contains('home')||document.body.classList.contains('opening')||document.hidden)return;const w=$('#walkers');if(w.children.length>2)return;
  const r=Math.random();const e=document.createElement('div');if(r<.25){e.className='peeker';e.textContent=rnd(['👦','👧']);setTimeout(()=>e.remove(),6100)}else{e.className='walker'+(r<.6?' l':'');e.textContent=rnd(WALK);setTimeout(()=>e.remove(),14100)}w.appendChild(e)},7000);
@@ -1099,7 +1097,7 @@ function applyTheme(set,open){const r=document.documentElement.style;r.setProper
 /* =================== PROGRESSION (based on cards you OWN) =================== */
 const setTotal=id=>memo[id]?memo[id].cards.length:(S.tot[id]||0);
 const unlockNeed=id=>Math.ceil(setTotal(id)*UNLOCK_PCT);
-const hasPSA10=id=>S.slabs.some(s=>setOf(s.id)===id&&s.grade===10&&!s.fake);
+const hasPSA10=id=>S.slabs.some(s=>setOf(s.id)===id&&s.grade===10&&!s.fake&&!s.sp);
 const setComplete=id=>{const t=setTotal(id);return t>0&&seenCount(id)>=t};
 const setUnlockDone=id=>{const t=setTotal(id);return t>0&&ownCount(id)>=unlockNeed(id)};
 const setCleared=id=>setUnlockDone(id)||hasPSA10(id);
@@ -1140,10 +1138,10 @@ function drawArt(c){const x=c.getContext('2d'),s=c._set,im=c._imgs,W=AW,H=AH;x.c
  x.fillStyle='#fff';x.font='900 14px Arial,sans-serif';x.textAlign='center';x.textBaseline='middle';x.fillText('TRADING CARD GAME',W/2,H*.222+12.5);
  const ly=H*.62,lh=H*.13,lw=W-80;
  if(im.logo){const r=Math.min(lw/im.logo.width,lh/im.logo.height);const w=im.logo.width*r,h=im.logo.height*r;x.save();x.shadowColor='rgba(0,0,0,.7)';x.shadowBlur=10;x.shadowOffsetY=4;x.drawImage(im.logo,(W-w)/2,ly+(lh-h)/2,w,h);x.restore()}
- else{x.fillStyle=s.c[2];x.font='900 34px Arial,sans-serif';x.lineWidth=6;x.strokeStyle='#000';x.strokeText(s.n,W/2,ly+lh/2);x.fillText(s.n,W/2,ly+lh/2)}
+ else{x.fillStyle=s.c[2];x.font='900 30px Arial,sans-serif';x.lineWidth=6;x.strokeStyle='#000';x.strokeText(s.n.split(' · ')[0],W/2,ly+lh/2);x.fillText(s.n.split(' · ')[0],W/2,ly+lh/2)}
  if(im.sym)x.drawImage(im.sym,26,H*.79,36,36);
  if(s.ed){x.fillStyle='#111';x.beginPath();x.arc(W-46,H*.81,22,0,7);x.fill();x.strokeStyle='#fff';x.lineWidth=3;x.stroke();x.fillStyle='#fff';x.font='900 13px Arial';x.fillText('1st',W-46,H*.81-6);x.fillText('ED.',W-46,H*.81+8)}
- x.fillStyle=s.c[2];x.font='900 19px Arial,sans-serif';x.lineWidth=4;x.strokeStyle='rgba(0,0,0,.8)';const t=(s.e?'10':'11')+' ADDITIONAL GAME CARDS';x.strokeText(t,W/2,H*.86);x.fillText(t,W/2,H*.86);
+ x.fillStyle=s.c[2];x.font='900 19px Arial,sans-serif';x.lineWidth=4;x.strokeStyle='rgba(0,0,0,.8)';const t=s.g===5?'SPECIAL ANNIVERSARY PACK':(s.e?'10':'11')+' ADDITIONAL GAME CARDS';x.strokeText(t,W/2,H*.86);x.fillText(t,W/2,H*.86);
  const crimp=(y0,h)=>{const cg=x.createLinearGradient(0,y0,0,y0+h);cg.addColorStop(0,'#e9edf2');cg.addColorStop(.22,'#9aa3ad');cg.addColorStop(.45,'#f8fbff');cg.addColorStop(.7,'#7d8590');cg.addColorStop(1,'#dfe4ea');x.fillStyle=cg;x.fillRect(0,y0,W,h);x.fillStyle='rgba(0,0,0,.16)';for(let i=0;i<W;i+=6)x.fillRect(i,y0,2,h);x.fillStyle='rgba(255,255,255,.35)';for(let i=3;i<W;i+=6)x.fillRect(i,y0,1,h)};
  crimp(0,H*.085);crimp(H*.915,H*.085);
  x.save();x.globalAlpha=.07;x.strokeStyle='#fff';x.lineWidth=1;for(let i=0;i<14;i++){const yy=H*.1+i*H*.06;x.beginPath();x.moveTo(0,yy);x.lineTo(W,yy+H*.03);x.stroke()}x.restore()}
@@ -1164,17 +1162,17 @@ function buildPack(D,set){
   const hr=evNow()==='holo'?.2:.135;
   const r=Math.random();let hit=r<.01?fill([],1,[P.ultra,P.holo,P.rare],used)[0]:r<hr?fill([],1,[P.holo,P.rare],used)[0]:fill([],1,[P.rare,P.holo,P.uncommon],used)[0];
   if(evNow()==='zard'&&hit&&(hit.r==='holo'||hit.r==='ultra')&&Math.random()<.35){const z=[...P.holo,...P.ultra].find(c=>/charizard/i.test(c.name)&&!used.has(c.id));if(z)hit=z}
-  cs.push({c:hit});out={cards:cs,god:false}}
+  if(hit)cs.push({c:hit});out={cards:cs,god:false}}
  out.cards.forEach(x=>{if(Math.random()<.006)x.mis=rnd(MISV)[0]});
  out.heavy=out.god||out.cards.some(x=>x.c.r==='holo'||x.c.r==='ultra');
  out.weight=out.heavy?rr(21.4,22.5):rr(20.5,21.7);
  return out}
 function commitPack(pk,set,mode){
- S.packs++;S.cards+=pk.cards.length;let holo=0,best=null,pv=0;const rank={common:0,uncommon:1,rare:2,holo:3,ultra:4};
+ S.packs++;moTick();S.cards+=pk.cards.length;let holo=0,best=null,pv=0;const rank={common:0,uncommon:1,rare:2,holo:3,ultra:4};
  S.perSet[set.id]=(S.perSet[set.id]||0)+1;const gp=S.gp[set.g];gp.p++;
  pk.cards.forEach(x=>{const c=x.c;
   if(x.rev){S.rev[set.id]=S.rev[set.id]||{};S.rev[set.id][c.id]=1}
-  if(x.mis){S.mis.push({uid:uid(),id:c.id,name:c.name,r:c.r,s:c.s,l:c.l,t:c.t,v:x.mis});S.seen[set.id]=S.seen[set.id]||{};S.seen[set.id][c.id]=1;S.nm[c.id]=c.name;S.stats.mis++;pv+=cardVal(c,{mis:1})}
+  if(x.mis){_uv++;S.mis.push({uid:uid(),id:c.id,name:c.name,r:c.r,s:c.s,l:c.l,t:c.t,v:x.mis});S.seen[set.id]=S.seen[set.id]||{};S.seen[set.id][c.id]=1;S.nm[c.id]=c.name;S.stats.mis++;pv+=cardVal(c,{mis:1})}
   else{addRaw(c);pv+=cardVal(c)}
   if(c.r==='holo'){S.holos++;holo++;gp.h++}if(c.r==='ultra'){S.ultras++;holo++;gp.u++}if(!best||rank[c.r]>rank[best.r])best=c;
   if(c.r==='holo'||c.r==='ultra'){const n=c.name;if(/^Shining /.test(n))S.flags.shining=1;if(/ ex$/i.test(n))S.flags.ex=1;if(/(☆|\bStar\b)/.test(n))S.flags.star=1;if(/δ/.test(n))S.flags.delta=1;if(/lugia/i.test(n))S.flags.lugia=1;if(/rayquaza/i.test(n))S.flags.rayq=1;if(/ho-oh/i.test(n))S.flags.hooh=1;if(/charizard/i.test(n))S.flags.zard=1;
@@ -1220,7 +1218,7 @@ function renderQty(){if(!qOk(qtySel))qtySel=1;
  else{mb.style.display='none';$('#packPrice').innerHTML=priceText()}
  $('#weighBtn').style.display=qtySel>1?'none':'';$('#swapBtn').style.display=qtySel>1?'none':''}
 $('#qty').addEventListener('click',e=>{const b=e.target.closest('[data-q]');if(!b||opened||(current&&current.paid))return;const n=+b.dataset.q;
- if(!qOk(n)){sfx.bad();toast(n===50?`50 packs at once unlocks at level 100 (max level)`:`${n} packs at once unlocks at level ${QLV[n]} · you are level ${lvFromXP(S.xp).L}`);return}
+ if(!qOk(n)){sfx.bad();toast(`${n} packs at once unlocks at level ${QLV[n]} · you are level ${lvFromXP(S.xp).L}`);return}
  qtySel=n;blip();renderQty();packWrap.classList.toggle('float',true)});
 $('#multiBtn').onclick=()=>{if(!curSet||opened||qtySel<2||!qOk(qtySel))return;const mc=multiCost(curSet,qtySel);if(mc.cost&&!spend(mc.cost))return;
  if(mc.inv)S.inv[curSet.id]-=mc.inv;if(mc.fr)S.free-=mc.fr;save();if(mc.inv+mc.fr)toast(`${mc.inv+mc.fr} free/sealed pack${mc.inv+mc.fr>1?'s':''} used`);ripMulti(qtySel)};
@@ -1357,7 +1355,7 @@ function showSummary(){
  const price=packPrice(curSet);
  $('#sumTitle').textContent=current.god?'GOD PACK!':r.best&&r.best.r==='ultra'?'Big hit!':r.holo?'Nice pull!':'Your pack';
  $('#sumSub').textContent=`${curSet.n.toUpperCase()} · ${newSet.size} NEW FOR YOUR BINDER`;
- $('#sumVal').innerHTML=`Pack value <span class="money ${r.pv>=price?'in':''}">${fmt(r.pv)}</span> · pack price ${fmt(price)}<br><span style="color:var(--mut);font-weight:600">You own ${ownCount(curSet.id)}/${setTotal(curSet.id)} · next set at ${unlockNeed(curSet.id)}</span>`;
+ $('#sumVal').innerHTML=`Pack value <span class="money ${r.pv>=price?'in':''}">${fmt(r.pv)}</span> · pack price ${fmt(price)}<br><span style="color:var(--mut);font-weight:600">You own ${ownCount(curSet.id)}/${setTotal(curSet.id)} · next set at ${unlockNeed(curSet.id)} · complete it for a special PSA 10</span>`;
  $('#sumGrid').innerHTML=current.cards.map((x,i)=>`<div class="mini ${x.c.r} ${x.mis?'mp-'+x.mis:''}" style="animation-delay:${i*45}ms"><img src="${x.c.s}">${newSet.has(x.c.id)?'<span class="nw">NEW</span>':''}<span class="pv">${fmt(cardVal(x.c,{mis:x.mis?1:0}))}</span></div>`).join('');
  const hits=current.cards.filter(x=>!x.mis&&(x.c.r==='holo'||x.c.r==='ultra')&&rawCount(x.c.id)>0).map(x=>x.c);
  $('#gradeHit').style.display=hits.length?'':'none';$('#gradeHit').textContent=hits.length>1?`SEND ${hits.length} HITS TO PSA`:'SEND HIT TO PSA';
@@ -1390,11 +1388,11 @@ async function ripMulti(n){
   else if(i%2===0)noise(.08,.35,1400,.7);
   await wait(gap)}
  await wait(500);
- const all=packs.flatMap(p=>p.cards);const tot=res.reduce((a,r)=>a+r.pv,0),price=multiPrice(set,n);
+ const all=packs.flatMap(p=>p.cards);const tot=res.reduce((a,r)=>a+r.pv,0);
  const best=all.slice().sort((a,b)=>cardVal(b.c,{mis:b.mis?1:0})-cardVal(a.c,{mis:a.mis?1:0}))[0];
  const newN=new Set(all.filter(x=>!seenBefore.has(x.c.id)).map(x=>x.c.id)).size;
  const hitsList=uniq(all.filter(x=>!x.mis&&(x.c.r==='holo'||x.c.r==='ultra')).map(x=>x.c)).filter(c=>rawCount(c.id)>0);
- M.innerHTML=`<div class="mh">${n} PACKS RIPPED<small>${hits} HIT${hits===1?'':'S'} · ${newN} NEW · VALUE <span class="money ${tot>=price?'in':'out'}">${fmt(tot)}</span></small></div>
+ M.innerHTML=`<div class="mh">${n} PACKS RIPPED<small>${hits} HIT${hits===1?'':'S'} · ${newN} NEW · VALUE <span class="money in">${fmt(tot)}</span></small></div>
   <div id="mStage"><div id="mHit"></div><div class="mrows">${packs.map((p,i)=>`<div class="mrowl"><span>PACK ${i+1}${p.god?' · GOD PACK':''}</span><span class="money in">${fmt(res[i].pv)}</span></div><div class="mrow">${p.cards.map(x=>`<img loading="lazy" class="${x.c.r==='holo'?'h':x.c.r==='ultra'?'u':''}" src="${x.c.s}">`).join('')}</div>`).join('')}</div></div>
   <div class="two" style="width:100%;max-width:440px;flex:none">${hitsList.length?`<button class="btn ghost" id="mPSA">📮 PSA (${hitsList.length})</button>`:''}<button class="btn" id="mDone">DONE</button></div>`;
  const hc=$('#mHit');const el=document.createElement('div');el.className='card live '+best.c.r+(best.mis?' mp-'+best.mis:'');el.innerHTML=cardHTML(best.c,{mis:best.mis,tag:1});el._base='';hc.appendChild(el);bindTilt2(el);
@@ -1408,6 +1406,8 @@ const PROF={2:'Elm',3:'Birch',4:'Rowan'},NEWMON={2:100,3:135,4:107},GEM={2:'🌙
 function checkUnlocks(){_uv++;
  SETS.forEach((s,i)=>{if(i>0&&isUnlocked(i)&&!S.seenUnlock.includes(s.id)){S.seenUnlock.push(s.id);save();
   if(!S.seenGen.includes(s.g)){S.seenGen.push(s.g);save();renderPosters();
+   if(s.g===5){whenFree(()=>{flash(1,900);sfx.ultra();fanfare();burst(320,['#ffe07a','#fff','#9ef0ff','#ff9de6'],1.5);banner('SPECIAL SETS!');
+    modal(`<div class="em">🎉</div><h2>Special Anniversary Sets!</h2><p>You finished all four generations. Now the anniversary sets open up:<br><br><b>Generations · 20th Anniversary</b><br><b>Celebrations · 25th Anniversary</b><br><b>30th Celebration (2026)</b> · coming soon<br><br>Pricier packs, bigger hits.</p><button class="btn" onclick="closeModal();go('scrSets')">SHOW ME</button>`)});return}
    whenFree(()=>{flash(1,900);sfx.ultra();fanfare();burst(320,['#ffe07a','#fff','#9ef0ff','#ff9de6'],1.5);banner('GEN '+ROMAN[s.g]+' UNLOCKED');
     modal(`<div class="em">${GEM[s.g]}</div><h2>Generation ${ROMAN[s.g]} · ${REGION[s.g]}!</h2><p>Welcome to ${REGION[s.g]}. Brand new for you:<br><br><b>${s.n}</b> booster packs<br><b>A new story</b> with Professor ${PROF[s.g]}<br><b>8 new Gym Leaders</b> and badges<br><b>New achievements, collections and daily missions</b><br><b>${NEWMON[s.g]} new Pokémon</b> in "Who's that Pokémon?"<br><b>Level cap raised to ${CAP[s.g]}</b><br>A new poster in the shop</p><button class="btn" onclick="closeModal();go('scrQuests')">SHOW ME</button><button class="btn ghost" onclick="closeModal()">LATER</button>`)})}
   else setTimeout(()=>{fanfare();burst(160,['#ffe07a','#fff'],1.1);banner('NEW SET!');toast(`🔓 ${s.n} unlocked`)},700)}})}
@@ -1419,13 +1419,14 @@ function renderSets(){
    const prev=SETS[i-1];
    h+=`<button class="setT ${un?'':nxt?'locked next':'locked'}" data-i="${i}" style="--a:${s.c[0]};--b:${s.c[1]}">
     <img src="${logoURL(s.id)}" alt="" loading="lazy" onerror="this.style.display='none'">
-    ${un?(S.ms.includes(s.id)?'<span class="done">MASTER</span>':setComplete(s.id)?'<span class="done">100%</span>':S.inv[s.id]?`<span class="own">${S.inv[s.id]} SEALED</span>`:''):'<span class="lk">🔒</span>'}
+    ${un?(S.ms.includes(s.id)?'<span class="done">MASTER</span>':setComplete(s.id)?'<span class="done">100% ✓ PSA 10</span>':S.inv[s.id]?`<span class="own">${S.inv[s.id]} SEALED</span>`:''):'<span class="lk">🔒</span>'}
     <div><div class="nm">${s.n}</div>
     ${un?`<div class="meta"><span>${s.y} · ${fmt(packPrice(s))}</span><span>${tot?own+'/'+tot:''}</span></div><div class="pb"><i style="width:${pct}%"></i></div>`
      :nxt?`<div class="req">Own <b>${prev&&setTotal(prev.id)?unlockNeed(prev.id):'95%'}</b> cards of ${prev.n}${prev&&setTotal(prev.id)?` (${ownCount(prev.id)} now)`:''}<br>or grade a <b>PSA 10</b> holo from it</div>`:`<div class="meta"><span>${s.y}</span></div>`}</div></button>`});
+  if(g===5)h+=`<div class="setT locked" style="--a:#3a2a6a;--b:#0a0814;border-style:dashed"><span class="lk">⏳</span><div><div class="nm">30th Celebration</div><div class="req">2026 · <b>coming soon</b><br>Not in the card database yet</div></div></div>`;
   h+='</div>'});
  $('#setList').innerHTML=h;$('#totPacks').innerHTML=`<b>${U.size}</b>/${SETS.length}`}
-$('#setList').addEventListener('click',e=>{const b=e.target.closest('.setT');if(!b)return;const i=+b.dataset.i;
+$('#setList').addEventListener('click',e=>{const b=e.target.closest('.setT');if(!b||b.dataset.i==null)return;const i=+b.dataset.i;
  if(!isUnlocked(i)){toast('Locked · clear '+SETS[i-1].n+' first');return}openSet(SETS[i].id)});
 $('#randSet').onclick=()=>openSet(rnd(unlockedSets()).id);
 /* =================== BINDER =================== */
@@ -1433,12 +1434,13 @@ let filt='all',albumSet=null,selMode=false,selPick=new Set();
 const FILTERS=[['all','All'],['own','In hand'],['miss','Missing'],['ultra','Ultra'],['holo','Holo'],['rare','Rare'],['uncommon','Uncommon'],['common','Common']];
 async function renderAlbum(){
  document.body.classList.remove('opening');
- const special=albumSet==='$raw'||albumSet==='$psa';
+ const special=!!albumSet&&albumSet[0]==='$';
  if(!special&&(!albumSet||!isUnlocked(SETS.findIndex(s=>s.id===albumSet))))albumSet=(curSet&&isUnlocked(SETS.indexOf(curSet))&&curSet.id)||'base1';
- $('#setChips').innerHTML=`<button class="chip val ${albumSet==='$raw'?'on':''}" data-set="$raw">💰 TOP 20 RAW</button><button class="chip psa ${albumSet==='$psa'?'on':''}" data-set="$psa">🏅 TOP 20 PSA</button>`+SETS.map((s,i)=>`<button class="chip ${s.id===albumSet?'on':''}" data-set="${s.id}" ${isUnlocked(i)?'':'style="opacity:.4"'}>${isUnlocked(i)?'':'🔒 '}${s.n}</button>`).join('');
+ $('#setChips').innerHTML=`<button class="chip val ${albumSet==='$raw'?'on':''}" data-set="$raw">💰 TOP 20 RAW</button><button class="chip psa ${albumSet==='$psa'?'on':''}" data-set="$psa">🏅 TOP 20 PSA</button><button class="chip ${albumSet==='$games'?'on':''}" data-set="$games">🎮 GAMES</button>`+SETS.map((s,i)=>`<button class="chip ${s.id===albumSet?'on':''}" data-set="${s.id}" ${isUnlocked(i)?'':'style="opacity:.4"'}>${isUnlocked(i)?'':'🔒 '}${s.n}</button>`).join('');
  const sc=$('#setChips .chip.on');if(sc)sc.scrollIntoView({inline:'center',block:'nearest'});
- $('#psaBatch').textContent=selMode?'✕ STOP SELECTING':'📮 SEND SEVERAL CARDS TO PSA';$('#psaBatch').style.display=albumSet==='$psa'?'none':'';
+ $('#psaBatch').textContent=selMode?'✕ STOP SELECTING':'📮 SEND SEVERAL CARDS TO PSA';$('#psaBatch').style.display=(albumSet==='$psa'||albumSet==='$games')?'none':'';
  $('#agrid').innerHTML='<div style="grid-column:1/-1;display:flex;justify-content:center;padding:40px"><div class="spin"></div></div>';$('#msLine').innerHTML='';
+ if(albumSet==='$games')return renderGames();
  if(special)return renderTop(albumSet);
  const set=setById[albumSet],me=albumSet;applyTheme(set);
  let D;try{D=await loadSet(me)}catch(e){$('#agrid').innerHTML='<div class="err" style="grid-column:1/-1">Needs internet to load this set.</div>';return}
@@ -1446,7 +1448,7 @@ async function renderAlbum(){
  const coll=S.coll[me]||{},seen=S.seen[me]||{},own=ownedSet(me),rev=S.rev[me]||{};
  $('#albCount').innerHTML=`own <b>${own.size}</b> / ${D.cards.length}`;$('#albPct').textContent=Math.floor(own.size/D.cards.length*100)+'%';$('#albBar').style.width=(own.size/D.cards.length*100)+'%';
  $('#albSetName').textContent=`${set.n} · next set at ${unlockNeed(me)} owned`;
- const mp=masterProg(me);if(mp)$('#msLine').innerHTML=`👑 Master Set ${S.ms.includes(me)?'<b style="color:#ffd76a">COMPLETE</b>':`<b style="color:#fff">${mp.a}/${mp.b}</b>`} · ${mp.what}`;
+ const mp=masterProg(me);$('#msLine').innerHTML=`${setComplete(me)?'🎁 <b style="color:#6ff0a0">Complete · special PSA 10 earned</b>':`🎁 Register all ${D.cards.length} cards for a special PSA 10 · ${seenCount(me)}/${D.cards.length}`}${mp?`<br>👑 Master Set ${S.ms.includes(me)?'<b style="color:#ffd76a">COMPLETE</b>':`<b style="color:#fff">${mp.a}/${mp.b}</b>`} · ${mp.what}`:''}`;
  $('#chips').style.display='';$('#chips').innerHTML=FILTERS.map(([k,l])=>`<button class="chip ${k===filt?'on':''}" data-f="${k}">${l}</button>`).join('');
  const lbl={holo:'HOLO',ultra:'ULTRA',rare:'RARE'};
  const mis=S.mis.filter(m=>setOf(m.id)===me);
@@ -1456,16 +1458,16 @@ async function renderAlbum(){
   return `<div class="slot ${c.r} ${o?'':(sn?'gone':'miss')} ${selMode?(can?'selable':'dim'):''} ${selPick.has(c.id)?'picked':''}" data-id="${c.id}"><img src="${c.s}" loading="lazy">${!o?`<span class="ms">${sn?'SOLD':'MISSING'}</span>`:''}${n&&lbl[c.r]?`<span class="rt ${c.r}">${lbl[c.r]}</span>`:''}${n>1?`<span class="cnt">×${n}</span>`:''}${!n&&o?'<span class="cnt" style="background:#c41e2a;color:#fff">PSA</span>':''}${rev[c.id]?'<span class="rv">REV</span>':''}<span class="no">#${c.n}</span>${n?`<span class="vl">${fmt(cardVal(c))}</span>`:''}</div>`}).join('');
  $('#agrid').innerHTML=h||'<p class="empty" style="grid-column:1/-1">Nothing here. Yet.</p>'}
 async function renderTop(kind){await ensureLoaded();if(albumSet!==kind)return;$('#chips').style.display='none';
- if(kind==='$psa'){const all=S.slabs.filter(s=>!s.fake||true).map(sl=>({sl,val:cardVal(sl,{grade:sl.grade})})).sort((a,b)=>b.val-a.val);const tot=all.reduce((a,x)=>a+x.val,0);const items=all.slice(0,20);
+ if(kind==='$psa'){const all=S.slabs.map(sl=>({sl,val:cardVal(sl,{grade:sl.grade})})).sort((a,b)=>b.val-a.val);const tot=all.reduce((a,x)=>a+x.val,0);const items=all.slice(0,20);
   $('#albCount').innerHTML=`<b>${all.length}</b> slabs`;$('#albSetName').textContent='Your top 20 graded PSA cards';$('#albPct').textContent=fmt(tot);$('#albBar').style.width='100%';
-  $('#agrid').innerHTML=items.length?items.map((x,i)=>`<div class="vslab" data-ps="${i}"><span class="rk">#${i+1}</span>${slabHTML(x.sl,{small:1})}<div class="vv">${fmt(x.val)}</div></div>`).join(''):'<p class="empty" style="grid-column:1/-1">No graded cards yet. Send holos to PSA from the Binder.</p>';
+  $('#agrid').innerHTML=items.length?items.map((x,i)=>`<div class="vslab" data-ps="${i}"><span class="rk">#${i+1}</span>${slabHTML(x.sl,{small:1})}<div class="vv">${x.sl.sp?'🎁 ':''}${fmt(x.val)}</div></div>`).join(''):'<p class="empty" style="grid-column:1/-1">No graded cards yet. Send holos to PSA from the Binder.</p>';
   $('#agrid')._ps=items;return}
  const allI=allItems().filter(i=>i.k==='raw'||i.k==='mis').sort((a,b)=>b.val-a.val);const tot=allI.reduce((a,i)=>a+i.val*(i.cnt||1),0);const cnt=allI.reduce((a,i)=>a+(i.cnt||1),0);const items=allI.slice(0,20);
  $('#albCount').innerHTML=`<b>${cnt}</b> raw cards`;$('#albSetName').textContent='Your top 20 ungraded cards';$('#albPct').textContent=fmt(tot);$('#albBar').style.width='100%';
  $('#agrid').innerHTML=items.length?items.map((it,i)=>{const can=selMode&&it.k==='raw'&&(it.c.r==='holo'||it.c.r==='ultra');
-  return `<div class="slot ${it.k==='raw'?it.c.r:'holo'} ${it.k==='mis'?'mp-'+it.m.v:''} ${selMode?(can?'selable':'dim'):''} ${it.k==='raw'&&selPick.has(it.id)?'picked':''}" data-ai="${i}"><img src="${it.img}" loading="lazy"><span class="rk">#${i+1}</span>${it.k==='mis'?'<span class="cnt" style="background:#ff9de6">ERROR</span>':it.cnt>1?`<span class="cnt">×${it.cnt}</span>`:''}<span class="sn">${esc(setById[it.set].n)}</span><span class="vl">${fmt(it.val)}</span></div>`}).join(''):'<p class="empty" style="grid-column:1/-1">No cards yet. Go rip some packs!</p>';
+  return `<div class="slot ${it.k==='raw'?it.c.r:'holo'} ${it.k==='mis'?'mp-'+it.m.v:''} ${selMode?(can?'selable':'dim'):''} ${it.k==='raw'&&selPick.has(it.id)?'picked':''}" data-ai="${i}"><img src="${it.img}" loading="lazy"><span class="rk">#${i+1}</span>${it.k==='mis'?'<span class="cnt" style="background:#ff9de6">ERROR</span>':it.cnt>1?`<span class="cnt">×${it.cnt}</span>`:''}<span class="sn">${esc((setById[it.set]||{n:''}).n)}</span><span class="vl">${fmt(it.val)}</span></div>`}).join(''):'<p class="empty" style="grid-column:1/-1">No cards yet. Go rip some packs!</p>';
  $('#agrid')._items=items}
-$('#setChips').addEventListener('click',e=>{const b=e.target.closest('.chip');if(!b)return;const k=b.dataset.set;if(k[0]!=='$'&&!isUnlocked(SETS.findIndex(s=>s.id===k))){toast('Locked set');return}if(k==='$psa'&&selMode){selMode=false;selPick.clear();updSel()}albumSet=k;renderAlbum()});
+$('#setChips').addEventListener('click',e=>{const b=e.target.closest('.chip');if(!b)return;const k=b.dataset.set;if(k[0]!=='$'&&!isUnlocked(SETS.findIndex(s=>s.id===k))){toast('Locked set');return}if((k==='$psa'||k==='$games')&&selMode){selMode=false;selPick.clear();updSel()}albumSet=k;renderAlbum()});
 $('#chips').addEventListener('click',e=>{const b=e.target.closest('.chip');if(b){filt=b.dataset.f;renderAlbum()}});
 $('#psaBatch').onclick=()=>{selMode=!selMode;selPick.clear();updSel();renderAlbum();if(selMode)toast('Tap the holos you want to grade')};
 function updSel(){const bar=$('#selBar');bar.classList.toggle('on',selMode);$('#selN').textContent=`${selPick.size} card${selPick.size===1?'':'s'} selected`;
@@ -1473,6 +1475,7 @@ function updSel(){const bar=$('#selBar');bar.classList.toggle('on',selMode);$('#
 $('#selCancel').onclick=()=>{selMode=false;selPick.clear();updSel();renderAlbum()};
 $('#selGo').onclick=()=>{const cards=[...selPick].map(cardById).filter(Boolean);if(!cards.length)return;selMode=false;selPick.clear();updSel();renderAlbum();psaTierModal(cards)};
 $('#agrid').addEventListener('click',e=>{
+ const gm=e.target.closest('[data-gm]');if(gm){gameModal(gm.dataset.gm);return}
  const ps=e.target.closest('[data-ps]');if(ps){const x=$('#agrid')._ps[+ps.dataset.ps];if(x)openSlab(x.sl);return}
  const s=e.target.closest('.slot');if(!s)return;
  if(s.dataset.ai!=null){const it=$('#agrid')._items[+s.dataset.ai];if(!it)return;
@@ -1484,7 +1487,7 @@ $('#agrid').addEventListener('click',e=>{
  if(!(S.seen[albumSet]||{})[c.id]){toast(`Missing: ${c.name} #${c.n}`);return}openZoom(c)});
 function openZoom(c,misV){const z=$('#zcard');z.innerHTML='';const el=document.createElement('div');el.className='card live '+c.r+(misV?' mp-'+misV:'');el.innerHTML=cardHTML(c,{mis:misV});el._base='';z.appendChild(el);
  const n=misV?1:rawCount(c.id),v=cardVal(c,{mis:misV?1:0});
- $('#zinfo').innerHTML=`<b>${esc(c.name)}</b>${setById[setOf(c.id)].n} #${c.n||''} · ${misV?MISV.find(m=>m[0]===misV)[1]+' misprint':tierName[c.r]} · ${misV?'1 copy':n+' in hand'}<br><span class="v">Market ${fmt(v)}</span>${hotIds().has(c.id)?' <span class="tag r">HOT</span>':''}`;
+ $('#zinfo').innerHTML=`<b>${esc(c.name)}</b>${(setById[setOf(c.id)]||{n:''}).n} #${c.n||''} · ${misV?MISV.find(m=>m[0]===misV)[1]+' misprint':tierName[c.r]} · ${misV?'1 copy':n+' in hand'}<br><span class="v">Market ${fmt(v)}</span>${hotIds().has(c.id)?' <span class="tag r">HOT</span>':''}`;
  let a='';
  if(!misV&&(c.r==='holo'||c.r==='ultra')&&n>0)a+=`<button class="btn" id="zPSA">SEND TO PSA…</button>`;
  if(n>0)a+=`<div class="two"><button class="btn earn" id="zQS">QUICK SELL ${IN(Math.max(.01,v*.45))}</button>${misV?'':'<button class="btn ghost" id="zTr">🤝 TRADE CODE</button>'}</div>`;
@@ -1524,10 +1527,10 @@ function condStyle(g,seed){const L=LVL[g];
  if(L>=5)st+=`border-radius:${4+L}%/${3+L*.7}%;`;
  if(L>=10){const R=mulberry(seed+7);const a=8+R()*10,b=6+R()*10;st+=`clip-path:polygon(0 0,${100-a}% 0,${100-a+3}% ${b*.4}%,100% ${b}%,100% 100%,0 100%);`}
  return st}
-function slabHTML(sl,o={}){const set=setById[setOf(sl.id)]||{y:'',n:''},g=sl.grade,L=LVL[g]||0,gl=Math.max(.15,1-L*.09),fk=sl.fake;
+function slabHTML(sl,o={}){const set=(!sl.sp&&setById[setOf(sl.id)])||{y:sl.y||'',n:sl.setn||''},g=sl.grade,L=LVL[g]||0,gl=Math.max(.15,1-L*.09),fk=sl.fake;
  const foil=sl.r==='ultra'?`<div class="foil full" style="opacity:${.85*gl}"></div>`:sl.r==='holo'?`<div class="foil win" style="opacity:${.6*gl}"></div><div class="sparkle" style="inset:10.5% 8.5% 52% 8.5%;opacity:${.7*gl}"></div>`:'';
- return `<div class="slab ${g===10&&!o.void?'g10':''} ${fk?'fk':''}"><div class="lab"><div class="logo">${fk?'P.S.A':'PSA'}</div><div class="in"><div class="l"><div>${set.y} POKEMON ${set.n.toUpperCase()}</div><div>${esc(sl.name.toUpperCase())}${sl.r==='holo'||sl.r==='ultra'?'-HOLO':''}</div><div>${o.void?'AUTHENTICATION FAILED':set.ed?'1ST EDITION':'&nbsp;'}</div><div class="bc"></div></div><div class="r"><div>#${sl.n||''}</div><div>${o.void?'N/A':fk?'GEM MNT':GRADE_NAME[g]}</div><div>${o.void?'—':g}</div><div>${sl.cert}</div></div></div></div>
- <div class="well"><div class="sc" style="${o.void?'filter:grayscale(.6) brightness(.8)':condStyle(g,sl.seed)}"><img src="${o.small?sl.s:sl.l}" onerror="if(this.src!=='${sl.s}')this.src='${sl.s}'">${foil}${o.void?'':dmgSVG(g,sl.seed)}<div class="glare" style="opacity:${g===10?1:.6}"></div></div></div>${o.void?'<div class="void"><b>FAKE</b></div>':''}${o.cover?'<div class="cover">PSA</div>':''}<div class="glass"></div></div>`}
+ return `<div class="slab ${g===10&&!o.void?'g10':''} ${fk?'fk':''}"><div class="lab"><div class="logo">${fk?'P.S.A':'PSA'}</div><div class="in"><div class="l"><div>${set.y} POKEMON ${esc(set.n.toUpperCase())}</div><div>${esc(sl.name.toUpperCase())}${sl.r==='holo'||sl.r==='ultra'?'-HOLO':''}</div><div>${o.void?'AUTHENTICATION FAILED':sl.sp?'SPECIAL PROMO':set.ed?'1ST EDITION':'&nbsp;'}</div><div class="bc"></div></div><div class="r"><div>#${sl.n||''}</div><div>${o.void?'N/A':fk?'GEM MNT':GRADE_NAME[g]}</div><div>${o.void?'—':g}</div><div>${sl.cert}</div></div></div></div>
+ <div class="well"><div class="sc" style="${o.void?'filter:grayscale(.6) brightness(.8)':condStyle(g,sl.seed)}${sl.art?';background:radial-gradient(circle,#fff,#e8eef8)':''}"><img src="${o.small?sl.s:sl.l}" style="${sl.art?'object-fit:contain;padding:12%':''}" onerror="if(this.src!=='${sl.s}')this.src='${sl.s}'">${foil}${o.void?'':dmgSVG(g,sl.seed)}<div class="glare" style="opacity:${g===10?1:.6}"></div></div></div>${o.void?'<div class="void"><b>FAKE</b></div>':''}${o.cover?'<div class="cover">PSA</div>':''}<div class="glass"></div></div>`}
 const psaEl=$('#psa'),pStage=$('#psaStage'),pFoot=$('#psaFoot');
 const psaHead=(t,s)=>$('#psaHead').innerHTML=`<b>${t}</b><small>${s||''}</small>`;
 function thud(){noise(.25,.9,180,.7,'lowpass');buzz(30)}
@@ -1550,9 +1553,13 @@ async function submitBatch(cards,t){
  psaEl.classList.add('on');$('#nav').classList.add('hide');$('#coin').style.opacity=0;pFoot.innerHTML='';
  psaHead(sls.length>1?`PACKING ${sls.length} CARDS`:'PACKING YOUR CARD',t.n+' service');
  const c0=cards[0];
- pStage.innerHTML=`<div class="pk rawc" id="rc">${sls.length>1?'<div class="stk" style="transform:translate(6px,6px) rotate(4deg)"></div><div class="stk" style="transform:translate(3px,3px) rotate(2deg)"></div>':''}<img src="${c0.l}" onerror="this.src='${c0.s}'" style="position:relative">${sls.length>1?`<div class="cntB">×${sls.length}</div>`:''}<div class="sleeve"></div><div class="toploader"></div></div><div class="mailer" id="ml"><div class="body"></div><div class="flap"></div><div class="ship"><b>PSA</b>SUBMISSION #${String(S.psaSubs).padStart(6,'0')}<br>${sls.length} CARD${sls.length>1?'S':''} · ${t.n.toUpperCase()} · SANTA ANA, CA</div></div>`;
- const rc=$('#rc');await wait(400);rc.querySelector('.sleeve').style.transform='translateY(0)';sfx.slide();await wait(550);
- rc.querySelector('.toploader').style.transform='translateY(0)';noise(.12,.5,1200,1,'bandpass');await wait(600);
+ const show=cards.slice(0,5);
+ pStage.innerHTML=`<div class="pk rawc" id="rc">${show.map((c,i)=>`<div class="cw" style="z-index:${10-i};transform:translate(${i*9}px,${-i*9}px) rotate(${i*3}deg);filter:brightness(${1-i*.13})"><img src="${c.l}" onerror="this.src='${c.s}'"><div class="sleeve"></div><div class="toploader"></div></div>`).join('')}${sls.length>1?`<div class="cntB">×${sls.length}</div>`:''}</div><div class="mailer" id="ml"><div class="body"></div><div class="flap"></div><div class="ship"><b>PSA</b>SUBMISSION #${String(S.psaSubs).padStart(6,'0')}<br>${sls.length} CARD${sls.length>1?'S':''} · ${t.n.toUpperCase()} · SANTA ANA, CA</div></div>`;
+ const rc=$('#rc');const cws=[...rc.querySelectorAll('.cw')];const many=cws.length>1;await wait(400);
+ for(const w of cws.slice().reverse()){w.querySelector('.sleeve').style.transform='translateY(0)';sfx.slide();await wait(many?170:550)}
+ await wait(many?250:0);
+ for(const w of cws.slice().reverse()){w.querySelector('.toploader').style.transform='translateY(0)';noise(.12,.5,1200,1,'bandpass');await wait(many?170:600)}
+ if(many){await wait(250);cws.forEach((w,i)=>{w.style.transform=`translate(${i*2}px,${-i*2}px)`});noise(.15,.4,900,1,'bandpass');await wait(500)}
  const ml=$('#ml');ml.style.transform='translate(-50%,-50%)';rc.style.transform='translate(-50%,-50%) scale(.82)';sfx.slide();await wait(550);
  ml.querySelector('.flap').classList.add('closed');await wait(400);rc.style.opacity=0;ml.querySelector('.ship').classList.add('on');thud();await wait(700);
  psaHead('SHIPPED TO PSA','Off it goes');ml.style.transition='transform .8s cubic-bezier(.6,0,.8,.3)';ml.style.transform='translate(80%,-180%) rotate(28deg) scale(.4)';await wait(850);
@@ -1565,7 +1572,6 @@ async function submitBatch(cards,t){
  let skip=false;psaEl.onclick=()=>skip=true;const rows=[...pStage.querySelectorAll('.row')];
  for(let i=0;i<rows.length;i++){rows[i].classList.add('on');await wait(skip?70:(i===2?1000:420));rows[i].classList.remove('on');rows[i].classList.add('done');rows[i].querySelector('small').textContent='DONE';tone([880+i*60],.12,.05)}
  psaEl.onclick=null;await wait(300);deliverBatch(sls)}
-/* the PSA return box: white with red stripes, cut the tape to open */
 async function openReturnBox(n,first){
  psaHead('DELIVERY FROM PSA','Swipe across the tape');
  pStage.innerHTML=`<div class="box" id="bx"><div class="top" id="bxTop"><div class="inside"></div><div class="flapA"></div><div class="flapB"></div><div class="tape">PSA · PSA · PSA · PSA</div><div class="cut"></div><div class="knife"></div></div><div class="front"><div class="stamp">PSA<small>PROFESSIONAL SPORTS AUTHENTICATOR</small></div><div class="fragile">FRAGILE</div><div class="sl">SHIP TO: ${esc(pname())}<br>${n>1?n+' GRADED CARDS':'CERT '+first.cert}</div></div></div>`;
@@ -1587,7 +1593,7 @@ async function deliverMany(sls){
  tone([220,247,262,294,330,349,392],.18,.06,'square',.12);await wait(700);
  const covers=[...pStage.querySelectorAll('.cover')];let best=0,fakes=0,sum=0;
  for(let i=0;i<n;i++){const sl=sls[i];covers[i].classList.add('off');const gl=$('#pgl'+i);
-  if(sl.counterfeit){fakes++;gl.style.color='#ff8a8a';gl.textContent='FAKE'}else{S.slabs.push(sl);best=Math.max(best,sl.grade);const v=cardVal(sl,{grade:sl.grade});sum+=v;gl.textContent=`PSA ${sl.grade} · ${fmt(v)}`;if(sl.grade===10){addXP(80);if(S.grail&&S.grail.id===sl.id){S.stats.grails++;const gr=S.grail;S.grail=null;setTimeout(()=>{addCoins(200);addXP(300);toast(`🏆 Holy Grail! PSA 10 ${gr.name} · +$200`)},1500)}}else if(sl.grade===9)addXP(30)}
+  if(sl.counterfeit){fakes++;gl.style.color='#ff8a8a';gl.textContent='FAKE'}else{_uv++;S.slabs.push(sl);best=Math.max(best,sl.grade);const v=cardVal(sl,{grade:sl.grade});sum+=v;gl.textContent=`PSA ${sl.grade} · ${fmt(v)}`;if(sl.grade===10){addXP(80);if(S.grail&&S.grail.id===sl.id){S.stats.grails++;const gr=S.grail;S.grail=null;setTimeout(()=>{addCoins(200);addXP(300);toast(`🏆 Holy Grail! PSA 10 ${gr.name} · +$200`)},1500)}}else if(sl.grade===9)addXP(30)}
   tone([700+i*40],.08,.04);await wait(120)}
  save();const n10=sls.filter(s=>!s.counterfeit&&s.grade===10).length;
  if(n10){flash(1,900);sfx.ultra();burst(300,['#ffe36a','#fff','#ffb43b','#9ef0ff'],1.5);banner(n10>1?n10+'× GEM MINT!':'GEM MINT 10')}else if(best>=9){sfx.holo();burst(140,['#9ef0ff','#fff'],1);banner('BEST: MINT 9')}else{tone([523,494],.5,.08,'triangle',.18);banner('BEST: PSA '+best)}
@@ -1605,7 +1611,7 @@ async function deliver(sl){
  if(sl.counterfeit){sfx.bad();slabEl.classList.add('cracking');buzz([100,60,100]);banner('FAKE!');
   psaHead('AUTHENTICATION FAILED','This card is counterfeit');save();
   await new Promise(r=>{pFoot.innerHTML=`<p class="empty" style="padding:8px">Someone sold you a fake. The card is worthless.</p><button class="btn" id="pKeep">BIN IT</button>`;$('#pKeep').onclick=r});return}
- S.slabs.push(sl);const g=sl.grade;save();
+ _uv++;S.slabs.push(sl);const g=sl.grade;save();
  if(g===10){flash(1,900);sfx.ultra();buzz([80,50,120,50,200]);burst(320,['#ffe36a','#fff','#ffb43b','#9ef0ff'],1.5);banner('GEM MINT 10');$('#rays').style.opacity=1;setTimeout(()=>$('#rays').style.opacity=0,3000);addXP(80)}
  else if(g===9){flash(.6,600);sfx.holo();burst(140,['#9ef0ff','#fff','#ffe07a'],1);banner('MINT 9');addXP(30)}
  else if(g>=7){tone([784,988,1175],.5,.08,'sine',.08);banner(GRADE_NAME[g]+' '+g)}
@@ -1628,7 +1634,7 @@ function renderVault(){
  $('#vStats').innerHTML=[[sl.length,'Slabs'],[sl.filter(s=>s.grade===10).length,'PSA 10s'],[avg,'Avg'],[S.psaSubs,'Subs']].map(([v,l])=>`<div class="stat"><b>${v}</b><span>${l}</span></div>`).join('');
  $('#vChips').innerHTML=[['val','Value'],['new','Newest'],['hi','Grade']].map(([k,l])=>`<button class="chip ${k===vSort?'on':''}" data-v="${k}">${l}</button>`).join('');
  const list=[...sl];if(vSort==='hi')list.sort((a,b)=>b.grade-a.grade||b.d-a.d);else if(vSort==='new')list.sort((a,b)=>b.d-a.d);else list.sort((a,b)=>cardVal(b,{grade:b.grade})-cardVal(a,{grade:a.grade}));
- $('#vGrid').innerHTML=list.length?list.slice(0,60).map(s=>`<div class="v ${S.favs.includes(s.uid)?'fav':''}" data-uid="${s.uid}">${S.favs.includes(s.uid)?'<span class="star">⭐</span>':''}${slabHTML(s,{small:1})}<div class="when">${(setById[setOf(s.id)]||{n:''}).n}<br><b>${fmt(cardVal(s,{grade:s.grade}))}</b></div></div>`).join(''):`<p class="empty" style="grid-column:1/-1">No slabs yet.<br>Open the Binder, tap "Send several cards to PSA" and pick your holos.</p>`;
+ $('#vGrid').innerHTML=list.length?list.slice(0,60).map(s=>`<div class="v ${S.favs.includes(s.uid)?'fav':''}" data-uid="${s.uid}">${S.favs.includes(s.uid)?'<span class="star">⭐</span>':''}${slabHTML(s,{small:1})}<div class="when">${s.sp?'🎁 '+esc(s.setn):(setById[setOf(s.id)]||{n:''}).n}<br><b>${fmt(cardVal(s,{grade:s.grade}))}</b></div></div>`).join(''):`<p class="empty" style="grid-column:1/-1">No slabs yet.<br>Open the Binder, tap "Send several cards to PSA" and pick your holos.</p>`;
  $('#sealBox').innerHTML=S.sealed.length?`<div class="pnl">${S.sealed.map(s=>{const set=setById[s.set],v=sealedVal(s);return `<div class="row2"><div class="ic">${s.kind==='box'?'📦':'🎁'}</div><div class="tx"><b>${set.n} ${s.kind==='box'?'Booster Box':'Bundle'}</b><small>${s.packs} packs · paid ${fmt(s.base)} · now <span style="color:#6ff0a0">${fmt(v)}</span>${v>=s.base*(1+sealedMax())?' (max)':''}</small></div><button class="sbtn" data-open="${s.uid}">OPEN</button></div>`}).join('')}</div>`:'<p class="empty">No sealed product yet. Buy bundles and boxes in the Shop.</p>'}
 $('#vChips').addEventListener('click',e=>{const b=e.target.closest('.chip');if(b){vSort=b.dataset.v;renderVault()}});
 $('#sealBox').addEventListener('click',e=>{const b=e.target.closest('[data-open]');if(!b)return;const s=S.sealed.find(x=>x.uid===b.dataset.open);if(!s)return;
@@ -1637,7 +1643,7 @@ $('#sealBox').addEventListener('click',e=>{const b=e.target.closest('[data-open]
 $('#vGrid').addEventListener('click',e=>{const v=e.target.closest('.v');if(!v)return;const sl=S.slabs.find(s=>s.uid===v.dataset.uid);if(sl)openSlab(sl)});
 function openSlab(sl){
  const val=cardVal(sl,{grade:sl.grade}),fav=S.favs.includes(sl.uid);$('#zslab').innerHTML=slabHTML(sl);bindTilt($('#zslab .slab'));
- $('#vinfo').innerHTML=`<b>PSA ${sl.grade} · ${GRADE_LONG[sl.grade]}</b>${esc(sl.name)} · ${(setById[setOf(sl.id)]||{n:''}).n}<br>Cert #${sl.cert} · graded for life<br><span class="v">Market ${fmt(val)}</span>`;
+ $('#vinfo').innerHTML=`<b>PSA ${sl.grade} · ${GRADE_LONG[sl.grade]}</b>${esc(sl.name)} · ${sl.sp?'🎁 '+esc(sl.setn):(setById[setOf(sl.id)]||{n:''}).n}<br>Cert #${sl.cert} · graded for life<br><span class="v">Market ${fmt(val)}</span>`;
  $('#vact').innerHTML=`<button class="btn ${fav?'ghost':''}" id="vFav">${fav?'★ REMOVE FROM SHOWCASE SHELF':'★ PUT ON MY SHOWCASE SHELF'}</button><button class="btn earn" id="vQS">QUICK SELL ${IN(val*.45)}</button>`;
  $('#vFav').onclick=e2=>{e2.stopPropagation();if(fav)S.favs=S.favs.filter(u=>u!==sl.uid);else{if(S.favs.length>=3){toast('Showcase shelf is full (3). Remove one first.');return}S.favs.push(sl.uid);fanfare()}save();$('#vzoom').classList.remove('on');renderVault();checkAll()};
  $('#vQS').onclick=e2=>{e2.stopPropagation();$('#vzoom').classList.remove('on');const it={k:'slab',sl,val,name:sl.name};guard(it,()=>{quickSell(it);renderVault()})};
@@ -1668,7 +1674,7 @@ function renderShowList(){
  SHOWS.map(s=>{const lock=ri<s.rank,fee=showFee(s);return `<div class="pnl ${lock?'':'gold'}" style="${lock?'opacity:.5':''}"><div class="row2"><div class="ic" style="font-size:34px">${s.e}</div><div class="tx"><b>${s.n}</b><small>${s.d}<br>${s.vis+(hasBadge('fog')?1:0)} visitors · entry ${fee?`<span class="money out">${OUT(fee)}</span>`:'<span class="money in">free</span>'}${lock?` · needs level ${RANK_LV[s.rank]}`:''}</small></div><button class="sbtn" data-show="${s.id}" ${lock?'disabled':''}>GO</button></div></div>`}).join('')+
  `<h3 class="sec">How it works</h3><div class="odds">Pick up to <b>8 items</b> for your table. Buyers make offers: <b>accept</b>, <b>counter</b> or <b>decline</b>. Push too hard and they leave. Walking the <b>dealer aisles</b> costs one visitor. <b>Traders</b> offer slabs in swap: check the label for fakes.</div>`}
 $('#showList').addEventListener('click',e=>{const b=e.target.closest('[data-show]');if(b)setupTable(SHOWS.find(s=>s.id===b.dataset.show))});
-async function ensureLoaded(){const ids=new Set(unlockedSets().map(s=>s.id));Object.keys(S.coll).forEach(k=>{if(setById[k])ids.add(k)});S.slabs.forEach(s=>{const k=setOf(s.id);if(setById[k])ids.add(k)});
+async function ensureLoaded(){const ids=new Set(unlockedSets().map(s=>s.id));Object.keys(S.coll).forEach(k=>{if(setById[k])ids.add(k)});S.slabs.forEach(s=>{const k=setOf(s.id);if(setById[k]&&!s.sp)ids.add(k)});
  await Promise.all([...ids].map(id=>loadSet(id).catch(()=>null)));save()}
 function itemThumb(it){return it.k==='seal'?`<div style="aspect-ratio:63/88;display:flex;align-items:center;justify-content:center;font-size:24px;background:linear-gradient(135deg,#3a2a6a,#120a26)">${it.s.kind==='box'?'📦':'🎁'}</div>`:`<img src="${it.img}">`}
 function itemTag(it){return it.k==='slab'?`PSA ${it.grade}`:it.k==='mis'?'ERROR':it.k==='seal'?'SEALED':''}
@@ -1696,7 +1702,7 @@ function wants(type,it){if(it.sold)return 0;const v=it.val;
  switch(type){case 'kid':return v<=22*SH.show.mult&&it.k!=='seal'?(/pikachu/i.test(it.name)?3:1):0;
   case 'flip':return v>=.5?1:0;case 'dad':return gen1(it)?(it.k==='seal'?3:2):(v>=2?.4:0);
   case 'coll':return it.k==='mis'?3:it.k==='slab'?2:(it.c&&(it.c.r==='holo'||it.c.r==='ultra'))?2:v>=1?.6:0;
-  case 'whale':return (it.k==='slab'&&it.grade>=9)||it.k==='seal'||it.k==='mis'||(it.c&&it.c.r==='ultra')?2+v/50:0;case 'trade':return v>=3?1:0}return 0}
+  case 'whale':return (it.k==='slab'&&it.grade>=9)||it.k==='seal'||it.k==='mis'||(it.c&&it.c.r==='ultra')?2+v/50:0;case 'trade':return v>=3&&it.k!=='slab'?1:0}return 0}
 function ceilingFor(type,it){let f=BT[type].max;if(type==='kid'&&/pikachu/i.test(it.name))f=1.5;if(type==='dad'&&!gen1(it))f=.95;
  return it.val*f*SH.show.mult*(1+Math.min(.12,S.rep/400))*(hasBadge('boulder')?1.05:1)*(hasBadge('storm')?1.1:1)*(hasBadge('icicle')?1.05:1)*rr(.92,1.08)}
 function nextBuyer(){
@@ -1755,7 +1761,7 @@ function tradeOffer(who){
   <div class="deal"><div class="dimg" style="width:110px" id="tSlab">${slabHTML(sl,{small:1})}</div><div class="dtx"><b>Their slab</b>worth ${fmt(claim)} if real<br><br><b>Your ${itemTag(it)||'card'}</b>${esc(it.name)} · ${fmt(it.val)}</div></div>`,
   `<div class="two"><button class="btn ghost" id="tNo">NO THANKS</button><button class="btn" id="tYes">TRADE</button></div>`);
  $('#tSlab').onclick=()=>{$('#zslab').innerHTML=slabHTML(sl);bindTilt($('#zslab .slab'));$('#vinfo').innerHTML=`<b>Inspect the slab</b>Check the logo, the font, the grade text and the cert number.<br>Real PSA certs have 9 digits.`;$('#vact').innerHTML='';$('#vzoom').classList.add('on')};
- $('#tYes').onclick=()=>guard(it,()=>{removeItem(it);it.sold=true;S.slabs.push(sl);save();sfx.cash();leave(who,scam?'Pleasure! 😏 *walks away very fast*':'Great trade, enjoy it! 🤝');if(!scam)addRep(.5)});
+ $('#tYes').onclick=()=>guard(it,()=>{removeItem(it);it.sold=true;_uv++;S.slabs.push(sl);save();sfx.cash();leave(who,scam?'Pleasure! 😏 *walks away very fast*':'Great trade, enjoy it! 🤝');if(!scam)addRep(.5)});
  $('#tNo').onclick=()=>{if(scam){S.stats.scams++;addRep(2);addXP(40);sfx.holo();toast('You spotted a fake slab! Reputation +2');leave(who,'Uh… never mind 😬');checkAll()}else leave(who,'Suit yourself!');save()}}
 function bindShowCtl(){if($('#nxt'))$('#nxt').onclick=nextBuyer;if($('#aisle'))$('#aisle').onclick=aisles}
 function knowsValue(){return S.shop.guide||hasBadge('marsh')}
@@ -1797,7 +1803,7 @@ const DPOOL=[{k:'rip',t:'Rip 3 packs',n:3,r:8,g:1},{k:'holo',t:'Pull a holo',n:1
  {k:'rip4',t:'Sinnoh: rip 3 Gen IV packs',n:3,r:22,g:4},{k:'holo4',t:'Sinnoh: pull 2 Gen IV holos',n:2,r:36,g:4}];
 function rollDaily(){
  if(S.daily.day!==dayKey()){const pool=DPOOL.filter(d=>d.g===1&&(d.k!=='quiz'||rankIdx()>=1)).sort((a,b)=>hsh(a.k+dayKey())-hsh(b.k+dayKey()));S.daily={day:dayKey(),keys:pool.slice(0,3).map(d=>d.k),p:{},claimed:[]}}
- gensOpen().filter(g=>g>1).forEach(g=>{if(!S.daily.keys.some(k=>(DPOOL.find(d=>d.k===k)||{}).g===g)){const opts=DPOOL.filter(d=>d.g===g);S.daily.keys.push(opts[hsh(g+dayKey())%opts.length].k)}});save()}
+ gensOpen().filter(g=>g>1&&g<5).forEach(g=>{if(!S.daily.keys.some(k=>(DPOOL.find(d=>d.k===k)||{}).g===g)){const opts=DPOOL.filter(d=>d.g===g);S.daily.keys.push(opts[hsh(g+dayKey())%opts.length].k)}});save()}
 function prog(k,n){if(S.daily.day!==dayKey())rollDaily();S.daily.p[k]=(S.daily.p[k]||0)+n;save()}
 const dReward=d=>Math.round(d.r*(1+rankIdx()*.5));
 const dailyReady=()=>S.daily.keys.filter(k=>{const d=DPOOL.find(x=>x.k===k);return d&&(S.daily.p[k]||0)>=d.n&&!S.daily.claimed.includes(k)}).length;
@@ -1839,7 +1845,7 @@ const STORY={
   {t:'The master collector',d:'Complete any Master Set.',ok:()=>S.ms.length>=1,r:{seal:'dp1',kind:'box'},rt:'Sealed Diamond & Pearl booster box'},
   {t:'Sinnoh Champion',d:'Earn all 8 Sinnoh badges.',ok:()=>regionBadges(4)>=8,r:{c:2500},rt:'+$2,500'},
   {t:'Pokémon Master',d:'Reach level 100.',ok:()=>level()>=100,r:{c:5000},rt:'+$5,000'}]}};
-const storyReady=()=>gensOpen().filter(g=>{const st=STORY[g].chapters[S.storyG[g]||0];return st&&st.ok()}).length;
+const storyReady=()=>gensOpen().filter(g=>{const b=STORY[g];if(!b)return false;const st=b.chapters[S.storyG[g]||0];return st&&st.ok()}).length;
 /* =================== COLLECTIONS =================== */
 const COLS=[['Kanto Starters',['bulbasaur','charmander','squirtle'],25,1],['Legendary Birds',['articuno','zapdos','moltres'],45,1],['Eeveelutions',['vaporeon','jolteon','flareon'],35,1],['Ghost Hunter',['gastly','haunter','gengar'],30,1],
  ['Dragon Tamer',['dratini','dragonair','dragonite'],35,1],['Fossil Hunter',['omanyte','kabuto','aerodactyl'],30,1],['Pikachu Fan',['pikachu×5'],40,1],
@@ -1860,6 +1866,7 @@ const ACH=[['first','First rip','Open your first pack',()=>S.packs>=1,5,1],['p10
  ['mis','Factory error','Pull a misprint',()=>S.stats.mis>=1,40,1],['shop','Open for business','Own a card shop',()=>S.shop.owned,50,1],['kchamp','Kanto Champion','Earn all 8 Kanto badges',()=>regionBadges(1)>=8,250,1],
  ['quiz','Pokédex brain','Name 50 Pokémon in the quiz',()=>S.stats.quiz>=50,60,1],['show3','Showcase','Fill your room\'s showcase shelf',()=>S.favs.length>=3,40,1],['mach','Automation','Buy the pack machine',()=>S.machine.owned,200,1],
  ['m50','Case breaker','Rip 50 packs at once',()=>!!S.flags.m50,120,1],['saved','Safe keeping','Copy your save code',()=>!!S.flags.saved,10,1],['gcase','Window shopper','Buy a card from Gary\'s glass case',()=>!!S.flags.gcase,20,1],
+ ['crate','Retro gamer','Open a Nintendo crate',()=>S.stats.crates>=1,20,1],['spec1','Special delivery','Earn your first special PSA 10',()=>S.spec.length>=1,100,1],['spec11','Promo legend','Earn all 11 special PSA 10s',()=>S.spec.length>=11,2000,1],
  ['duel','Rival beaten','Win a weekly duel against your rival',()=>S.stats.duels>=1,80,1],['trade','Trader','Send or receive a trade code',()=>S.stats.trades>=1,30,1],['deco','Interior designer','Buy 3 upgrades for your room',()=>roomUps()>=3,60,1],
  ['streak','Loyal collector','Log in 7 days in a row',()=>S.streak>=7,100,1],['msone','Master collector','Complete a Master Set',()=>S.ms.length>=1,400,1],['ritual','Superstitious','Pick a lucky opening ritual',()=>!!S.ritual,10,1],
  ['grail','Holy Grail','Land your grail as PSA 10',()=>S.stats.grails>=1,300,1],
@@ -1870,20 +1877,20 @@ const ACH=[['first','First rip','Open your first pack',()=>S.packs>=1,5,1],['p10
  ['s1','Sinnoh debut','Open a Gen IV pack',()=>S.gp[4].p>=1,40,4],['lvx','Level X','Pull a Pokémon LV.X',()=>!!S.flags.lvx,200,4],['creation','Creation trio','Pull a Dialga, Palkia or Giratina holo',()=>!!S.flags.creation,200,4],['chomp','Land shark','Pull a Garchomp holo',()=>!!S.flags.chomp,150,4],['arc','The Alpha','Pull an Arceus holo',()=>!!S.flags.arceus,300,4],
  ['s100','Sinnoh addict','Open 100 Gen IV packs',()=>S.gp[4].p>=100,250,4],['scomp','Sinnoh completionist','Complete a Gen IV set 100%',()=>SETS.some(s=>s.g===4&&setComplete(s.id)),400,4],['squiz','Sinnoh scholar','Name 400 Pokémon in the quiz',()=>S.stats.quiz>=400,250,4],['schamp','Sinnoh Champion','Earn all 8 Sinnoh badges',()=>regionBadges(4)>=8,1200,4],['master','Pokémon Master','Reach level 100',()=>level()>=100,2500,4]];
 function checkAll(){ACH.forEach(([k,n,d,ok,r,g])=>{if(!S.ach.includes(k)&&genOpen(g)&&ok()){S.ach.push(k);save();setTimeout(()=>{addCoins(r);toast(`🏆 ${n} · ${IN(r)}`);tone([1318,1568,2093],.3,.07,'sine',.08)},300)}});
- SETS.forEach(s=>{if(!S.ms.includes(s.id)&&memo[s.id]&&isUnlocked(SETS.indexOf(s))){const m=masterProg(s.id);if(m&&m.a>=m.b){S.ms.push(s.id);save();whenFree(()=>{const r=300*s.g;addCoins(r);addXP(500);fanfare();burst(260,['#ffd76a','#fff'],1.3);modal(`<div class="em">👑</div><h2>Master Set!</h2><p>You completed the <b>${s.n}</b> Master Set (${m.what}).<br><br>+${fmt(r)} · a golden trophy for your room.</p><button class="btn" onclick="closeModal()">LEGENDARY</button>`)})}}});
- updDots()}
+ SETS.forEach(s=>{if(!S.ms.includes(s.id)&&memo[s.id]&&isUnlocked(SETS.indexOf(s))){const m=masterProg(s.id);if(m&&m.a>=m.b){S.ms.push(s.id);save();whenFree(()=>{const r=300*Math.min(4,s.g);addCoins(r);addXP(500);fanfare();burst(260,['#ffd76a','#fff'],1.3);modal(`<div class="em">👑</div><h2>Master Set!</h2><p>You completed the <b>${s.n}</b> Master Set (${m.what}).<br><br>+${fmt(r)} · a golden trophy for your room.</p><button class="btn" onclick="closeModal()">LEGENDARY</button>`)})}}});
+ specCheck();troCheck();moCheck();updDots()}
 function updDots(){const q=dailyReady()+storyReady()+colsReady();
  document.querySelector('nav button[data-s="scrHome"]').classList.toggle('alert',q>0||S.subs.some(s=>s.ready<=NOW())||oakReady()||shelfSold()>0)}
 /* =================== BOUNTIES =================== */
 const bountyMult=()=>hasBadge('hive')?1.25:1;
-function ensureBounties(){const slots=2+(gensOpen().length-1)+(hasBadge('soul')?1:0)+(hasBadge('fen')?1:0);S.bounties=S.bounties.filter(b=>b.until>NOW());
+function ensureBounties(){const slots=2+(gensOpen().filter(g=>g<5).length-1)+(hasBadge('soul')?1:0)+(hasBadge('fen')?1:0);S.bounties=S.bounties.filter(b=>b.until>NOW());
  const pool=[];unlockedSets().forEach(s=>{const m=memo[s.id];if(m)pool.push(...m.P.rare,...m.P.rare,...m.P.holo)});
  let g=0;while(S.bounties.length<slots&&pool.length&&g++<50){const c=rnd(pool);if(S.bounties.some(b=>b.id===c.id))continue;S.bounties.push({id:c.id,name:c.name,img:c.s,reward:Math.round(cardVal(c)*1.7+2),until:NOW()+48*HOUR})}save()}
 function handBounty(i){const b=S.bounties[i];if(!b||rawCount(b.id)<1)return;guard({k:'raw',id:b.id,name:b.name},()=>{
  const fake=takeRaw(b.id);S.bounties.splice(i,1);
  if(fake){sfx.bad();addRep(-2);modal(`<div class="em">😠</div><h2>That's a fake</h2><p>The collector checked your ${esc(b.name)} under a loupe. Counterfeit. No reward.</p><button class="btn" onclick="closeModal()">OUCH</button>`)}
  else{const rw=Math.round(b.reward*bountyMult());addCoins(rw);addXP(40);addRep(1);prog('bounty',1);sfx.cash();toast(`Bounty done · ${IN(rw)}`)}save();renderQuests();checkAll()})}
-/* =================== GYMS (level gate + best-of-3 battle) =================== */
+/* =================== GYMS =================== */
 const GYMS=[
  {g:1,k:'brock',n:'Brock',city:'Pewter City',type:'Fighting',need:12,lv:3,b:'boulder',bn:'Boulder Badge',bd:'+5% on every card show sale',em:'🪨'},
  {g:1,k:'misty',n:'Misty',city:'Cerulean City',type:'Water',need:25,lv:5,b:'cascade',bn:'Cascade Badge',bd:'+$5 daily allowance',em:'💧'},
@@ -1919,13 +1926,13 @@ const GYMS=[
  {g:4,k:'volkner',n:'Volkner',city:'Sunyshore City',type:'Lightning',need:800,lv:98,b:'beacon',bn:'Beacon Badge',bd:'Double prize money in rival duels',em:'💡'}];
 function gymTeam(type,g){const own=[];const okSet=id=>g===1||((setById[setOf(id)]||{}).g===g);
  Object.keys(S.coll).forEach(sid=>{const m=memo[sid];if(!m)return;Object.entries(S.coll[sid]).forEach(([id,n])=>{const c=m.byId[id];if(n>0&&c&&okSet(id))own.push({c,v:cardVal(c)})})});
- S.slabs.filter(s=>!s.fake&&okSet(s.id)).forEach(s=>{const c=cardById(s.id);if(c)own.push({c,v:cardVal(s,{grade:s.grade})})});
+ S.slabs.filter(s=>!s.fake&&!s.sp&&okSet(s.id)).forEach(s=>{const c=cardById(s.id);if(c)own.push({c,v:cardVal(s,{grade:s.grade})})});
  const ok=own.filter(o=>type==='Holo'?(o.c.r==='holo'||o.c.r==='ultra'):type==='Ultra'?o.c.r==='ultra':o.c.ty===type&&o.c.t!=='Trainer');
  const best={};ok.forEach(o=>{if(!best[o.c.id]||best[o.c.id].v<o.v)best[o.c.id]=o});return Object.values(best).sort((a,b)=>b.v-a.v).slice(0,3)}
 let gymReg=1;
 async function renderGyms(){$('#gymBody').innerHTML='<div style="display:flex;justify-content:center;padding:40px"><div class="spin"></div></div>';await ensureLoaded();
  if(!genOpen(gymReg))gymReg=1;const L=level();
- const tabs=`<div class="chips" style="margin-top:4px">${GL.map(g=>`<button class="chip ${g===gymReg?'on':''}" data-reg="${g}" ${genOpen(g)?'':'style="opacity:.4"'}>${genOpen(g)?'':'🔒 '}${REGION[g]} · ${regionBadges(g)}/8</button>`).join('')}</div>`;
+ const tabs=`<div class="chips" style="margin-top:4px">${G4.map(g=>`<button class="chip ${g===gymReg?'on':''}" data-reg="${g}" ${genOpen(g)?'':'style="opacity:.4"'}>${genOpen(g)?'':'🔒 '}${REGION[g]} · ${regionBadges(g)}/8</button>`).join('')}</div>`;
  $('#gymBody').innerHTML=tabs+`<p class="empty" style="padding:6px 4px 4px;text-align:left">Bring your best 3 cards of the leader's type${gymReg>1?` <b style="color:#fff">from Gen ${ROMAN[gymReg]} sets only</b>`:''}. It's a best-of-3 battle: your strongest card against theirs, then the next. Win 2 rounds to earn the badge. Lose and the leader needs 15 minutes before a rematch. You keep your cards.</p>`+
  GYMS.filter(x=>x.g===gymReg).map(x=>{const team=gymTeam(x.type,x.g),tot=team.reduce((a,o)=>a+o.v,0),has=hasBadge(x.b),cd=(S.gymCd[x.k]||0)-NOW(),lvOk=L>=x.lv,ok=team.length>=3&&lvOk&&cd<=0;
   const tl=x.type==='Holo'?'Any holo or ultra rare':x.type==='Ultra'?'Ultra rares only':x.type+' type';
@@ -1951,20 +1958,27 @@ async function gymBattle(x){
  else{S.gymCd[x.k]=NOW()+15*MIN;save()}
  $('#bRes').innerHTML=`<div class="bubble" style="margin:14px auto 0">${won?`"Your team is impressive. Take this." <br><b>${x.bn}</b>: ${x.bd}`:`"Not good enough yet. Come back stronger." <br>Rematch in 15 minutes. Grade or upgrade your ${x.type==='Holo'||x.type==='Ultra'?'':x.type+' '}cards.`}</div><button class="btn" id="bOk">${won?'AWESOME':'OK'}</button>`;
  $('#bOk').onclick=()=>{mg.classList.remove('on');mg.innerHTML='';$('#nav').classList.remove('hide');renderGyms();checkAll()}}
-/* =================== GARY'S GLASS CASE (buy holos) =================== */
+/* =================== GARY'S GLASS CASE (5 cards, max 1 missing at 10×) =================== */
 const GC_SLOT=6*HOUR;
-function gcEnsure(){const slot=Math.floor(NOW()/GC_SLOT);if(S.gcase&&S.gcase.slot===slot&&S.gcase.items.length)return;
+function gcEnsure(){const slot=Math.floor(NOW()/GC_SLOT);if(S.gcase&&S.gcase.slot===slot&&S.gcase.v===2&&S.gcase.items.length)return;
  const holo=[],ultra=[];unlockedSets().forEach(s=>{const m=memo[s.id];if(m){holo.push(...m.P.holo);ultra.push(...m.P.ultra)}});if(!holo.length&&!ultra.length){S.gcase=null;return}
  const used=new Set(),items=[];let g=0;
- while(items.length<20&&g++<300){const c=(Math.random()<.12&&ultra.length)?rnd(ultra):rnd(holo.length?holo:ultra);if(used.has(c.id))continue;used.add(c.id);items.push({id:c.id,p:Math.round(cardVal(c)*rr(1.05,1.35)*100)/100,b:false,m:false})}
- if(Math.random()<.5){const miss=[...holo,...ultra].filter(c=>!isOwned(c.id)&&!used.has(c.id));if(miss.length){const c=rnd(miss);const k=Math.floor(Math.random()*items.length);items[k]={id:c.id,p:Math.round(cardVal(c)*5*100)/100,b:false,m:true}}}
- S.gcase={slot,items};save()}
+ while(items.length<5&&g++<300){const c=(Math.random()<.15&&ultra.length)?rnd(ultra):rnd(holo.length?holo:ultra);if(used.has(c.id)||!isOwned(c.id)&&Math.random()<.85)continue;used.add(c.id);items.push({id:c.id,p:Math.round(cardVal(c)*rr(1.05,1.35)*100)/100,b:false,m:false})}
+ while(items.length<5&&g++<600){const c=rnd([...holo,...ultra]);if(used.has(c.id))continue;used.add(c.id);items.push({id:c.id,p:Math.round(cardVal(c)*rr(1.05,1.35)*100)/100,b:false,m:false})}
+ items.forEach(x=>{if(!isOwned(x.id)){x.m=false}});
+ const missing=items.filter(x=>!isOwned(x.id));
+ missing.forEach((x,i)=>{if(i>0){const c=cardById(x.id);const own=[...holo,...ultra].filter(o=>isOwned(o.id)&&!used.has(o.id));if(own.length){const o=rnd(own);used.add(o.id);x.id=o.id;x.p=Math.round(cardVal(o)*rr(1.05,1.35)*100)/100}}});
+ if(Math.random()<.5){const miss=[...holo,...ultra].filter(c=>!isOwned(c.id)&&!used.has(c.id));const already=items.find(x=>!isOwned(x.id));
+  if(already){const c=cardById(already.id);already.m=true;already.p=Math.round(cardVal(c)*10*100)/100}
+  else if(miss.length){const c=rnd(miss);const k=Math.floor(Math.random()*items.length);items[k]={id:c.id,p:Math.round(cardVal(c)*10*100)/100,b:false,m:true}}}
+ else{const already=items.find(x=>!isOwned(x.id));if(already){const c=cardById(already.id);already.m=true;already.p=Math.round(cardVal(c)*10*100)/100}}
+ S.gcase={slot,items,v:2};save()}
 function gcHTML(){gcEnsure();if(!S.gcase)return'<p class="empty">Unlock sets to fill Gary\'s case.</p>';
  const left=GC_SLOT-(NOW()%GC_SLOT),hrs=Math.floor(left/HOUR),mins=Math.ceil((left%HOUR)/MIN);
- return `<p style="margin:0 0 10px">20 holos and ultra rares from your unlocked sets. Restocks in ${hrs?hrs+'h ':''}${mins}min. ${S.gcase.items.some(x=>x.m&&!x.b)?'<b style="color:#ff9de6">A card you are missing is in the case today!</b>':''}</p>
- <div class="dgrid c4">${S.gcase.items.map((x,i)=>{const c=cardById(x.id);if(!c)return'';const miss=!isOwned(c.id);return `<div class="dl ${c.r} ${x.m&&!x.b?'missing':''} ${x.b?'boughtx':''}" data-gc="${i}">${miss&&!x.b?'<span class="mtag">MISSING</span>':''}<img src="${c.s}" loading="lazy"><div class="pr">${x.b?'SOLD':OUT(x.p)}</div><div class="hv">mkt ${fmt(cardVal(c))}</div></div>`}).join('')}</div>`}
+ return `<p style="margin:0 0 10px">5 hand-picked holos from your unlocked sets. Restocks in ${hrs?hrs+'h ':''}${mins}min. ${S.gcase.items.some(x=>x.m&&!x.b)?'<b style="color:#ff9de6">One card you are missing is in the case, at 10× its value.</b>':''}</p>
+ <div class="dgrid c5">${S.gcase.items.map((x,i)=>{const c=cardById(x.id);if(!c)return'';return `<div class="dl ${c.r} ${x.m&&!x.b?'missing':''} ${x.b?'boughtx':''}" data-gc="${i}">${x.m&&!x.b?'<span class="mtag">MISSING</span>':''}<img src="${c.s}" loading="lazy"><div class="pr">${x.b?'SOLD':OUT(x.p)}</div><div class="hv">mkt ${fmt(cardVal(c))}</div></div>`}).join('')}</div>`}
 function gcBuy(i){const x=S.gcase.items[i];if(!x||x.b)return;const c=cardById(x.id);if(!c)return;const v=cardVal(c);
- modal(`<div style="width:56%;margin:0 auto"><img src="${c.l}" onerror="this.src='${c.s}'" style="width:100%;border-radius:8px"></div><h2 style="margin-top:12px">${esc(c.name)}</h2><p>${setById[setOf(c.id)].n} · ${tierName[c.r]}<br>Market ${fmt(v)} · Gary asks <span class="money out">${fmt(x.p)}</span>${x.m?'<br><br><b style="color:#ff9de6">"I know you\'re missing this one, kid. That\'s why it costs 5×." 😏</b>':''}</p><button class="btn buy" id="gcY" ${S.coins<x.p?'disabled':''}>BUY ${OUT(x.p)}</button><button class="btn ghost" onclick="closeModal()">PASS</button>`);
+ modal(`<div style="width:56%;margin:0 auto"><img src="${c.l}" onerror="this.src='${c.s}'" style="width:100%;border-radius:8px"></div><h2 style="margin-top:12px">${esc(c.name)}</h2><p>${setById[setOf(c.id)].n} · ${tierName[c.r]}<br>Market ${fmt(v)} · Gary asks <span class="money out">${fmt(x.p)}</span>${x.m?'<br><br><b style="color:#ff9de6">"I know you\'re missing this one, kid. That\'s why it costs 10×." 😏</b>':''}</p><button class="btn buy" id="gcY" ${S.coins<x.p?'disabled':''}>BUY ${OUT(x.p)}</button><button class="btn ghost" onclick="closeModal()">PASS</button>`);
  $('#gcY').onclick=()=>{if(!spend(x.p))return;x.b=true;addRaw(c);S.stats.bought++;S.flags.gcase=1;prog('bought',1);addXP(10);save();closeModal();sfx.cash();burst(60,['#ffe07a','#9ef0ff','#fff'],.8);toast(`${c.name} added to your binder`);renderShop();checkUnlocks();checkAll()}}
 /* =================== SHOP / JOBS / SHELF / TOURNEY =================== */
 const UPG={disp:{n:'Display case',c:[0,160,320,640,1200],max:5,d:'+$1.50/h and +1 shelf slot each level'},light:{n:'Lighting',c:[120,300,700],max:3,d:'+15% income each level'},store:{n:'Storage room',c:[60,150,400],max:3,d:'Income piles up longer while you are away'}};
@@ -1992,7 +2006,7 @@ function shelfAdd(){const items=allItems().filter(i=>i.k!=='seal'&&i.val>=1).sor
 function shelfCollect(i){const x=S.shelf[i];if(!x||x.ready>NOW())return;S.shelf.splice(i,1);
  if(x.snap.fake){addRep(-2);sfx.bad();modal(`<div class="em">😠</div><h2>Refund!</h2><p>The buyer brought back the ${esc(x.name)}: it's a fake. You refunded them. Reputation −2.</p><button class="btn" onclick="closeModal()">UGH</button>`)}
  else{addCoins(x.price);S.stats.sold++;S.stats.earned+=x.price;addRep(.3);addXP(8);sfx.cash()}save();renderShop()}
-function shelfPull(i){const x=S.shelf[i];if(!x)return;S.shelf.splice(i,1);const s=x.snap;
+function shelfPull(i){const x=S.shelf[i];if(!x)return;S.shelf.splice(i,1);const s=x.snap;_uv++;
  if(s.k==='raw'){const c=cardById(s.id);if(c)addRaw(c,s.fake)}else if(s.k==='slab')S.slabs.push(s.sl);else S.mis.push(s.m);save();renderShop();checkUnlocks()}
 function tourney(){if(!tourneyReady())return;const cost=30;
  modal(`<div class="em">🏆</div><h2>Tournament night</h2><p>Host a tournament at your shop. You pay <span class="money out">${fmt(cost)}</span> for prizes, players pay $6 entry. More reputation brings more players.</p><button class="btn buy" id="tY">HOST ${OUT(cost)}</button><button class="btn ghost" onclick="closeModal()">NOT NOW</button>`);
@@ -2088,13 +2102,13 @@ const GEN2="Chikorita,Bayleef,Meganium,Cyndaquil,Quilava,Typhlosion,Totodile,Cro
 const GEN3="Treecko,Grovyle,Sceptile,Torchic,Combusken,Blaziken,Mudkip,Marshtomp,Swampert,Poochyena,Mightyena,Zigzagoon,Linoone,Wurmple,Silcoon,Beautifly,Cascoon,Dustox,Lotad,Lombre,Ludicolo,Seedot,Nuzleaf,Shiftry,Taillow,Swellow,Wingull,Pelipper,Ralts,Kirlia,Gardevoir,Surskit,Masquerain,Shroomish,Breloom,Slakoth,Vigoroth,Slaking,Nincada,Ninjask,Shedinja,Whismur,Loudred,Exploud,Makuhita,Hariyama,Azurill,Nosepass,Skitty,Delcatty,Sableye,Mawile,Aron,Lairon,Aggron,Meditite,Medicham,Electrike,Manectric,Plusle,Minun,Volbeat,Illumise,Roselia,Gulpin,Swalot,Carvanha,Sharpedo,Wailmer,Wailord,Numel,Camerupt,Torkoal,Spoink,Grumpig,Spinda,Trapinch,Vibrava,Flygon,Cacnea,Cacturne,Swablu,Altaria,Zangoose,Seviper,Lunatone,Solrock,Barboach,Whiscash,Corphish,Crawdaunt,Baltoy,Claydol,Lileep,Cradily,Anorith,Armaldo,Feebas,Milotic,Castform,Kecleon,Shuppet,Banette,Duskull,Dusclops,Tropius,Chimecho,Absol,Wynaut,Snorunt,Glalie,Spheal,Sealeo,Walrein,Clamperl,Huntail,Gorebyss,Relicanth,Luvdisc,Bagon,Shelgon,Salamence,Beldum,Metang,Metagross,Regirock,Regice,Registeel,Latias,Latios,Kyogre,Groudon,Rayquaza,Jirachi,Deoxys".split(',');
 const GEN4="Turtwig,Grotle,Torterra,Chimchar,Monferno,Infernape,Piplup,Prinplup,Empoleon,Starly,Staravia,Staraptor,Bidoof,Bibarel,Kricketot,Kricketune,Shinx,Luxio,Luxray,Budew,Roserade,Cranidos,Rampardos,Shieldon,Bastiodon,Burmy,Wormadam,Mothim,Combee,Vespiquen,Pachirisu,Buizel,Floatzel,Cherubi,Cherrim,Shellos,Gastrodon,Ambipom,Drifloon,Drifblim,Buneary,Lopunny,Mismagius,Honchkrow,Glameow,Purugly,Chingling,Stunky,Skuntank,Bronzor,Bronzong,Bonsly,Mime Jr.,Happiny,Chatot,Spiritomb,Gible,Gabite,Garchomp,Munchlax,Riolu,Lucario,Hippopotas,Hippowdon,Skorupi,Drapion,Croagunk,Toxicroak,Carnivine,Finneon,Lumineon,Mantyke,Snover,Abomasnow,Weavile,Magnezone,Lickilicky,Rhyperior,Tangrowth,Electivire,Magmortar,Togekiss,Yanmega,Leafeon,Glaceon,Gliscor,Mamoswine,Porygon-Z,Gallade,Probopass,Dusknoir,Froslass,Rotom,Uxie,Mesprit,Azelf,Dialga,Palkia,Heatran,Regigigas,Giratina,Cresselia,Phione,Manaphy,Darkrai,Shaymin,Arceus".split(',');
 const DEXG={1:[GEN1,1],2:[GEN2,152],3:[GEN3,252],4:[GEN4,387]};
-function dexPool(){const p=[];gensOpen().forEach(g=>{const [l,s]=DEXG[g];l.forEach((n,i)=>p.push({dex:s+i,name:n,g}))});return p}
+function dexPool(){const p=[];gensOpen().filter(g=>DEXG[g]).forEach(g=>{const [l,s]=DEXG[g];l.forEach((n,i)=>p.push({dex:s+i,name:n,g}))});return p}
 const mgMult=()=>(hasBadge('zephyr')?1.15:1)*(hasBadge('forest')?1.15:1);
 const mg=$('#mg');
 function closeMg(){mg.classList.remove('on');$('#nav').classList.remove('hide');$('#coin').style.opacity=1;renderHome()}
 function quiz(){if(!quizReady())return;const pool=dexPool();let round=0,ok=0,earned=0;const pay=Math.round(2*(1+rankIdx()*.5)*mgMult()*(1+(maxGen()-1)*.25)*100)/100;
  $('#nav').classList.add('hide');mg.classList.add('on');
- const gl=gensOpen().map(g=>'Gen '+ROMAN[g]).join(' + ');
+ const gl=gensOpen().filter(g=>g<5).map(g=>'Gen '+ROMAN[g]).join(' + ');
  const next=()=>{if(round>=5){S.lastQuiz=NOW();addXP(ok*6);save();mg.innerHTML=`<div class="wtt" style="margin-top:30vh">Quiz over</div><p class="empty">${ok}/5 correct</p><button class="btn earn" id="qC" style="max-width:340px">COLLECT ${IN(earned)}</button>`;$('#qC').onclick=()=>{if(earned)addCoins(earned);closeMg();checkAll()};return}
   round++;const ans=rnd(pool);const same=pool.filter(p=>p.dex!==ans.dex&&p.g===ans.g),other=pool.filter(p=>p.dex!==ans.dex);
   const opts=shuffle([ans,...shuffle(same.length>=4?same:other).slice(0,4)]);
@@ -2170,15 +2184,17 @@ async function renderHof(){$('#hofBody').innerHTML='<div style="display:flex;jus
  const seals=S.sealed.slice(0,4);const raws=allItems().filter(i=>i.k==='raw').sort((a,b)=>b.val-a.val).slice(0,2);
  const hr=new Date().getHours(),day=hr>=7&&hr<19;const w=WALLS[S.room.wall%WALLS.length];
  const furn=RUP.reduce((a,u)=>a+(S.room[u[0]]?u[3]:0),0)+FRAMEC.slice(0,S.room.frames).reduce((a,b)=>a+b,0);
- const dispV=(hero?hero.val:0)+items.reduce((a,i)=>a+i.val,0)+favs.reduce((a,s)=>a+cardVal(s,{grade:s.grade}),0)+seals.reduce((a,s)=>a+sealedVal(s),0);
+ const topGames=S.games.slice().sort((a,b)=>gameVal(b)-gameVal(a)).slice(0,6);
+ const dispV=(hero?hero.val:0)+items.reduce((a,i)=>a+i.val,0)+favs.reduce((a,s)=>a+cardVal(s,{grade:s.grade}),0)+seals.reduce((a,s)=>a+sealedVal(s),0)+topGames.reduce((a,g)=>a+gameVal(g),0);
  const roomV=dispV+furn;
  const vis=[{who:'mom',t:`"${esc(pname())}, clean your room! …Okay, the showcase looks nice."`}];
  if(S.rv&&S.rv.his)vis.push({who:'rival',t:`"Nice room. My ${esc(S.rv.his.name)} would look better in that cabinet."`});
  if(setComplete('base1'))vis.push({who:'gpa',t:'"My old Base Set, complete again… I\'m so proud of you." 🥲'});
  if(hero)vis.push({who:'oak',t:`"${esc(hero.name)} under glass! Remarkable research specimen."`});
+ if(topGames.length)vis.push({who:'gary',t:`"Is that a boxed ${esc(GAMES[topGames[0].k].n)}?! I'd trade my shop for that."`});
  if(playerLook()!==2)vis.push({who:2,t:'"Bro. This is the best card room I have ever seen."'});
  const v=rnd(vis);
- const posters=gensOpen().map((g,i)=>`<div class="rposter" style="left:${5+i*6.5}%;top:50%;transform:rotate(${[-3,2,-2,3][i]}deg);background:linear-gradient(160deg,${PCOL[g][0]},${PCOL[g][1]})">${REGION[g].toUpperCase()}</div>`).join('');
+ const posters=gensOpen().map((g,i)=>`<div class="rposter" style="left:${5+i*5.5}%;top:47%;width:5%;transform:rotate(${[-3,2,-2,3,-1][i]}deg);background:linear-gradient(160deg,${PCOL[g][0]},${PCOL[g][1]})">${REGION[g].toUpperCase()}</div>`).join('');
  const bdg=GYMS.filter(x=>hasBadge(x.b)).map(x=>`<i>${x.em}</i>`).join('');
  const shelfFavs=favs.filter(f=>!(hero&&hero.k==='slab'&&hero.sl.uid===f.uid));
  $('#hofBody').innerHTML=`<div class="room" style="--wa:${w[0]};--wb:${w[1]};--sky:${day?'linear-gradient(#7ec8ff,#d8f0ff)':'radial-gradient(circle at 70% 30%,#fff 0 3%,transparent 4%),radial-gradient(circle at 30% 60%,#fff 0 1.5%,transparent 2.5%),linear-gradient(#0a1030,#1a2350)'};--sheet:${S.room.bed?'linear-gradient(135deg,#ff7a2a,#e8455a,#ffcf3a)':'#3058c8'}">
@@ -2188,6 +2204,7 @@ async function renderHof(){$('#hofBody').innerHTML='<div style="display:flex;jus
   ${S.ms.length?`<div class="troph">${S.ms.map(()=>'🏆').join('')}</div>`:''}
   <div class="shelf">${seals.map((s,i)=>`<div class="bx" style="left:${4+i*24}%;background:linear-gradient(${setById[s.set].c[0]},${setById[s.set].c[1]})"></div>`).join('')}</div>
   <div class="badges">${bdg||'<i style="opacity:.5;font-size:7px;color:#fff">BADGES</i>'}</div>
+  <div class="gshelf2" id="gameShelf">${topGames.map(g=>gameBox(g,'mini')).join('')||'<span class="emp">🎮 NINTENDO CRATE</span>'}</div>
   <div class="hero"><div class="crown">👑 SHOWCASE</div><div class="glassbox" id="heroEl">${hero?`<div class="main">${hero.k==='slab'?slabHTML(hero.sl,{small:1}):`<div class="gframe"><img src="${hero.img}"></div>`}</div><div class="stand"></div><div class="plaque">${esc(hero.name)}${hero.k==='slab'?' · PSA '+hero.grade:''}<b>${fmt(hero.val)}</b></div>`:'<div class="plaque">YOUR BEST CARD<b>GOES HERE</b></div>'}<div class="gshelf" id="caseEl">${shelfFavs.map(s=>slabHTML(s,{small:1})).join('')||'<span class="emp">★ PICK 3 SLABS IN THE VAULT</span>'}</div></div><div class="base2"></div></div>
   <div class="tv"><i></i></div>${S.room.console?'<div style="position:absolute;right:13%;top:62%;font-size:14px;z-index:3">🎮</div>':''}
   ${S.room.fridge?'<div class="fridge"></div>':''}${S.room.rug?'<div class="rug"></div>':''}
@@ -2198,14 +2215,17 @@ async function renderHof(){$('#hofBody').innerHTML='<div style="display:flex;jus
   ${S.room.lamp?'<div class="lamp"></div>':''}
   <div class="rv">ROOM VALUE ${fmt(roomV)}</div></div>
  <div class="two"><button class="btn ghost" id="rShare">📸 SHARE MY ROOM</button><button class="btn ghost" id="rCase">★ SHOWCASE SHELF</button></div>
+ ${crateHTML()}
  <h3 class="sec">Upgrade your room</h3><div class="pnl">
   <div class="row2"><div class="ic">🖼️</div><div class="tx"><b>Frame wall · ${nF} frames</b><small>Your next most valuable cards hang here automatically. Your #1 card always sits in the lit showcase.</small></div>${S.room.frames>=3?'<button class="sbtn g" disabled>MAX</button>':`<button class="sbtn buy" data-ru="frames">${OUT(FRAMEC[S.room.frames])}</button>`}</div>
   ${RUP.map(([k,n,d,c])=>`<div class="row2"><div class="ic">${{lamp:'💡',rug:'🟥',console:'🎮',fridge:'🧊',bed:'🛏️'}[k]}</div><div class="tx"><b>${n}</b><small>${d}</small></div>${S.room[k]?'<button class="sbtn g" disabled>OWNED</button>':`<button class="sbtn buy" data-ru="${k}">${OUT(c)}</button>`}</div>`).join('')}
   <div class="row2"><div class="ic">🎨</div><div class="tx"><b>New wallpaper</b><small>Cycle through 4 colours</small></div><button class="sbtn buy" data-ru="wall">${OUT(100)}</button></div></div>`;
  $('#hofBody').querySelectorAll('[data-fi]').forEach(el=>el.onclick=()=>{const it=items[+el.dataset.fi];if(it.k==='slab')openSlab(it.sl);else if(it.k==='mis')openZoom(it.m,it.m.v);else openZoom(it.c)});
  $('#caseEl').onclick=e=>{e.stopPropagation();go('scrVault')};$('#rCase').onclick=()=>go('scrVault');
+ $('#gameShelf').onclick=()=>{albumSet='$games';go('scrAlbum')};
+ const crb=$('#crateBtn');if(crb)crb.onclick=openCrate;
  const he=$('#heroEl');if(he&&hero)he.onclick=()=>{if(hero.k==='slab')openSlab(hero.sl);else if(hero.k==='mis')openZoom(hero.m,hero.m.v);else openZoom(hero.c)};
- $('#rShare').onclick=async()=>{const t=`My PACK RIP room is worth ${fmt(roomV)}! ${hero?'Showcase: '+hero.name+' ('+fmt(hero.val)+'). ':''}${S.badges.length} badges, level ${level()}. Beat that!`;
+ $('#rShare').onclick=async()=>{const t=`My PACK RIP room is worth ${fmt(roomV)}! ${hero?'Showcase: '+hero.name+' ('+fmt(hero.val)+'). ':''}${S.games.length} retro games, ${S.badges.length} badges, level ${level()}. Beat that!`;
   if(navigator.share)navigator.share({title:'My PACK RIP room',text:t}).catch(()=>{});else{try{await navigator.clipboard.writeText(t);toast('Copied! Take a screenshot to show the room too.')}catch(e){toast(t)}}};
  $('#hofBody').querySelectorAll('[data-ru]').forEach(b=>b.onclick=()=>{const k=b.dataset.ru;
   if(k==='frames'){if(!spend(FRAMEC[S.room.frames]))return;S.room.frames++}
@@ -2221,9 +2241,9 @@ function renderHome(){
  rollDaily();rvEnsure();hwEnsure();if(S.rvPending)rvSettle();
  const L=level(),lf=lvFromXP(S.xp),capped=lf.L>capLv(),cv=collValue();
  const ev=evNow();const b=bestItem();
- let h=`<div class="trainer"><div class="spr" id="pbgBtn">${sprite(playerLook(),4)}</div>${b?`<div class="bestc" data-best="1"><i>👑</i><img src="${b.img}"><span>${fmt(b.val)}</span></div>`:''}<div style="flex:1;min-width:0"><div class="tn">${S.prestige?'★'.repeat(Math.min(3,S.prestige))+' ':''}${esc(pname())}</div><div class="tr"><span class="lvl">LV ${L}</span>${title(L).toUpperCase()} · ⭐ ${S.rep.toFixed(1)} · ${REGION[maxGen()].toUpperCase()}</div><div class="mbar xpbar"><i style="width:${capped||L>=100?100:lf.rem/lf.need*100}%"></i></div><p style="color:var(--mut);font-size:11px;margin-top:4px;text-shadow:0 1px 4px #000">${L>=100?'Max level · start a New Game+ season in Stats':capped?`Max level in ${REGION[maxGen()]} · unlock ${REGION[maxGen()+1]} to keep leveling`:`${lf.rem} / ${lf.need} XP to level ${L+1}`}</p></div></div>
+ let h=`<div class="trainer"><div class="spr" id="pbgBtn">${sprite(playerLook(),4)}</div>${b?`<div class="bestc" data-best="1"><i>👑</i><img src="${b.img}"><span>${fmt(b.val)}</span></div>`:''}<div style="flex:1;min-width:0"><div class="tn">${S.prestige?'★'.repeat(Math.min(3,S.prestige))+' ':''}${esc(pname())}</div><div class="tr"><span class="lvl">LV ${L}</span>${title(L).toUpperCase()} · ⭐ ${S.rep.toFixed(1)} · ${REGION[maxGen()].toUpperCase()}</div><div class="mbar xpbar"><i style="width:${capped||L>=100?100:lf.rem/lf.need*100}%"></i></div><p style="color:var(--mut);font-size:11px;margin-top:4px;text-shadow:0 1px 4px #000">${L>=100?'Max level · start a New Game+ season in Stats':capped?`Max level in ${REGION[maxGen()]} · unlock ${REGION[maxGen()+1]||'the next region'} to keep leveling`:`${lf.rem} / ${lf.need} XP to level ${L+1}`}</p></div></div>
  <div class="kpis"><div class="kpi"><b>${fmt(S.coins)}</b><span>Cash</span></div><div class="kpi"><b>${fmt(cv)}</b><span>Collection value</span></div></div>`;
- if(ev)h+=`<div class="pnl ev"><h4>WEEKEND EVENT · ENDS SUNDAY</h4><div class="big">${EVS[ev][0]}</div><p>${EVS[ev][1]}</p></div>`;
+ h+=troStrip();if(ev)h+=`<div class="pnl ev"><h4>WEEKEND EVENT · ENDS SUNDAY</h4><div class="big">${EVS[ev][0]}</div><p>${EVS[ev][1]}</p></div>`;
  if(crashToday())h+=`<div class="pnl red"><h4>📉 MARKET CRASH</h4><p>All cards trade 30% lower today. Good day to buy, bad day to sell.</p></div>`;
  const ready=S.subs.filter(s=>s.ready<=NOW());if(ready.length){const n=ready.reduce((a,s)=>a+s.sls.length,0);h+=`<div class="pnl gold" data-go="scrVault"><h4>📦 PSA PACKAGE ARRIVED</h4><div class="big">${n} slab${n>1?'s':''} waiting in your Vault</div></div>`}
  if(S.machine.run)h+=`<div class="pnl grn" data-go="scrMachine"><h4>⚙ MACHINE RUNNING</h4><p>${S.machine.run.done} packs opened · ${setById[S.machine.run.set].n}</p></div>`;
@@ -2231,15 +2251,16 @@ function renderHome(){
  if(oakReady())h+=`<div class="pnl gold"><div class="row2"><div class="ic">🎓</div><div class="tx"><b>Professor Oak's weekly gift</b><small>A free sealed bundle is waiting.</small></div><button class="sbtn earn" id="oak">CLAIM</button></div></div>`;
  if(isBroke())h+=`<div class="pnl red"><h4>LOW ON CASH</h4><p>Odd jobs and Grandpa in the Shop, minigames below, or quick sell a card.</p></div>`;
  if(S.free>0||Object.values(S.inv).some(n=>n>0))h+=`<div class="pnl" data-go="scrSets"><div class="row2"><div class="ic">🎟️</div><div class="tx"><b>Packs waiting</b><small>${S.free?S.free+' free voucher'+(S.free>1?'s':''):''}${S.free&&Object.values(S.inv).some(n=>n>0)?' · ':''}${Object.entries(S.inv).filter(([k,n])=>n>0).map(([k,n])=>n+'× '+setById[k].n).join(', ')}</small></div><button class="sbtn">RIP</button></div></div>`;
- if(S.gcase&&S.gcase.items.some(x=>x.m&&!x.b))h+=`<div class="pnl ev" data-go="scrShop"><div class="row2"><div class="ic">💎</div><div class="tx"><b>Gary has a card you're missing</b><small>It's in his glass case today. Pricey, though.</small></div><button class="sbtn">LOOK</button></div></div>`;
- const nq=QTYS.find(q=>!qOk(q));if(nq)h+=`<div class="pnl"><div class="row2"><div class="ic">📦</div><div class="tx"><b>Next unlock: open ${nq} packs at once</b><small>${nq===50?'Reach max level 100':'Reach level '+QLV[nq]} · you are level ${lvFromXP(S.xp).L}</small></div><span class="tag">🔒 LV ${QLV[nq]}</span></div></div>`;
+ if(S.gcase&&S.gcase.items.some(x=>x.m&&!x.b))h+=`<div class="pnl ev" data-go="scrShop"><div class="row2"><div class="ic">💎</div><div class="tx"><b>Gary has a card you're missing</b><small>It's in his glass case today. At 10× its value.</small></div><button class="sbtn">LOOK</button></div></div>`;
+ h+=aucHomeHTML()+moHomeHTML()+specHomeHTML();
+ const nq=QTYS.find(q=>!qOk(q));if(nq)h+=`<div class="pnl"><div class="row2"><div class="ic">📦</div><div class="tx"><b>Next unlock: open ${nq} packs at once</b><small>Reach level ${QLV[nq]} · you are level ${lvFromXP(S.xp).L}</small></div><span class="tag">🔒 LV ${QLV[nq]}</span></div></div>`;
  const sr=storyReady();if(sr)h+=`<div class="pnl gold" data-go="scrQuests"><h4>📜 STORY</h4><div class="big">${sr} chapter${sr>1?'s':''} ready to claim</div></div>`;
  const r=S.rv;if(r)h+=`<div class="pnl" data-go="scrRival"><div class="row2"><div class="ic" style="width:44px">${sprite('rival',3)}</div><div class="tx"><b>Weekly duel vs ${RIVAL} · ${daysLeft()}d left</b><small>Your best: ${r.mine?esc(r.mine.name)+' '+fmt(r.mine.v):'none yet'} · his: ${r.his?esc(r.his.name)+' '+fmt(r.his.v):'?'}</small></div><span class="tag ${r.mine&&r.his&&r.mine.v>r.his.v?'':'r'}">${r.mine&&r.his&&r.mine.v>r.his.v?'LEADING':'BEHIND'}</span></div></div>`;
  h+=`<div class="pnl"><h4>DAILY MISSIONS · 🔥 ${S.streak} DAY STREAK</h4>${S.daily.keys.map(k=>{const d=DPOOL.find(x=>x.k===k);if(!d)return'';const p=Math.min(d.n,Math.floor(S.daily.p[k]||0)),done=p>=d.n,cl=S.daily.claimed.includes(k);
   return `<div class="row2"><div class="tx"><b>${d.t}${d.g>1?` <span class="tag g${d.g}">GEN ${ROMAN[d.g]}</span>`:''}</b><div class="mbar"><i style="width:${p/d.n*100}%"></i></div></div><button class="sbtn ${done&&!cl?'earn':'g'}" data-claim="${k}" ${done&&!cl?'':'disabled'}>${cl?'✓':IN(dReward(d))}</button></div>`}).join('')}</div>`;
  const g=S.grail;h+=`<div class="pnl"><h4>👑 YOUR GRAIL</h4>${g?`<div class="row2"><img class="th" src="${g.img}"><div class="tx"><b>PSA 10 ${esc(g.name)}</b><small>Reward: $200 + 300 XP</small></div><button class="sbtn g" id="grailPick">CHANGE</button></div>`:`<p>Pick one ultra rare as your life goal. Land it as a PSA 10 for a big reward.</p><button class="btn ghost" id="grailPick">CHOOSE GRAIL</button>`}</div>`;
  if(!ev)h+=`<p class="empty" style="padding:10px 0 0;font-size:11px;text-shadow:0 1px 4px #000">Next weekend event (Fri–Sun): ${EVS[evNext()][0]}</p>`;
- const qd=storyReady()+colsReady()+dailyReady();const maxB=gensOpen().length*8;
+ const qd=storyReady()+colsReady()+dailyReady();const maxB=gensOpen().filter(g=>g<5).length*8;
  const tile=(go,ic,t,dot,off)=>`<button class="tile ${off?'off':''}" ${off?`data-lock="${off}"`:`data-go="${go}"`}>${dot?'<span class="dot"></span>':''}<i>${ic}</i>${t}</button>`;
  h+=`<div class="tiles">${tile('scrQuests','📜','QUESTS',qd)}${tile('scrShop','🏪','CARD SHOP',(S.shop.owned&&shopPending()>=1)||jobReady()||shelfSold())}${tile('scrHof','🛏️','MY ROOM')}
   ${tile('scrGyms','🏅','GYMS '+GYMS.filter(x=>hasBadge(x.b)&&genOpen(x.g)).length+'/'+maxB)}${tile('scrRival','⚔️','RIVAL & TRADES',r&&r.his&&(!r.mine||r.mine.v<r.his.v))}${tile('scrMarket','📈','MARKET')}
@@ -2247,35 +2268,37 @@ function renderHome(){
   ${tile('hl','⚖️','HIGHER OR LOWER',hlReady(),rankIdx()<2?'Reach level 18 to unlock':(!hlReady()?'Next round in '+Math.ceil((10*MIN-(NOW()-S.lastHL))/MIN)+' min':0))}
   ${tile('scrStats','📊','STATS')}
   ${tile('scrMachine','⚙️','PACK MACHINE',!!S.machine.run,S.machine.owned?0:'Buy it in your own shop for $10,000')}</div>`;
- $('#homeBody').innerHTML=h;updDots()}
+ h+=`<button class="resetSm" id="resetHome">⟲ RESET GAME</button>`;$('#homeBody').innerHTML=h;updDots()}
 let homeSig='';
 function renderHomeLive(){const sig=[S.subs.filter(s=>s.ready<=NOW()).length,jobReady(),oakReady(),isBroke(),quizReady(),hlReady(),shelfSold(),!!S.machine.run].join();if(sig!==homeSig){homeSig=sig;renderHome()}}
 $('#homeBody').addEventListener('click',e=>{const l=e.target.closest('[data-lock]');if(l){toast(l.dataset.lock);return}
  if(e.target.closest('#pbgBtn')){pbgModal();return}
+ if(e.target.closest('#resetHome')){resetModal();return}
  const bb=e.target.closest('[data-best]');if(bb){const b=bestItem();if(b){if(b.k==='slab')openSlab(b.sl);else if(b.k==='mis')openZoom(b.m,b.m.v);else openZoom(b.c)}return}
- const g=e.target.closest('[data-go]');if(g){const k=g.dataset.go;if(k==='quiz')return quiz();if(k==='hl')return higherLower();go(k);return}
+ const g=e.target.closest('[data-go]');if(g){const k=g.dataset.go;if(k==='quiz')return quiz();if(k==='auction')return openAuction();if(k==='hl')return higherLower();go(k);return}
  const c=e.target.closest('[data-claim]');if(c){const d=DPOOL.find(x=>x.k===c.dataset.claim);if(S.daily.claimed.includes(d.k))return;S.daily.claimed.push(d.k);addCoins(dReward(d));addXP(50);sfx.cash();save();renderHome();return}
  if(e.target.closest('#oak')){const s=rnd(unlockedSets());S.sealed.push({uid:uid(),set:s.id,kind:'bundle',packs:6,base:6*packPrice(s),bought:NOW()});S.lastOak=NOW();save();sfx.ultra();burst(120,['#ffe07a','#fff'],1);modal(`<div class="em">${sprite('oak',5)}</div><h2>Professor Oak</h2><p>"A true researcher needs samples!"<br>You got a sealed <b>${s.n} bundle</b>. It's in your Vault.</p><button class="btn" onclick="closeModal()">THANK YOU PROFESSOR</button>`);renderHome();return}
  if(e.target.closest('#grailPick')){pickGrail();return}});
 $('#saveBtn').onclick=saveCodeModal;
-$('#resetTop').onclick=resetModal;
+
 async function pickGrail(){await ensureLoaded();const pool=[];unlockedSets().forEach(s=>{const m=memo[s.id];if(m)pool.push(...m.P.ultra)});pool.sort((a,b)=>cardVal(b)-cardVal(a));
  modal(`<h2>Choose your grail</h2><p>Only ultra rares from unlocked sets.</p><div class="grid5" style="grid-template-columns:repeat(3,1fr);margin-top:12px">${pool.slice(0,15).map(c=>`<div class="mini ultra" data-g="${c.id}" style="cursor:pointer"><img src="${c.s}"><span class="pv">${fmt(cardVal(c,{grade:10}))}</span></div>`).join('')}</div><button class="btn ghost" onclick="closeModal()">CANCEL</button>`);
  document.querySelectorAll('[data-g]').forEach(el=>el.onclick=()=>{const c=cardById(el.dataset.g);S.grail={id:c.id,name:c.name,img:c.s};save();closeModal();renderHome();toast('Grail set: '+c.name)})}
 /* =================== QUESTS =================== */
-function renderQuests(){ensureBounties();hwEnsure();let h='';
- GL.forEach(g=>{const book=STORY[g];const open=genOpen(g);
+function renderQuests(){ensureBounties();hwEnsure();let h=troQuestHTML();
+ G4.forEach(g=>{const book=STORY[g];const open=genOpen(g);
   if(!open){h+=`<div class="pnl lock"><h4>🔒 GENERATION ${ROMAN[g]} · ${REGION[g].toUpperCase()}</h4><p>Unlock ${SETS.find(s=>s.g===g).n} to start <b style="color:#fff">${book.name}</b>: ${book.chapters.length} new chapters, 8 new Gym Leaders, new collections and achievements.</p></div>`;return}
   const i=S.storyG[g]||0,st=book.chapters[i];
   h+=`<div class="pnl gold"><h4>${g===1?'👴':'🎓'} ${book.name.toUpperCase()} · GEN ${ROMAN[g]} · ${Math.min(i+1,book.chapters.length)}/${book.chapters.length}</h4>${st?`<div class="big">${st.t}</div><p>${st.d}</p><div class="row2"><div class="tx"><small>Reward: ${st.rt}</small></div><button class="sbtn ${st.ok()?'earn':'g'}" data-st="${g}" ${st.ok()?'':'disabled'}>${st.ok()?'CLAIM':'IN PROGRESS'}</button></div>`:`<div class="big">Chapter complete</div><p>${book.end}</p>`}</div>`});
+ h+=specQuestHTML();
  const hc=hwCards(),hv=Math.round((hc.reduce((a,c)=>a+cardVal(c),0)*2.5+25)*100)/100;
  h+=`<h3 class="sec">Weekly request</h3><div class="pnl"><div class="row2"><div class="ic" style="width:44px">${sprite(2,3)}</div><div class="tx"><b>${hwName()} wants Psychic cards</b><small>${S.hw.done?'Done for this week. New request on Monday.':`Hand in 3 Psychic cards (rare or better). He pays 2.5× market. You have ${hc.length}/3.`}</small></div>${S.hw.done?'<button class="sbtn g" disabled>✓</button>':`<button class="sbtn earn" id="hwGo" ${hc.length>=3?'':'disabled'}>${hc.length>=3?IN(hv):'3 NEEDED'}</button>`}</div></div>`;
- h+=`<h3 class="sec">Bounties</h3><div class="pnl">${S.bounties.map((b,i)=>`<div class="row2"><img class="th" src="${b.img}"><div class="tx"><b>${esc(b.name)} <span class="tag ${'g'+(setById[setOf(b.id)].g)}">GEN ${ROMAN[setById[setOf(b.id)].g]}</span></b><small>${setById[setOf(b.id)].n} · ${Math.ceil((b.until-NOW())/HOUR)}h left · you have ${rawCount(b.id)}</small></div><button class="sbtn earn" data-b="${i}" ${rawCount(b.id)?'':'disabled'}>${IN(b.reward*bountyMult())}</button></div>`).join('')||'<p>No bounties right now.</p>'}</div>`;
+ h+=`<h3 class="sec">Bounties</h3><div class="pnl">${S.bounties.map((b,i)=>{const sg=(setById[setOf(b.id)]||{g:1,n:''});return `<div class="row2"><img class="th" src="${b.img}"><div class="tx"><b>${esc(b.name)} <span class="tag g${sg.g}">GEN ${ROMAN[sg.g]}</span></b><small>${sg.n} · ${Math.ceil((b.until-NOW())/HOUR)}h left · you have ${rawCount(b.id)}</small></div><button class="sbtn earn" data-b="${i}" ${rawCount(b.id)?'':'disabled'}>${IN(b.reward*bountyMult())}</button></div>`}).join('')||'<p>No bounties right now.</p>'}</div>`;
  h+=`<h3 class="sec">Master Sets</h3><div class="pnl"><p style="margin-top:0">The ultimate goal per set. ex and Diamond & Pearl era: every card plus every reverse holo. WotC era: every card plus a PSA 9 or 10 of every holo. Reward: cash, 500 XP and a golden trophy in your room.</p>${unlockedSets().map(s=>{const m=masterProg(s.id);if(!m)return'';const d=S.ms.includes(s.id);return `<div class="row2"><div class="tx"><b>${d?'👑 ':''}${s.n}</b><div class="mbar"><i style="width:${m.a/m.b*100}%"></i></div></div><span style="font-size:11px;color:var(--mut)">${m.a}/${m.b}</span></div>`}).join('')}</div>`;
- h+=`<h3 class="sec">Collections</h3>`+GL.map(g=>{const list=COLS.filter(c=>c[3]===g);if(!genOpen(g))return `<div class="pnl lock"><h4>🔒 GEN ${ROMAN[g]} COLLECTIONS</h4><p>${list.length} new collections unlock with ${REGION[g]}.</p></div>`;
+ h+=`<h3 class="sec">Collections</h3>`+G4.map(g=>{const list=COLS.filter(c=>c[3]===g);if(!genOpen(g))return `<div class="pnl lock"><h4>🔒 GEN ${ROMAN[g]} COLLECTIONS</h4><p>${list.length} new collections unlock with ${REGION[g]}.</p></div>`;
   return `<div class="pnl"><h4>${REGION[g].toUpperCase()}</h4>${list.map(([n,l,r])=>{const [a,b]=colProgress(l),done=S.cols.includes(n);return `<div class="row2"><div class="tx"><b>${n}</b><small>${l[0]==='pikachu×5'?'5 different Pikachu cards':l.map(x=>x[0].toUpperCase()+x.slice(1)).join(' · ')}</small><div class="mbar"><i style="width:${a/b*100}%"></i></div></div><button class="sbtn ${done?'g':'earn'}" data-col="${n}" ${a>=b&&!done?'':'disabled'}>${done?'✓':`${IN(r)} + PACK`}</button></div>`}).join('')}</div>`}).join('');
  const vis=ACH.filter(a=>genOpen(a[5]));
- h+=`<h3 class="sec">Achievements · ${S.ach.filter(k=>vis.some(a=>a[0]===k)).length}/${vis.length}</h3>`+GL.map(g=>{const list=ACH.filter(a=>a[5]===g);if(!genOpen(g))return `<div class="pnl lock"><h4>🔒 GEN ${ROMAN[g]} ACHIEVEMENTS</h4><p>${list.length} new achievements unlock with ${REGION[g]}.</p></div>`;
+ h+=`<h3 class="sec">Achievements · ${S.ach.filter(k=>vis.some(a=>a[0]===k)).length}/${vis.length}</h3>`+G4.map(g=>{const list=ACH.filter(a=>a[5]===g);if(!genOpen(g))return `<div class="pnl lock"><h4>🔒 GEN ${ROMAN[g]} ACHIEVEMENTS</h4><p>${list.length} new achievements unlock with ${REGION[g]}.</p></div>`;
   return `<div class="pnl"><h4>${REGION[g].toUpperCase()} · ${list.filter(a=>S.ach.includes(a[0])).length}/${list.length}</h4>${list.map(([k,n,d,ok,r])=>`<div class="row2" style="${S.ach.includes(k)?'':'opacity:.45'}"><div class="ic">${S.ach.includes(k)?'🏆':'🔒'}</div><div class="tx"><b>${n}</b><small>${d} · ${IN(r)}</small></div></div>`).join('')}</div>`}).join('');
  $('#questBody').innerHTML=h}
 $('#questBody').addEventListener('click',e=>{
@@ -2301,21 +2324,22 @@ async function renderMarket(){$('#marketBody').innerHTML='<div style="display:fl
 function lookGrid(sel){return `<div class="looks">${LOOKS.map((l,i)=>`<button data-lk="${i}" class="${i===sel?'on':''}">${sprite(i,3)}${l.n}</button>`).join('')}</div>`}
 function renderStats(){let own=0;Object.values(S.coll).forEach(s=>Object.values(s).forEach(n=>own+=n));
  const st=[[S.packs,'Packs ripped'],[S.cards,'Cards pulled'],[own,'Cards in hand'],[S.holos,'Holos'],[S.ultras,'Ultra rares'],[S.gods,'God packs'],[S.stats.mis,'Misprints'],[S.sinceHolo,'Packs since holo'],
-  [GL.map(g=>S.gp[g].p).join(' / '),'Packs Gen I–IV'],[S.badges.length,'Badges'],[S.ms.length,'Master Sets'],[S.streak,'Login streak'],
-  [S.stats.sold,'Items sold'],[fmt(S.stats.earned),'Sales earnings'],[S.stats.graded,'Cards graded'],[S.slabs.filter(s=>s.grade===10&&!s.fake).length,'PSA 10s'],[S.stats.quiz,'Quiz correct'],[S.stats.duels,'Duels won'],[S.stats.trades,'Trades'],[unlockedSets().length+'/'+SETS.length,'Sets unlocked']];
+  [G4.map(g=>S.gp[g].p).join(' / '),'Packs Gen I–IV'],[S.badges.length,'Badges'],[S.ms.length,'Master Sets'],[S.streak,'Login streak'],
+  [S.stats.sold,'Items sold'],[fmt(S.stats.earned),'Sales earnings'],[S.stats.graded,'Cards graded'],[S.slabs.filter(s=>s.grade===10&&!s.fake).length,'PSA 10s'],[S.spec.length+'/'+SPECIALS.length,'Special PSA 10s'],[S.games.length,'Retro games'],[S.stats.duels,'Duels won'],[unlockedSets().length+'/'+SETS.length,'Sets unlocked']];
  const L100=level()>=100;
  $('#statsBody').innerHTML=`<div class="pnl gold"><h4>💾 SAVE CODE</h4><p>Your game is saved on this device automatically. To be safe (new phone, cleared Safari data, other link), copy your save code and paste it back any time.</p><div class="two"><button class="btn" id="stSave">GET SAVE CODE</button><button class="btn ghost" id="stLoad">ENTER CODE</button></div></div>
  <div class="pnl"><h4>🧑 YOUR LOOK</h4><div class="row2"><div class="ic" style="width:56px;height:56px;border-radius:14px;background:var(--pbg);display:flex;align-items:flex-end;justify-content:center;overflow:hidden">${sprite(playerLook(),3)}</div><div class="tx"><b>${esc(pname())} · ${LOOKS[playerLook()].n}</b><small>Background: ${(PBGS[S.pbg]||PBGS[0])[0]}</small></div><button class="sbtn g" id="stLook">LOOK</button><button class="sbtn g" id="stPbg">🎨 BG</button></div></div>
- <div class="pnl"><h4>📦 OPEN SEVERAL PACKS AT ONCE</h4><p style="margin-top:0">Free vouchers and sealed packs are always used first.</p>${QTYS.filter(q=>q>1).map(q=>`<div class="row2"><div class="tx"><b>${q} packs at once</b><small>${q===50?'Max level 100':'Level '+QLV[q]}</small></div><span class="tag ${qOk(q)?'':'r'}">${qOk(q)?'UNLOCKED':'🔒 LOCKED'}</span></div>`).join('')}</div>
+ <div class="pnl"><h4>📦 OPEN SEVERAL PACKS AT ONCE</h4><p style="margin-top:0">Free vouchers and sealed packs are always used first.</p>${QTYS.filter(q=>q>1).map(q=>`<div class="row2"><div class="tx"><b>${q} packs at once</b><small>Level ${QLV[q]}</small></div><span class="tag ${qOk(q)?'':'r'}">${qOk(q)?'UNLOCKED':'🔒 LOCKED'}</span></div>`).join('')}</div>
  <div class="pnl"><h4>🍀 LUCKY OPENING RITUAL</h4><p>Pure superstition: it doesn't change the odds, but the game remembers your way and celebrates it.</p>${[['','No ritual'],['t','Always tear the top'],['b','Always tear the bottom']].map(([k,n])=>`<button class="opt ${S.ritual===k?'on':''}" data-rit="${k}"><div class="tx"><b>${n}</b></div>${S.ritual===k?'<div class="pr in">✓</div>':''}</button>`).join('')}</div>
  ${L100?`<div class="pnl ev"><h4>✨ NEW GAME+ SEASON</h4><p>You reached level 100. Start a new season: your level resets to 1, you keep every card, slab, badge and dollar, and you earn a gold ★ next to your name. All pack amounts stay unlocked.</p><button class="btn" id="stPrest">START SEASON ${S.prestige+2}</button></div>`:''}
  <div class="sgrid">${st.map(([v,l])=>`<div class="stat"><b>${v}</b><span>${l}</span></div>`).join('')}</div>
- <h3 class="sec">Best pulls</h3>${S.hist.length?`<div class="pnl">${S.hist.slice(0,12).map(h=>`<div class="row2"><img class="th" src="${h.img}"><div class="tx"><b>${esc(h.name)}</b><small>${setById[h.set].n} · Pack #${h.p} · ${tierName[h.r]}${h.god?' · GOD PACK':''}</small></div></div>`).join('')}</div>`:'<p class="empty">No holos yet.</p>'}
+ <h3 class="sec">Best pulls</h3>${S.hist.length?`<div class="pnl">${S.hist.slice(0,12).map(h=>`<div class="row2"><img class="th" src="${h.img}"><div class="tx"><b>${esc(h.name)}</b><small>${(setById[h.set]||{n:''}).n} · Pack #${h.p} · ${tierName[h.r]}${h.god?' · GOD PACK':''}</small></div></div>`).join('')}</div>`:'<p class="empty">No holos yet.</p>'}
  <h3 class="sec">Rules of the game</h3><div class="odds">Packs: <b>10 cards</b>, no duplicates inside one pack. Rare slot: <b>12.5% holo</b>, <b>1% ultra rare</b>. One <b>God Pack</b> in every 200. Misprints about 1 in 170 cards.<br>
  Levels <b>1 to 100</b>. Each region has a cap: Kanto 30, Johto 55, Hoenn 80, Sinnoh 100. Ripping by hand gives full XP, several packs at once give half, the machine gives very little.<br>
- Opening several packs at once unlocks step by step: <b>2 at level 2</b>, <b>5 at level 5</b>, <b>10 at level 7</b>, <b>20 at level 10</b>, <b>50 at max level 100</b>.<br>
- The next set unlocks when you <b>own 95%</b> of the current set, or a <b>PSA 10 holo</b> from it. If you sell cards and drop below that, the next set locks again. The game warns you before.<br>
- Gyms are best-of-3 battles with a level requirement. Weekend events run Friday to Sunday.</div>
+ Opening several packs at once unlocks step by step: <b>2 at level 20</b>, <b>5 at level 30</b>, <b>10 at level 40</b>, <b>20 at level 50</b>, <b>50 at level 70</b>.<br>
+ Every set you <b>complete 100%</b> earns one of 11 special promo cards, always as a <b>PSA 10</b>.<br>
+ The next set unlocks when you <b>own 95%</b> of the current set, or a <b>PSA 10 holo</b> from it. Selling below that locks it again. The game warns you before.<br>
+ After Generation IV come the <b>Special Anniversary Sets</b>.</div>
  <button class="btn ghost" id="resetBtn" style="color:#ff8a8a">⟲ RESET EVERYTHING</button>`;
  $('#stSave').onclick=saveCodeModal;$('#stLoad').onclick=loadCodeModal;$('#stPbg').onclick=()=>{pbgModal()};
  $('#stLook').onclick=()=>{modal(`<h2>Pick your look</h2><div style="margin-top:12px">${lookGrid(playerLook())}</div><button class="btn ghost" onclick="closeModal()">CLOSE</button>`);$('#mbox').querySelectorAll('[data-lk]').forEach(b=>b.onclick=()=>{S.player.look=+b.dataset.lk;save();closeModal();blip();renderStats()})};
@@ -2356,10 +2380,10 @@ function intro(done){const I=$('#intro'),st=$('#iStage'),bx=$('#iBox');I.classLi
   st.innerHTML=`<div class="isp">${sprite('gpa',9)}</div>`;
   await say(['{N}! There you are. I found my old card binder from 1999 in the attic.','Help me finish it? Here\'s $60 and one free pack. Gary, a pack for my grandkid!'],'GRANDPA');
   st.innerHTML=`<div class="isp" id="isp">${sprite('oak',9)}</div>`;
-  await say(['Finish Kanto and new regions will open up: Johto, Hoenn and Sinnoh.','{N}! Your very own Pokémon card legend is about to unfold!'],'PROF. OAK');
+  await say(['Finish Kanto and new regions will open up: Johto, Hoenn and Sinnoh.','And every set you complete earns you a rare special card. Graded PSA 10!','{N}! Your very own Pokémon card legend is about to unfold!'],'PROF. OAK');
   const sp=$('#isp');sp.style.transform='scale(.2)';sp.style.opacity=0;tone([784,659,523,392],.2,.05,'triangle',.09);await wait(850);
   S.player={name,look,g:['boy','girl','hannes'][look]||'boy'};save();I.classList.remove('on');I.onclick=null;document.body.classList.remove('introZoom','intro');done()})()}
-/* =================== NAV / BOOT =================== */
+/* =================== NAV =================== */
 const SUBS=['scrQuests','scrShop','scrMarket','scrGyms','scrHof','scrStats','scrMachine','scrRival'];
 function go(id){document.querySelectorAll('.screen').forEach(s=>s.classList.toggle('on',s.id===id));
  const tab=id==='scrOpen'?'scrSets':SUBS.includes(id)?'scrHome':id;
@@ -2379,14 +2403,235 @@ function dailyBonus(){
   if(!first){if(sr==='box'){const s=rnd(unlockedSets());S.sealed.push({uid:uid(),set:s.id,kind:'box',packs:18,base:18*packPrice(s),bought:NOW()});srTxt=`a sealed <b>${s.n} booster box</b> (day 7!)`}
    else{S.coins+=sr;srTxt=`<span class="money in">${IN(sr)}</span> streak bonus`}}
   const al=first?0:15+(hasBadge('cascade')?5:0)+(hasBadge('plain')?10:0)+(hasBadge('coal')?15:0);const fp=1+(hasBadge('rising')?1:0);S.lastDay=dayKey();S.free+=fp;if(al)S.coins+=al;save();updCoin();
-  setTimeout(()=>modal(first?`<div class="em">${sprite('gpa',5)}</div><h2>Grandpa</h2><p>"${esc(pname())}! Here's my old binder from 1999. Let's fill it together!"<br><br>You have <b>$60</b> and <b>1 free pack</b>.<br>Own 95% of a set to unlock the next one.<br><br>Tip: tap <b>💾 SAVE</b> on the home screen any time to get your save code.</p><button class="btn" onclick="closeModal();go('scrSets')">LET'S RIP</button>`
+  setTimeout(()=>modal(first?`<div class="em">${sprite('gpa',5)}</div><h2>Grandpa</h2><p>"${esc(pname())}! Here's my old binder from 1999. Let's fill it together!"<br><br>You have <b>$60</b> and <b>1 free pack</b>.<br>Own 95% of a set to unlock the next one. Complete it 100% for a special PSA 10.<br><br>Tip: tap <b>💾 SAVE</b> on the home screen any time to get your save code.</p><button class="btn" onclick="closeModal();go('scrSets')">LET'S RIP</button>`
    :`<div class="em">🔥</div><h2>Day ${S.streak} streak!</h2><p><span class="money in">${IN(al)}</span> allowance, <b>${fp} free pack${fp>1?'s':''}</b>${srTxt?' and '+srTxt:''}.<br>${(S.streak%7)?`${7-(S.streak%7)} more day${7-(S.streak%7)>1?'s':''} until a free booster box.`:''}<br>New daily missions are up.</p><button class="btn" onclick="closeModal()">NICE</button>`),400)}}
 function boot(){
  paintShop();musBtnUpd();applyPbg();
  SETS.forEach(s=>loadCached(s.id));rollDaily();updCoin();updPill();setBgMon(S.bgDex||6,false);renderPosters();
  const start=()=>{dailyBonus();renderHome();checkSubs();checkUnlocks();checkAll();
-  unlockedSets().forEach(s=>{if(!memo[s.id])loadSet(s.id).then(()=>{save();if($('#scrHome').classList.contains('on'))renderHome()}).catch(()=>{})})};
+  unlockedSets().forEach(s=>{if(!memo[s.id])loadSet(s.id).then(()=>{save();checkUnlocks();checkAll();if($('#scrHome').classList.contains('on'))renderHome()}).catch(()=>{})})};
  if(!S.player)intro(start);else{start();document.addEventListener('pointerdown',()=>{ac();musicStart();bell()},{once:true})}}
+/* =================== V13: SPECIAL PROMO PSA 10s, NINTENDO CRATES, NEW GLASS CASE =================== */
+document.head.insertAdjacentHTML('beforeend',`<style>
+.gbox{container-type:inline-size;position:relative;aspect-ratio:3/4;border-radius:3cqw;overflow:hidden;background:linear-gradient(160deg,var(--gc),color-mix(in srgb,var(--gc) 55%,#000));box-shadow:0 6px 14px rgba(0,0,0,.5),inset 0 0 0 1.5cqw rgba(255,255,255,.12);color:#fff;display:flex;flex-direction:column}
+.gbox .plat{background:#141418;font:900 7.5cqw/1 Arial;letter-spacing:.8cqw;padding:3cqw 2cqw;text-align:center;color:#ddd}
+.gbox .ttl{font:900 12cqw/1.05 "Arial Black",Arial;text-align:center;padding:5cqw 4cqw 0;text-shadow:0 1cqw 2cqw rgba(0,0,0,.6);letter-spacing:-.2cqw}
+.gbox .sub{font:800 7cqw/1.1 Arial;text-align:center;opacity:.85;margin-top:1cqw}
+.gbox .ball{width:34%;aspect-ratio:1;margin:auto;border-radius:50%;background:radial-gradient(circle,#fff 0 18%,#141418 19% 27%,transparent 28%),linear-gradient(#e23 0 46%,#141418 46% 54%,#f4f4f4 54%);box-shadow:0 0 0 1.5cqw #141418,0 3cqw 6cqw rgba(0,0,0,.5)}
+.gbox .yr{font:800 6.5cqw/1 Arial;text-align:center;padding:3cqw;background:rgba(0,0,0,.35);letter-spacing:.5cqw}
+.gbox.sealed::after{content:"";position:absolute;inset:0;background:linear-gradient(115deg,transparent 30%,rgba(255,255,255,.45) 45%,transparent 55%),linear-gradient(0deg,rgba(255,255,255,.08),rgba(255,255,255,.08));pointer-events:none}
+.gbox .stag{position:absolute;right:3cqw;top:14cqw;font:900 6cqw/1 Arial;background:#ffd76a;color:#000;padding:1.5cqw 3cqw;border-radius:2cqw;z-index:2}
+.gbox .gpsa{position:absolute;left:0;right:0;bottom:0;background:#c41e2a;font:900 8cqw/1 Helvetica;text-align:center;padding:3cqw;z-index:2;letter-spacing:.5cqw;box-shadow:0 -1cqw 0 #fff}
+.gtile{position:relative}.gtile .vv{text-align:center;font-size:10px;font-weight:900;color:#6ff0a0;margin-top:4px}.gtile .nm2{text-align:center;font-size:9.5px;color:var(--mut);margin-top:2px;line-height:1.2}
+.room .gshelf2{position:absolute;left:3%;top:54.5%;width:27%;height:7.5%;display:flex;gap:2%;align-items:flex-end;justify-content:center;z-index:3;border-bottom:4px solid #8a6034;box-shadow:0 4px 6px rgba(0,0,0,.3);cursor:pointer}
+.room .gshelf2 .gbox{width:15%;flex:none;border-radius:1px}
+.room .gshelf2 .emp{font:800 6px/1 Arial;color:rgba(255,255,255,.5);letter-spacing:.1em;align-self:center}
+.crate{font-size:90px;text-align:center;line-height:1;animation:cshake .16s ease-in-out infinite}
+@keyframes cshake{0%,100%{transform:rotate(-4deg)}50%{transform:rotate(4deg) translateY(-3px)}}
+.bigbox{width:56%;margin:10px auto 0;animation:pop .4s}
+.specgrid{display:grid;grid-template-columns:repeat(4,1fr);gap:8px;margin-top:8px}
+.specgrid .sp{border-radius:10px;padding:6px 4px;text-align:center;font-size:8.5px;font-weight:800;line-height:1.2;background:rgba(255,255,255,.05);border:1px solid var(--line);color:var(--mut)}
+.specgrid .sp.on{background:linear-gradient(135deg,rgba(255,215,106,.25),rgba(158,240,255,.15));border-color:#ffd76a;color:#fff}
+.specgrid .sp i{display:block;font-style:normal;font-size:18px;margin-bottom:3px}
+</style>`);
+
+/* ---------- 11 special promo cards, always PSA 10 ---------- */
+const SPECIALS=[
+ {k:'rumble',n:'Pokémon Rumble',y:2009,q:'set.id:ru1',fb:'Pikachu',dex:25,e:'🎮'},
+ {k:'cinema',n:'Mew Cinema Card',y:1999,q:'name:"Ancient Mew"',fb:'Ancient Mew',dex:151,e:'🎬'},
+ {k:'mcd',n:"McDonald's Collection",y:2011,q:'set.id:mcd*',fb:'Pikachu',dex:25,e:'🍟'},
+ {k:'world',n:'Pokémon World Collection',y:2010,q:null,fb:'Charizard',dex:6,e:'🌍'},
+ {k:'bwrc',n:'Legendary Treasures Radiant Collection',y:2013,q:'set.id:bw11 number:RC*',fb:'Pikachu',dex:25,e:'✨'},
+ {k:'genrc',n:'Generations Radiant Collection',y:2016,q:'set.id:g1 number:RC*',fb:'Gardevoir',dex:282,e:'🌈'},
+ {k:'myth',n:'Mythical Pokémon Collection',y:2016,q:null,fb:'Mew',dex:151,e:'🔮'},
+ {k:'classic',n:'Pokémon Card Game Classic',y:2023,q:null,fb:'Charizard',dex:6,e:'📦'},
+ {k:'nagaba',n:'Pokémon × Yu Nagaba',y:2023,q:null,fb:'Eevee',dex:133,e:'🎨'},
+ {k:'vangogh',n:'Pokémon × Van Gogh Museum',y:2023,q:'name:"Pikachu with Grey Felt Hat"',fb:'Pikachu with Grey Felt Hat',dex:25,e:'🖼️'},
+ {k:'together',n:'Pokémon Together Event Promos',y:2024,q:null,fb:'Pikachu',dex:25,e:'🤝'}];
+async function fetchSpecialCard(sp){
+ if(sp.q){try{const j=await fetchJSON(`https://api.pokemontcg.io/v2/cards?q=${encodeURIComponent(sp.q)}&pageSize=60&select=id,name,number,images`,15000);
+  const list=(j.data||[]).filter(c=>c.images);if(list.length){list.sort((a,b)=>pop(b.name)-pop(a.name));const c=list[0];return {id:c.id,name:c.name,n:c.number,s:c.images.small,l:c.images.large,art:0}}}catch(e){}}
+ return {id:'promo-'+sp.k,name:sp.fb,n:'PROMO',s:artURL(sp.dex),l:artURL(sp.dex),art:1}}
+let specBusy=false;
+function specCheck(){if(specBusy||!S.player)return;const s=SETS.find(x=>setComplete(x.id)&&!S.specFor.includes(x.id));if(!s)return;
+ specBusy=true;S.specFor.push(s.id);save();grantSpecial(s).finally(()=>{specBusy=false;setTimeout(specCheck,800)})}
+async function grantSpecial(set){const sp=SPECIALS.find(x=>!S.spec.includes(x.k));
+ if(!sp){addCoins(1000,true);whenFree(()=>{modal(`<div class="em">🏆</div><h2>${esc(set.n)} complete!</h2><p>You already own all 11 special promos. Gary pays you <span class="money in">+$1,000</span> instead.</p><button class="btn" onclick="closeModal()">NICE</button>`);fanfare()});return}
+ const c=await fetchSpecialCard(sp);
+ const sl={uid:uid(),id:c.id,name:c.name,n:c.n,r:'ultra',s:c.s,l:c.l,art:c.art,grade:10,cert:String(Math.floor(1e8+Math.random()*9e8)),seed:Math.floor(Math.random()*1e9),d:NOW(),sp:1,spk:sp.k,setn:sp.n,y:sp.y};
+ S.slabs.push(sl);S.spec.push(sp.k);_uv++;addXP(200);save();
+ whenFree(()=>{flash(1,900);sfx.ultra();burst(320,['#ffe07a','#fff','#ff9de6','#9ef0ff'],1.5);banner('SPECIAL PSA 10!');
+  modal(`<div class="em">${sp.e}</div><h2>${esc(set.n)} complete!</h2><p>Your reward: a special promo from <b>${esc(sp.n)}</b>, graded <b>PSA 10</b>.</p><div style="width:58%;margin:12px auto 0" id="spSlab">${slabHTML(sl)}</div><p><b>${esc(sl.name)}</b> · worth <span class="money in">${fmt(cardVal(sl,{grade:10}))}</span><br>${S.spec.length}/${SPECIALS.length} special promos collected</p><button class="btn" onclick="closeModal();go('scrVault')">TO MY VAULT</button>`);
+  bindTilt($('#spSlab .slab'))})}
+function specHomeHTML(){const near=unlockedSets().filter(s=>!S.specFor.includes(s.id)&&setTotal(s.id)).map(s=>({s,a:seenCount(s.id),b:setTotal(s.id)})).sort((x,y)=>(y.a/y.b)-(x.a/x.b))[0];
+ const nx=SPECIALS.find(x=>!S.spec.includes(x.k));if(!near||!nx)return'';
+ return `<div class="pnl"><div class="row2"><div class="ic">🎁</div><div class="tx"><b>Next special PSA 10: ${esc(nx.n)}</b><small>Complete ${esc(near.s.n)} · ${near.a}/${near.b} registered</small><div class="mbar"><i style="width:${near.a/near.b*100}%"></i></div></div><span class="tag">${S.spec.length}/${SPECIALS.length}</span></div></div>`}
+function specQuestHTML(){return `<h3 class="sec">Special promos · ${S.spec.length}/${SPECIALS.length}</h3><div class="pnl"><p style="margin-top:0">Every set you complete 100% earns the best card of the next special collection, always as a <b style="color:#fff">PSA 10</b>.</p><div class="specgrid">${SPECIALS.map(x=>`<div class="sp ${S.spec.includes(x.k)?'on':''}"><i>${S.spec.includes(x.k)?x.e:'🔒'}</i>${esc(x.n)}</div>`).join('')}</div></div>`}
+
+/* ---------- Gary's glass case: 5 cards, max 1 missing (10× value) ---------- */
+function gcEnsure(){const slot=Math.floor(NOW()/GC_SLOT);if(S.gcase&&S.gcase.slot===slot&&S.gcase.v===3)return;
+ const holo=[],ultra=[];unlockedSets().forEach(s=>{const m=memo[s.id];if(m){holo.push(...m.P.holo);ultra.push(...m.P.ultra)}});if(!holo.length&&!ultra.length){S.gcase=null;return}
+ const pick=arr=>{const out=[],used=new Set();let g=0;while(out.length<5&&g++<400){const useU=Math.random()<.15;const src=useU?arr.filter(c=>c.r==='ultra'):arr.filter(c=>c.r!=='ultra');const c=rnd(src.length?src:arr);if(!c||used.has(c.id))continue;used.add(c.id);out.push(c)}return out};
+ const owned=[...holo,...ultra].filter(c=>isOwned(c.id)),missing=[...holo,...ultra].filter(c=>!isOwned(c.id));
+ const items=pick(owned).map(c=>({id:c.id,p:Math.round(cardVal(c)*rr(1.05,1.35)*100)/100,b:false,m:false}));
+ if(missing.length&&(Math.random()<.5||!items.length)){const c=rnd(missing);const it={id:c.id,p:Math.round(cardVal(c)*10*100)/100,b:false,m:true};if(items.length>=5)items[Math.floor(Math.random()*5)]=it;else items.push(it)}
+ S.gcase={slot,items:shuffle(items),v:3};save()}
+
+/* ---------- Nintendo crates: original boxed Pokémon games ---------- */
+const GAMES={
+ red:{n:'Pokémon Red',p:'GAME BOY',y:1998,v:70,c:'#d8282a',w:10},blue:{n:'Pokémon Blue',p:'GAME BOY',y:1998,v:70,c:'#2a58c8',w:10},yellow:{n:'Pokémon Yellow',p:'GAME BOY',y:1999,v:75,c:'#e8b820',w:9},
+ pinball:{n:'Pokémon Pinball',p:'GAME BOY COLOR',y:1999,v:45,c:'#6a40c0',w:9},tcg:{n:'Pokémon Trading Card Game',p:'GAME BOY COLOR',y:2000,v:95,c:'#e88a20',w:6},
+ gold:{n:'Pokémon Gold',p:'GAME BOY COLOR',y:2000,v:85,c:'#c8a040',w:8},silver:{n:'Pokémon Silver',p:'GAME BOY COLOR',y:2000,v:80,c:'#9aa0b0',w:8},crystal:{n:'Pokémon Crystal',p:'GAME BOY COLOR',y:2001,v:190,c:'#4ac0d8',w:4},
+ snap:{n:'Pokémon Snap',p:'NINTENDO 64',y:1999,v:55,c:'#ff8a2a',w:8},stadium:{n:'Pokémon Stadium',p:'NINTENDO 64',y:2000,v:70,c:'#4a4a5a',w:7},stadium2:{n:'Pokémon Stadium 2',p:'NINTENDO 64',y:2001,v:95,c:'#3a3a6a',w:5},
+ ruby:{n:'Pokémon Ruby',p:'GAME BOY ADVANCE',y:2003,v:50,c:'#c42a3a',w:9},sapphire:{n:'Pokémon Sapphire',p:'GAME BOY ADVANCE',y:2003,v:50,c:'#2a5ac8',w:9},emerald:{n:'Pokémon Emerald',p:'GAME BOY ADVANCE',y:2005,v:140,c:'#1a9a5a',w:5},
+ firered:{n:'Pokémon FireRed',p:'GAME BOY ADVANCE',y:2004,v:85,c:'#e85a2a',w:6},leafgreen:{n:'Pokémon LeafGreen',p:'GAME BOY ADVANCE',y:2004,v:85,c:'#4aa040',w:6},
+ diamond:{n:'Pokémon Diamond',p:'NINTENDO DS',y:2007,v:35,c:'#6a8ad0',w:9},pearl:{n:'Pokémon Pearl',p:'NINTENDO DS',y:2007,v:35,c:'#d08ab0',w:9},platinum:{n:'Pokémon Platinum',p:'NINTENDO DS',y:2009,v:70,c:'#8a8a9a',w:6},
+ heartgold:{n:'Pokémon HeartGold',p:'NINTENDO DS',y:2010,v:170,c:'#d8a020',w:4},soulsilver:{n:'Pokémon SoulSilver',p:'NINTENDO DS',y:2010,v:170,c:'#9aa8c8',w:4}};
+const CRATE=100,GPSA=40;
+const gameVal=g=>{const G=GAMES[g.k];if(!G)return 0;const m=1+((hsh(g.k+':'+dayN())%100)/100-.5)*.1;return Math.round(G.v*(g.sealed?6:1)*(g.grade?Math.min(4,GM[g.grade]):1)*m)};
+function gamesValue(){return (S.games||[]).reduce((a,g)=>a+gameVal(g),0)}
+function gameBox(g,size){const G=GAMES[g.k];if(!G)return'';const short=G.n.replace('Pokémon ','');
+ return `<div class="gbox ${g.sealed?'sealed':''} ${size||''}" style="--gc:${G.c}"><div class="plat">${G.p}</div><div class="ttl">POKéMON<div class="sub">${esc(short.toUpperCase())}</div></div><div class="ball"></div><div class="yr">${G.y} · NINTENDO</div>${g.sealed?'<span class="stag">SEALED</span>':''}${g.grade?`<div class="gpsa">PSA ${g.grade}</div>`:''}</div>`}
+function crateHTML(){return `<div class="pnl ev"><h4>🎮 NINTENDO CRATE</h4><div class="row2"><div class="ic" style="font-size:34px">📦</div><div class="tx"><b>Random retro Pokémon game · ${fmt(CRATE)}</b><small>One original boxed game per crate: Red, Blue, Gold, Silver, Crystal, Stadium and more. Sometimes factory sealed. Shown on your game shelf, can be graded by PSA and sold.</small></div></div><button class="btn buy" id="crateBtn" ${S.coins<CRATE?'disabled':''}>OPEN A CRATE ${OUT(CRATE)}</button>${S.games.length?`<p style="text-align:center">You own ${S.games.length} game${S.games.length>1?'s':''} · worth ${fmt(gamesValue())} · see Binder → Games</p>`:''}</div>`}
+function rollGame(){const keys=Object.keys(GAMES);let r=Math.random()*keys.reduce((a,k)=>a+GAMES[k].w,0);for(const k of keys){if((r-=GAMES[k].w)<0)return k}return 'red'}
+async function openCrate(){if(!spend(CRATE))return;
+ const g={uid:uid(),k:rollGame(),sealed:Math.random()<.05,grade:0,cert:'',d:NOW()};S.games.push(g);S.stats.crates++;addXP(15);save();
+ modal(`<h2>Nintendo crate</h2><p>Prying it open…</p><div class="crate" id="crt" style="margin-top:14px">📦</div>`);noise(.4,.4,500,.6,'bandpass');buzz([30,30,30]);
+ await wait(1100);sfx.rip();const v=gameVal(g),G=GAMES[g.k],big=v>=150||g.sealed;
+ modal(`<h2>${esc(G.n)}</h2><p>${G.p} · ${G.y} · ${g.sealed?'<b style="color:#ffd76a">FACTORY SEALED!</b>':'Complete in box'}</p><div class="bigbox">${gameBox(g)}</div><p>Worth <span class="money in">${fmt(v)}</span></p><button class="btn" id="crOk">ON THE SHELF</button><button class="btn ghost" id="crMore" ${S.coins<CRATE?'disabled':''}>OPEN ANOTHER ${OUT(CRATE)}</button>`);
+ if(big){flash(.8,600);sfx.ultra();burst(200,['#ffe07a','#fff','#ff9de6'],1.2);banner(g.sealed?'SEALED!':'RARE GAME!')}else{sfx.holo();burst(80,['#9ef0ff','#fff'],.8)}
+ $('#crOk').onclick=()=>{closeModal();if($('#scrHof').classList.contains('on'))renderHof();if(albumSet==='$games'&&$('#scrAlbum').classList.contains('on'))renderGames()};
+ $('#crMore').onclick=()=>openCrate();checkAll()}
+function renderGames(){$('#chips').style.display='none';const list=S.games.slice().sort((a,b)=>gameVal(b)-gameVal(a));
+ $('#albCount').innerHTML=`<b>${list.length}</b> games`;$('#albSetName').textContent='Your retro game collection';$('#albPct').textContent=fmt(gamesValue());$('#albBar').style.width='100%';
+ $('#msLine').innerHTML=`Open Nintendo crates in <b style="color:#fff">My Room</b> · ${fmt(CRATE)} each`;
+ $('#agrid').innerHTML=list.length?list.map(g=>`<div class="gtile" data-gm="${g.uid}">${gameBox(g)}<div class="nm2">${esc(GAMES[g.k].n.replace('Pokémon ',''))}</div><div class="vv">${fmt(gameVal(g))}</div></div>`).join(''):`<div style="grid-column:1/-1"><p class="empty">No games yet. Open a Nintendo crate in your room.</p><button class="btn" onclick="go('scrHof')">🛏️ TO MY ROOM</button></div>`}
+function gameModal(id){const g=S.games.find(x=>x.uid===id);if(!g)return;const G=GAMES[g.k],v=gameVal(g);
+ modal(`<h2>${esc(G.n)}</h2><p>${G.p} · ${G.y} · ${g.sealed?'Factory sealed':'Complete in box'}${g.grade?` · <b>PSA ${g.grade}</b> · cert ${g.cert}`:''}</p><div class="bigbox">${gameBox(g)}</div><p>Market <span class="money in">${fmt(v)}</span>${!g.grade?`<br>PSA 10 would be about ${fmt(Math.round(v*4))}`:''}</p>
+ ${g.grade?'':`<button class="btn" id="gmPsa" ${S.coins<GPSA?'disabled':''}>📮 GRADE WITH PSA ${OUT(GPSA)}</button>`}<button class="btn earn" id="gmSell">SELL TO GARY ${IN(Math.round(v*.7))}</button><button class="btn ghost" onclick="closeModal()">CLOSE</button>`);
+ if($('#gmPsa'))$('#gmPsa').onclick=async()=>{if(!spend(GPSA))return;modal(`<h2>PSA is grading…</h2><div class="crate" style="margin-top:14px;font-size:70px">📮</div>`);await wait(1200);
+  g.grade=rollGrade();g.cert=String(Math.floor(1e8+Math.random()*9e8));save();const nv=gameVal(g);
+  if(g.grade>=9){flash(.7,600);sfx.ultra();burst(200,['#ffe07a','#fff'],1.2);banner('PSA '+g.grade+'!')}else if(g.grade>=7)sfx.holo();else sfx.bad();
+  modal(`<h2>PSA ${g.grade} · ${GRADE_LONG[g.grade]}</h2><div class="bigbox">${gameBox(g)}</div><p>${esc(G.n)} is now worth <span class="money in">${fmt(nv)}</span></p><button class="btn" onclick="closeModal()">NICE</button>`);if(albumSet==='$games')renderGames()};
+ $('#gmSell').onclick=()=>{const p=Math.round(v*.7);S.games=S.games.filter(x=>x!==g);addCoins(p);sfx.cash();save();closeModal();toast(`Sold ${G.n}`);if(albumSet==='$games'&&$('#scrAlbum').classList.contains('on'))renderGames();if($('#scrHof').classList.contains('on'))renderHof()}}
+
+/* =================== V14: TROPHY BADGES, LIVE AUCTION, MONTHLY SPECIAL =================== */
+document.head.insertAdjacentHTML('beforeend',`<style>
+.resetSm{display:block;margin:26px auto 4px;background:none;border:1px solid rgba(255,138,138,.3);color:#ff8a8a;font-size:10px;font-weight:800;letter-spacing:.12em;padding:6px 12px;border-radius:20px;opacity:.65}
+.rawc .cw{position:absolute;inset:0;transition:transform .45s cubic-bezier(.3,1.2,.4,1),filter .3s}
+.rawc .cw img{position:absolute;inset:0}
+.rawc .cntB{z-index:30}
+.tb{display:inline-flex;align-items:center;justify-content:center;border-radius:50%;flex:none;line-height:1}
+.tb.t0{background:rgba(255,255,255,.06);box-shadow:inset 0 0 0 2px rgba(255,255,255,.15);filter:grayscale(1);opacity:.45}
+.tb.t1{background:radial-gradient(circle at 35% 30%,#ffd0a0,#b0682a 60%,#6a3a10);box-shadow:0 0 0 2px #8a4a1a,0 4px 10px rgba(0,0,0,.45)}
+.tb.t2{background:radial-gradient(circle at 35% 30%,#fff,#c0c8d4 55%,#7a8494);box-shadow:0 0 0 2px #8a94a4,0 4px 10px rgba(0,0,0,.45)}
+.tb.t3{background:radial-gradient(circle at 35% 30%,#fff6c0,#ffcf3a 50%,#a8700a);box-shadow:0 0 0 2px #c8901a,0 0 12px rgba(255,207,58,.55),0 4px 10px rgba(0,0,0,.45)}
+.tb.t4{background:radial-gradient(circle at 35% 30%,#fff,#bff0e8 45%,#4aa898);box-shadow:0 0 0 2px #6ac0b0,0 0 16px rgba(160,255,230,.6),0 4px 10px rgba(0,0,0,.45)}
+.tb.t5{background:conic-gradient(from 0deg,#9ef0ff,#fff,#7aa8ff,#ff9de6,#fff,#9ef0ff);box-shadow:0 0 0 2px #5a8aff,0 0 22px rgba(140,200,255,.85),0 4px 10px rgba(0,0,0,.45);animation:tbd 3s linear infinite}
+@keyframes tbd{50%{filter:brightness(1.25) hue-rotate(25deg)}}
+.trow{display:flex;gap:4px;justify-content:space-between;margin-top:12px;padding:10px;background:var(--panel);border:1px solid var(--line);border-radius:18px;backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);cursor:pointer}
+.auh{font:900 11px/1.3 Arial;letter-spacing:.14em;color:var(--mut);text-align:center}.auh .live{color:#ff3b5c;animation:blink 1s infinite}
+.auc{width:min(50vw,210px,calc((100vh - 480px)*.64));margin:12px auto 0;flex:none}
+.aun{text-align:center;margin-top:10px;font-size:12px;color:var(--mut);line-height:1.5}.aun b{display:block;color:#fff;font-size:16px}
+.aub{text-align:center;margin-top:8px}.aub small{display:block;font-size:10px;letter-spacing:.2em;color:var(--mut);font-weight:800}.aub b{display:block;font-size:34px;font-weight:900;color:#6ff0a0;line-height:1.1}.aub span{font-size:12px;font-weight:900}
+.aut{width:100%;max-width:380px;height:7px;border-radius:6px;background:rgba(255,255,255,.1);overflow:hidden;margin-top:8px;flex:none}.aut i{display:block;height:100%;background:linear-gradient(90deg,#ff3b5c,#ffd76a);transition:width .25s linear}
+.aulog{width:100%;max-width:380px;font-size:12px;color:var(--mut);margin-top:8px;min-height:84px;line-height:1.55}.aulog b{color:#fff}.aulog .me b{color:#6ff0a0}
+.aulots{display:grid;grid-template-columns:repeat(5,1fr);gap:6px;margin-top:12px}
+.aulots .l{position:relative;text-align:center;font-size:8.5px;font-weight:800;color:var(--mut)}.aulots .l img{width:100%;aspect-ratio:63/88;object-fit:cover;border-radius:4px;display:block}
+.aulots .l.x img{filter:grayscale(1) brightness(.5)}.aulots .l.w img{box-shadow:0 0 0 2px #6ff0a0}
+</style>`);
+/* ---------- tiered trophy badges ---------- */
+const TT=[['Bronze','#e0a070'],['Silver','#d8dee8'],['Gold','#ffcf3a'],['Platinum','#9ff0e0'],['Diamond','#9ef0ff']];
+const TT_R=[25,100,500,2500,10000];
+const TROPH=[
+ {k:'psa10',e:'💎',n:'Gem Mint Collector',d:'PSA 10 cards owned',f:()=>S.slabs.filter(s=>s.grade===10&&!s.fake).length,t:[1,3,10,30,100]},
+ {k:'psav',e:'🏦',n:'Slab Tycoon',d:'Value of your PSA slabs',money:1,f:()=>S.slabs.filter(s=>!s.fake).reduce((a,s)=>a+cardVal(s,{grade:s.grade}),0),t:[100,1000,5000,25000,100000]},
+ {k:'ultra',e:'🌟',n:'Ultra Hunter',d:'Ultra rares pulled',f:()=>S.ultras,t:[1,5,25,100,500]},
+ {k:'packs',e:'📦',n:'Pack Ripper',d:'Packs opened',f:()=>S.packs,t:[25,100,500,2000,10000]},
+ {k:'holo',e:'✨',n:'Holo Hoarder',d:'Holos pulled',f:()=>S.holos,t:[10,50,250,1000,5000]},
+ {k:'coll',e:'💰',n:'Net Worth',d:'Collection value',money:1,f:()=>collValue(),t:[500,5000,25000,100000,500000]},
+ {k:'sets',e:'📚',n:'Set Master',d:'Sets completed 100%',f:()=>SETS.filter(s=>setComplete(s.id)).length,t:[1,3,8,20,44]},
+ {k:'auc',e:'🔨',n:'Auction King',d:'Auction lots won',f:()=>S.stats.auc||0,t:[1,3,10,25,60]}];
+const fv=(t,v)=>t.money?fmt(v):Math.floor(v).toLocaleString('en-US');
+function troTier(t){const v=t.f();let k=0;t.t.forEach((x,i)=>{if(v>=x)k=i+1});return {v,k}}
+function troBadge(k,ic,sz){return `<span class="tb t${k}" style="width:${sz}px;height:${sz}px;font-size:${Math.round(sz*.48)}px">${ic}</span>`}
+function troStrip(){S.tro=S.tro||{};return `<div class="trow" data-go="scrQuests">${TROPH.map(t=>troBadge(S.tro[t.k]||0,t.e,32)).join('')}</div>`}
+let troBusy=false;
+function troCheck(){if(!S.player)return;S.tro=S.tro||{};const ups=[];let r=0;
+ TROPH.forEach(t=>{const {v,k}=troTier(t);const had=S.tro[t.k]||0;if(k>had){S.tro[t.k]=k;for(let i=had;i<k;i++)r+=TT_R[i];ups.push({t,k,v})}});
+ if(!ups.length)return;save();
+ whenFree(()=>{addCoins(r);fanfare();flash(.6,500);burst(220,['#ffe07a','#fff','#9ef0ff'],1.2);banner(ups.length>1?ups.length+' NEW BADGES':TT[ups[0].k-1][0].toUpperCase()+' BADGE');
+  modal(`<h2>${ups.length>1?'New trophy badges!':TT[ups[0].k-1][0]+' badge!'}</h2>${ups.map(u=>`<div class="row2">${troBadge(u.k,u.t.e,54)}<div class="tx"><b>${u.t.n} · ${TT[u.k-1][0]}</b><small>${u.t.d}: ${fv(u.t,u.v)}${u.k<5?`<br>Next: ${TT[u.k][0]} at ${fv(u.t,u.t.t[u.k])}`:'<br>Maximum reached!'}</small></div></div>`).join('')}<p>Reward <span class="money in">+${fmt(r)}</span></p><button class="btn" onclick="closeModal()">SHINY!</button>`)})}
+function troQuestHTML(){S.tro=S.tro||{};return `<h3 class="sec" style="margin-top:6px">Trophy badges · Bronze → Silver → Gold → Platinum → Diamond</h3><div class="pnl">${TROPH.map(t=>{const {v,k}=troTier(t);const nx=t.t[k];return `<div class="row2">${troBadge(k,t.e,42)}<div class="tx"><b>${t.n} ${k?`<span class="tag" style="background:${TT[k-1][1]}">${TT[k-1][0].toUpperCase()}</span>`:''}</b><small>${t.d}: ${fv(t,v)}${nx!=null?` · next ${TT[k][0]} at ${fv(t,nx)} (+${fmt(TT_R[k])})`:' · MAXED'}</small><div class="mbar"><i style="width:${nx!=null?Math.min(100,v/nx*100):100}%"></i></div></div></div>`}).join('')}</div>`}
+/* ---------- daily live auction at 18:00 ---------- */
+const AUC_H=18;const NPCB=['Mr. Sterling','CardKing99','Yuki_T','The Duke','HoloHunter','Victoria','SlabDaddy','Kenji','PSA_Whale','Brad from Ohio','Mr. Tanaka','GemMintGabi'];
+const aucLive=()=>new Date().getHours()===AUC_H||!!S.flags.aucTest;
+function aucNextMs(){const d=new Date(),t=new Date(d);t.setHours(AUC_H,0,0,0);if(d>=t)t.setDate(t.getDate()+1);return t-d}
+const hm=ms=>{const h=Math.floor(ms/HOUR),m=Math.ceil((ms%HOUR)/MIN);return (h?h+'h ':'')+m+'min'};
+function aucGen(){if(S.auc&&S.auc.day===dayKey())return;const pool=[];unlockedSets().forEach(s=>{const m=memo[s.id];if(m)pool.push(...m.P.holo,...m.P.ultra)});if(!pool.length)return;
+ pool.sort((a,b)=>cardVal(b)-cardVal(a));const top=pool.slice(0,Math.max(10,Math.ceil(pool.length*.4)));
+ const used=new Set(),lots=[];let g=0;
+ while(lots.length<5&&g++<300){const miss=top.filter(c=>!isOwned(c.id)&&!used.has(c.id));const c=(Math.random()<.7&&miss.length)?rnd(miss):rnd(top);if(used.has(c.id))continue;used.add(c.id);
+  const v=cardVal(c,{grade:10});lots.push({id:c.id,v,cap:Math.round(v*rr(1.3,1.5)),start:Math.max(5,Math.round(v*.45)),st:0,w:'',p:0})}
+ S.auc={day:dayKey(),lots,i:0};save()}
+function aucHomeHTML(){const live=aucLive()&&!(S.auc&&S.auc.day===dayKey()&&S.auc.i>=5);
+ return `<div class="pnl ${live?'red':''}" data-go="auction"><div class="row2"><div class="ic">🔨</div><div class="tx"><b>${live?'<span style="color:#ff3b5c">● LIVE NOW</span> · Gary\'s evening auction':'Gary\'s evening auction · daily at 18:00'}</b><small>${live?'5 PSA 10 lots. Join now before the hammer falls!':S.auc&&S.auc.day===dayKey()&&S.auc.i>=5?'Today\'s auction is over · next one tomorrow 18:00':'5 valuable PSA 10 cards · starts in '+hm(aucNextMs())}</small></div><button class="sbtn ${live?'buy':'g'}">${live?'JOIN':'PREVIEW'}</button></div></div>`}
+let AU=null;
+async function openAuction(){closeModal();await ensureLoaded();aucGen();if(!S.auc){toast('Unlock sets first');return}
+ const lots=S.auc.lots;
+ if(!aucLive()||S.auc.i>=5){modal(`<div class="em">🔨</div><h2>Gary's evening auction</h2><p>${S.auc.i>=5?'Today\'s auction is over. New lots tomorrow.':'Starts every day at <b>18:00</b> and runs for one hour.<br>Opens in <b>'+hm(aucNextMs())+'</b>'}</p><div class="aulots">${lots.map((L,i)=>{const c=cardById(L.id);return c?`<div class="l ${L.st===2?'x':L.st===1?'w':''}"><img src="${c.s}">PSA 10<br>${L.st===1?'<span style="color:#6ff0a0">WON '+fmt(L.p)+'</span>':L.st===2?'SOLD '+fmt(L.p):'mkt '+fmt(L.v)}${!isOwned(c.id)&&!L.st?'<br><span style="color:#ff9de6">MISSING</span>':''}</div>`:''}).join('')}</div><p style="font-size:11px">Expect bidders to push prices 30–50% above market.</p><button class="btn ghost" onclick="closeModal()">OK</button>`);return}
+ $('#nav').classList.add('hide');$('#coin').style.opacity=1;mg.classList.add('on');runLot()}
+const auInc=()=>Math.max(1,Math.round(AU.cur*.05));
+function runLot(){const L=S.auc.lots[S.auc.i];const c=cardById(L.id);if(!c){S.auc.i++;save();return S.auc.i<5?runLot():aucClose()}
+ AU={L,c,cur:L.start,lead:'',me:false,t:14,tm:0};
+ const sl={uid:'au',id:c.id,name:c.name,n:c.n,r:c.r,s:c.s,l:c.l,grade:10,cert:'LOT '+(S.auc.i+1),seed:hsh(c.id)};
+ mg.innerHTML=`<div class="auh"><span class="live">● LIVE</span> · GARY'S EVENING AUCTION · LOT ${S.auc.i+1}/5</div>
+ <div class="auc">${slabHTML(sl)}</div>
+ <div class="aun"><b>PSA 10 ${esc(c.name)}</b>${(setById[setOf(c.id)]||{n:''}).n} · market ${fmt(L.v)} ${!isOwned(c.id)?'<span class="tag p">MISSING IN YOUR BINDER</span>':''}</div>
+ <div class="aub"><small>CURRENT BID</small><b id="auCur"></b><span id="auLead"></span></div>
+ <div class="aut"><i id="auBar"></i></div><div class="aulog" id="auLog"><div>Opening bid ${fmt(L.start)}. Who's in?</div></div>
+ <div class="two" style="width:100%;max-width:380px;flex:none"><button class="btn ghost" id="auLeave">LEAVE</button><button class="btn buy" id="auBid"></button></div>`;
+ bindTilt(mg.querySelector('.slab'));auDraw();bell();
+ $('#auBid').onclick=()=>{const nb=AU.cur+auInc();if(S.coins<nb){toast('Not enough money for that bid');return}AU.cur=nb;AU.lead=pname();AU.me=true;AU.t=Math.max(AU.t,6);auLog(pname(),nb,1);sfx.cash();buzz(15);auDraw()};
+ $('#auLeave').onclick=()=>auEnd(true);
+ AU.tm=setInterval(auTick,250)}
+function auLog(n,v,me){const l=$('#auLog');if(!l)return;l.insertAdjacentHTML('afterbegin',`<div class="${me?'me':''}"><b>${esc(n)}</b> bids ${fmt(v)}</div>`);while(l.children.length>4)l.lastChild.remove()}
+function auDraw(){if(!AU)return;$('#auCur').textContent=fmt(AU.cur);$('#auLead').innerHTML=AU.me?'<span style="color:#6ff0a0">YOU ARE WINNING</span>':AU.lead?'leading: '+esc(AU.lead):'no bids yet';
+ $('#auBar').style.width=Math.max(0,AU.t/14*100)+'%';const nb=AU.cur+auInc();const b=$('#auBid');b.textContent='BID '+fmt(nb);b.disabled=S.coins<nb}
+function auTick(){if(!AU)return;AU.t-=.25;
+ const keen=AU.me?.3:AU.lead?.06:.25;
+ if(Math.random()<keen){const nb=AU.cur+auInc();if(nb<=AU.L.cap){let n=rnd(NPCB);if(n===AU.lead)n=rnd(NPCB);AU.cur=nb;AU.lead=n;AU.me=false;AU.t=Math.max(AU.t,4+Math.random()*3);auLog(n,nb,0);tone([620+Math.random()*200],.06,.03)}}
+ if(AU.t<=3&&AU.t>2.75)tone([880],.1,.05);if(AU.t<=0)return auEnd(false);auDraw()}
+function auEnd(left){if(!AU)return;clearInterval(AU.tm);const {L,c}=AU;let won=false;
+ if(AU.me&&spend(AU.cur,true)){won=true;S.slabs.push({uid:uid(),id:c.id,name:c.name,n:c.n,r:c.r,s:c.s,l:c.l,grade:10,cert:String(Math.floor(1e8+Math.random()*9e8)),seed:Math.floor(Math.random()*1e9),d:NOW()});_uv++;S.stats.auc=(S.stats.auc||0)+1;L.st=1;L.p=AU.cur;L.w=pname();addXP(60)}
+ else{L.st=2;L.p=AU.cur;L.w=AU.lead||'unsold'}
+ S.auc.i++;save();const cur=AU.cur,lead=AU.lead;AU=null;
+ if(won){flash(.9,700);sfx.ultra();burst(260,['#ffe07a','#fff','#6ff0a0'],1.3);banner('SOLD TO YOU!')}else{noise(.2,.6,300,1,'lowpass')}
+ if(left){aucClose();toast(won?'You won the lot!':'Lot sold to '+(lead||'nobody'));checkUnlocks();checkAll();return}
+ mg.innerHTML=`<div class="wtt" style="margin-top:22vh">${won?'SOLD TO YOU!':lead?'SOLD!':'NO BIDS'}</div><p class="empty">${esc(c.name)} PSA 10<br>${won?`You paid <b style="color:#ff8a8a">${fmt(cur)}</b> · it's in your Vault`:lead?`Hammer price ${fmt(cur)} · winner ${esc(lead)}`:'Gary keeps it.'}</p>${S.auc.i<5?`<button class="btn" id="auNext" style="max-width:340px">NEXT LOT (${S.auc.i+1}/5) ›</button>`:'<p class="empty">That was the last lot of tonight.</p>'}<button class="btn ghost" id="auClose" style="max-width:340px">CLOSE</button>`;
+ if($('#auNext'))$('#auNext').onclick=()=>runLot();$('#auClose').onclick=aucClose;checkAll()}
+function aucClose(){if(AU){clearInterval(AU.tm);AU=null}mg.classList.remove('on');mg.innerHTML='';$('#nav').classList.remove('hide');renderHome();checkUnlocks()}
+/* ---------- monthly special card ---------- */
+const MONTHLY=[{n:'Umbreon',dex:197},{n:'Lugia',dex:249},{n:'Mew',dex:151},{n:'Rayquaza',dex:384},{n:'Gengar',dex:94},{n:'Pikachu',dex:25},{n:'Blastoise',dex:9},{n:'Espeon',dex:196},{n:'Garchomp',dex:445},{n:'Mewtwo',dex:150},{n:'Charizard',dex:6},{n:'Snorlax',dex:143}];
+const MO_N=60;
+const moKey=()=>{const d=new Date();return d.getFullYear()+'-'+(d.getMonth()+1)};
+const moCard=()=>MONTHLY[new Date().getMonth()];
+const moName=()=>new Date().toLocaleString('en-US',{month:'long',year:'numeric'});
+const moDaysLeft=()=>{const d=new Date();return new Date(d.getFullYear(),d.getMonth()+1,0).getDate()-d.getDate()+1};
+function moEnsure(){if(!S.mo||S.mo.m!==moKey())S.mo={m:moKey(),p:0,got:false}}
+function moTick(){moEnsure();S.mo.p++}
+let moBusy=false;
+async function moCheck(){moEnsure();if(moBusy||S.mo.got||S.mo.p<MO_N||!S.player)return;moBusy=true;S.mo.got=true;save();
+ const M=moCard();let c=null;
+ try{const j=await fetchJSON(`https://api.pokemontcg.io/v2/cards?q=${encodeURIComponent(`name:"${M.n}" rarity:"Promo"`)}&pageSize=40&select=id,name,number,images`,15000);const l=(j.data||[]).filter(x=>x.images);if(l.length){const x=l[hsh(S.mo.m)%l.length];c={id:x.id,name:x.name,n:x.number,s:x.images.small,l:x.images.large,art:0}}}catch(e){}
+ if(!c)c={id:'monthly-'+S.mo.m,name:M.n,n:'MONTHLY',s:artURL(M.dex),l:artURL(M.dex),art:1};
+ const sl={uid:uid(),id:c.id,name:c.name,n:c.n,r:'ultra',s:c.s,l:c.l,art:c.art,grade:10,cert:String(Math.floor(1e8+Math.random()*9e8)),seed:Math.floor(Math.random()*1e9),d:NOW(),sp:1,setn:'Monthly Special · '+moName(),y:new Date().getFullYear()};
+ S.slabs.push(sl);_uv++;addXP(150);save();moBusy=false;
+ whenFree(()=>{flash(1,900);sfx.ultra();burst(300,['#ffe07a','#fff','#ff9de6'],1.5);banner('MONTHLY SPECIAL!');
+  modal(`<div class="em">🗓️</div><h2>${esc(moName())} special!</h2><p>You ripped ${MO_N} packs this month. Your exclusive reward, only obtainable in ${esc(moName())}:</p><div style="width:58%;margin:12px auto 0" id="moSlab">${slabHTML(sl)}</div><p><b>${esc(sl.name)}</b> · PSA 10 · <span class="money in">${fmt(cardVal(sl,{grade:10}))}</span></p><button class="btn" onclick="closeModal();go('scrVault')">TO MY VAULT</button>`);bindTilt($('#moSlab .slab'))});checkAll()}
+function moHomeHTML(){moEnsure();const M=moCard(),p=Math.min(MO_N,S.mo.p);
+ return `<div class="pnl ${S.mo.got?'grn':'gold'}"><div class="row2"><img class="th" src="${artURL(M.dex)}" style="object-fit:contain;background:radial-gradient(circle,#fff,#e0e6f4);width:46px"><div class="tx"><b>🗓️ Monthly special · ${esc(M.n)} PSA 10</b><small>${S.mo.got?'Earned ✓ · a new exclusive card arrives next month':`Only in ${esc(moName())} · rip ${MO_N} packs this month · ${moDaysLeft()} day${moDaysLeft()>1?'s':''} left`}</small>${S.mo.got?'':`<div class="mbar"><i style="width:${p/MO_N*100}%"></i></div>`}</div><span class="tag">${S.mo.got?'✓':p+'/'+MO_N}</span></div></div>`}
+
 boot();
 </script>
 </body>
