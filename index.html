@@ -11,7 +11,7 @@
 <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
 <meta http-equiv="Pragma" content="no-cache">
 <meta http-equiv="Expires" content="0">
-<title>PACK RIP · v30</title>
+<title>PACK RIP · v32</title>
 <style>
 :root{--gold:#ffd76a;--bg:#050407;--panel:rgba(18,14,24,.7);--line:rgba(255,255,255,.1);--txt:#f5f2ff;--mut:#a8a2c0;--grn:#2fbf6a;--red:#e8455a;--mx:50%;--my:50%;--rx:0deg;--ry:0deg;--c1:#2d63c8;--c2:#0c1f52;--c3:#ffcb05;--bgh:225;--bgs:30%;--pw:220px;--pbg:linear-gradient(135deg,#fff,#dfe6ff)}
 *{box-sizing:border-box;margin:0;padding:0;-webkit-tap-highlight-color:transparent;-webkit-user-select:none;user-select:none;-webkit-touch-callout:none;touch-action:manipulation}
@@ -657,7 +657,7 @@ body.intro .screen,body.intro nav,body.intro #coin,body.intro #musBtn,body.intro
 <button id="musBtn" aria-label="Music">♪</button>
 <div id="machPill">⚙ MACHINE RUNNING</div>
 <section class="screen on" id="scrHome">
-  <header class="top"><span class="brand">PACK<i>RIP</i><span class="ver">v30</span></span><button class="backBtn" id="saveBtn">💾 SAVE</button></header>
+  <header class="top"><span class="brand">PACK<i>RIP</i><span class="ver">v32</span></span><button class="backBtn" id="saveBtn">💾 SAVE</button></header>
   <div class="scroll" id="homeBody"></div>
 </section>
 <section class="screen" id="scrSets">
@@ -970,7 +970,7 @@ const packPrice=set=>Math.max(3,Math.round(6*set.sm*(hasBadge('volcano')?.9:1)))
 const MULTI={1:1,2:.99,5:.97,10:.95,20:.92,50:.88};
 const QTYS=[1,2,5,10,20,50];
 const QLV={1:1,2:20,5:30,10:40,20:60,50:75};
-const qOk=n=>!!S.prestige||lvFromXP(S.xp).L>=QLV[n];
+const qOk=n=>n===1||((!!S.prestige||lvFromXP(S.xp).L>=QLV[n])&&!newLock());
 function multiCost(set,n){const inv=Math.min(n,S.inv[set.id]||0),fr=Math.min(n-inv,S.free),pay=n-inv-fr;return {inv,fr,pay,cost:pay>0?Math.round(packPrice(set)*pay*MULTI[n]):0}}
 const sealedMax=()=>(hasBadge('glacier')?.9:.6)+(hasBadge('relic')?.1:0);
 const sealedVal=s=>Math.round(s.base*(1+Math.min(sealedMax(),(NOW()-s.bought)/HOUR*.005)));
@@ -1405,9 +1405,10 @@ function renderQty(){if(!qOk(qtySel))qtySel=1;
  if(qtySel>1){const mc=multiCost(curSet,qtySel);mb.style.display='';mb.className='sbtn '+(mc.cost?'buy':'earn');mb.textContent=`RIP ${qtySel} PACKS ${mc.cost?OUT(mc.cost):'· FREE'}`;
   const fr=mc.inv+mc.fr,off=Math.round((1-MULTI[qtySel])*100);
   $('#packPrice').innerHTML=`${qtySel} packs${fr?` · <span class="money in">${fr} free/sealed used</span>`:''}${off&&mc.pay?` · ${off}% off`:''} · half XP`}
- else{mb.style.display='none';$('#packPrice').innerHTML=priceText()}
+ else{mb.style.display='none';$('#packPrice').innerHTML=priceText()+(newLock()?`<br><span style="color:#ffd76a">✨ NEW SET · open ${newLeft()} more one by one to unlock bulk opening</span>`:'')}
  $('#weighBtn').style.display=qtySel>1?'none':'';$('#swapBtn').style.display=qtySel>1?'none':''}
 $('#qty').addEventListener('click',e=>{const b=e.target.closest('[data-q]');if(!b||opened||(current&&current.paid))return;const n=+b.dataset.q;
+ if(n>1&&newLock()){sfx.bad();toast(`New set! Open your first ${NEW_N} ${curSet.n} packs one by one · ${newLeft()} to go`);return}
  if(!qOk(n)){sfx.bad();toast(`${n} packs at once unlocks at level ${QLV[n]} · you are level ${lvFromXP(S.xp).L}`);return}
  qtySel=n;blip();renderQty();packWrap.classList.toggle('float',true)});
 $('#multiBtn').onclick=()=>{if(!curSet||opened||qtySel<2||!qOk(qtySel))return;const mc=multiCost(curSet,qtySel);if(mc.cost&&!spend(mc.cost))return;
@@ -2271,7 +2272,7 @@ function machScr(){const r=S.machine.run;return `PACK ${r.done}${r.left>0?' / '+
 function machReport(r){const set=setById[r.set],profit=r.val-r.spent;return `<div class="pnl"><div class="row2"><div class="tx"><b>${set.n} · ${r.done} packs</b><small>${r.why||''}</small></div></div><p>Spent <span class="money out">${fmt(r.spent)}</span> · pulled <span class="money in">${fmt(r.val)}</span><br>Result <span class="money ${profit>=0?'in':'out'}">${profit>=0?'+':'−'}${fmt(Math.abs(profit))}</span> · ${r.hits.length} hits</p><div class="grid5" style="margin-top:10px">${r.hits.slice(0,15).map(x=>`<div class="mini ${x.r} ${x.mis?'mp-'+x.mis:''}"><img src="${x.s}"><span class="pv">${fmt(x.v)}</span></div>`).join('')||'<p class="empty" style="grid-column:1/-1">No holos this time.</p>'}</div></div>`}
 $('#machBody').addEventListener('click',e=>{const t=e.target.closest('button');if(!t)return;
  if(t.dataset.ms){mSel.set=t.dataset.ms;renderMachine();return}if(t.dataset.mc){mSel.count=+t.dataset.mc;renderMachine();return}if(t.dataset.mr){mSel.reserve=+t.dataset.mr;renderMachine();return}
- if(t.id==='mGo'){S.machine.run={set:mSel.set,left:mSel.count,reserve:mSel.reserve,done:0,spent:0,val:0,hits:[],log:[],start:NOW()};save();fanfare();renderMachine();updPill();return}
+ if(t.id==='mGo'){if((S.perSet[mSel.set]||0)<NEW_N){sfx.bad();toast(`Open ${NEW_N-(S.perSet[mSel.set]||0)} more ${setById[mSel.set].n} packs by hand first`);return}S.machine.run={set:mSel.set,left:mSel.count,reserve:mSel.reserve,done:0,spent:0,val:0,hits:[],log:[],start:NOW()};save();fanfare();renderMachine();updPill();return}
  if(t.id==='mStop'){finishMachine('Stopped by you');return}});
 let machBusy=false;
 async function machineTick(){const m=S.machine;if(!m.run||machBusy)return;machBusy=true;
@@ -2469,7 +2470,7 @@ function renderHome(){
   return `<div class="row2"><div class="tx"><b>${d.t}${d.g>1?` <span class="tag g${d.g}">GEN ${ROMAN[d.g]}</span>`:''}</b><div class="mbar"><i style="width:${p/d.n*100}%"></i></div></div><button class="sbtn ${done&&!cl?'earn':'g'}" data-claim="${k}" ${done&&!cl?'':'disabled'}>${cl?'✓':IN(dReward(d))}</button></div>`}).join('')}</div>`;
  const g=S.grail;h+=`<div class="pnl"><h4>👑 YOUR HOLY GRAIL · ULTRA RARES ONLY</h4>${g?`<div class="row2"><img class="th" src="${g.img}"><div class="tx"><b>PSA 10 ${esc(g.name)}</b><small>Reward: $200 + 300 XP</small></div><button class="sbtn g" id="grailPick">CHANGE</button></div>`:`<p>Pick one ultra rare as your life goal. Land it as a PSA 10 for a big reward.</p><button class="btn ghost" id="grailPick">CHOOSE GRAIL</button>`}</div>`;
  if(!ev)h+=`<p class="empty" style="padding:10px 0 0;font-size:11px;text-shadow:0 1px 4px #000">Next weekend event (Fri–Sun): ${EVS[evNext()][0]}</p>`;
- h+=`<p class="empty" style="font-size:10px;padding:14px 0 0;color:#6ff0a0">Version 30 · real monthly card · sell up to 50 · PSA duplicates · starter slab · ultra 1 in 500 · Gen IX Paldea · 5 lo-fi songs · PSA 10 7.5% · monthly 1,000 packs · set reward ~$100</p><button class="resetSm" id="resetHome">⟲ RESET GAME</button>`;
+ h+=`<p class="empty" style="font-size:10px;padding:14px 0 0;color:#6ff0a0">Version 32 · first 10 packs of a new set one by one · sell all dupes 75% · real monthly card · sell up to 50 · PSA duplicates · starter slab · ultra 1 in 500 · Gen IX Paldea · 5 lo-fi songs · PSA 10 7.5% · monthly 1,000 packs · set reward ~$100</p><button class="resetSm" id="resetHome">⟲ RESET GAME</button>`;
  $('#homeBody').innerHTML=h;updDots()}
 let homeSig='';
 function renderHomeLive(){const sig=[S.subs.filter(s=>s.ready<=NOW()).length,jobReady(),oakReady(),isBroke(),quizReady(),hlReady(),shelfSold(),!!S.machine.run,aucLive()].join();if(sig!==homeSig){homeSig=sig;renderHome()}}
@@ -2537,7 +2538,7 @@ function renderStats(){let own=0;Object.values(S.coll).forEach(s=>Object.values(
  ${L100?`<div class="pnl ev"><h4>✨ NEW GAME+ SEASON</h4><p>You reached level 100. Start a new season: your level resets to 1, you keep every card, slab, badge and dollar, and you earn a gold ★ next to your name.</p><button class="btn" id="stPrest">START SEASON ${S.prestige+2}</button></div>`:''}
  <div class="sgrid">${st.map(([v,l])=>`<div class="stat"><b>${v}</b><span>${l}</span></div>`).join('')}</div>
  <h3 class="sec">Best pulls</h3>${S.hist.length?`<div class="pnl">${S.hist.slice(0,12).map(h=>`<div class="row2"><img class="th" src="${h.img}"><div class="tx"><b>${esc(h.name)}</b><small>${(setById[h.set]||{n:''}).n} · Pack #${h.p} · ${tierName[h.r]}${h.god?' · GOD PACK':''}</small></div></div>`).join('')}</div>`:'<p class="empty">No holos yet.</p>'}
- <h3 class="sec">Rules of the game · v30</h3><div class="odds">Packs: <b>10 cards</b>, no duplicates inside one pack. Rare slot: <b>12.5% holo</b>. <b>Ultra rares are legendary: 1 in 500 packs.</b> One <b>God Pack</b> in every 200. Misprints about 1 in 170 cards. PSA 10 on about 1 in 13 submissions (7.5%).<br>
+ <h3 class="sec">Rules of the game · v32</h3><div class="odds">Packs: <b>10 cards</b>, no duplicates inside one pack. Rare slot: <b>12.5% holo</b>. <b>Ultra rares are legendary: 1 in 500 packs.</b> One <b>God Pack</b> in every 200. Misprints about 1 in 170 cards. PSA 10 on about 1 in 13 submissions (7.5%).<br>
  Levels <b>1 to 100</b>. Each region has a cap: Kanto 30, Johto 55, Hoenn 80, Sinnoh 100.<br>
  Work shifts at <b>Marty's counter</b>: wage ${fmt(crWage())} + tips. Every shift costs 1 energy (refills 1 every 20 min, or eat a snack from your fridge).<br>
  Every set you <b>complete 100%</b> earns a <b>random ungraded card from a modern set (Gen 4 to 8)</b>, worth around $100. Rip <b>1,000 packs</b> in a month for that month's exclusive special card.<br>
@@ -2555,7 +2556,7 @@ function intro(done){const I=$('#intro'),st=$('#iStage'),bx=$('#iBox');I.classLi
  let starter=null;const show=(who,sc,id)=>{st.innerHTML=`<div class="halo"></div><div class="isp"${id?' id="'+id+'"':''}>${sprite(who,sc)}</div>`};
  (async()=>{
   I.classList.add('dark');bx.style.display='none';
-  st.innerHTML=`<div class="title"><div class="t1">PACK<br>RIP</div><div class="t2">COLLECTOR EDITION · V30</div><div style="margin-top:22px;display:flex;gap:10px;justify-content:center;align-items:flex-end">${sprite(1,5)}${sprite(0,6)}${sprite(2,5)}</div><div class="ps">TAP TO ENTER THE SHOP</div><button class="btn ghost" id="tCode" style="margin-top:22px;color:#fff">🔑 CONTINUE WITH SAVE CODE</button><div class="cr">A fan-made card collecting game · ♪ sound on</div></div>`;
+  st.innerHTML=`<div class="title"><div class="t1">PACK<br>RIP</div><div class="t2">COLLECTOR EDITION · V32</div><div style="margin-top:22px;display:flex;gap:10px;justify-content:center;align-items:flex-end">${sprite(1,5)}${sprite(0,6)}${sprite(2,5)}</div><div class="ps">TAP TO ENTER THE SHOP</div><button class="btn ghost" id="tCode" style="margin-top:22px;color:#fff">🔑 CONTINUE WITH SAVE CODE</button><div class="cr">A fan-made card collecting game · ♪ sound on</div></div>`;
   await new Promise(r=>{$('#tCode').onclick=e=>{e.stopPropagation();ac();loadCodeModal()};I.onclick=e=>{if(e.target.closest('#tCode'))return;I.onclick=null;ac();musicStart();bell();r()}});
   st.innerHTML='';I.classList.remove('dark');document.body.classList.add('introZoom');await wait(1500);bx.style.display='';
   show('gary',10);
@@ -3680,6 +3681,31 @@ async function moFixOld(){if(moFixBusy)return;const old=(S.slabs||[]).filter(s=>
   if(n){_uv++;save();whenFree(()=>{toast(`🗓️ Your monthly special${n>1?'s were':' was'} upgraded to a real card`);if($('#scrVault').classList.contains('on'))renderVault()})}}
  finally{moFixBusy=false}}
 setTimeout(moFixOld,3000);setInterval(moFixOld,120000);
+/* ---------- v31: sell ALL duplicates (raw, rare, holo, misprints, PSA) at 75%, keep the most valuable copy ---------- */
+function dupePlan(){const g={};
+ sellPool({noSeal:1}).forEach(it=>{const id=it.k==='raw'?it.id:it.k==='slab'?it.sl.id:it.k==='mis'?it.m.id:null;if(!id)return;(g[id]=g[id]||[]).push(it)});
+ const keep=[],sell=[];Object.values(g).forEach(a=>{if(a.length<2)return;a.sort((x,y)=>y.val-x.val);keep.push(a[0]);sell.push(...a.slice(1))});
+ return {sell,keep,val:Math.round(sell.reduce((a,it)=>a+it.val*.75,0)*100)/100}}
+function dupeBtnHTML(){const p=dupePlan();return `<div class="pnl gold" style="margin-top:12px"><h4>♻️ SELL ALL DUPLICATES · 75%</h4><p style="margin-top:0">Sells every extra copy of every card: commons, rares, holos, misprints and PSA slabs. The most valuable copy of each card always stays (e.g. you keep the PSA 10 Charizard and sell the PSA 9).</p><button class="btn earn" id="dupAll" ${p.sell.length?'':'disabled'}>${p.sell.length?`SELL ${p.sell.length} DUPLICATES ${IN(p.val)}`:'NO DUPLICATES'}</button></div>`}
+function sellAllDupes(){const p=dupePlan();if(!p.sell.length){toast('No duplicates to sell');return}
+ const top=p.sell.slice().sort((a,b)=>b.val-a.val).slice(0,10);
+ modal(`<div class="em">♻️</div><h2>Sell ${p.sell.length} duplicates?</h2><p>Marty pays <b>75%</b> of market: <span class="money in">${fmt(p.val)}</span><br>One copy of every card stays, always the most valuable one.</p>
+ <div class="grid5" style="margin-top:10px">${top.map(it=>`<div class="mini ${it.c?it.c.r:'holo'}"><img src="${it.img}"><span class="pv">${it.k==='slab'?'PSA '+it.grade:fmt(it.val)}</span></div>`).join('')}</div>${p.sell.length>10?`<p style="font-size:11px">+ ${p.sell.length-10} more</p>`:''}
+ <button class="btn earn" id="dupY">SELL ALL ${IN(p.val)}</button><button class="btn ghost" onclick="closeModal()">CANCEL</button>`);
+ $('#dupY').onclick=()=>{closeModal();let tot=0,fk=0;
+  p.sell.forEach(it=>{const r=removeItem(it);if(r&&r.fake)fk++;else tot+=it.val*.75});
+  tot=Math.round(tot*100)/100;addCoins(tot);S.stats.sold+=p.sell.length-fk;S.stats.earned+=tot;addXP(Math.min(200,p.sell.length*2));save();
+  sfx.cash();burst(160,['#6ff0a0','#ffe07a','#fff'],1.1);banner('DUPES SOLD!');toast(`Sold ${p.sell.length-fk} duplicates for ${fmt(tot)}${fk?` · ${fk} fake${fk>1?'s':''} binned`:''}`);
+  checkUnlocks();checkAll();if($('#scrMarket').classList.contains('on'))renderMarket();if($('#scrVault').classList.contains('on'))renderVault();if($('#scrAlbum').classList.contains('on'))renderAlbum()}}
+const _rm31=renderMarket;renderMarket=async function(){await _rm31();const f=$('#marketBody .pnl');if(f)f.insertAdjacentHTML('afterend',dupeBtnHTML())};
+const _rv31=renderVault;renderVault=function(){_rv31();const v=$('#vStats');if(v&&!$('#vDup'))v.insertAdjacentHTML('afterend',`<div id="vDup">${dupeBtnHTML()}</div>`);else if($('#vDup'))$('#vDup').innerHTML=dupeBtnHTML()};
+document.addEventListener('click',e=>{const b=e.target.closest('#dupAll');if(b&&!b.disabled){e.stopPropagation();sellAllDupes()}},true);
+
+/* ---------- v32: first 10 packs of every set must be ripped one by one ---------- */
+const NEW_N=10;
+function newLock(){return !!(curSet&&$('#scrOpen')&&$('#scrOpen').classList.contains('on')&&(S.perSet[curSet.id]||0)<NEW_N)}
+const newLeft=()=>curSet?Math.max(0,NEW_N-(S.perSet[curSet.id]||0)):0;
+const _cp32=commitPack;commitPack=function(pk,set,mode){const before=S.perSet[set.id]||0;const r=_cp32(pk,set,mode);if(before<NEW_N&&(S.perSet[set.id]||0)>=NEW_N&&!mode)whenFree(()=>{fanfare();toast(`🔓 ${set.n}: bulk opening unlocked again`)});return r};
 boot();
 
 </script>
