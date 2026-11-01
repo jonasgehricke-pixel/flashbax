@@ -11,7 +11,7 @@
 <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
 <meta http-equiv="Pragma" content="no-cache">
 <meta http-equiv="Expires" content="0">
-<title>PACK RIP · v27</title>
+<title>PACK RIP · v29</title>
 <style>
 :root{--gold:#ffd76a;--bg:#050407;--panel:rgba(18,14,24,.7);--line:rgba(255,255,255,.1);--txt:#f5f2ff;--mut:#a8a2c0;--grn:#2fbf6a;--red:#e8455a;--mx:50%;--my:50%;--rx:0deg;--ry:0deg;--c1:#2d63c8;--c2:#0c1f52;--c3:#ffcb05;--bgh:225;--bgs:30%;--pw:220px;--pbg:linear-gradient(135deg,#fff,#dfe6ff)}
 *{box-sizing:border-box;margin:0;padding:0;-webkit-tap-highlight-color:transparent;-webkit-user-select:none;user-select:none;-webkit-touch-callout:none;touch-action:manipulation}
@@ -657,7 +657,7 @@ body.intro .screen,body.intro nav,body.intro #coin,body.intro #musBtn,body.intro
 <button id="musBtn" aria-label="Music">♪</button>
 <div id="machPill">⚙ MACHINE RUNNING</div>
 <section class="screen on" id="scrHome">
-  <header class="top"><span class="brand">PACK<i>RIP</i><span class="ver">v27</span></span><button class="backBtn" id="saveBtn">💾 SAVE</button></header>
+  <header class="top"><span class="brand">PACK<i>RIP</i><span class="ver">v29</span></span><button class="backBtn" id="saveBtn">💾 SAVE</button></header>
   <div class="scroll" id="homeBody"></div>
 </section>
 <section class="screen" id="scrSets">
@@ -941,7 +941,7 @@ function evNext(){const wk=Math.floor((dayN()+3)/7);return EVK[(wk+(new Date().g
 /* =================== ECONOMY =================== */
 const TIER={common:.1,uncommon:.25,rare:1.5,holo:12,ultra:60};
 const GM={10:6,9:2.2,8:1.4,7:1.1,6:.9,5:.75,4:.6,3:.5,2:.4,1.5:.35,1:.3};
-const ULTRA_RATE=1/800;
+const ULTRA_RATE=1/500;
 const POP={charizard:4,lugia:3,pikachu:2.5,umbreon:2.5,rayquaza:2.5,blastoise:2,mewtwo:2,espeon:2,'ho-oh':2,venusaur:1.8,gengar:1.8,dragonite:1.8,gyarados:1.6,tyranitar:1.6,celebi:1.6,mew:1.7,suicune:1.5,eevee:1.5,typhlosion:1.5,groudon:1.5,kyogre:1.5,snorlax:1.4,entei:1.4,raikou:1.4,latios:1.4,latias:1.4,deoxys:1.4,salamence:1.4,blaziken:1.4,gardevoir:1.4,feraligatr:1.3,raichu:1.3,alakazam:1.3,articuno:1.3,zapdos:1.3,moltres:1.3,jirachi:1.3,metagross:1.3,meganium:1.2,sceptile:1.2,swampert:1.2,flygon:1.2,
  garchomp:1.8,lucario:1.8,arceus:2,giratina:1.8,dialga:1.6,palkia:1.6,darkrai:1.6,infernape:1.4,empoleon:1.3,torterra:1.2,glaceon:1.4,leafeon:1.4,togekiss:1.3,gallade:1.2,shaymin:1.3,rotom:1.2};
 function hsh(s){let h=2166136261;for(let i=0;i<s.length;i++){h^=s.charCodeAt(i);h=Math.imul(h,16777619)}return h>>>0}
@@ -969,7 +969,7 @@ function cardVal(c,o={}){
 const packPrice=set=>Math.max(3,Math.round(6*set.sm*(hasBadge('volcano')?.9:1)));
 const MULTI={1:1,2:.99,5:.97,10:.95,20:.92,50:.88};
 const QTYS=[1,2,5,10,20,50];
-const QLV={1:1,2:20,5:30,10:40,20:50,50:70};
+const QLV={1:1,2:20,5:30,10:40,20:60,50:75};
 const qOk=n=>!!S.prestige||lvFromXP(S.xp).L>=QLV[n];
 function multiCost(set,n){const inv=Math.min(n,S.inv[set.id]||0),fr=Math.min(n-inv,S.free),pay=n-inv-fr;return {inv,fr,pay,cost:pay>0?Math.round(packPrice(set)*pay*MULTI[n]):0}}
 const sealedMax=()=>(hasBadge('glacier')?.9:.6)+(hasBadge('relic')?.1:0);
@@ -1008,7 +1008,7 @@ function whenFree(fn){const t=()=>busy()?setTimeout(t,600):fn();setTimeout(t,500
 function addRep(n){if(n>0)n*=hasBadge('earth')?1.25:1;S.rep=Math.max(0,Math.round((S.rep+n)*10)/10);save()}
 function minPackPrice(){return Math.min(...unlockedSets().map(packPrice))}
 function isBroke(){return S.coins<minPackPrice()&&S.free<1&&!Object.values(S.inv).some(n=>n>0)}
-function brokeCheck(){if(isBroke())setTimeout(()=>toast('Low on cash? Work a shift at Gary\'s counter'),2200)}
+function brokeCheck(){if(isBroke())setTimeout(()=>toast('Low on cash? Work a shift at Marty\'s counter'),2200)}
 const pname=()=>(S.player&&S.player.name)||'RED';
 /* =================== COLLECTION =================== */
 function addRaw(c,fake){_uv++;const s=setOf(c.id);S.coll[s]=S.coll[s]||{};S.coll[s][c.id]=(S.coll[s][c.id]||0)+1;S.seen[s]=S.seen[s]||{};S.seen[s][c.id]=1;S.nm[c.id]=c.name;
@@ -1581,7 +1581,7 @@ async function ripMulti(n){
  const all=packs.flatMap(p=>p.cards);const tot=res.reduce((a,r)=>a+r.pv,0);
  const best=all.slice().sort((a,b)=>cardVal(b.c,{mis:b.mis?1:0})-cardVal(a.c,{mis:a.mis?1:0}))[0];
  const newN=new Set(all.filter(x=>!seenBefore.has(x.c.id)).map(x=>x.c.id)).size;
- const hitsList=uniq(all.filter(x=>!x.mis&&(x.c.r==='holo'||x.c.r==='ultra')).map(x=>x.c)).filter(c=>rawCount(c.id)>0);
+ const hitsList=all.filter(x=>!x.mis&&(x.c.r==='holo'||x.c.r==='ultra')).map(x=>x.c).filter(c=>rawCount(c.id)>0);
  M.innerHTML=`<div class="mh">${n} PACKS RIPPED<small>${hits} HIT${hits===1?'':'S'} · ${newN} NEW · VALUE <span class="money in">${fmt(tot)}</span></small></div>
   <div id="mStage"><div id="mHit"></div><div class="mrows">${packs.map((p,i)=>`<div class="mrowl"><span>PACK ${i+1}${p.god?' · GOD PACK':''}</span><span class="money in">${fmt(res[i].pv)}</span></div><div class="mrow">${p.cards.map(x=>`<img loading="lazy" class="${x.c.r==='holo'?'h':x.c.r==='ultra'?'u':''}" src="${x.c.s}">`).join('')}</div>`).join('')}</div></div>
   <div class="two" style="width:100%;max-width:440px;flex:none">${hitsList.length?`<button class="btn ghost" id="mPSA">📮 PSA (${hitsList.length})</button>`:''}<button class="btn" id="mDone">DONE</button></div>`;
@@ -1645,7 +1645,7 @@ async function renderAlbum(){
  let h=(filt==='all'||filt==='own')&&!selMode?mis.map(m=>`<div class="slot ${m.r} mp-${m.v}" data-mis="${m.uid}"><img src="${m.s}"><span class="rt mis">MISPRINT</span><span class="vl">${fmt(cardVal(m,{mis:1}))}</span></div>`).join(''):'';
  const list=D.cards.filter(c=>filt==='all'||(filt==='miss'&&!own.has(c.id))||(filt==='own'&&coll[c.id])||c.r===filt);
  h+=list.map(c=>{const n=coll[c.id]||0,sn=seen[c.id],o=own.has(c.id);const can=selMode&&n>0&&(c.r==='holo'||c.r==='ultra');
-  return `<div class="slot ${c.r} ${o?'':(sn?'gone':'miss')} ${selMode?(can?'selable':'dim'):''} ${selPick.has(c.id)?'picked':''}" data-id="${c.id}"><img src="${c.s}" loading="lazy">${!o?`<span class="ms">${sn?'SOLD':'MISSING'}</span>`:''}${n&&lbl[c.r]?`<span class="rt ${c.r}">${lbl[c.r]}</span>`:''}${n>1?`<span class="cnt">×${n}</span>`:''}${!n&&o?'<span class="cnt" style="background:#c41e2a;color:#fff">PSA</span>':''}${rev[c.id]?'<span class="rv">REV</span>':''}<span class="no">#${c.n}</span>${n?`<span class="vl">${fmt(cardVal(c))}</span>`:''}</div>`}).join('');
+  return `<div class="slot ${c.r} ${o?'':(sn?'gone':'miss')} ${selMode?(can?'selable':'dim'):''} ${selPick.has(c.id)?'picked':''}" data-id="${c.id}"${selPick.get(c.id)>1?` data-n="×${selPick.get(c.id)}"`:''}><img src="${c.s}" loading="lazy">${!o?`<span class="ms">${sn?'SOLD':'MISSING'}</span>`:''}${n&&lbl[c.r]?`<span class="rt ${c.r}">${lbl[c.r]}</span>`:''}${n>1?`<span class="cnt">×${n}</span>`:''}${!n&&o?'<span class="cnt" style="background:#c41e2a;color:#fff">PSA</span>':''}${rev[c.id]?'<span class="rv">REV</span>':''}<span class="no">#${c.n}</span>${n?`<span class="vl">${fmt(cardVal(c))}</span>`:''}</div>`}).join('');
  $('#agrid').innerHTML=h||'<p class="empty" style="grid-column:1/-1">Nothing here. Yet.</p>'}
 async function renderTop(kind){await ensureLoaded();if(albumSet!==kind)return;$('#chips').style.display='none';
  if(kind==='$psa'){const all=S.slabs.map(sl=>({sl,val:cardVal(sl,{grade:sl.grade})})).sort((a,b)=>b.val-a.val);const tot=all.reduce((a,x)=>a+x.val,0);const items=all.slice(0,20);
@@ -1655,7 +1655,7 @@ async function renderTop(kind){await ensureLoaded();if(albumSet!==kind)return;$(
  const allI=allItems().filter(i=>i.k==='raw'||i.k==='mis'||i.k==='promo').sort((a,b)=>b.val-a.val);const tot=allI.reduce((a,i)=>a+i.val*(i.cnt||1),0);const cnt=allI.reduce((a,i)=>a+(i.cnt||1),0);const items=allI.slice(0,20);
  $('#albCount').innerHTML=`<b>${cnt}</b> raw cards`;$('#albSetName').textContent='Your top 20 ungraded cards';$('#albPct').textContent=fmt(tot);$('#albBar').style.width='100%';
  $('#agrid').innerHTML=items.length?items.map((it,i)=>{const can=selMode&&it.k==='raw'&&(it.c.r==='holo'||it.c.r==='ultra');
-  return `<div class="slot ${it.k!=='mis'?it.c.r:'holo'} ${it.k==='mis'?'mp-'+it.m.v:''} ${selMode?(can?'selable':'dim'):''} ${it.k==='raw'&&selPick.has(it.id)?'picked':''}" data-ai="${i}"><img src="${it.img}" loading="lazy"><span class="rk">#${i+1}</span>${it.k==='mis'?'<span class="cnt" style="background:#ff9de6">ERROR</span>':it.k==='promo'?'<span class="cnt" style="background:#ffd76a">🎁</span>':it.cnt>1?`<span class="cnt">×${it.cnt}</span>`:''}<span class="sn">${esc(it.k==='promo'?it.p.setn:(setById[it.set]||{n:''}).n)}</span><span class="vl">${fmt(it.val)}</span></div>`}).join(''):'<p class="empty" style="grid-column:1/-1">No cards yet. Go rip some packs!</p>';
+  return `<div class="slot ${it.k!=='mis'?it.c.r:'holo'} ${it.k==='mis'?'mp-'+it.m.v:''} ${selMode?(can?'selable':'dim'):''} ${it.k==='raw'&&selPick.has(it.id)?'picked':''}" data-ai="${i}"${it.k==='raw'&&selPick.get(it.id)>1?` data-n="×${selPick.get(it.id)}"`:''}><img src="${it.img}" loading="lazy"><span class="rk">#${i+1}</span>${it.k==='mis'?'<span class="cnt" style="background:#ff9de6">ERROR</span>':it.k==='promo'?'<span class="cnt" style="background:#ffd76a">🎁</span>':it.cnt>1?`<span class="cnt">×${it.cnt}</span>`:''}<span class="sn">${esc(it.k==='promo'?it.p.setn:(setById[it.set]||{n:''}).n)}</span><span class="vl">${fmt(it.val)}</span></div>`}).join(''):'<p class="empty" style="grid-column:1/-1">No cards yet. Go rip some packs!</p>';
  $('#agrid')._items=items}
 $('#setChips').addEventListener('click',e=>{const b=e.target.closest('.chip');if(!b)return;const k=b.dataset.set;if(k[0]!=='$'&&!isUnlocked(SETS.findIndex(s=>s.id===k))){toast('Locked set');return}if((k==='$psa'||k==='$games')&&selMode){selMode=false;selPick.clear();updSel()}albumSet=k;renderAlbum()});
 $('#chips').addEventListener('click',e=>{const b=e.target.closest('.chip');if(b){filt=b.dataset.f;renderAlbum()}});
@@ -1669,21 +1669,21 @@ $('#agrid').addEventListener('click',e=>{
  const ps=e.target.closest('[data-ps]');if(ps){const x=$('#agrid')._ps[+ps.dataset.ps];if(x)openSlab(x.sl);return}
  const s=e.target.closest('.slot');if(!s)return;
  if(s.dataset.ai!=null){const it=$('#agrid')._items[+s.dataset.ai];if(!it)return;
-  if(selMode){if(it.k==='raw'&&(it.c.r==='holo'||it.c.r==='ultra')){selPick.has(it.id)?selPick.delete(it.id):selPick.add(it.id);s.classList.toggle('picked');blip();updSel()}return}
+  if(selMode){if(it.k==='raw'&&(it.c.r==='holo'||it.c.r==='ultra')){selToggle(it.id,s)}return}
   if(it.k==='mis')return openZoom(it.m,it.m.v);if(it.k==='promo')return openPromo(it.p);return openZoom(it.c)}
  if(s.dataset.mis){if(selMode)return;const m=S.mis.find(x=>x.uid===s.dataset.mis);if(m)openZoom(m,m.v);return}
  const c=memo[albumSet]&&memo[albumSet].byId[s.dataset.id];if(!c)return;
- if(selMode){if(rawCount(c.id)>0&&(c.r==='holo'||c.r==='ultra')){selPick.has(c.id)?selPick.delete(c.id):selPick.add(c.id);s.classList.toggle('picked');blip();updSel()}else toast('Only holos and ultra rares in hand');return}
+ if(selMode){if(rawCount(c.id)>0&&(c.r==='holo'||c.r==='ultra')){selToggle(c.id,s)}else toast('Only holos and ultra rares in hand');return}
  if(!(S.seen[albumSet]||{})[c.id]){toast(`Missing: ${c.name} #${c.n}`);return}openZoom(c)});
 function openZoom(c,misV){if(c.pr)return openPromo(c);const z=$('#zcard');z.innerHTML='';const el=document.createElement('div');el.className='card live '+c.r+(misV?' mp-'+misV:'');el.innerHTML=cardHTML(c,{mis:misV});el._base='';z.appendChild(el);
  const n=misV?1:rawCount(c.id),v=cardVal(c,{mis:misV?1:0});
  $('#zinfo').innerHTML=`<b>${esc(c.name)}</b>${(setById[setOf(c.id)]||{n:''}).n} #${c.n||''} · ${misV?MISV.find(m=>m[0]===misV)[1]+' misprint':tierName[c.r]} · ${misV?'1 copy':n+' in hand'}<br><span class="v">Market ${fmt(v)}</span>${hotIds().has(c.id)?' <span class="tag r">HOT</span>':''}`;
  let a='';
- if(!misV&&(c.r==='holo'||c.r==='ultra')&&n>0)a+=`<button class="btn" id="zPSA">SEND TO PSA…</button>`;
+ if(!misV&&(c.r==='holo'||c.r==='ultra')&&n>0)a+=`<button class="btn" id="zPSA">SEND 1 TO PSA…</button>${n>1?`<button class="btn ghost" id="zPSA2">📮 SEND ALL ${n} COPIES TO PSA</button>`:''}`;
  if(n>0)a+=`<div class="two"><button class="btn earn" id="zQS">QUICK SELL ${IN(Math.max(.01,v*.45))}</button>${misV?'':'<button class="btn ghost" id="zTr">🤝 TRADE CODE</button>'}</div>`;
  if(n===0)a+=`<p class="empty" style="padding:12px">No copy in hand. It stays registered in your binder.</p>`;
  $('#zact').innerHTML=a;
- if($('#zPSA'))$('#zPSA').onclick=e=>{e.stopPropagation();$('#zoom').classList.remove('on');psaTierModal([c])};
+ if($('#zPSA'))$('#zPSA').onclick=e=>{e.stopPropagation();$('#zoom').classList.remove('on');psaTierModal([c])};if($('#zPSA2'))$('#zPSA2').onclick=e=>{e.stopPropagation();$('#zoom').classList.remove('on');psaTierModal(Array(rawCount(c.id)).fill(c))};
  if($('#zQS'))$('#zQS').onclick=e=>{e.stopPropagation();$('#zoom').classList.remove('on');const it=misV?{k:'mis',m:c,val:v,name:c.name}:{k:'raw',id:c.id,c,val:v,name:c.name};guard(it,()=>{quickSell(it);renderAlbum()})};
  if($('#zTr'))$('#zTr').onclick=e=>{e.stopPropagation();$('#zoom').classList.remove('on');guard({k:'raw',id:c.id,c,name:c.name},()=>tradeOut(c))};
  bindTilt2(el);$('#zoom').classList.add('on');if(c.r==='holo'||c.r==='ultra')sfx.holo()}
@@ -1695,9 +1695,9 @@ function openPromo(p){const z=$('#zcard');z.innerHTML='';const el=document.creat
  $('#zQS').onclick=e=>{e.stopPropagation();$('#zoom').classList.remove('on');quickSell({k:'promo',p,c:p,val:v,name:p.name});renderVault()};
  bindTilt2(el);$('#zoom').classList.add('on');sfx.holo()}
 function quickSell(it){
- if(it.k==='promo'){removeItem(it);addCoins(Math.round(it.val*.45*100)/100);sfx.cash();toast(`Sold ${it.name} to Gary`);save();return}
- const r=removeItem(it);if(r&&r.fake){sfx.bad();modal(`<div class="em">🧐</div><h2>Gary shakes his head</h2><p>"That ${esc(it.name)} is a <b>fake</b>, kid. Wrong font, wrong holo." He bins it.</p><button class="btn" onclick="closeModal()">UGH</button>`);save();return}
- const p=Math.max(.01,Math.round(it.val*.45*100)/100);addCoins(p);sfx.cash();toast(`Sold ${it.name} to Gary`);save()}
+ if(it.k==='promo'){removeItem(it);addCoins(Math.round(it.val*.45*100)/100);sfx.cash();toast(`Sold ${it.name} to Marty`);save();return}
+ const r=removeItem(it);if(r&&r.fake){sfx.bad();modal(`<div class="em">🧐</div><h2>Marty shakes his head</h2><p>"That ${esc(it.name)} is a <b>fake</b>, kid. Wrong font, wrong holo." He bins it.</p><button class="btn" onclick="closeModal()">UGH</button>`);save();return}
+ const p=Math.max(.01,Math.round(it.val*.45*100)/100);addCoins(p);sfx.cash();toast(`Sold ${it.name} to Marty`);save()}
 /* =================== PSA =================== */
 const GRADE_ODDS=[[10,7.5],[9,37.5],[8,21],[7,12],[6,7],[5,5],[4,3.5],[3,2.5],[2,2],[1.5,1],[1,1]];
 const GRADE_NAME={10:'GEM MT',9:'MINT',8:'NM-MT',7:'NM',6:'EX-MT',5:'EX',4:'VG-EX',3:'VG',2:'GOOD',1.5:'FR',1:'PR'};
@@ -1733,7 +1733,7 @@ const psaHead=(t,s)=>$('#psaHead').innerHTML=`<b>${t}</b><small>${s||''}</small>
 function thud(){noise(.25,.9,180,.7,'lowpass');buzz(30)}
 function bindTilt(el){if(!el)return;let raf=0;el.onpointermove=e=>{const r=el.getBoundingClientRect();const x=(e.clientX-r.left)/r.width,y=(e.clientY-r.top)/r.height;if(raf)return;raf=requestAnimationFrame(()=>{raf=0;setTilt(el,x,y);el.querySelectorAll('.sc').forEach(s=>setTilt(s,x,y));el.style.transition='none';el.style.transform=`rotateY(${(x-.5)*24}deg) rotateX(${-(y-.5)*18}deg)`})};el.onpointerleave=el.onpointerup=()=>{el.style.transition='transform .5s';el.style.transform=''}}
 function psaTierModal(cards){
- cards=cards.filter(c=>c.pr?S.promo.some(x=>x.uid===c.uid):rawCount(c.id)>0);if(!cards.length){toast('No raw copy left');return}
+ {const used={};cards=cards.filter(c=>{if(c.pr)return S.promo.some(x=>x.uid===c.uid);used[c.id]=(used[c.id]||0)+1;return used[c.id]<=rawCount(c.id)})}if(!cards.length){toast('No raw copy left');return}
  const n=cards.length,raw=cards.reduce((a,c)=>a+cardVal(c),0),p10=cards.reduce((a,c)=>a+cardVal(c,{grade:10}),0);
  modal(`<div class="em">📮</div><h2>Submit ${n>1?n+' cards':'to PSA'}</h2>
  ${n>1?`<div class="grid5" style="margin-top:10px">${cards.slice(0,10).map(c=>`<div class="mini ${c.r}"><img src="${c.s}"></div>`).join('')}</div>`:''}
@@ -1872,7 +1872,7 @@ function renderShowList(){
  const ri=rankIdx();
  $('#showList').innerHTML=`<div class="pnl"><h4>YOUR REPUTATION</h4><div class="big">⭐ ${S.rep.toFixed(1)}</div><p>Fair deals raise it, gouging and fakes lower it. Higher reputation brings more collectors and whales.</p></div>`+
  SHOWS.map(s=>{const lock=ri<s.rank,fee=showFee(s);return `<div class="pnl ${lock?'':'gold'}" style="${lock?'opacity:.5':''}"><div class="row2"><div class="ic" style="font-size:34px">${s.e}</div><div class="tx"><b>${s.n}</b><small>${s.d}<br>${s.vis+(hasBadge('fog')?1:0)} visitors · entry ${fee?`<span class="money out">${OUT(fee)}</span>`:'<span class="money in">free</span>'}${lock?` · needs level ${RANK_LV[s.rank]}`:''}</small></div><button class="sbtn" data-show="${s.id}" ${lock?'disabled':''}>GO</button></div></div>`}).join('')+
- `<h3 class="sec">How it works</h3><div class="odds">Pick up to <b>8 items</b> for your table. Buyers make offers: <b>accept</b>, <b>counter</b> or <b>decline</b>. Push too hard and they leave. Walking the <b>dealer aisles</b> costs one visitor. <b>Traders</b> offer slabs in swap: check the label for fakes.</div>`}
+ `<h3 class="sec">How it works</h3><div class="odds">Bring up to <b>50 items</b> to your table, sorted in tabs (raw, duplicates, holos, PSA slabs, PSA duplicates). More items bring more visitors. Buyers make offers: <b>accept</b>, <b>counter</b> or <b>decline</b>. Push too hard and they leave. Walking the <b>dealer aisles</b> costs one visitor. <b>Traders</b> offer slabs in swap: check the label for fakes.</div>`}
 $('#showList').addEventListener('click',e=>{const b=e.target.closest('[data-show]');if(b)setupTable(SHOWS.find(s=>s.id===b.dataset.show))});
 async function ensureLoaded(){const ids=new Set(unlockedSets().map(s=>s.id));Object.keys(S.coll).forEach(k=>{if(setById[k])ids.add(k)});S.slabs.forEach(s=>{const k=setOf(s.id);if(setById[k]&&!s.sp)ids.add(k)});
  await Promise.all([...ids].map(id=>loadSet(id).catch(()=>null)));save()}
@@ -1997,7 +1997,7 @@ function endShow(){
  `<div class="two"><button class="btn" id="shDone">PACK UP</button></div>`);$('#shDone').onclick=()=>{SH=null;renderShowList()};checkAll()}
 /* =================== DAILY MISSIONS =================== */
 const DPOOL=[{k:'rip',t:'Rip 3 packs',n:3,r:8,g:1},{k:'holo',t:'Pull a holo',n:1,r:12,g:1},{k:'sell',t:'Sell 2 items at a card show',n:2,r:12,g:1},{k:'earn',t:'Earn $30 at card shows',n:30,r:15,g:1},
- {k:'grade',t:'Send a card to PSA',n:1,r:10,g:1},{k:'show',t:'Visit a card show',n:1,r:6,g:1},{k:'job',t:'Do an odd job at Gary\'s',n:1,r:8,g:1},{k:'bounty',t:'Complete a bounty',n:1,r:15,g:1},{k:'bought',t:'Buy something from a dealer or Gary\'s case',n:1,r:8,g:1},{k:'quiz',t:'Name 3 Pokémon in the quiz',n:3,r:8,g:1},
+ {k:'grade',t:'Send a card to PSA',n:1,r:10,g:1},{k:'show',t:'Visit a card show',n:1,r:6,g:1},{k:'job',t:'Do an odd job at Marty\'s',n:1,r:8,g:1},{k:'bounty',t:'Complete a bounty',n:1,r:15,g:1},{k:'bought',t:'Buy something from a dealer or Marty\'s case',n:1,r:8,g:1},{k:'quiz',t:'Name 3 Pokémon in the quiz',n:3,r:8,g:1},
  {k:'rip2',t:'Johto: rip 3 Gen II packs',n:3,r:14,g:2},{k:'holo2',t:'Johto: pull 2 Gen II holos',n:2,r:24,g:2},
  {k:'rip3',t:'Hoenn: rip 3 Gen III packs',n:3,r:18,g:3},{k:'holo3',t:'Hoenn: pull 2 Gen III holos',n:2,r:30,g:3},
  {k:'rip4',t:'Sinnoh: rip 3 Gen IV packs',n:3,r:22,g:4},{k:'holo4',t:'Sinnoh: pull 2 Gen IV holos',n:2,r:36,g:4}];
@@ -2065,7 +2065,7 @@ const ACH=[['first','First rip','Open your first pack',()=>S.packs>=1,5,1],['p10
  ['sale','First sale','Sell at a card show',()=>S.stats.sold>=1,10,1],['k1','Big business','Earn $1,000 selling',()=>S.stats.earned>=1000,100,1],['scam','Not today','Spot a fake slab',()=>S.stats.scams>=1,30,1],['comp','Completionist','Complete a set 100%',()=>SETS.some(s=>setComplete(s.id)),80,1],
  ['mis','Factory error','Pull a misprint',()=>S.stats.mis>=1,40,1],['shop','Open for business','Own a card shop',()=>S.shop.owned,50,1],['kchamp','Kanto Champion','Earn all 8 Kanto badges',()=>regionBadges(1)>=8,250,1],
  ['quiz','Pokédex brain','Name 50 Pokémon in the quiz',()=>S.stats.quiz>=50,60,1],['show3','Showcase','Fill your room\'s showcase shelf',()=>S.favs.length>=3,40,1],['mach','Automation','Buy the pack machine',()=>S.machine.owned,200,1],
- ['m50','Case breaker','Rip 50 packs at once',()=>!!S.flags.m50,120,1],['saved','Safe keeping','Copy your save code',()=>!!S.flags.saved,10,1],['gcase','Window shopper','Buy a card from Gary\'s glass case',()=>!!S.flags.gcase,20,1],
+ ['m50','Case breaker','Rip 50 packs at once',()=>!!S.flags.m50,120,1],['saved','Safe keeping','Copy your save code',()=>!!S.flags.saved,10,1],['gcase','Window shopper','Buy a card from Marty\'s glass case',()=>!!S.flags.gcase,20,1],
  ['crate','Retro gamer','Open a Nintendo crate',()=>S.stats.crates>=1,20,1],['spec1','Set reward','Earn your first set completion card',()=>S.spec.length>=1,50,1],['spec11','Reward collector','Earn 11 set completion cards',()=>S.spec.length>=11,300,1],
  ['duel','Rival beaten','Win a weekly duel against your rival',()=>S.stats.duels>=1,80,1],['trade','Trader','Send or receive a trade code',()=>S.stats.trades>=1,30,1],['deco','Interior designer','Buy 3 upgrades for your room',()=>roomUps()>=3,60,1],
  ['streak','Loyal collector','Log in 7 days in a row',()=>S.streak>=7,100,1],['msone','Master collector','Complete a Master Set',()=>S.ms.length>=1,400,1],['ritual','Superstitious','Pick a lucky opening ritual',()=>!!S.ritual,10,1],
@@ -2158,7 +2158,7 @@ async function gymBattle(x){
  else{S.gymCd[x.k]=NOW()+15*MIN;save()}
  $('#bRes').innerHTML=`<div class="bubble" style="margin:14px auto 0">${won?`"Your team is impressive. Take this." <br><b>${x.bn}</b>: ${x.bd}`:`"Not good enough yet. Come back stronger." <br>Rematch in 15 minutes. Grade or upgrade your ${x.type==='Holo'||x.type==='Ultra'?'':x.type+' '}cards.`}</div><button class="btn" id="bOk">${won?'AWESOME':'OK'}</button>`;
  $('#bOk').onclick=()=>{mg.classList.remove('on');mg.innerHTML='';$('#nav').classList.remove('hide');renderGyms();checkAll()}}
-/* =================== GARY'S GLASS CASE =================== */
+/* =================== MARTY'S GLASS CASE =================== */
 const GC_SLOT=6*HOUR;
 function gcEnsure(){const slot=Math.floor(NOW()/GC_SLOT);if(S.gcase&&S.gcase.slot===slot&&S.gcase.v===4)return;
  const holo=[];unlockedSets().forEach(s=>{const m=memo[s.id];if(m)holo.push(...m.P.holo)});if(!holo.length){S.gcase=null;return}
@@ -2167,12 +2167,12 @@ function gcEnsure(){const slot=Math.floor(NOW()/GC_SLOT);if(S.gcase&&S.gcase.slo
  const items=pick(owned).map(c=>({id:c.id,p:Math.round(cardVal(c)*rr(1.05,1.35)*100)/100,b:false,m:false}));
  if(missing.length&&(Math.random()<.5||!items.length)){const c=rnd(missing);const it={id:c.id,p:Math.round(cardVal(c)*10*100)/100,b:false,m:true};if(items.length>=5)items[Math.floor(Math.random()*5)]=it;else items.push(it)}
  S.gcase={slot,items:shuffle(items),v:4};save()}
-function gcHTML(){gcEnsure();if(!S.gcase)return'<p class="empty">Unlock sets to fill Gary\'s case.</p>';
+function gcHTML(){gcEnsure();if(!S.gcase)return'<p class="empty">Unlock sets to fill Marty\'s case.</p>';
  const left=GC_SLOT-(NOW()%GC_SLOT),hrs=Math.floor(left/HOUR),mins=Math.ceil((left%HOUR)/MIN);
  return `<p style="margin:0 0 10px">5 hand-picked holos from your unlocked sets. Restocks in ${hrs?hrs+'h ':''}${mins}min. ${S.gcase.items.some(x=>x.m&&!x.b)?'<b style="color:#ff9de6">One card you are missing is in the case, at 10× its value.</b>':''}</p>
  <div class="dgrid c5">${S.gcase.items.map((x,i)=>{const c=cardById(x.id);if(!c)return'';return `<div class="dl ${c.r} ${x.m&&!x.b?'missing':''} ${x.b?'boughtx':''}" data-gc="${i}">${x.m&&!x.b?'<span class="mtag">MISSING</span>':''}<img src="${c.s}" loading="lazy"><div class="pr">${x.b?'SOLD':OUT(x.p)}</div><div class="hv">mkt ${fmt(cardVal(c))}</div></div>`}).join('')}</div>`}
 function gcBuy(i){const x=S.gcase.items[i];if(!x||x.b)return;const c=cardById(x.id);if(!c)return;const v=cardVal(c);
- modal(`<div style="width:56%;margin:0 auto"><img src="${c.l}" onerror="this.src='${c.s}'" style="width:100%;border-radius:8px"></div><h2 style="margin-top:12px">${esc(c.name)}</h2><p>${setById[setOf(c.id)].n} · ${tierName[c.r]}<br>Market ${fmt(v)} · Gary asks <span class="money out">${fmt(x.p)}</span>${x.m?'<br><br><b style="color:#ff9de6">"I know you\'re missing this one, kid. That\'s why it costs 10×." 😏</b>':''}</p><button class="btn buy" id="gcY" ${S.coins<x.p?'disabled':''}>BUY ${OUT(x.p)}</button><button class="btn ghost" onclick="closeModal()">PASS</button>`);
+ modal(`<div style="width:56%;margin:0 auto"><img src="${c.l}" onerror="this.src='${c.s}'" style="width:100%;border-radius:8px"></div><h2 style="margin-top:12px">${esc(c.name)}</h2><p>${setById[setOf(c.id)].n} · ${tierName[c.r]}<br>Market ${fmt(v)} · Marty asks <span class="money out">${fmt(x.p)}</span>${x.m?'<br><br><b style="color:#ff9de6">"I know you\'re missing this one, kid. That\'s why it costs 10×." 😏</b>':''}</p><button class="btn buy" id="gcY" ${S.coins<x.p?'disabled':''}>BUY ${OUT(x.p)}</button><button class="btn ghost" onclick="closeModal()">PASS</button>`);
  $('#gcY').onclick=()=>{if(!spend(x.p))return;x.b=true;addRaw(c);S.stats.bought++;S.flags.gcase=1;prog('bought',1);addXP(10);save();closeModal();sfx.cash();burst(60,['#ffe07a','#9ef0ff','#fff'],.8);toast(`${c.name} added to your binder`);renderShop();checkUnlocks();checkAll()}}
 /* =================== SHOP / JOBS / SHELF / TOURNEY =================== */
 const UPG={disp:{n:'Display case',c:[0,160,320,640,1200],max:5,d:'+$1.50/h and +1 shelf slot each level'},light:{n:'Lighting',c:[120,300,700],max:3,d:'+15% income each level'},store:{n:'Storage room',c:[60,150,400],max:3,d:'Income piles up longer while you are away'}};
@@ -2207,24 +2207,24 @@ function shelfPull(i){const x=S.shelf[i];if(!x)return;S.shelf.splice(i,1);const 
 function tourney(){if(!tourneyReady())return;const cost=30;
  modal(`<div class="em">🏆</div><h2>Tournament night</h2><p>Host a tournament at your shop. You pay <span class="money out">${fmt(cost)}</span> for prizes, players pay $6 entry. More reputation brings more players.</p><button class="btn buy" id="tY">HOST ${OUT(cost)}</button><button class="btn ghost" onclick="closeModal()">NOT NOW</button>`);
  $('#tY').onclick=()=>{if(!spend(cost))return;S.lastTourney=NOW();const n=Math.min(24,6+Math.floor(S.rep/4)+Math.floor(Math.random()*4));const inc=n*6;
-  const w=rnd(['Ash','Gary','Brock','Misty','Tracey','Ritchie','Joey','Lass Sally','Bug Catcher Rick','Hiker Ed','Hannes']);
+  const w=rnd(['Ash','Marty','Brock','Misty','Tracey','Ritchie','Joey','Lass Sally','Bug Catcher Rick','Hiker Ed','Hannes']);
   modal(`<div class="em">⚔️</div><h2>${n} players showed up!</h2><p>Round 1… Round 2… Finals!<br><br><b>${w}</b> wins the trophy.<br>Entry fees ${IN(inc)}</p><button class="btn earn" id="tC">COLLECT ${IN(inc)}</button>`);fanfare();
   $('#tC').onclick=()=>{addCoins(inc);addRep(1);addXP(50);save();closeModal();renderShop()}}}
 function doJob(){if(!jobReady())return;const pool=[];Object.values(memo).forEach(m=>pool.push(...m.P.common,...m.P.uncommon,...m.P.rare,...m.P.holo));
  const per=jobPer();
  if(!pool.length){S.lastJob=NOW();addCoins(per*4);prog('job',1);save();return}
  const cards=[];for(let i=0;i<8;i++){const lo=Math.random()<.5;cards.push(rnd(pool.filter(x=>lo?(x.r==='common'||x.r==='uncommon'):(x.r==='rare'||x.r==='holo')))||rnd(pool))}
- let i=0,ok=0;const draw=()=>{const c=cards[i];modal(`<h2>Sort Gary's bulk</h2><p>Card ${i+1}/8 · correct so far <b>${ok}</b> · <span class="money in">+${fmt(per)}</span> each · all 8 right = <b style="color:#ffd76a">+${fmt(per*3)} bonus</b></p><div class="jobCard" id="jc"><img src="${c.l}" onerror="this.src='${c.s}'"></div><div class="two"><button class="btn ghost" id="jB">‹ BULK BIN</button><button class="btn" id="jR">RARE CASE ›</button></div><p style="font-size:11px">Rare cards have a ★ next to the card number. Commons ● and uncommons ◆ go in bulk.</p>`);
+ let i=0,ok=0;const draw=()=>{const c=cards[i];modal(`<h2>Sort Marty's bulk</h2><p>Card ${i+1}/8 · correct so far <b>${ok}</b> · <span class="money in">+${fmt(per)}</span> each · all 8 right = <b style="color:#ffd76a">+${fmt(per*3)} bonus</b></p><div class="jobCard" id="jc"><img src="${c.l}" onerror="this.src='${c.s}'"></div><div class="two"><button class="btn ghost" id="jB">‹ BULK BIN</button><button class="btn" id="jR">RARE CASE ›</button></div><p style="font-size:11px">Rare cards have a ★ next to the card number. Commons ● and uncommons ◆ go in bulk.</p>`);
   const pickA=rare=>{const right=(c.r==='rare'||c.r==='holo'||c.r==='ultra')===rare;if(right){ok++;tone([988],.1,.06)}else sfx.bad();$('#jc').style.transform=`translateX(${rare?120:-120}%) rotate(${rare?15:-15}deg)`;i++;setTimeout(()=>i<8?draw():fin(),220)};
   $('#jB').onclick=()=>pickA(false);$('#jR').onclick=()=>pickA(true)};
  const fin=()=>{S.lastJob=NOW();S.stats.jobs++;prog('job',1);const pay=Math.round((ok*per+(ok===8?per*3:0))*100)/100;addXP(ok*4);save();modal(`<div class="em">🧹</div><h2>Shift done</h2><p>${ok}/8 sorted right.${ok===8?'<br><b style="color:#ffd76a">Perfect shift bonus!</b>':''}</p><button class="btn earn" id="jP">GET PAID ${IN(Math.max(per,pay))}</button>`);$('#jP').onclick=()=>{addCoins(Math.max(per,pay));sfx.cash();closeModal();renderShop();checkAll()}};
  draw()}
 function bulkInfo(){let n=0,v=0;Object.keys(S.coll).forEach(sid=>{const m=memo[sid];if(!m)return;Object.entries(S.coll[sid]).forEach(([id,c])=>{const card=m.byId[id];if(card&&c>1&&(card.r==='common'||card.r==='uncommon')){n+=c-1;v+=(c-1)*cardVal(card)*.5}})});return {n,v:Math.round(v*100)/100}}
 async function renderShop(){if(!$('#shopBody').innerHTML)$('#shopBody').innerHTML='<div style="display:flex;justify-content:center;padding:40px"><div class="spin"></div></div>';await ensureLoaded();
- const bi=bulkInfo(),per=jobPer();let h=`<div class="pnl gold"><h4>💎 GARY'S GLASS CASE · BUY HOLOS</h4>${gcHTML()}</div>
- <div class="pnl"><h4>🧑‍🦳 GARY'S CARD SHOP · EARN MONEY</h4>
+ const bi=bulkInfo(),per=jobPer();let h=`<div class="pnl gold"><h4>💎 MARTY'S GLASS CASE · BUY HOLOS</h4>${gcHTML()}</div>
+ <div class="pnl"><h4>🧑‍🦳 MARTY'S CARD SHOP · EARN MONEY</h4>
  ${workPanel()}
- <div class="row2"><div class="ic">📦</div><div class="tx"><b>Sell bulk duplicates</b><small>${bi.n} spare commons/uncommons · Gary pays 50%</small></div><button class="sbtn earn" id="bulk" ${bi.n?'':'disabled'}>${IN(bi.v)}</button></div>
+ <div class="row2"><div class="ic">📦</div><div class="tx"><b>Sell bulk duplicates</b><small>${bi.n} spare commons/uncommons · Marty pays 50%</small></div><button class="sbtn earn" id="bulk" ${bi.n?'':'disabled'}>${IN(bi.v)}</button></div>
  ${isBroke()?`<div class="row2"><div class="ic">👴</div><div class="tx"><b>Ask Grandpa for pocket money</b><small>${pocketReady()?'"Don\'t tell Grandma."':'Try again in '+Math.ceil((20*MIN-(NOW()-S.lastPocket))/MIN)+' min.'}</small></div><button class="sbtn earn" id="pocket" ${pocketReady()?'':'disabled'}>+$12</button></div>`:''}</div>`;
  const sd=sealedDisc();
  h+=`<h3 class="sec">Buy sealed product</h3><div class="pnl"><p style="margin-top:0">Sealed product gains up to +${Math.round(sealedMax()*100)}% in value over time. Open it any time or sell it at card shows.${sd<1?' <b style="color:#6ff0a0">Mineral Badge: −15%</b>':''}</p>${unlockedSets().map(s=>{const p=packPrice(s),b6=Math.round(6*p*.9*sd),b18=Math.round(18*p*.85*sd);return `<div class="row2"><div class="tx"><b>${s.n}</b><small>Bundle 6 packs · Box 18 packs</small></div><button class="sbtn buy" data-buy="${s.id}|bundle|6|${b6}">${OUT(b6)}</button><button class="sbtn buy" data-buy="${s.id}|box|18|${b18}">${OUT(b18)}</button></div>`}).join('')}</div>`;
@@ -2333,7 +2333,7 @@ async function higherLower(){if(!hlReady())return;await ensureLoaded();const poo
    setTimeout(()=>{mg._lock=false;if(!right)return end(false);if(streak>=6)return end(true);cur=nx;draw()},1100)})};
  draw()}
 /* =================== RIVAL =================== */
-const RIVAL='BLUE';
+const RIVAL='KAI';
 const daysLeft=()=>7-((dayN()+3)%7);
 function rvPool(){const p=[];unlockedSets().forEach(s=>{const m=memo[s.id];if(m)p.push(...m.P.holo)});return p}
 function rvEnsure(){const w=weekN();
@@ -2343,7 +2343,7 @@ function rvEnsure(){const w=weekN();
 function rvTrack(c,mis){if(!S.rv)return;const v=cardVal(c,{mis:mis?1:0});if(!S.rv.mine||v>S.rv.mine.v){S.rv.mine={name:c.name,s:c.s,v}}}
 function rvSettle(){const o=S.rvPending;if(!o)return;S.rvPending=null;save();const win=o.mine&&o.mine.v>o.his.v;const prize=Math.round(60*maxGen()*(hasBadge('beacon')?2:1));
  if(win){S.stats.duels++;addCoins(prize);addXP(300)}save();
- whenFree(()=>{modal(`<div class="em">${sprite('rival',5)}</div><h2>${win?'You beat '+RIVAL+'!':RIVAL+' wins this week'}</h2><p>Last week's best pulls:<br>You: <b>${o.mine?esc(o.mine.name)+' · '+fmt(o.mine.v):'nothing'}</b><br>${RIVAL}: <b>${esc(o.his.name)} · ${fmt(o.his.v)}</b><br><br>${win?`"Tch. Lucky." <span class="money in">+${fmt(prize)}</span> + 300 XP`:'"Smell ya later!" A new duel starts now.'}</p><button class="btn" onclick="closeModal()">${win?'YES!':'NEXT WEEK'}</button>`);if(win){fanfare();burst(200,['#ffe07a','#fff'],1.2)}else sfx.bad()});checkAll()}
+ whenFree(()=>{modal(`<div class="em">${sprite('rival',5)}</div><h2>${win?'You beat '+RIVAL+'!':RIVAL+' wins this week'}</h2><p>Last week's best pulls:<br>You: <b>${o.mine?esc(o.mine.name)+' · '+fmt(o.mine.v):'nothing'}</b><br>${RIVAL}: <b>${esc(o.his.name)} · ${fmt(o.his.v)}</b><br><br>${win?`"Tch. Lucky." <span class="money in">+${fmt(prize)}</span> + 300 XP`:'"Better luck next week, rookie!" A new duel starts now.'}</p><button class="btn" onclick="closeModal()">${win?'YES!':'NEXT WEEK'}</button>`);if(win){fanfare();burst(200,['#ffe07a','#fff'],1.2)}else sfx.bad()});checkAll()}
 const rnd2=(R,a)=>a[Math.floor(R()*a.length)];
 function rvFeed(){const p=rvPool();if(!p.length)return[];const out=[];const slot=Math.floor(NOW()/(3*HOUR));for(let i=0;i<3;i++){const R=mulberry(hsh('feed'+(slot-i)));const c=p[Math.floor(R()*p.length)];out.push({c,ago:i*3,line:rnd2(R,['Just pulled {c}. Too easy 😎','{c}! Your binder could never.','Sent {c} to PSA. Gem Mint incoming.','Another {c}. I have three now.'])})}return out}
 /* =================== HANNES' WEEKLY REQUEST =================== */
@@ -2457,10 +2457,10 @@ function renderHome(){
  const ready=S.subs.filter(s=>s.ready<=NOW());if(ready.length){const n=ready.reduce((a,s)=>a+s.sls.length,0);h+=`<div class="pnl gold" data-go="scrVault"><h4>📦 PSA PACKAGE ARRIVED</h4><div class="big">${n} slab${n>1?'s':''} waiting at your door</div></div>`}
  if(S.machine.run)h+=`<div class="pnl grn" data-go="scrMachine"><h4>⚙ MACHINE RUNNING</h4><p>${S.machine.run.done} packs opened · ${setById[S.machine.run.set].n}</p></div>`;
  if(shelfSold())h+=`<div class="pnl grn" data-go="scrShop"><h4>🏪 SOLD IN YOUR SHOP</h4><p>${shelfSold()} item(s) sold. Collect the money in the Shop.</p></div>`;
- if(oakReady())h+=`<div class="pnl gold"><div class="row2"><div class="ic">🎓</div><div class="tx"><b>Professor Oak's weekly gift</b><small>A free sealed bundle is waiting.</small></div><button class="sbtn earn" id="oak">CLAIM</button></div></div>`;
- if(isBroke())h+=`<div class="pnl red"><h4>LOW ON CASH</h4><p>Work a shift at Gary's counter (Shop or the WORK tile), or quick sell a card.</p></div>`;
+ if(oakReady())h+=`<div class="pnl gold"><div class="row2"><div class="ic">🎓</div><div class="tx"><b>Professor Linden's weekly gift</b><small>A free sealed bundle is waiting.</small></div><button class="sbtn earn" id="oak">CLAIM</button></div></div>`;
+ if(isBroke())h+=`<div class="pnl red"><h4>LOW ON CASH</h4><p>Work a shift at Marty's counter (Shop or the WORK tile), or quick sell a card.</p></div>`;
  if(S.free>0||Object.values(S.inv).some(n=>n>0))h+=`<div class="pnl" data-go="scrSets"><div class="row2"><div class="ic">🎟️</div><div class="tx"><b>Packs waiting</b><small>${S.free?S.free+' free voucher'+(S.free>1?'s':''):''}${S.free&&Object.values(S.inv).some(n=>n>0)?' · ':''}${Object.entries(S.inv).filter(([k,n])=>n>0).map(([k,n])=>n+'× '+setById[k].n).join(', ')}</small></div><button class="sbtn">RIP</button></div></div>`;
- if(S.gcase&&S.gcase.items.some(x=>x.m&&!x.b))h+=`<div class="pnl ev" data-go="scrShop"><div class="row2"><div class="ic">💎</div><div class="tx"><b>Gary has a card you're missing</b><small>It's in his glass case today. At 10× its value.</small></div><button class="sbtn">LOOK</button></div></div>`;
+ if(S.gcase&&S.gcase.items.some(x=>x.m&&!x.b))h+=`<div class="pnl ev" data-go="scrShop"><div class="row2"><div class="ic">💎</div><div class="tx"><b>Marty has a card you're missing</b><small>It's in his glass case today. At 10× its value.</small></div><button class="sbtn">LOOK</button></div></div>`;
  h+=aucHomeHTML()+moHomeHTML()+specHomeHTML();
  const nq=QTYS.find(q=>!qOk(q));if(nq)h+=`<div class="pnl"><div class="row2"><div class="ic">📦</div><div class="tx"><b>Next unlock: open ${nq} packs at once</b><small>Reach level ${QLV[nq]} · you are level ${lvFromXP(S.xp).L}</small></div><span class="tag">🔒 LV ${QLV[nq]}</span></div></div>`;
  const sr=storyReady();if(sr)h+=`<div class="pnl gold" data-go="scrQuests"><h4>📜 STORY</h4><div class="big">${sr} chapter${sr>1?'s':''} ready to claim</div></div>`;
@@ -2469,7 +2469,7 @@ function renderHome(){
   return `<div class="row2"><div class="tx"><b>${d.t}${d.g>1?` <span class="tag g${d.g}">GEN ${ROMAN[d.g]}</span>`:''}</b><div class="mbar"><i style="width:${p/d.n*100}%"></i></div></div><button class="sbtn ${done&&!cl?'earn':'g'}" data-claim="${k}" ${done&&!cl?'':'disabled'}>${cl?'✓':IN(dReward(d))}</button></div>`}).join('')}</div>`;
  const g=S.grail;h+=`<div class="pnl"><h4>👑 YOUR HOLY GRAIL · ULTRA RARES ONLY</h4>${g?`<div class="row2"><img class="th" src="${g.img}"><div class="tx"><b>PSA 10 ${esc(g.name)}</b><small>Reward: $200 + 300 XP</small></div><button class="sbtn g" id="grailPick">CHANGE</button></div>`:`<p>Pick one ultra rare as your life goal. Land it as a PSA 10 for a big reward.</p><button class="btn ghost" id="grailPick">CHOOSE GRAIL</button>`}</div>`;
  if(!ev)h+=`<p class="empty" style="padding:10px 0 0;font-size:11px;text-shadow:0 1px 4px #000">Next weekend event (Fri–Sun): ${EVS[evNext()][0]}</p>`;
- h+=`<p class="empty" style="font-size:10px;padding:14px 0 0;color:#6ff0a0">Version 27 · classic menu · full-card reveal · ultra 1 in 800 · Gen IX Paldea · 5 lo-fi songs · PSA 10 7.5% · monthly 1,000 packs · set reward ~$100</p><button class="resetSm" id="resetHome">⟲ RESET GAME</button>`;
+ h+=`<p class="empty" style="font-size:10px;padding:14px 0 0;color:#6ff0a0">Version 29 · sell up to 50 · PSA duplicates · starter slab · ultra 1 in 500 · Gen IX Paldea · 5 lo-fi songs · PSA 10 7.5% · monthly 1,000 packs · set reward ~$100</p><button class="resetSm" id="resetHome">⟲ RESET GAME</button>`;
  $('#homeBody').innerHTML=h;updDots()}
 let homeSig='';
 function renderHomeLive(){const sig=[S.subs.filter(s=>s.ready<=NOW()).length,jobReady(),oakReady(),isBroke(),quizReady(),hlReady(),shelfSold(),!!S.machine.run,aucLive()].join();if(sig!==homeSig){homeSig=sig;renderHome()}}
@@ -2479,7 +2479,7 @@ $('#homeBody').addEventListener('click',e=>{const l=e.target.closest('[data-lock
  const bb=e.target.closest('[data-best]');if(bb){const b=bestItem();if(b){const k=crownTier(b.val),nx=CROWNS[k+1];toast(`${CROWNS[k][1]} crown${nx?' · '+nx[1]+' at '+fmt(nx[0]):' · the best there is'}`);if(b.k==='slab')openSlab(b.sl);else if(b.k==='mis')openZoom(b.m,b.m.v);else if(b.k==='promo')openPromo(b.p);else openZoom(b.c)}return}
  const g=e.target.closest('[data-go]');if(g){const k=g.dataset.go;if(k==='quiz')return quiz();if(k==='auction')return openAuction();if(k==='hl')return higherLower();if(k==='work')return startShift();go(k);return}
  const c=e.target.closest('[data-claim]');if(c){const d=DPOOL.find(x=>x.k===c.dataset.claim);if(S.daily.claimed.includes(d.k))return;S.daily.claimed.push(d.k);addCoins(dReward(d));addXP(50);sfx.cash();save();renderHome();return}
- if(e.target.closest('#oak')){const s=rnd(unlockedSets());S.sealed.push({uid:uid(),set:s.id,kind:'bundle',packs:6,base:6*packPrice(s),bought:NOW()});S.lastOak=NOW();save();sfx.ultra();burst(120,['#ffe07a','#fff'],1);modal(`<div class="em">${sprite('oak',5)}</div><h2>Professor Oak</h2><p>"A true researcher needs samples!"<br>You got a sealed <b>${s.n} bundle</b>. It's in your Vault.</p><button class="btn" onclick="closeModal()">THANK YOU PROFESSOR</button>`);renderHome();return}
+ if(e.target.closest('#oak')){const s=rnd(unlockedSets());S.sealed.push({uid:uid(),set:s.id,kind:'bundle',packs:6,base:6*packPrice(s),bought:NOW()});S.lastOak=NOW();save();sfx.ultra();burst(120,['#ffe07a','#fff'],1);modal(`<div class="em">${sprite('oak',5)}</div><h2>Professor Linden</h2><p>"A true researcher needs samples!"<br>You got a sealed <b>${s.n} bundle</b>. It's in your Vault.</p><button class="btn" onclick="closeModal()">THANK YOU PROFESSOR</button>`);renderHome();return}
  if(e.target.closest('#grailPick')){pickGrail();return}});
 $('#saveBtn').onclick=saveCodeModal;
 async function pickGrail(){await ensureLoaded();const pool=[];unlockedSets().forEach(s=>{const m=memo[s.id];if(m)pool.push(...m.P.ultra)});pool.sort((a,b)=>cardVal(b)-cardVal(a));
@@ -2521,7 +2521,7 @@ async function renderMarket(){$('#marketBody').innerHTML='<div style="display:fl
  <h3 class="sec">🔥 Hot today</h3><div class="pnl">${hot.map(c=>`<div class="row2"><img class="th" src="${c.s}"><div class="tx"><b>${esc(c.name)}</b><small>${setById[setOf(c.id)].n} · you have ${rawCount(c.id)}</small></div><span class="money in">${fmt(cardVal(c))}</span></div>`).join('')||'<p>Open some sets to see the market.</p>'}</div>
  <h3 class="sec">Your most valuable items</h3><div class="pnl">${items.map((it,i)=>`<div class="row2"><img class="th" src="${it.img}" style="${it.k==='seal'?'object-fit:contain;background:#222':''}"><div class="tx"><b>${esc(it.name)}${it.k==='slab'?' <span class="tag">PSA '+it.grade+'</span>':it.k==='mis'?' <span class="tag p">ERROR</span>':it.k==='promo'?' <span class="tag">REWARD</span>':''}${it.cnt>1?' ×'+it.cnt:''}</b><small>Market ${fmt(it.val)}</small></div>${it.k==='seal'?'':`<button class="sbtn earn" data-qs="${i}">SELL ${IN(it.val*.45)}</button>`}</div>`).join('')||'<p>Nothing yet.</p>'}</div>
  <p class="empty" style="font-size:11px">Quick sell pays 45% of market. Card shows and your shop shelf pay much more.</p>`;
- $('#marketBody').querySelectorAll('[data-qs]').forEach(b=>b.onclick=()=>{const it=items[+b.dataset.qs];modal(`<h2>Quick sell?</h2><p><b>${esc(it.name)}</b><br>Gary pays <span class="money in">${fmt(it.val*.45)}</span> (market ${fmt(it.val)}).</p><button class="btn earn" id="qsY">SELL ${IN(it.val*.45)}</button><button class="btn ghost" onclick="closeModal()">KEEP</button>`);$('#qsY').onclick=()=>{closeModal();guard(it,()=>{quickSell(it);renderMarket()})}})}
+ $('#marketBody').querySelectorAll('[data-qs]').forEach(b=>b.onclick=()=>{const it=items[+b.dataset.qs];modal(`<h2>Quick sell?</h2><p><b>${esc(it.name)}</b><br>Marty pays <span class="money in">${fmt(it.val*.45)}</span> (market ${fmt(it.val)}).</p><button class="btn earn" id="qsY">SELL ${IN(it.val*.45)}</button><button class="btn ghost" onclick="closeModal()">KEEP</button>`);$('#qsY').onclick=()=>{closeModal();guard(it,()=>{quickSell(it);renderMarket()})}})}
 function lookGrid(sel){return `<div class="looks">${LOOKS.map((l,i)=>`<button data-lk="${i}" class="${i===sel?'on':''}">${sprite(i,3)}${l.n}</button>`).join('')}</div>`}
 function renderStats(){let own=0;Object.values(S.coll).forEach(s=>Object.values(s).forEach(n=>own+=n));
  const st=[[S.packs,'Packs ripped'],[S.cards,'Cards pulled'],[own,'Cards in hand'],[S.holos,'Holos'],[S.ultras,'Ultra rares'],[S.gods,'God packs'],[S.stats.mis,'Misprints'],[S.sinceHolo,'Packs since holo'],
@@ -2537,9 +2537,9 @@ function renderStats(){let own=0;Object.values(S.coll).forEach(s=>Object.values(
  ${L100?`<div class="pnl ev"><h4>✨ NEW GAME+ SEASON</h4><p>You reached level 100. Start a new season: your level resets to 1, you keep every card, slab, badge and dollar, and you earn a gold ★ next to your name.</p><button class="btn" id="stPrest">START SEASON ${S.prestige+2}</button></div>`:''}
  <div class="sgrid">${st.map(([v,l])=>`<div class="stat"><b>${v}</b><span>${l}</span></div>`).join('')}</div>
  <h3 class="sec">Best pulls</h3>${S.hist.length?`<div class="pnl">${S.hist.slice(0,12).map(h=>`<div class="row2"><img class="th" src="${h.img}"><div class="tx"><b>${esc(h.name)}</b><small>${(setById[h.set]||{n:''}).n} · Pack #${h.p} · ${tierName[h.r]}${h.god?' · GOD PACK':''}</small></div></div>`).join('')}</div>`:'<p class="empty">No holos yet.</p>'}
- <h3 class="sec">Rules of the game · v21</h3><div class="odds">Packs: <b>10 cards</b>, no duplicates inside one pack. Rare slot: <b>12.5% holo</b>. <b>Ultra rares are legendary: 1 in 800 packs.</b> One <b>God Pack</b> in every 200. Misprints about 1 in 170 cards. PSA 10 on about 1 in 13 submissions (7.5%).<br>
+ <h3 class="sec">Rules of the game · v29</h3><div class="odds">Packs: <b>10 cards</b>, no duplicates inside one pack. Rare slot: <b>12.5% holo</b>. <b>Ultra rares are legendary: 1 in 500 packs.</b> One <b>God Pack</b> in every 200. Misprints about 1 in 170 cards. PSA 10 on about 1 in 13 submissions (7.5%).<br>
  Levels <b>1 to 100</b>. Each region has a cap: Kanto 30, Johto 55, Hoenn 80, Sinnoh 100.<br>
- Work shifts at <b>Gary's counter</b>: wage ${fmt(crWage())} + tips. Every shift costs 1 energy (refills 1 every 20 min, or eat a snack from your fridge).<br>
+ Work shifts at <b>Marty's counter</b>: wage ${fmt(crWage())} + tips. Every shift costs 1 energy (refills 1 every 20 min, or eat a snack from your fridge).<br>
  Every set you <b>complete 100%</b> earns a <b>random ungraded card from a modern set (Gen 4 to 8)</b>, worth around $100. Rip <b>1,000 packs</b> in a month for that month's exclusive special card.<br>
  The next set unlocks when you <b>own 95%</b> of the current set, or a <b>PSA 10 holo</b> from it.</div>`;
  $('#stSave').onclick=saveCodeModal;$('#stLoad').onclick=loadCodeModal;$('#stPbg').onclick=()=>{pbgModal()};$('#stBg').onclick=()=>{bgModal()};
@@ -2552,38 +2552,45 @@ function intro(done){const I=$('#intro'),st=$('#iStage'),bx=$('#iBox');I.classLi
   const iv=setInterval(()=>{i++;sp.textContent=t.slice(0,i);if(i%3===0)tone([1100],.03,.015);if(i>=t.length){clearInterval(iv);bx.appendChild(arr);I.onclick=()=>{I.onclick=null;blip();res()}}},24);
   I.onclick=()=>{i=t.length-1}});
  const say=async(lines,who)=>{for(const l of lines)await typeLine(l.replace(/\{N\}/g,name),who)};
- const show=(who,sc,id)=>{st.innerHTML=`<div class="halo"></div><div class="isp"${id?' id="'+id+'"':''}>${sprite(who,sc)}</div>`};
+ let starter=null;const show=(who,sc,id)=>{st.innerHTML=`<div class="halo"></div><div class="isp"${id?' id="'+id+'"':''}>${sprite(who,sc)}</div>`};
  (async()=>{
   I.classList.add('dark');bx.style.display='none';
-  st.innerHTML=`<div class="title"><div class="t1">PACK<br>RIP</div><div class="t2">COLLECTOR EDITION · V27</div><div style="margin-top:22px;display:flex;gap:10px;justify-content:center;align-items:flex-end">${sprite(1,5)}${sprite(0,6)}${sprite(2,5)}</div><div class="ps">TAP TO ENTER THE SHOP</div><button class="btn ghost" id="tCode" style="margin-top:22px;color:#fff">🔑 CONTINUE WITH SAVE CODE</button><div class="cr">A fan-made card collecting game · ♪ sound on</div></div>`;
+  st.innerHTML=`<div class="title"><div class="t1">PACK<br>RIP</div><div class="t2">COLLECTOR EDITION · V29</div><div style="margin-top:22px;display:flex;gap:10px;justify-content:center;align-items:flex-end">${sprite(1,5)}${sprite(0,6)}${sprite(2,5)}</div><div class="ps">TAP TO ENTER THE SHOP</div><button class="btn ghost" id="tCode" style="margin-top:22px;color:#fff">🔑 CONTINUE WITH SAVE CODE</button><div class="cr">A fan-made card collecting game · ♪ sound on</div></div>`;
   await new Promise(r=>{$('#tCode').onclick=e=>{e.stopPropagation();ac();loadCodeModal()};I.onclick=e=>{if(e.target.closest('#tCode'))return;I.onclick=null;ac();musicStart();bell();r()}});
   st.innerHTML='';I.classList.remove('dark');document.body.classList.add('introZoom');await wait(1500);bx.style.display='';
   show('gary',10);
-  await say(['*ding-ding* Welcome to my card shop, kid!','I\'m Gary. I\'ve been selling packs right here since 1999.','Oh, look who just walked in. The Professor visits every week.'],'GARY');
+  await say(['*ding-ding* Welcome to my card shop, kid!','I\'m Marty. I\'ve been selling packs right here since 1999.','Oh, look who just walked in. The Professor visits every week.'],'MARTY');
   show('oak',10);
-  await say(['Hello there! Welcome to the world of Pokémon cards!','My name is Oak. People call me the Pokémon Professor.','This shop is full of rare cards waiting to be pulled.','Some people battle with them. Others rip packs, grade and trade them.','First, tell me a little about yourself. What do you look like?'],'PROF. OAK');
+  await say(['Hello there! Welcome to the world of Pokémon cards!','My name is Linden. Professor Linden. I study cards, not monsters.','This shop is full of rare cards waiting to be pulled.','Some people battle with them. Others rip packs, grade and trade them.','First, tell me a little about yourself. What do you look like?'],'PROF. LINDEN');
   I.onclick=null;bx.style.display='none';
   const drawLooks=()=>{st.innerHTML=`<div class="lookPrev"><div class="isp">${sprite(look,9)}</div></div>${lookGrid(look)}<button class="btn" id="lkGo" style="max-width:400px">THIS IS ME</button>`};
   drawLooks();
   await new Promise(r=>{st.onclick=e=>{const b=e.target.closest('[data-lk]');if(b){e.stopPropagation();look=+b.dataset.lk;blip();drawLooks();return}if(e.target.id==='lkGo'){e.stopPropagation();st.onclick=null;blip();r()}}});
   bx.style.display='';show(look,10);
-  if(look===2){name='HANNES';await say(['Oh! Hannes! The one with the glasses!','I have heard a lot about you. They say you never miss a holo.'],'PROF. OAK')}
-  else{await typeLine('And what is your name?','PROF. OAK');
+  if(look===2){name='HANNES';await say(['Oh! Hannes! The one with the glasses!','I have heard a lot about you. They say you never miss a holo.'],'PROF. LINDEN')}
+  else{await typeLine('And what is your name?','PROF. LINDEN');
    const pre=['RED','LEAF','ASH','MAY'].filter((v,i,a)=>a.indexOf(v)===i);
    st.innerHTML=`<div class="isp">${sprite(look,7)}</div><div class="nameIn" style="margin-top:16px"><input id="nmI" maxlength="10" placeholder="YOUR NAME" autocomplete="off"><div class="pre">${pre.map(p=>`<button data-p="${p}">${p}</button>`).join('')}</div><button class="btn" id="nmGo" style="max-width:320px">CONFIRM</button></div>`;
    I.onclick=null;
    name=await new Promise(r=>{const inp=$('#nmI');inp.onclick=e=>e.stopPropagation();st.querySelectorAll('[data-p]').forEach(b=>b.onclick=e=>{e.stopPropagation();inp.value=b.dataset.p;blip()});
     $('#nmGo').onclick=e=>{e.stopPropagation();const v=inp.value.trim().toUpperCase().slice(0,10);if(!v){inp.value=pre[0];return}blip();r(v)}});
    show(look,10);
-   await say(['Right! So your name is {N}!'],'PROF. OAK')}
-  show('rival',10);
-  await say(['Hey! Gramps! I was here first!','So you collect cards too, {N}? Every week I\'ll pull something better than you. Smell ya later!'],RIVAL);
+   await say(['Right! So your name is {N}!'],'PROF. LINDEN')}
+    show('oak',10);
+    await say(['One more thing, {N}. Every collector needs a first card.','Pick your starter. It comes as a graded PSA 10, straight into your vault.'],'PROF. LINDEN');
+    bx.style.display='none';I.onclick=null;
+    starter=await new Promise(r=>{st.innerHTML=`<div class="wtt" style="margin-bottom:6px">Choose your starter</div><p style="color:#fff;font-size:12px;text-align:center;margin-bottom:12px;text-shadow:0 1px 6px #000">Base Set 1999 · PSA 10</p><div class="stg">${STARTERS.map((c,i)=>`<button class="stc" data-sc="${i}"><img src="${c.l}" onerror="this.src='${c.s}'"><b>${c.name}</b></button>`).join('')}</div>`;
+     st.querySelectorAll('[data-sc]').forEach(b=>b.onclick=e=>{e.stopPropagation();blip();r(STARTERS[+b.dataset.sc])})});
+    bx.style.display='';st.innerHTML=`<div class="halo"></div><div style="width:min(44vw,180px)">${slabHTML(starterSlab(starter))}</div>`;sfx.holo();
+    await say(['A PSA 10 '+starter.name+'! Take good care of it.'],'PROF. LINDEN');
+    show('rival',10);
+  await say(['Hey! Professor! I was here first!','So you collect cards too, {N}? Every week I\'ll pull something better than you. See you around, rookie!'],RIVAL);
   show('gpa',10);
-  await say(['{N}! There you are. I found my old card binder from 1999 in the attic.','Help me finish it? Here\'s $60 and one free pack. Gary, a pack for my grandkid!'],'GRANDPA');
+  await say(['{N}! There you are. I found my old card binder from 1999 in the attic.','Help me finish it? Here\'s $60 and one free pack. Marty, a pack for my grandkid!'],'GRANDPA');
   show('oak',10,'isp');
-  await say(['Finish Kanto and new regions will open up: Johto, Hoenn, Sinnoh and finally Paldea.','Every set you complete earns you a bonus card. And if you ever pull an ultra rare… that is one in 800!','{N}! Your very own Pokémon card legend is about to unfold!'],'PROF. OAK');
+  await say(['Finish Kanto and new regions will open up: Johto, Hoenn, Sinnoh and finally Paldea.','Every set you complete earns you a bonus card. And if you ever pull an ultra rare… that is one in 500!','{N}! Your very own Pokémon card legend is about to unfold!'],'PROF. LINDEN');
   const sp=$('#isp');sp.style.transform='scale(.2)';sp.style.opacity=0;tone([784,659,523,392],.2,.05,'triangle',.09);await wait(850);
-  S.player={name,look,g:['boy','girl','hannes'][look]||'boy'};save();I.classList.remove('on');I.onclick=null;document.body.classList.remove('introZoom','intro');done()})()}
+  S.player={name,look,g:['boy','girl','hannes'][look]||'boy'};if(starter){S.slabs.push(starterSlab(starter));S.flags.starter=starter.id}save();I.classList.remove('on');I.onclick=null;document.body.classList.remove('introZoom','intro');done()})()}
 /* =================== NAV =================== */
 const SUBS=['scrQuests','scrShop','scrMarket','scrGyms','scrHof','scrStats','scrMachine','scrRival'];
 function go(id){document.querySelectorAll('.screen').forEach(s=>s.classList.toggle('on',s.id===id));
@@ -2760,7 +2767,7 @@ function renderGames(){$('#chips').style.display='none';const list=S.games.slice
  $('#agrid').innerHTML=list.length?list.map(g=>`<div class="gtile" data-gm="${g.uid}">${gameBox(g)}<div class="nm2">${esc(GAMES[g.k].n.replace('Pokémon ',''))}</div><div class="vv">${fmt(gameVal(g))}</div></div>`).join(''):`<div style="grid-column:1/-1"><p class="empty">No games yet. Open a Nintendo crate in your room.</p><button class="btn" onclick="go('scrHof')">🛏️ TO MY ROOM</button></div>`}
 function gameModal(id){const g=S.games.find(x=>x.uid===id);if(!g)return;const G=GAMES[g.k],v=gameVal(g);
  modal(`<h2>${esc(G.n)}</h2><p>${G.p} · ${G.y} · ${g.sealed?'Factory sealed':'Complete in box'}${g.grade?` · <b>PSA ${g.grade}</b> · cert ${g.cert}`:''}</p><div class="bigbox">${gameBox(g)}</div><p>Market <span class="money in">${fmt(v)}</span>${!g.grade?`<br>PSA 10 would be about ${fmt(Math.round(v*4))}`:''}</p>
- ${g.grade?'':`<button class="btn" id="gmPsa" ${S.coins<GPSA?'disabled':''}>📮 GRADE WITH PSA ${OUT(GPSA)}</button>`}<button class="btn earn" id="gmSell">SELL TO GARY ${IN(Math.round(v*.7))}</button><button class="btn ghost" onclick="closeModal()">CLOSE</button>`);
+ ${g.grade?'':`<button class="btn" id="gmPsa" ${S.coins<GPSA?'disabled':''}>📮 GRADE WITH PSA ${OUT(GPSA)}</button>`}<button class="btn earn" id="gmSell">SELL TO MARTY ${IN(Math.round(v*.7))}</button><button class="btn ghost" onclick="closeModal()">CLOSE</button>`);
  if($('#gmPsa'))$('#gmPsa').onclick=async()=>{if(!spend(GPSA))return;modal(`<h2>PSA is grading…</h2><div class="crate" style="margin-top:14px;font-size:70px">📮</div>`);await wait(1200);
   g.grade=rollGrade();g.cert=String(Math.floor(1e8+Math.random()*9e8));save();const nv=gameVal(g);
   if(g.grade>=9){flash(.7,600);sfx.ultra();burst(200,['#ffe07a','#fff'],1.2);banner('PSA '+g.grade+'!')}else if(g.grade>=7)sfx.holo();else sfx.bad();
@@ -2803,17 +2810,17 @@ function aucGen(){if(S.auc&&S.auc.day===dayKey()&&S.auc.v===2)return;const pool=
   const v=cardVal(c,{grade:10});lots.push({id:c.id,v,cap:Math.round(v*rr(1.3,1.5)),start:Math.max(5,Math.round(v*.45)),st:0,w:'',p:0})}
  S.auc={day:dayKey(),lots,i:0,v:2};save()}
 function aucHomeHTML(){const done=S.auc&&S.auc.day===dayKey()&&S.auc.i>=5;const live=aucLive()&&!done;
- return `<div class="pnl ${live?'red':''}" data-go="auction"><div class="row2"><div class="ic">🔨</div><div class="tx"><b>${live?'<span style="color:#ff3b5c">● LIVE NOW</span> · Gary\'s evening auction':'Gary\'s evening auction · daily at 18:00'}</b><small>${live?'5 PSA 10 lots. Join now before the hammer falls!':done?'Today\'s auction is over · next one tomorrow 18:00':'5 valuable PSA 10 cards · starts in '+hm(aucNextMs())}</small></div><button class="sbtn ${live?'buy':'g'}">${live?'JOIN':'PREVIEW'}</button></div></div>`}
+ return `<div class="pnl ${live?'red':''}" data-go="auction"><div class="row2"><div class="ic">🔨</div><div class="tx"><b>${live?'<span style="color:#ff3b5c">● LIVE NOW</span> · Marty\'s evening auction':'Marty\'s evening auction · daily at 18:00'}</b><small>${live?'5 PSA 10 lots. Join now before the hammer falls!':done?'Today\'s auction is over · next one tomorrow 18:00':'5 valuable PSA 10 cards · starts in '+hm(aucNextMs())}</small></div><button class="sbtn ${live?'buy':'g'}">${live?'JOIN':'PREVIEW'}</button></div></div>`}
 let AU=null;
 async function openAuction(){closeModal();await ensureLoaded();aucGen();if(!S.auc){toast('Unlock sets first');return}
  const lots=S.auc.lots;
- if(!aucLive()||S.auc.i>=5){modal(`<div class="em">🔨</div><h2>Gary's evening auction</h2><p>${S.auc.i>=5?'Today\'s auction is over. New lots tomorrow.':'Starts every day at <b>18:00</b> and runs for one hour.<br>Opens in <b>'+hm(aucNextMs())+'</b>'}</p><div class="aulots">${lots.map(L=>{const c=cardById(L.id);return c?`<div class="l ${L.st===2?'x':L.st===1?'w':''}"><img src="${c.s}">PSA 10<br>${L.st===1?'<span style="color:#6ff0a0">WON '+fmt(L.p)+'</span>':L.st===2?'SOLD '+fmt(L.p):'mkt '+fmt(L.v)}${!isOwned(c.id)&&!L.st?'<br><span style="color:#ff9de6">MISSING</span>':''}</div>`:''}).join('')}</div><p style="font-size:11px">Expect bidders to push prices 30–50% above market.</p><button class="btn ghost" onclick="closeModal()">OK</button>`);return}
+ if(!aucLive()||S.auc.i>=5){modal(`<div class="em">🔨</div><h2>Marty's evening auction</h2><p>${S.auc.i>=5?'Today\'s auction is over. New lots tomorrow.':'Starts every day at <b>18:00</b> and runs for one hour.<br>Opens in <b>'+hm(aucNextMs())+'</b>'}</p><div class="aulots">${lots.map(L=>{const c=cardById(L.id);return c?`<div class="l ${L.st===2?'x':L.st===1?'w':''}"><img src="${c.s}">PSA 10<br>${L.st===1?'<span style="color:#6ff0a0">WON '+fmt(L.p)+'</span>':L.st===2?'SOLD '+fmt(L.p):'mkt '+fmt(L.v)}${!isOwned(c.id)&&!L.st?'<br><span style="color:#ff9de6">MISSING</span>':''}</div>`:''}).join('')}</div><p style="font-size:11px">Expect bidders to push prices 30–50% above market.</p><button class="btn ghost" onclick="closeModal()">OK</button>`);return}
  $('#nav').classList.add('hide');$('#coin').style.opacity=1;mg.classList.add('on');runLot()}
 const auInc=()=>Math.max(1,Math.round(AU.cur*.05));
 function runLot(){const L=S.auc.lots[S.auc.i];const c=cardById(L.id);if(!c){S.auc.i++;save();return S.auc.i<5?runLot():aucClose()}
  AU={L,c,cur:L.start,lead:'',me:false,t:14,tm:0};
  const sl={uid:'au',id:c.id,name:c.name,n:c.n,r:c.r,s:c.s,l:c.l,grade:10,cert:'LOT '+(S.auc.i+1),seed:hsh(c.id)};
- mg.innerHTML=`<div class="auh"><span class="live">● LIVE</span> · GARY'S EVENING AUCTION · LOT ${S.auc.i+1}/5</div>
+ mg.innerHTML=`<div class="auh"><span class="live">● LIVE</span> · MARTY'S EVENING AUCTION · LOT ${S.auc.i+1}/5</div>
  <div class="auc">${slabHTML(sl)}</div>
  <div class="aun"><b>PSA 10 ${esc(c.name)}</b>${(setById[setOf(c.id)]||{n:''}).n} · market ${fmt(L.v)} ${!isOwned(c.id)?'<span class="tag p">MISSING IN YOUR BINDER</span>':''}</div>
  <div class="aub"><small>CURRENT BID</small><b id="auCur"></b><span id="auLead"></span></div>
@@ -2836,7 +2843,7 @@ function auEnd(left){if(!AU)return;clearInterval(AU.tm);const {L,c}=AU;let won=f
  S.auc.i++;save();const cur=AU.cur,lead=AU.lead;AU=null;
  if(won){flash(.9,700);sfx.ultra();burst(260,['#ffe07a','#fff','#6ff0a0'],1.3);banner('SOLD TO YOU!')}else{noise(.2,.6,300,1,'lowpass')}
  if(left){aucClose();toast(won?'You won the lot!':'Lot sold to '+(lead||'nobody'));checkUnlocks();checkAll();return}
- mg.innerHTML=`<div class="wtt" style="margin-top:22vh">${won?'SOLD TO YOU!':lead?'SOLD!':'NO BIDS'}</div><p class="empty">${esc(c.name)} PSA 10<br>${won?`You paid <b style="color:#ff8a8a">${fmt(cur)}</b> · it's in your Vault`:lead?`Hammer price ${fmt(cur)} · winner ${esc(lead)}`:'Gary keeps it.'}</p>${S.auc.i<5?`<button class="btn" id="auNext" style="max-width:340px">NEXT LOT (${S.auc.i+1}/5) ›</button>`:'<p class="empty">That was the last lot of tonight.</p>'}<button class="btn ghost" id="auClose" style="max-width:340px">CLOSE</button>`;
+ mg.innerHTML=`<div class="wtt" style="margin-top:22vh">${won?'SOLD TO YOU!':lead?'SOLD!':'NO BIDS'}</div><p class="empty">${esc(c.name)} PSA 10<br>${won?`You paid <b style="color:#ff8a8a">${fmt(cur)}</b> · it's in your Vault`:lead?`Hammer price ${fmt(cur)} · winner ${esc(lead)}`:'Marty keeps it.'}</p>${S.auc.i<5?`<button class="btn" id="auNext" style="max-width:340px">NEXT LOT (${S.auc.i+1}/5) ›</button>`:'<p class="empty">That was the last lot of tonight.</p>'}<button class="btn ghost" id="auClose" style="max-width:340px">CLOSE</button>`;
  if($('#auNext'))$('#auNext').onclick=()=>runLot();$('#auClose').onclick=aucClose;checkAll()}
 function aucClose(){if(AU){clearInterval(AU.tm);AU=null}mg.classList.remove('on');mg.innerHTML='';$('#nav').classList.remove('hide');renderHome();checkUnlocks()}
 
@@ -2970,9 +2977,9 @@ LK.push(['MISTY','MISTY',0,'pony','#f07a2a','','','#f4d24a','','#3a6ad0',0,'',''
 ['GARDENER','PETRA',2,'bun','#3a6a2a','','','#7ac040','','#8a6034',0,'apron','#e8c870',0,1]);
 const lkObj=a=>({n:a[0],d:a[1],sk:SKN[a[2]],hs:a[3],H:a[4],hat:a[5],hc:a[6],top:a[7],jk:a[8],pt:a[9],gl:a[10],acc:a[11],ac:a[12],beard:a[13],sk2:a[14],eyes:a[15]||0,iris:a[16]});
 const LOOKS=LK.map(lkObj);
-const NPCL={oak:lkObj(['OAK','',0,'swoop','#a8a8b0','','','#c84a3a','#f4f4f8','#6a5a4a',0,'coat','',0,0]),
+const NPCL={oak:lkObj(['LINDEN','',0,'swoop','#a8a8b0','','','#c84a3a','#f4f4f8','#6a5a4a',0,'coat','',0,0]),
  gpa:lkObj(['GRANDPA','',1,'bald','#cfcfcf','','','#8a5a3a','#6a4428','#5a5a6a',1,'','',1,0]),
- gary:lkObj(['GARY','',2,'short','#5a3418','','','#e8e8f0','','#3a3a48',0,'apron','#2f8a4a',2,0]),
+ gary:lkObj(['MARTY','',2,'short','#5a3418','','','#e8e8f0','','#3a3a48',0,'apron','#2f8a4a',2,0]),
  mom:lkObj(['MOM','',0,'long','#7a4a20','','','#e86aa0','','#5a4a8a',0,'','',0,1]),
  rival:lkObj(['BLUE','',0,'spiky','#8a5a20','','','#7a3ad0','','#3a3a48',0,'necklace','#ffd76a',0,0])};
 const CW=40,CHt=56,CHC={};
@@ -3276,7 +3283,7 @@ async function renderHof(){$('#hofBody').innerHTML='<div style="display:flex;jus
   else{const u=RUP.find(x=>x[0]===k);if(!spend(u[3]))return;S.room[k]=true}
   addXP(20);save();sfx.holo();renderHof();checkAll()})}
 
-/* =================== v20: WORK AT GARY'S COUNTER, ENERGY, PSA REVEAL =================== */
+/* =================== v20: WORK AT MARTY'S COUNTER, ENERGY, PSA REVEAL =================== */
 document.head.insertAdjacentHTML('beforeend',`<style>
 #psa.many #psaStage{position:absolute;left:0;right:0;top:calc(env(safe-area-inset-top) + 76px);bottom:calc(env(safe-area-inset-bottom) + 92px);width:auto;height:auto;display:block;overflow-y:auto;-webkit-overflow-scrolling:touch;perspective:none;touch-action:pan-y}
 #psa.many #psaStage *{touch-action:pan-y}
@@ -3325,10 +3332,10 @@ document.head.insertAdjacentHTML('beforeend',`<style>
 </style>`);
 
 /* ---------- remove "Who's that Pokémon?" & Flappy from progression ---------- */
-(function(){const qi=DPOOL.findIndex(d=>d.k==='quiz');if(qi>=0)DPOOL.splice(qi,1);const j=DPOOL.find(d=>d.k==='job');if(j)j.t='Work a shift at Gary\'s counter';
- const ui=UNL.findIndex(u=>/Who/.test(u[1]));if(ui>=0)UNL[ui]=[1,'Clerk rank at Gary\'s counter (spot fakes)'];
+(function(){const qi=DPOOL.findIndex(d=>d.k==='quiz');if(qi>=0)DPOOL.splice(qi,1);const j=DPOOL.find(d=>d.k==='job');if(j)j.t='Work a shift at Marty\'s counter';
+ const ui=UNL.findIndex(u=>/Who/.test(u[1]));if(ui>=0)UNL[ui]=[1,'Clerk rank at Marty\'s counter (spot fakes)'];
  const rep=(k,n,d,fn)=>{const a=ACH.find(x=>x[0]===k);if(a){a[1]=n;a[2]=d;a[3]=fn}};
- rep('quiz','Hard worker','Work 10 shifts at Gary\'s',()=>S.stats.jobs>=10);rep('jquiz','Shop regular','Work 50 shifts at Gary\'s',()=>S.stats.jobs>=50);rep('squiz','Shop legend','Work 150 shifts at Gary\'s',()=>S.stats.jobs>=150)})();
+ rep('quiz','Hard worker','Work 10 shifts at Marty\'s',()=>S.stats.jobs>=10);rep('jquiz','Shop regular','Work 50 shifts at Marty\'s',()=>S.stats.jobs>=50);rep('squiz','Shop legend','Work 150 shifts at Marty\'s',()=>S.stats.jobs>=150)})();
 
 /* ---------- energy ---------- */
 const EN_REGEN=20*MIN;
@@ -3355,7 +3362,7 @@ async function startShift(){await ensureLoaded();const P=shiftPool();if(P.c.leng
  if(!enUse()){toast(`No energy left · +1 in ${enNext()} min${S.room.fridge?' · grab a snack from your fridge':''}`);return}
  SHF={P,i:0,n:5,tips:0,pen:0,bought:[],spent:0,rep0:S.rep,good:0,log:[]};S.stats.jobs=(S.stats.jobs||0)+1;prog('job',1);save();
  $('#nav').classList.add('hide');mg.classList.add('on');bell();
- mg.innerHTML=`<div class="wtt" style="margin-top:14vh">Gary's counter</div><p class="empty">${CAREER[crIdx()][0]} · shift ${S.stats.jobs}<br>5 customers are waiting. Wage <b style="color:#6ff0a0">${fmt(crWage())}</b> + tips.</p><button class="btn" id="shGoIn" style="max-width:340px">OPEN THE SHOP</button>`;
+ mg.innerHTML=`<div class="wtt" style="margin-top:14vh">Marty's counter</div><p class="empty">${CAREER[crIdx()][0]} · shift ${S.stats.jobs}<br>5 customers are waiting. Wage <b style="color:#6ff0a0">${fmt(crWage())}</b> + tips.</p><button class="btn" id="shGoIn" style="max-width:340px">OPEN THE SHOP</button>`;
  $('#shGoIn').onclick=()=>nextCustomer()}
 function shFrame(type,line,body){const nm=rnd(CUSTN),lk=Math.floor(Math.random()*LOOKS.length);
  mg.innerHTML=`<div class="sh-top"><span>CUSTOMER <b>${SHF.i}/${SHF.n}</b></span><span>TIPS <b class="money in">${fmt(SHF.tips)}</b></span><span>${enBar()}</span></div>
@@ -3400,7 +3407,7 @@ function cFake(){const P=SHF.P;const c=rnd(P.h.length?P.h.concat(P.r):P.r);const
  shFrame('WANTS TO SELL A CARD',`I want to sell my <b>${esc(c.name)}</b>. Is it real? Compare it with your price guide.`,
   `<div class="sh-cmp"><div class="c">PRICE GUIDE<div class="w"><img src="${c.s}"></div></div><div class="c">CUSTOMER'S CARD<div class="w" style="background:${shift?'#f2eee2':'#ddd'}"><img src="${c.s}" style="${st}"></div></div></div>
   <div class="two"><button class="btn buy" id="fF">FAKE</button><button class="btn earn" id="fR">REAL</button></div>`);
- const ans=say=>{const right=say===fake;if(right){addRep(.4);tip(fake?4:2,fake?`Fake spotted! (${t[0]}${shift?', off-centre':''})`:'Real card · deal done')}else{addRep(-.5);miss(fake?`That was a fake (${t[0]}). Gary takes ${fmt(4)} off your pay`:'That one was real. The customer leaves angry',fake?4:0)}after(1300)};
+ const ans=say=>{const right=say===fake;if(right){addRep(.4);tip(fake?4:2,fake?`Fake spotted! (${t[0]}${shift?', off-centre':''})`:'Real card · deal done')}else{addRep(-.5);miss(fake?`That was a fake (${t[0]}). Marty takes ${fmt(4)} off your pay`:'That one was real. The customer leaves angry',fake?4:0)}after(1300)};
  $('#fF').onclick=()=>ans(true);$('#fR').onclick=()=>ans(false)}
 /* 5. birthday gift */
 function cGift(){const sets=unlockedSets();const s=rnd(sets),p=packPrice(s);const budget=Math.round(p*rr(2.2,4.5));
@@ -3412,13 +3419,13 @@ function cGift(){const sets=unlockedSets();const s=rnd(sets),p=packPrice(s);cons
 function endShift(){const w=crWage(),tips=Math.round(SHF.tips*100)/100,pen=Math.round(SHF.pen*100)/100,tot=Math.max(0,Math.round((w+tips-pen)*100)/100);
  const dr=Math.round((S.rep-SHF.rep0)*10)/10,before=crIdx();addXP(20+SHF.good*6);save();
  mg.innerHTML=`<div class="wtt" style="margin-top:6vh">Shift done</div>
- <div class="sh-rcpt"><h5>GARY'S CARD SHOP</h5><div style="text-align:center;font-size:10px;margin-bottom:8px">${new Date().toLocaleString('en-US',{dateStyle:'medium',timeStyle:'short'})} · ${CAREER[crIdx()][0]}</div>
+ <div class="sh-rcpt"><h5>MARTY'S CARD SHOP</h5><div style="text-align:center;font-size:10px;margin-bottom:8px">${new Date().toLocaleString('en-US',{dateStyle:'medium',timeStyle:'short'})} · ${CAREER[crIdx()][0]}</div>
  <div class="r"><span>Wage</span><span>${fmt(w)}</span></div><div class="r"><span>Tips (${SHF.good} happy)</span><span>${fmt(tips)}</span></div>${pen?`<div class="r" style="color:#c41e2a"><span>Deductions</span><span>−${fmt(pen)}</span></div>`:''}
  ${SHF.bought.length?`<div class="r"><span>Cards bought</span><span>${SHF.bought.length} · −${fmt(SHF.spent)}</span></div>`:''}
  <div class="r"><span>Reputation</span><span>${dr>=0?'+':''}${dr}</span></div><div class="r t"><span>PAYOUT</span><span>${fmt(tot)}</span></div></div>
  <button class="btn earn" id="shC" style="max-width:360px;margin-top:22px">COLLECT ${IN(tot)}</button>`;
  $('#shC').onclick=()=>{addCoins(tot);sfx.cash();const after=crIdx();SHF=null;mg.classList.remove('on');mg.innerHTML='';$('#nav').classList.remove('hide');
-  if(after>before){fanfare();burst(200,['#ffe07a','#fff'],1.2);banner('PROMOTED!');modal(`<div class="em">🎉</div><h2>Promoted to ${CAREER[after][0]}!</h2><p>Gary is impressed. New wage <b>${fmt(CAREER[after][2])}</b> per shift${after===1?'<br>New customers: people trying to sell you <b>fake cards</b>.':after===2?'<br>New customers: <b>birthday gift</b> shoppers.':after===3?'<br>Bigger collections come in to sell.':'<br>Tips are now <b>×1.5</b>.'}</p><button class="btn" onclick="closeModal()">LET'S GO</button>`)}
+  if(after>before){fanfare();burst(200,['#ffe07a','#fff'],1.2);banner('PROMOTED!');modal(`<div class="em">🎉</div><h2>Promoted to ${CAREER[after][0]}!</h2><p>Marty is impressed. New wage <b>${fmt(CAREER[after][2])}</b> per shift${after===1?'<br>New customers: people trying to sell you <b>fake cards</b>.':after===2?'<br>New customers: <b>birthday gift</b> shoppers.':after===3?'<br>Bigger collections come in to sell.':'<br>Tips are now <b>×1.5</b>.'}</p><button class="btn" onclick="closeModal()">LET'S GO</button>`)}
   renderHome();checkAll()}}
 function doJob(){startShift()}
 
@@ -3550,6 +3557,100 @@ function loPlay(step,t){const s=LO.cur,st=LO.st,R=LO.R,bar=Math.floor(step/8),b=
  if(D.dens&&R()<D.dens){const n=root+36+s.sc[Math.floor(R()*s.sc.length)];loOsc(mf(n),t+sw,st,'sine',.018,2600,1)}}
 function loTick(){const a=AC;if(!a||!MUS.on)return;while(LO.next<a.currentTime+.35){loPlay(LO.step,LO.next);LO.next+=LO.st;LO.step++;if(LO.step>=LO.total){LO.si++;loSong();LO.next+=LO.st*4}}}
 
+
+
+/* ---------- v28: starter slab ---------- */
+const STARTERS=[['base1-44','Bulbasaur',44],['base1-46','Charmander',46],['base1-63','Squirtle',63],['base1-58','Pikachu',58]].map(([id,name,n])=>({id,name,n:String(n),s:`https://images.pokemontcg.io/base1/${n}.png`,l:`https://images.pokemontcg.io/base1/${n}_hires.png`}));
+function starterSlab(c){if(!c._sl)c._sl={uid:uid(),id:c.id,name:c.name,n:c.n,r:'common',s:c.s,l:c.l,sp:1,pr:1,setn:'Base Set · Starter',y:1999,v:Math.round(rr(10,15.5)*100)/100,grade:10,cert:String(Math.floor(1e8+Math.random()*9e8)),seed:Math.floor(Math.random()*1e9),d:NOW()};return c._sl}
+document.head.insertAdjacentHTML('beforeend','<style>.stg{display:grid;grid-template-columns:repeat(2,1fr);gap:12px;width:100%;max-width:340px}.stc{border:2px solid rgba(255,255,255,.25);border-radius:14px;background:rgba(10,8,14,.7);padding:8px;color:#fff;display:flex;flex-direction:column;align-items:center;gap:6px}.stc img{width:100%;aspect-ratio:63/88;object-fit:contain;border-radius:6px}.stc b{font-size:12px;letter-spacing:.08em}.stc:active{transform:scale(.96);border-color:#ffd76a}</style>');
+/* ---------- v29: sell up to 50 cards with tabs, PSA duplicates, send several copies to PSA ---------- */
+document.head.insertAdjacentHTML('beforeend',`<style>
+.ptabs{margin-top:2px}
+.ptool{display:flex;align-items:center;gap:6px;margin:2px 0 10px}
+.ptool span{flex:1;font-size:12px;color:var(--mut)}.ptool b{color:#fff}
+.pnote{font-size:11px;color:var(--mut);margin:-4px 0 8px;line-height:1.4}
+.pick .p .cpy{position:absolute;top:4px;left:4px;font-size:9px;font-weight:900;background:rgba(0,0,0,.78);color:#fff;padding:1px 5px;border-radius:6px}
+.pick .p .dpl{position:absolute;top:4px;left:4px;font-size:8px;font-weight:900;background:#c41e2a;color:#fff;padding:1px 5px;border-radius:6px}
+.slot.picked[data-n]::after{content:attr(data-n);width:44px;margin-left:-22px;border-radius:14px;font-size:15px}
+#mkSell{position:sticky;bottom:8px;z-index:4;box-shadow:0 10px 30px rgba(0,0,0,.6)}
+</style>`);
+
+/* ---- pool of everything you can sell: every raw copy is its own item ---- */
+function sellPool(o={}){const out=[];
+ allItems().forEach(it=>{if(it.k==='seal'&&o.noSeal)return;if(it.k==='raw'){for(let k=0;k<it.cnt;k++)out.push(Object.assign({},it,{key:it.key+'#'+k,cnt:1,copy:k,of:it.cnt}))}else out.push(it)});
+ const g={};S.slabs.forEach(s=>{(g[s.id]=g[s.id]||[]).push(s)});const dup=new Set();
+ Object.values(g).forEach(a=>{if(a.length<2)return;a.slice().sort((x,y)=>y.grade-x.grade||cardVal(y,{grade:y.grade})-cardVal(x,{grade:x.grade})).slice(1).forEach(s=>dup.add(s.uid))});
+ out.forEach(it=>{if(it.k==='slab'&&dup.has(it.sl.uid))it.dup=1});
+ return out.sort((a,b)=>b.val-a.val)}
+const PTABS=[['all','All'],['raw','Raw'],['dupes','Duplicates'],['holo','Holos & ultras'],['psa','PSA slabs'],['psadup','PSA duplicates'],['other','Errors, rewards & sealed']];
+const inTab=(it,t)=>t==='all'||(t==='raw'&&it.k==='raw')||(t==='dupes'&&it.k==='raw'&&it.copy>0)||(t==='holo'&&it.k==='raw'&&(it.c.r==='holo'||it.c.r==='ultra'))||(t==='psa'&&it.k==='slab')||(t==='psadup'&&!!it.dup)||(t==='other'&&(it.k==='mis'||it.k==='promo'||it.k==='seal'));
+function mountPicker(el,o){const pool=o.pool,sel=o.sel,max=o.max;let tab=o.tab||'all';
+ const selVal=()=>pool.filter(it=>sel.has(it.key)).reduce((a,it)=>a+it.val,0);
+ const head=()=>`<b>${sel.size}</b>/${max} picked · ${fmt(selVal())}`;
+ const draw=()=>{const list=pool.filter(it=>inTab(it,tab)),shown=list.slice(0,240),free=Math.max(0,max-sel.size),addN=Math.min(free,list.filter(it=>!sel.has(it.key)).length);
+  el.innerHTML=`<div class="chips ptabs">${PTABS.map(([k,n])=>{const c=pool.filter(it=>inTab(it,k)).length;if(!c&&k!=='all'&&k!==tab)return'';return `<button class="chip ${k===tab?'on':''} ${k==='psadup'?'psa':k==='dupes'?'val':''}" data-pt="${k}">${n} · ${c}</button>`}).join('')}</div>
+  <div class="ptool"><span>${head()}</span><button class="sbtn g" data-pa="add" ${addN?'':'disabled'}>+ ${tab==='all'?'TOP':'ALL'} ${addN}</button><button class="sbtn g" data-pa="clr" ${sel.size?'':'disabled'}>CLEAR</button></div>
+  ${tab==='psadup'?'<p class="pnote">Your best slab of each card stays in the vault. These are the extra copies, easy to sell.</p>':tab==='dupes'?'<p class="pnote">Only your extra copies. One of every card stays in your binder.</p>':''}
+  <div class="pick">${shown.map(it=>`<div class="p ${sel.has(it.key)?'on':''} ${it.k==='mis'?'mp-'+it.m.v:''}" data-k="${it.key}">${itemThumb(it)}<span class="ck">✓</span>${it.dup?'<span class="dpl">DUPE</span>':it.k==='raw'&&it.of>1?`<span class="cpy">${it.copy+1}/${it.of}</span>`:''}<span class="pv">${itemTag(it)?itemTag(it)+' · ':''}${fmt(it.val)}</span></div>`).join('')||'<p class="empty" style="grid-column:1/-1">Nothing on this tab.</p>'}</div>
+  ${list.length>shown.length?`<p class="pnote" style="margin-top:8px">Showing the top ${shown.length} of ${list.length}.</p>`:''}`;
+  o.onChange&&o.onChange()};
+ el.onclick=e=>{const t=e.target.closest('[data-pt]');if(t){tab=t.dataset.pt;blip();draw();return}
+  const a=e.target.closest('[data-pa]');if(a){if(a.disabled)return;if(a.dataset.pa==='clr')sel.clear();else{for(const it of pool){if(sel.size>=max)break;if(inTab(it,tab))sel.add(it.key)}}blip();draw();return}
+  const p=e.target.closest('.p[data-k]');if(!p)return;const k=p.dataset.k;
+  if(sel.has(k))sel.delete(k);else{if(sel.size>=max){toast(`You can pick up to ${max} items`);return}sel.add(k)}
+  p.classList.toggle('on',sel.has(k));blip();const h=el.querySelector('.ptool span');if(h)h.innerHTML=head();o.onChange&&o.onChange()};
+ draw();return {get:()=>pool.filter(it=>sel.has(it.key))}}
+
+/* ---- set-lock check for many items at once ---- */
+function wouldLockMany(items){_uv++;const before=unlockedSets().map(s=>s.id);const undo=[];
+ items.forEach(it=>{if(it.k==='raw'){const s=setOf(it.id);if(((S.coll[s]||{})[it.id]||0)>0){S.coll[s][it.id]--;undo.push(()=>S.coll[s][it.id]++)}}
+  else if(it.k==='slab'){const i=S.slabs.indexOf(it.sl);if(i>=0){S.slabs.splice(i,1);undo.push(()=>S.slabs.splice(i,0,it.sl))}}
+  else if(it.k==='mis'){const i=S.mis.indexOf(it.m);if(i>=0){S.mis.splice(i,1);undo.push(()=>S.mis.splice(i,0,it.m))}}});
+ _uv++;const after=new Set(unlockedSets().map(s=>s.id));undo.reverse().forEach(f=>f());_uv++;return before.filter(id=>!after.has(id)).map(id=>setById[id].n)}
+
+/* ---- card show: bring up to 50 items ---- */
+const TBL_MAX=50;
+const tblExtra=n=>Math.min(14,Math.floor(Math.max(0,n-8)/3));
+async function setupTable(show){
+ $('#showList').style.display='none';const st=$('#showStage');st.style.display='flex';st.innerHTML='<div style="flex:1;display:flex;align-items:center;justify-content:center"><div class="spin"></div></div>';
+ await ensureLoaded();
+ const pool=sellPool();const sel=new Set(pool.filter(i=>i.val>=1).slice(0,8).map(i=>i.key));
+ $('#showHead').innerHTML=`${show.e} <b>${show.n.toUpperCase()}</b>`;const fee=showFee(show);
+ st.innerHTML=`<div class="showTop"><span>SET UP YOUR TABLE</span><span id="tblN"></span></div><div class="scroll" style="margin-top:8px" id="tblPick"></div>
+ <div class="ctrl"><div class="two"><button class="btn ghost" id="shCancel">BACK</button><button class="btn ${fee?'buy':''}" id="shGo">${fee?'ENTER '+OUT(fee):'OPEN DOORS'}</button></div></div>`;
+ const upd=()=>{const n=$('#tblN');if(n)n.innerHTML=`<b>${sel.size}</b>/${TBL_MAX} · ${show.vis+(hasBadge('fog')?1:0)+tblExtra(sel.size)} visitors`};
+ const pk=mountPicker($('#tblPick'),{pool,sel,max:TBL_MAX,onChange:upd});
+ $('#shCancel').onclick=renderShowList;
+ $('#shGo').onclick=()=>{if(fee&&!spend(fee))return;startShow(show,pk.get())}}
+function startShow(show,table){SH={show,table:table.map(t=>Object.assign({},t,{sold:false})),vis:show.vis+(hasBadge('fog')?1:0)+tblExtra(table.length),earned:0,sold:0,rep0:S.rep,dealers:null,cur:null};S.stats.shows++;prog('show',1);save();sfx.cash();nextBuyer()}
+
+/* ---- market: sell up to 50 items to Marty at once ---- */
+async function renderMarket(){$('#marketBody').innerHTML='<div style="display:flex;justify-content:center;padding:40px"><div class="spin"></div></div>';await ensureLoaded();
+ const hot=[...hotIds()].map(cardById).filter(Boolean);const pool=sellPool({noSeal:1});const sel=new Set();
+ $('#marketBody').innerHTML=`<div class="pnl ${crashToday()?'red':'gold'}"><h4>${crashToday()?'📉 CRASH DAY':'📈 MARKET OPEN'}</h4><p>${crashToday()?'Prices are 30% lower everywhere today.':'Prices drift a little every day. Hot cards trade at about 1.8× for 24 hours.'}</p></div>
+ <h3 class="sec">🔥 Hot today</h3><div class="pnl">${hot.map(c=>`<div class="row2"><img class="th" src="${c.s}"><div class="tx"><b>${esc(c.name)}</b><small>${setById[setOf(c.id)].n} · you have ${rawCount(c.id)}</small></div><span class="money in">${fmt(cardVal(c))}</span></div>`).join('')||'<p>Open some sets to see the market.</p>'}</div>
+ <h3 class="sec">Sell to Marty · up to 50 at once</h3><p class="pnote">Marty pays 45% of market, instantly. Card shows and your shop shelf pay more.</p>
+ <div id="mkPick"></div><button class="btn earn" id="mkSell" disabled>PICK CARDS TO SELL</button>`;
+ const pk=mountPicker($('#mkPick'),{pool,sel,max:50,onChange:()=>{const b=$('#mkSell');if(!b)return;const v=pk2().reduce((a,it)=>a+it.val*.45,0);b.disabled=!sel.size;b.textContent=sel.size?`SELL ${sel.size} TO MARTY +${fmt(v)}`:'PICK CARDS TO SELL'}});
+ function pk2(){return pool.filter(it=>sel.has(it.key))}
+ $('#mkSell').onclick=()=>{const items=pk.get();if(!items.length)return;const v=items.reduce((a,it)=>a+it.val*.45,0);
+  const doIt=()=>{let tot=0,fk=0;items.forEach(it=>{const r=removeItem(it);if(r&&r.fake)fk++;else tot+=it.val*.45});
+   tot=Math.round(tot*100)/100;addCoins(tot);S.stats.sold+=items.length-fk;sfx.cash();burst(80,['#6ff0a0','#ffe07a','#fff'],.8);save();
+   toast(`Sold ${items.length-fk} item${items.length-fk===1?'':'s'} for ${fmt(tot)}${fk?` · ${fk} fake${fk>1?'s':''} binned`:''}`);checkUnlocks();checkAll();renderMarket()};
+  const lost=wouldLockMany(items);
+  modal(`<div class="em">${lost.length?'🔒':'💰'}</div><h2>Sell ${items.length} item${items.length>1?'s':''}?</h2><p>Marty pays <span class="money in">${fmt(v)}</span> in total.${lost.length?`<br><br>This will lock:<br><b style="color:#ff8a8a">${lost.map(esc).join('<br>')}</b>`:''}</p><button class="btn ${lost.length?'buy':'earn'}" id="mkY">${lost.length?'SELL ANYWAY':'SELL '+IN(v)}</button><button class="btn ghost" onclick="closeModal()">CANCEL</button>`);
+  $('#mkY').onclick=()=>{closeModal();doIt()}}}
+
+/* ---- PSA: pick a card several times (tap again to add another copy) ---- */
+selPick=new Map();
+const selCnt=()=>[...selPick.values()].reduce((a,b)=>a+b,0);
+function selToggle(id,el){const max=rawCount(id),cur=selPick.get(id)||0,nx=cur+1>max?0:cur+1;
+ if(nx)selPick.set(id,nx);else selPick.delete(id);
+ el.classList.toggle('picked',nx>0);if(nx>1)el.dataset.n='×'+nx;else delete el.dataset.n;blip();updSel();
+ if(nx===1&&max>1)toast(`You have ${max} copies · tap again to send another one`)}
+function updSel(){const bar=$('#selBar');bar.classList.toggle('on',selMode);const n=selCnt();$('#selN').textContent=`${n} card${n===1?'':'s'} selected`;
+ $('#selFee').textContent=n?`Standard from ${fmt(batchFee(TIERS[0],n))}${n>=5?' · 10% bulk discount':''}`:'Tap holos · tap again for more copies';$('#selGo').disabled=!n}
+$('#selGo').onclick=()=>{const cards=[...selPick].flatMap(([id,n])=>{const c=cardById(id);return c?Array(n).fill(c):[]});if(!cards.length)return;selMode=false;selPick.clear();updSel();renderAlbum();psaTierModal(cards)};
 
 boot();
 
