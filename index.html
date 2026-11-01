@@ -11,7 +11,7 @@
 <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
 <meta http-equiv="Pragma" content="no-cache">
 <meta http-equiv="Expires" content="0">
-<title>PACK RIP · v21</title>
+<title>PACK RIP · v26</title>
 <style>
 :root{--gold:#ffd76a;--bg:#050407;--panel:rgba(18,14,24,.7);--line:rgba(255,255,255,.1);--txt:#f5f2ff;--mut:#a8a2c0;--grn:#2fbf6a;--red:#e8455a;--mx:50%;--my:50%;--rx:0deg;--ry:0deg;--c1:#2d63c8;--c2:#0c1f52;--c3:#ffcb05;--bgh:225;--bgs:30%;--pw:220px;--pbg:linear-gradient(135deg,#fff,#dfe6ff)}
 *{box-sizing:border-box;margin:0;padding:0;-webkit-tap-highlight-color:transparent;-webkit-user-select:none;user-select:none;-webkit-touch-callout:none;touch-action:manipulation}
@@ -642,7 +642,7 @@ body.intro .screen,body.intro nav,body.intro #coin,body.intro #musBtn,body.intro
 <button id="musBtn" aria-label="Music">♪</button>
 <div id="machPill">⚙ MACHINE RUNNING</div>
 <section class="screen on" id="scrHome">
-  <header class="top"><span class="brand">PACK<i>RIP</i><span class="ver">v21</span></span><button class="backBtn" id="saveBtn">💾 SAVE</button></header>
+  <header class="top"><span class="brand">PACK<i>RIP</i><span class="ver">v26</span></span><button class="backBtn" id="saveBtn">💾 SAVE</button></header>
   <div class="scroll" id="homeBody"></div>
 </section>
 <section class="screen" id="scrSets">
@@ -2522,7 +2522,7 @@ function renderStats(){let own=0;Object.values(S.coll).forEach(s=>Object.values(
  ${L100?`<div class="pnl ev"><h4>✨ NEW GAME+ SEASON</h4><p>You reached level 100. Start a new season: your level resets to 1, you keep every card, slab, badge and dollar, and you earn a gold ★ next to your name.</p><button class="btn" id="stPrest">START SEASON ${S.prestige+2}</button></div>`:''}
  <div class="sgrid">${st.map(([v,l])=>`<div class="stat"><b>${v}</b><span>${l}</span></div>`).join('')}</div>
  <h3 class="sec">Best pulls</h3>${S.hist.length?`<div class="pnl">${S.hist.slice(0,12).map(h=>`<div class="row2"><img class="th" src="${h.img}"><div class="tx"><b>${esc(h.name)}</b><small>${(setById[h.set]||{n:''}).n} · Pack #${h.p} · ${tierName[h.r]}${h.god?' · GOD PACK':''}</small></div></div>`).join('')}</div>`:'<p class="empty">No holos yet.</p>'}
- <h3 class="sec">Rules of the game · v21</h3><div class="odds">Packs: <b>10 cards</b>, no duplicates inside one pack. Rare slot: <b>12.5% holo</b>. <b>Ultra rares are legendary: 1 in 800 packs.</b> One <b>God Pack</b> in every 200. Misprints about 1 in 170 cards. PSA 10 on about 1 in 13 submissions (7.5%).<br>
+ <h3 class="sec">Rules of the game · v26</h3><div class="odds">Packs: <b>10 cards</b>, no duplicates inside one pack. Rare slot: <b>12.5% holo</b>. <b>Ultra rares are legendary: 1 in 800 packs.</b> One <b>God Pack</b> in every 200. Misprints about 1 in 170 cards. PSA 10 on about 1 in 13 submissions (7.5%).<br>
  Levels <b>1 to 100</b>. Each region has a cap: Kanto 30, Johto 55, Hoenn 80, Sinnoh 100.<br>
  Work shifts at <b>Gary's counter</b>: wage ${fmt(crWage())} + tips. Every shift costs 1 energy (refills 1 every 20 min, or eat a snack from your fridge).<br>
  Every set you <b>complete 100%</b> earns a <b>random ungraded card from a modern set (Gen 4 to 8)</b>, worth around $100. Rip <b>1,000 packs</b> in a month for that month's exclusive special card.<br>
@@ -2540,7 +2540,7 @@ function intro(done){const I=$('#intro'),st=$('#iStage'),bx=$('#iBox');I.classLi
  const show=(who,sc,id)=>{st.innerHTML=`<div class="halo"></div><div class="isp"${id?' id="'+id+'"':''}>${sprite(who,sc)}</div>`};
  (async()=>{
   I.classList.add('dark');bx.style.display='none';
-  st.innerHTML=`<div class="title"><div class="t1">PACK<br>RIP</div><div class="t2">COLLECTOR EDITION · V21</div><div style="margin-top:22px;display:flex;gap:10px;justify-content:center;align-items:flex-end">${sprite(1,5)}${sprite(0,6)}${sprite(2,5)}</div><div class="ps">TAP TO ENTER THE SHOP</div><button class="btn ghost" id="tCode" style="margin-top:22px;color:#fff">🔑 CONTINUE WITH SAVE CODE</button><div class="cr">A fan-made card collecting game · ♪ sound on</div></div>`;
+  st.innerHTML=`<div class="title"><div class="t1">PACK<br>RIP</div><div class="t2">CARD SHOP LIFE · V26</div><div style="margin-top:22px;display:flex;gap:10px;justify-content:center;align-items:flex-end">${sprite(1,5)}${sprite(0,6)}${sprite(2,5)}</div><div class="ps">TAP TO ENTER THE SHOP</div><button class="btn ghost" id="tCode" style="margin-top:22px;color:#fff">🔑 CONTINUE WITH SAVE CODE</button><div class="cr">A fan-made card collecting game · ♪ sound on</div></div>`;
   await new Promise(r=>{$('#tCode').onclick=e=>{e.stopPropagation();ac();loadCodeModal()};I.onclick=e=>{if(e.target.closest('#tCode'))return;I.onclick=null;ac();musicStart();bell();r()}});
   st.innerHTML='';I.classList.remove('dark');document.body.classList.add('introZoom');await wait(1500);bx.style.display='';
   show('gary',10);
@@ -3534,6 +3534,314 @@ function loPlay(step,t){const s=LO.cur,st=LO.st,R=LO.R,bar=Math.floor(step/8),b=
  if(seg!=='o'&&R()<.92)loNoise(t+sw,.045,(step%2?.025:.04)*fade,'highpass',7200,.6);
  if(D.dens&&R()<D.dens){const n=root+36+s.sc[Math.floor(R()*s.sc.length)];loOsc(mf(n),t+sw,st,'sine',.018,2600,1)}}
 function loTick(){const a=AC;if(!a||!MUS.on)return;while(LO.next<a.currentTime+.35){loPlay(LO.step,LO.next);LO.next+=LO.st;LO.step++;if(LO.step>=LO.total){LO.si++;loSong();LO.next+=LO.st*4}}}
+
+
+/* =================== v22–v26: CARD SHOP LIFE =================== */
+document.head.insertAdjacentHTML('beforeend',`<style>
+.hud{display:flex;align-items:center;gap:10px;margin-top:4px}
+.hud .hf{width:54px;height:54px;border-radius:16px;background:var(--pbg);overflow:hidden;flex:none;box-shadow:0 6px 16px rgba(0,0,0,.45);cursor:pointer}
+.hud .hf img{width:54px;height:54px}
+.hud .hm{flex:1;min-width:0}
+.hud .hm .nm{font-size:19px;font-weight:900;text-shadow:0 2px 8px #000;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.hud .hm small{display:block;font-size:10px;color:var(--gold);letter-spacing:.1em;font-weight:800;margin-top:2px;text-shadow:0 1px 6px #000}
+.hud .hset{width:38px;height:38px;border-radius:12px;border:1px solid var(--line);background:var(--panel);font-size:17px;flex:none}
+.hstats{display:grid;grid-template-columns:1.1fr 1.15fr .8fr 50px;gap:6px;margin-top:8px}
+.hstats .s{background:var(--panel);border:1px solid var(--line);border-radius:12px;padding:6px 8px;backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px)}
+.hstats .s b{display:block;font-size:13px;font-weight:900;white-space:nowrap}.hstats .s span{font-size:8px;white-space:nowrap;color:var(--mut);letter-spacing:.12em;font-weight:800}
+.hstats .bst{display:flex;align-items:center;gap:4px;cursor:pointer;padding:4px 6px}.hstats .bst img{width:24px;aspect-ratio:63/88;object-fit:cover;border-radius:2px}.hstats .bst svg{width:18px}
+.mtog{display:flex;gap:4px;margin-top:8px;background:rgba(10,8,14,.75);border:1px solid var(--line);border-radius:12px;padding:3px}
+.mtog button{flex:1;border:0;background:none;color:var(--mut);font-weight:900;font-size:11px;letter-spacing:.06em;padding:7px;border-radius:9px}.mtog button.on{background:#ffd76a;color:#160d00}
+.hub{position:relative;width:100%;aspect-ratio:320/300;margin-top:8px;border-radius:16px;overflow:hidden;box-shadow:0 18px 44px rgba(0,0,0,.65);background:#000;touch-action:manipulation}
+.hub canvas{position:absolute;inset:0;width:100%;height:100%;image-rendering:pixelated;image-rendering:crisp-edges}
+.hub .hs{position:absolute;background:none;border:0;padding:0;border-radius:8px;z-index:2}
+.hub .hs:active{background:rgba(255,230,140,.12)}
+.hub .lb{position:absolute;z-index:3;transform:translate(-50%,-50%);display:flex;align-items:center;gap:3px;white-space:nowrap;pointer-events:none;
+ background:rgba(16,12,22,.86);color:#fff;font-size:9.5px;font-weight:900;letter-spacing:.04em;padding:3px 7px 3px 5px;border-radius:20px;border:1px solid rgba(255,255,255,.18);box-shadow:0 3px 8px rgba(0,0,0,.5)}
+.hub .lb i{font-style:normal;font-size:11px}
+.hub .lb.alert::after{content:"";width:7px;height:7px;border-radius:50%;background:#ff3b5c;box-shadow:0 0 8px #ff3b5c;margin-left:2px}
+.hub .lb.lock{opacity:.55;background:rgba(16,12,22,.7)}
+.hub .lb.tgt{background:#ffd76a;color:#160d00;border-color:#fff;animation:tgtp 1.1s ease-in-out infinite}
+@keyframes tgtp{0%,100%{transform:translate(-50%,-50%) scale(1)}50%{transform:translate(-50%,-50%) scale(1.14);box-shadow:0 0 18px rgba(255,215,106,.9)}}
+.hub .gb{position:absolute;z-index:4;max-width:46%;background:#fff;color:#111;border-radius:10px;padding:5px 8px;font-size:9.5px;font-weight:700;line-height:1.3;box-shadow:0 4px 10px rgba(0,0,0,.45);transform:translate(-50%,-100%);cursor:pointer;transition:opacity .3s}
+.hub .gb::after{content:"";position:absolute;left:50%;bottom:-5px;margin-left:-5px;border:5px solid transparent;border-bottom:0;border-top-color:#fff}
+.hint2{margin-top:10px;display:flex;align-items:center;gap:10px;background:linear-gradient(135deg,rgba(80,60,10,.7),rgba(20,30,40,.7));border:1px solid rgba(255,215,106,.4);border-radius:16px;padding:10px 12px;backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px)}
+.hint2 .tx{flex:1;font-size:12.5px;line-height:1.4}.hint2 .tx .hh{display:block;font-size:10px;letter-spacing:.16em;color:var(--gold);font-weight:900}.hint2 .tx b{color:#ffd76a}
+.tdots{display:flex;gap:4px;margin-top:5px}.tdots i{width:16px;height:4px;border-radius:3px;background:rgba(255,255,255,.18)}.tdots i.on{background:#ffd76a}.tdots i.dn{background:#6ff0a0}
+.hlist .pnl{padding:10px 12px;margin-top:8px}
+.hlist .row2{padding:4px 0}
+.bkt{display:grid;grid-template-columns:repeat(4,1fr);gap:5px;margin:4px 0 6px;background:linear-gradient(135deg,#5a3418,#3a2010);border-radius:14px;padding:5px;box-shadow:inset 0 0 0 2px #8a5a30}
+.bkt button{border:0;background:none;color:#f0d8b0;font-weight:900;font-size:10.5px;letter-spacing:.05em;padding:9px 2px;border-radius:10px;position:relative}
+.bkt button.on{background:#f4e6c8;color:#3a2010}
+.bkt button .d{position:absolute;top:4px;right:6px;width:7px;height:7px;border-radius:50%;background:#ff3b5c}
+.bkhead{text-align:center;margin:4px 0 2px;font-size:11px;color:var(--mut);letter-spacing:.14em;font-weight:800}
+</style>`);
+
+/* ---------- 3-button nav: Shop · Binder · Vault ---------- */
+(function(){const nb=document.querySelectorAll('nav button');nb.forEach(b=>{if(b.dataset.s==='scrSets'||b.dataset.s==='scrShow')b.style.display='none'});
+ const h=document.querySelector('nav button[data-s="scrHome"]');if(h){h.lastChild.textContent='SHOP';h.querySelector('svg').innerHTML='<path d="M3 9h18l-2-5H5zM4 9v11h16V9M9 20v-6h6v6"/>'}
+ document.querySelectorAll('[data-home]').forEach(b=>b.textContent='‹ SHOP');
+ const q=document.querySelector('#scrQuests header span');if(q)q.innerHTML='COLLECTOR <b>BOOK</b>';
+ const sh=document.querySelector('#scrShop header span');if(sh)sh.innerHTML='GLASS CASE <b>&amp; SHOP</b>';
+ const ob=document.querySelector('#scrOpen #backSets');if(ob)ob.textContent='‹ PACK WALL';})();
+
+/* ---------- economy: wages tuned so one shift ≈ 2–3 packs ---------- */
+[8,10,13,17,24].forEach((w,i)=>CAREER[i][2]=w);
+
+/* ---------- guided start ---------- */
+if(S.tut==null)S.tut=(S.player&&S.packs>0)?99:0;
+const TUT=[
+ {k:'packs',t:'Rip your first pack',d:'Tap the <b>pack wall</b>. Your first pack is free.',ok:()=>S.packs>=1},
+ {k:'counter',t:'Work your first shift',d:'Tap the <b>counter</b>. Gary needs help with 2 customers.',ok:()=>(S.stats.jobs||0)>=1&&!SHF},
+ {k:'packs',t:'Buy 2 packs with your wage',d:'Back to the <b>pack wall</b>. Rip 2 more packs.',ok:()=>S.packs>=3},
+ {k:'psa',t:'Send a card to PSA',d:'Tap the <b>PSA desk</b>. Gary pays your first grading fee.',ok:()=>S.psaSubs>=1},
+ {k:'home',t:'Go home',d:'Tap the <b>front door</b> to see your room.',ok:()=>!!S.flags.visHof},
+ {k:'book',t:'Open your Collector Book',d:'Tap the <b>book</b> on the shelf. All your goals live there.',ok:()=>!!S.flags.visBook}];
+const TUT_UNLOCK={packs:0,counter:1,psa:3,home:4,book:5,glass:6,back:6};
+const tutOn=()=>S.player&&S.tut<TUT.length;
+function tutCheck(){if(!tutOn())return;let moved=false;while(S.tut<TUT.length&&TUT[S.tut].ok()){S.tut++;moved=true}
+ if(!moved)return;save();
+ if(S.tut>=TUT.length){S.tut=99;save();addCoins(25);whenFree(()=>{fanfare();burst(220,['#ffe07a','#fff','#9ef0ff'],1.2);modal(`<div class="em">${sprite('gary',5)}</div><h2>Training complete!</h2><p>"Not bad, kid. The whole shop is yours to explore now."<br><br>Unlocked: <b>glass case</b>, <b>evening auction</b>, <b>card shows, gyms and your rival</b> through the back door.<br><br><span class="money in">+$25</span> bonus</p><button class="btn" onclick="closeModal()">LET'S GO</button>`);a2hsPrompt()})}
+ else{tone([988,1318],.15,.05,'triangle',.08);toast(`✓ Step done · next: ${TUT[S.tut].t}`)}
+ if($('#scrHome').classList.contains('on'))renderHome()}
+const spotOpen=k=>!tutOn()||S.tut>=TUT_UNLOCK[k];
+
+/* ---------- saving ---------- */
+try{navigator.storage&&navigator.storage.persist&&navigator.storage.persist()}catch(e){}
+const isIOS=/iPhone|iPad|iPod/.test(navigator.userAgent),isStandalone=navigator.standalone||(window.matchMedia&&matchMedia('(display-mode: standalone)').matches);
+function a2hsPrompt(force){if(!force&&(S.flags.a2hs||!isIOS||isStandalone))return;S.flags.a2hs=1;save();
+ whenFree(()=>modal(`<div class="em">📲</div><h2>Keep your progress safe</h2><p>iPhone can delete website data after a few days without a visit. Add the game to your home screen and it's treated like an app:</p>
+ <div class="sh-list" style="text-align:left">1. Tap <b>Share</b> (square with arrow) in Safari<br>2. Tap <b>Add to Home Screen</b><br>3. Always start the game from that icon</div>
+ <p>Also copy your <b>💾 save code</b> now and then.</p><button class="btn" onclick="closeModal();saveCodeModal()">GET MY SAVE CODE</button><button class="btn ghost" onclick="closeModal()">GOT IT</button>`))}
+document.addEventListener('click',e=>{if(e.target.closest&&e.target.closest('#scCopy')){S.lastCode=NOW();save()}},true);
+const backupDue=()=>S.packs>=15&&NOW()-(S.lastCode||0)>3*DAY;
+
+/* ---------- pixel shop hub ---------- */
+const HW=320,HH=300;
+const SPOTS={
+ packs:{e:'🎴',n:'Pack wall',r:[42,4,112,100],l:[98,8],w:[92,124]},
+ book:{e:'📖',n:'Collector Book',r:[160,28,82,100],l:[200,30],w:[204,128]},
+ back:{e:'🚪',n:'Back door',r:[244,24,40,84],l:[264,26],w:[262,114]},
+ counter:{e:'🧑‍💼',n:'Counter',r:[106,104,112,104],l:[162,208],w:[162,228]},
+ psa:{e:'📮',n:'PSA desk',r:[6,130,72,80],l:[42,134],w:[54,226]},
+ glass:{e:'💎',n:'Glass case',r:[246,108,70,112],l:[280,110],w:[234,230]},
+ home:{e:'🏠',n:'Go home',r:[112,250,96,50],l:[160,288],w:[160,272]}};
+const HUB={pl:{x:160,y:250},path:[],face:1,walk:0,t:0,hl:null,hlT:0,run:false,bg:null,mode:'',npc:{x:62,y:122,f:1,t:0},cust:null,custT:0,after:null};
+function hubMine(){return !!(S.shop.owned&&S.shopMode==='mine')}
+function hubBg(){const mine=hubMine(),key=(mine?'m':'g')+':'+(S.room.wall||0)+':'+gensOpen().join();if(HUB.bg&&HUB.mode===key)return HUB.bg;HUB.mode=key;
+ const c=document.createElement('canvas');c.width=HW;c.height=HH;const x=c.getContext('2d');x.imageSmoothingEnabled=false;
+ const R=(a,b,w,h,col)=>{x.fillStyle=col;x.fillRect(a,b,w,h)};const P=(pts,col)=>{x.fillStyle=col;x.beginPath();x.moveTo(pts[0][0],pts[0][1]);for(let i=1;i<pts.length;i++)x.lineTo(pts[i][0],pts[i][1]);x.closePath();x.fill()};
+ const FY=100,wall=mine?'#5a3a6a':'#2f5a86',wall2=shadeHex(wall,-.15),wood='#7a4a28',trim=mine?'#ffd76a':'#e8c56a';
+ R(0,0,HW,HH,'#000');
+ /* floor: checker tiles in perspective */
+ const pt=(u,t)=>[(40+240*u)*(1-t)+(320*u)*t,FY+200*t];
+ for(let i=0;i<10;i++)for(let j=0;j<12;j++){const a=pt(j/12,i/10),b=pt((j+1)/12,i/10),cc=pt((j+1)/12,(i+1)/10),d=pt(j/12,(i+1)/10);P([a,b,cc,d],(i+j)%2?(mine?'#e8d8f0':'#ece2cc'):(mine?'#c8b0d8':'#cdbf9e'))}
+ const g0=x.createLinearGradient(0,FY,0,FY+60);g0.addColorStop(0,'rgba(0,0,0,.28)');g0.addColorStop(1,'rgba(0,0,0,0)');x.fillStyle=g0;x.fillRect(0,FY,HW,60);
+ /* side walls */
+ P([[0,18],[40,4],[40,FY],[0,HH]],wall2);P([[280,4],[320,18],[320,HH],[280,FY]],wall2);
+ P([[0,HH-150],[40,FY-26],[40,FY],[0,HH]],shadeHex(wood,-.15));P([[280,FY-26],[320,HH-150],[320,HH],[280,FY]],shadeHex(wood,-.15));
+ /* back wall */
+ R(40,4,240,FY-4,wall);for(let yy=10;yy<FY-28;yy+=10)for(let xx=44+((yy/10|0)%2)*6;xx<278;xx+=12){x.fillStyle=shadeHex(wall,.08);x.fillRect(xx,yy,3,3)}
+ R(40,FY-26,240,26,wood);for(let xx=44;xx<280;xx+=14)R(xx,FY-24,1,22,shadeHex(wood,-.25));R(40,FY-27,240,2,shadeHex(wood,.3));
+ R(40,0,240,5,trim);P([[0,14],[40,0],[40,5],[0,20]],trim);P([[280,0],[320,14],[320,20],[280,5]],trim);
+ /* pack wall */
+ R(44,10,106,86,'#4a2a12');R(46,12,102,82,'#2a180a');
+ for(let r=0;r<4;r++){const y0=15+r*20;let px=49;let k=r*5;while(px<142){const s=SETS[(k++)%SETS.length];const w=8;
+   R(px,y0,w,16,s.c[0]);R(px,y0+10,w,6,s.c[1]);R(px,y0,w,2,'#dfe4ea');R(px,y0+14,w,2,'#9aa3ad');R(px+1,y0+4,w-2,3,s.c[2]);R(px,y0+2,2,12,'rgba(255,255,255,.28)');px+=w+2}
+  R(46,y0+16,102,3,'#8a5a30');R(46,y0+16,102,1,'#c89a60')}
+ x.save();x.font='bold 8px monospace';x.textAlign='center';x.shadowColor='#ff4fd8';x.shadowBlur=6;x.fillStyle='#ffb0f0';x.fillText('BOOSTERS',97,9);x.restore();
+ /* neon sign */
+ R(160,8,78,18,'#14101c');R(160,8,78,1,'#3a3048');x.save();x.font='bold 7px monospace';x.textAlign='center';x.shadowColor=mine?'#ffd76a':'#3bd8ff';x.shadowBlur=8;x.fillStyle=mine?'#fff0b0':'#bff2ff';
+ const sign=mine?(pname().slice(0,9)+"'S CARDS"):"GARY'S CARDS";x.fillText(sign.toUpperCase(),206,20);x.restore();
+ x.fillStyle='#e03838';x.beginPath();x.arc(168,17,4,Math.PI,0);x.fill();x.fillStyle='#fff';x.beginPath();x.arc(168,17,4,0,Math.PI);x.fill();R(164,16,8,1,'#141418');
+ /* bookshelf */
+ R(162,32,76,64,'#5a3418');R(165,35,70,58,'#2a180a');
+ const bc=['#c8303f','#2f6ad0','#ffd76a','#2f9a5a','#7a3ad0','#e8823a','#3a3a48','#2fbfd0','#f4f4f4'];
+ for(let r=0;r<3;r++){const y0=37+r*19;let bx=167,k=r*3;while(bx<232){const w=3+((k*7)%3),h=11+((k*5)%5);R(bx,y0+16-h,w,h,bc[k%bc.length]);R(bx,y0+16-h,1,h,'rgba(255,255,255,.25)');bx+=w+1;k++}R(165,y0+16,70,3,'#8a5a30')}
+ /* back door */
+ R(246,26,32,74,'#4a2a12');R(249,29,26,71,mine?'#8a4a6a':'#8a5a30');R(253,34,18,14,'#bfe3ff');R(253,40,18,1,'#4a2a12');R(261,34,1,14,'#4a2a12');R(270,66,3,3,'#ffd76a');
+ R(252,54,20,7,'#141418');x.save();x.font='bold 5px monospace';x.textAlign='center';x.fillStyle='#ffd76a';x.fillText('STAFF',262,59.5);x.restore();
+ /* side-wall posters + chalkboard */
+ P([[8,40],[28,32],[28,60],[8,68]],'#14141a');P([[10,42],[26,35],[26,58],[10,65]],'#2a4a3a');x.fillStyle='#e8e8e8';[[12,46],[14,50],[12,54],[15,58]].forEach(([a,b])=>x.fillRect(a,b,9,1));
+ gensOpen().slice(0,3).forEach((g,i)=>{const c2=PCOL[g];P([[288+i*10,30+i*3],[296+i*10,33+i*3],[296+i*10,55+i*3],[288+i*10,52+i*3]],c2[0]);x.fillStyle=c2[1];x.fillRect(289+i*10,48+i*3,6,2)});
+ /* doormat + exit arrow */
+ P([[126,272],[194,272],[200,296],[120,296]],'#a8205a');P([[130,275],[190,275],[195,293],[125,293]],'#c8306a');x.save();x.font='bold 6px monospace';x.textAlign='center';x.fillStyle='#ffe8f0';x.fillText('WELCOME',160,287);x.restore();
+ const v=x.createRadialGradient(160,150,110,160,150,240);v.addColorStop(0,'rgba(0,0,0,0)');v.addColorStop(1,'rgba(0,0,0,.35)');x.fillStyle=v;x.fillRect(0,0,HW,HH);
+ HUB.bg=c;return c}
+function hubObjs(x,t){const R=(a,b,w,h,col)=>{x.fillStyle=col;x.fillRect(a,b,w,h)};const mine=hubMine();const L=[];
+ const spr=(who,fx,fy,flip,bob)=>{const c=charCanvas(who);x.fillStyle='rgba(0,0,0,.25)';x.beginPath();x.ellipse(fx,fy,13,4,0,0,7);x.fill();
+  x.save();x.translate(Math.round(fx),Math.round(fy-58-(bob||0)));if(flip){x.scale(-1,1);x.drawImage(c,-21,0)}else x.drawImage(c,-21,0);x.restore()};
+ /* lectern + glowing book */
+ L.push([122,()=>{const gl=.35+.15*Math.sin(t/500);x.fillStyle=`rgba(255,230,150,${gl})`;x.beginPath();x.ellipse(200,104,22,10,0,0,7);x.fill();R(197,104,7,18,'#5a3418');R(193,120,15,3,'#3a2010');R(186,98,29,8,'#7a4a28');R(188,96,12,6,'#f8f2e0');R(201,96,12,6,'#f0e8d0');R(200,96,1,6,'#c8a060');R(190,98,8,1,'#a89878');R(203,98,8,1,'#a89878')}]);
+ /* browsing customer */
+ const n=HUB.npc;L.push([n.y,()=>spr(n.who==null?(n.who=7):n.who,n.x,n.y,n.f<0,Math.abs(Math.sin(t/300))*(n.mv?1.5:0))]);
+ /* Gary behind the counter (or as visitor in your own shop) */
+ if(!mine)L.push([162,()=>spr('gary',140,162,false,Math.sin(t/700)*.8)]);else L.push([150,()=>spr('gary',232,150,true,0)]);
+ /* counter */
+ L.push([204,()=>{R(108,160,108,12,'#bfe3ff');R(108,160,108,2,'#ffffff');R(108,172,108,30,'#2a2a3a');R(108,172,108,1,'#5a5a70');
+  for(let i=0;i<6;i++){const s=SETS[(i*7)%SETS.length];R(114+i*16,177,10,14,s.c[0]);R(115+i*16,179,8,6,s.c[2])}
+  R(108,172,108,30,'rgba(190,230,255,.12)');R(108,202,108,2,'rgba(0,0,0,.35)');
+  R(186,146,24,16,'#3a3a44');R(188,148,20,6,'#07160c');R(189,149,10,2,'#6dff95');R(186,160,24,2,'#2a2a30');R(190,156,4,2,'#d8d8e0');R(196,156,4,2,'#d8d8e0');R(202,156,4,2,'#e8455a');
+  R(122,154,8,6,'#ffd76a');R(121,159,10,1,'#c8901a')}]);
+ /* PSA desk */
+ L.push([198,()=>{R(10,160,64,12,'#f2f3f5');R(10,160,64,1,'#ffffff');R(10,172,64,26,'#c8ccd4');R(16,176,22,18,'#b0b4bc');R(44,176,22,18,'#b0b4bc');R(26,184,2,2,'#888');R(54,184,2,2,'#888');R(10,198,64,2,'rgba(0,0,0,.3)');
+  [[14,146,18,14],[34,150,16,10],[52,148,18,12]].forEach(([a,b,w,h])=>{R(a,b,w,h,'#ffffff');R(a+3,b,2,h,'#d2232a');R(a+w-5,b,2,h,'#d2232a');R(a,b+h-1,w,1,'#c8ccd4')});
+  R(58,132,14,12,'#d2232a');x.save();x.font='bold 6px monospace';x.textAlign='center';x.fillStyle='#fff';x.fillText('PSA',65,140);x.restore();R(64,144,2,4,'#8a8a90')}]);
+ /* glass display case */
+ L.push([216,()=>{x.fillStyle=`rgba(255,236,170,${.22+.08*Math.sin(t/600)})`;x.beginPath();x.ellipse(280,150,34,52,0,0,7);x.fill();
+  R(252,108,58,108,'#5a3418');R(255,111,52,94,'#1a1020');for(let r=0;r<3;r++){const y0=116+r*30;for(let i=0;i<3;i++){R(259+i*16,y0,12,20,'#e6eaf2');R(259+i*16,y0,12,4,'#c41e2a');const s=SETS[(r*3+i+4)%SETS.length];R(261+i*16,y0+6,8,12,s.c[2]);R(261+i*16,y0+12,8,6,s.c[0])}R(255,y0+22,52,2,'#8a5a30')}
+  R(255,111,10,94,'rgba(255,255,255,.08)');R(252,205,58,11,'#3a2010');R(252,216,58,2,'rgba(0,0,0,.35)')}]);
+ /* plants */
+ [[18,240],[302,262]].forEach(([px,py])=>L.push([py,()=>{R(px-7,py-12,14,12,'#c8603a');R(px-7,py-12,14,2,'#e88a5a');x.fillStyle='#2f8a3a';[[0,-20,9,8],[-6,-15,6,6],[6,-15,6,6],[0,-27,6,7]].forEach(([a,b,c,d])=>{x.beginPath();x.ellipse(px+a,py+b,c,d,0,0,7);x.fill()});x.fillStyle='#4aaa4a';x.beginPath();x.ellipse(px-3,py-23,4,4,0,0,7);x.fill()}]));
+ /* walking customer */
+ if(HUB.cust){const c=HUB.cust;L.push([c.y,()=>spr(c.who,c.x,c.y,c.vx<0,Math.abs(Math.sin(t/140))*2)])}
+ /* the player */
+ const p=HUB.pl;L.push([p.y+.5,()=>spr(playerLook(),p.x,p.y,HUB.face<0,HUB.walk?Math.abs(Math.sin(t/110))*2.5:0)]);
+ L.sort((a,b)=>a[0]-b[0]).forEach(o=>o[1]())}
+function hubFrame(now){const cv=$('#hubCv');if(!cv||!$('#scrHome').classList.contains('on')||document.hidden){HUB.run=false;return}
+ const dt=Math.min(.05,(now-(HUB.t||now))/1000);HUB.t=now;const x=cv.getContext('2d');x.imageSmoothingEnabled=false;
+ /* player movement */
+ const p=HUB.pl;if(HUB.path.length){const tg=HUB.path[0],dx=tg[0]-p.x,dy=tg[1]-p.y,d=Math.hypot(dx,dy),sp=170*dt;
+  if(d<=sp){p.x=tg[0];p.y=tg[1];HUB.path.shift();if(!HUB.path.length){HUB.walk=0;const a=HUB.after;HUB.after=null;if(a)setTimeout(a,60)}}
+  else{p.x+=dx/d*sp;p.y+=dy/d*sp;HUB.walk=1;if(Math.abs(dx)>1)HUB.face=dx<0?-1:1;if(((now/180)|0)!==HUB._st){HUB._st=(now/180)|0;noise(.02,.06,2600,1,'bandpass')}}}
+ /* browsing npc */
+ const n=HUB.npc;n.t-=dt;if(n.t<=0){n.t=2+Math.random()*4;if(Math.random()<.5){n.tx=56+Math.random()*80;n.mv=1}else{n.f=-n.f;n.mv=0}}
+ if(n.mv&&n.tx!=null){const d=n.tx-n.x;if(Math.abs(d)<1){n.mv=0}else{n.x+=Math.sign(d)*30*dt;n.f=Math.sign(d)}}
+ /* passing customer */
+ HUB.custT-=dt;if(!HUB.cust&&HUB.custT<=0){HUB.cust={who:Math.floor(Math.random()*LOOKS.length),x:-20,y:258+Math.random()*10,vx:40};HUB.custT=8+Math.random()*10}
+ if(HUB.cust){HUB.cust.x+=HUB.cust.vx*dt;if(HUB.cust.x>HW+30)HUB.cust=null}
+ x.drawImage(hubBg(),0,0);hubObjs(x,now);
+ if(HUB.hl&&now<HUB.hlT){const r=SPOTS[HUB.hl].r;x.strokeStyle=`rgba(255,215,106,${.5+.5*Math.sin(now/60)})`;x.lineWidth=2;x.strokeRect(r[0]+1,r[1]+1,r[2]-2,r[3]-2)}
+ requestAnimationFrame(hubFrame)}
+function hubStart(){if(HUB.run)return;HUB.run=true;HUB.t=0;requestAnimationFrame(hubFrame)}
+document.addEventListener('visibilitychange',()=>{if(!document.hidden&&$('#scrHome').classList.contains('on'))hubStart()});
+function hubRoute(tx,ty){const p=HUB.pl,ais=x=>x<162?91:233,FR=240,path=[];
+ if(p.y<200)path.push([ais(p.x),p.y]);path.push([ais(p.x),FR]);if(ty<200){path.push([ais(tx),FR]);path.push([ais(tx),ty])}else path.push([tx,FR]);path.push([tx,ty]);
+ const out=[];let lx=p.x,ly=p.y;path.forEach(q=>{if(Math.hypot(q[0]-lx,q[1]-ly)>1){out.push(q);lx=q[0];ly=q[1]}});
+ if(Math.hypot(tx-p.x,ty-p.y)<60&&Math.abs(ty-p.y)<30)return [[tx,ty]];return out}
+function hubTap(k){ac();const S0=SPOTS[k];if(!spotOpen(k)){sfx.bad();toast(`🔒 Unlocks during training · now: ${TUT[S.tut].t}`);return}
+ blip();HUB.hl=k;HUB.hlT=performance.now()+700;
+ if(HUB.walk&&HUB.after&&HUB.tgt===k){HUB.path=[];HUB.walk=0;HUB.pl.x=S0.w[0];HUB.pl.y=S0.w[1];const a=HUB.after;HUB.after=null;return a()}
+ HUB.tgt=k;HUB.path=hubRoute(S0.w[0],S0.w[1]);HUB.after=()=>hubAction(k);if(!HUB.path.length){const a=HUB.after;HUB.after=null;a()}hubStart()}
+function hubAction(k){
+ if(k==='packs')return go('scrSets');
+ if(k==='book')return go('scrQuests');
+ if(k==='home')return go('scrHof');
+ if(k==='glass')return go('scrShop');
+ if(k==='counter'){if(hubMine()){const p=shopPending();modal(`<div class="em">🏪</div><h2>Your counter</h2><p>${esc(pname())}'s Cards · ${fmt(shopRate())}/hour while you're away</p>
+   <button class="btn earn" id="mcW" ${enGet()>=1?'':'disabled'}>🧑‍💼 WORK A SHIFT · ${enBar()}</button><button class="btn" id="mcC" ${p>=.01?'':'disabled'}>💰 COLLECT TAKINGS ${IN(p)}</button><button class="btn ghost" id="mcS">SHELF, TOURNAMENTS & UPGRADES</button><button class="btn ghost" onclick="closeModal()">CLOSE</button>`);
+   $('#mcW').onclick=()=>{closeModal();startShift()};$('#mcC').onclick=()=>{S.shop.last=NOW();addCoins(p);sfx.cash();save();closeModal();renderHome()};$('#mcS').onclick=()=>{closeModal();go('scrShop')};return}
+  return startShift()}
+ if(k==='psa'){
+  if(tutOn()&&S.tut===3){let h=allItems().filter(i=>i.k==='raw'&&(i.c.r==='holo'||i.c.r==='ultra')).sort((a,b)=>b.val-a.val)[0];
+   if(!h){const m=memo[unlockedSets()[0].id];if(m&&m.P.holo.length){const c=rnd(m.P.holo);addRaw(c);save();h={c};toast(`Gary hands you a ${c.name} to practise with`)}}
+   if(!S.flags.tutFee){S.flags.tutFee=1;addCoins(15)}if(h)return psaTierModal([h.c])}
+  const ready=S.subs.filter(s=>s.ready<=NOW()),nr=ready.reduce((a,s)=>a+s.sls.length,0),wait2=S.subs.length-ready.length;
+  modal(`<div class="em">📮</div><h2>PSA desk</h2><p>${S.subs.length?`${wait2?wait2+' package'+(wait2>1?'s':'')+' still at PSA. ':''}${nr?'<b>'+nr+' slab'+(nr>1?'s':'')+' arrived!</b>':''}`:'Send your best holos to PSA and hope for a 10.'}</p>
+   ${nr?`<button class="btn" id="pdO">📦 OPEN ${ready.length>1?'ALL '+ready.length+' PACKAGES':'PACKAGE'}</button>`:''}<button class="btn ${nr?'ghost':''}" id="pdS">📮 SEND CARDS TO PSA</button><button class="btn ghost" id="pdV">🏆 MY VAULT</button><button class="btn ghost" onclick="closeModal()">CLOSE</button>`);
+  if($('#pdO'))$('#pdO').onclick=()=>{closeModal();S.subs=S.subs.filter(s=>s.ready>NOW());save();checkSubs();deliverBatch(ready.flatMap(s=>s.sls))};
+  $('#pdS').onclick=()=>{closeModal();albumSet='$raw';filt='all';go('scrAlbum');selMode=true;selPick.clear();updSel();renderAlbum();toast('Tap the holos you want to grade')};
+  $('#pdV').onclick=()=>{closeModal();go('scrVault')};return}
+ if(k==='back'){const r=S.rv;modal(`<div class="em">🚪</div><h2>Out the back door</h2><p>Where to, ${esc(pname())}?</p>
+  <button class="opt" data-bd="scrShow"><div class="tx"><b>🏟️ Card shows</b><small>Sell your cards to collectors and whales</small></div></button>
+  <button class="opt" data-bd="scrGyms"><div class="tx"><b>🏅 Gym leaders</b><small>${GYMS.filter(x=>hasBadge(x.b)).length} badges · battle with your best cards</small></div></button>
+  <button class="opt" data-bd="scrRival"><div class="tx"><b>⚔️ Rival ${RIVAL} & trades</b><small>${r&&r.his?(r.mine&&r.mine.v>r.his.v?'You are leading this week':'He is ahead this week'):'Weekly best-pull duel'}</small></div></button>
+  <button class="opt" data-bd="scrStats"><div class="tx"><b>📊 Stats & settings</b><small>Look, backgrounds, save code</small></div></button><button class="btn ghost" onclick="closeModal()">STAY IN THE SHOP</button>`);
+  $('#mbox').querySelectorAll('[data-bd]').forEach(b=>b.onclick=()=>{closeModal();go(b.dataset.bd)})}}
+function garyLine(){if(tutOn()){const s=TUT[S.tut];return s.t+'!'}
+ const ready=S.subs.filter(s=>s.ready<=NOW()).length;if(ready)return 'Your PSA package came in!';
+ if(aucLive())return 'The evening auction is live!';if(storyReady())return 'Check your Collector Book, kid.';if(dailyReady())return 'You finished a daily mission!';
+ if(isBroke())return 'Short on cash? Work a shift.';const e=enGet();if(e>=enMax())return 'Ready for a shift?';
+ if(S.gcase&&S.gcase.items.some(i=>i.m&&!i.b))return 'I have a card you\'re missing…';
+ return rnd(['Fresh packs on the wall.','Good luck on your next rip!','Seen any fakes lately?','PSA 10 or bust!'])}
+function spotAlert(k){switch(k){case 'packs':return S.free>0||Object.values(S.inv).some(n=>n>0);case 'counter':return enGet()>=enMax();case 'psa':return S.subs.some(s=>s.ready<=NOW());
+ case 'book':return dailyReady()+storyReady()+colsReady()>0;case 'glass':return aucLive()||(S.gcase&&S.gcase.items.some(i=>i.m&&!i.b));case 'back':return !!(S.rv&&S.rv.his&&(!S.rv.mine||S.rv.mine.v<S.rv.his.v));default:return false}}
+function hubLabels(){const tk=tutOn()?TUT[S.tut].k:null;return Object.entries(SPOTS).map(([k,s])=>{const open=spotOpen(k);
+ return `<button class="hs" data-hs="${k}" aria-label="${s.n}" style="left:${s.r[0]/3.2}%;top:${s.r[1]/3}%;width:${s.r[2]/3.2}%;height:${s.r[3]/3}%"></button><div class="lb ${k===tk?'tgt':''} ${open?'':'lock'} ${open&&k!==tk&&spotAlert(k)?'alert':''}" style="left:${s.l[0]/3.2}%;top:${s.l[1]/3}%"><i>${open?s.e:'🔒'}</i>${s.n}</div>`}).join('')+
+ `<div class="gb" id="garyB" style="left:${(hubMine()?232:140)/3.2}%;top:${(hubMine()?84:96)/3}%">${esc(hubMine()?'Nice shop, kid!':garyLine())}</div>`}
+function hubHud(){const L=level(),lf=lvFromXP(S.xp),b=bestItem(),ck=b?crownTier(b.val):0;
+ return `<div class="hud"><div class="hf" id="pbgBtn">${face(playerLook(),54)}</div><div class="hm"><div class="nm">${S.prestige?'★ ':''}${esc(pname())} <span class="lvl">LV ${L}</span></div><div class="mbar xpbar"><i style="width:${lf.L>capLv()||L>=100?100:lf.rem/lf.need*100}%"></i></div><small>${CAREER[crIdx()][0]} · ⭐ ${S.rep.toFixed(1)} · ${REGION[maxGen()].toUpperCase()}</small></div><div style="width:40px;flex:none"></div></div>
+ <div class="hstats"><div class="s"><b>${fmt(cv0())}</b><span>COLLECTION</span></div><div class="s"><b>${enBar()}</b><span>${enGet()<enMax()?'+1 IN '+enNext()+' MIN':'ENERGY FULL'}</span></div><div class="s"><b>${S.free+Object.values(S.inv).reduce((a,n)=>a+n,0)}</b><span>PACKS READY</span></div>${b?`<div class="s bst" data-best="1">${crownSVG(ck)}<img src="${b.img}"></div>`:'<div></div>'}</div>
+ ${S.shop.owned?`<div class="mtog"><button data-mode="gary" class="${hubMine()?'':'on'}">GARY'S SHOP</button><button data-mode="mine" class="${hubMine()?'on':''}">${esc(pname())}'S SHOP</button></div>`:''}`}
+let _cvC=0,_cvV=0;const cv0=()=>{if(_cvC!==_uv){_cvC=_uv;_cvV=collValue()}return _cvV};
+function hubList(){let h='';
+ if(tutOn()){const s=TUT[S.tut];h+=`<div class="hint2"><div class="tx"><span class="hh">TRAINING · STEP ${S.tut+1}/${TUT.length}</span>${s.d}<div class="tdots">${TUT.map((_,i)=>`<i class="${i<S.tut?'dn':i===S.tut?'on':''}"></i>`).join('')}</div></div></div>`}
+ if(backupDue())h+=`<div class="hint2"><div class="tx"><span class="hh">BACK UP YOUR PROGRESS</span>Copy your save code so you never lose your collection.</div><button class="sbtn" onclick="saveCodeModal()">💾 SAVE</button></div>`;
+ h+='<div class="hlist">';const ev=evNow();
+ if(ev)h+=`<div class="pnl ev"><h4>WEEKEND EVENT · ENDS SUNDAY</h4><div class="big">${EVS[ev][0]}</div><p>${EVS[ev][1]}</p></div>`;
+ if(crashToday())h+=`<div class="pnl red"><h4>📉 MARKET CRASH</h4><p>All cards trade 30% lower today.</p></div>`;
+ if(!tutOn()){
+  if(oakReady())h+=`<div class="pnl gold"><div class="row2"><div class="ic">🎓</div><div class="tx"><b>Professor Oak's weekly gift</b><small>A free sealed bundle is waiting.</small></div><button class="sbtn earn" id="oak">CLAIM</button></div></div>`;
+  if(S.shop.owned&&shelfSold())h+=`<div class="pnl grn" data-go="scrShop"><div class="row2"><div class="ic">🏪</div><div class="tx"><b>Sold in your shop</b><small>${shelfSold()} item(s) sold · collect the money</small></div></div></div>`;
+  if(!S.shop.owned&&crIdx()>=4)h+=`<div class="pnl ev" data-go="scrShop"><div class="row2"><div class="ic">🏪</div><div class="tx"><b>You're a Partner now!</b><small>Open your own card shop (glass case → bottom).</small></div><button class="sbtn">GO</button></div></div>`;
+  h+=aucHomeHTML();
+  const g=S.grail;h+=`<div class="pnl"><div class="row2">${g?`<img class="th" src="${g.img}">`:'<div class="ic">👑</div>'}<div class="tx"><b>${g?'Holy Grail: PSA 10 '+esc(g.name):'Pick your Holy Grail'}</b><small>${g?'Reward $200 + 300 XP':'One ultra rare as your life goal'}</small></div><button class="sbtn g" id="grailPick">${g?'CHANGE':'CHOOSE'}</button></div></div>`;
+  h+=troStrip()}
+ h+='</div><button class="resetSm" id="resetHome">⟲ RESET GAME</button>';return h}
+function renderHome(){document.body.classList.remove('opening');rollDaily();rvEnsure();hwEnsure();if(S.rvPending)rvSettle();tutCheck();
+ const hb=$('#homeBody');if(!$('#hubCv')){hb.innerHTML=`<div id="hubHud"></div><div class="hub" id="hubBox"><canvas id="hubCv" width="${HW}" height="${HH}"></canvas><div id="hubLb"></div></div><div id="hubList"></div>`;HUB.bg=null}
+ $('#hubHud').innerHTML=hubHud();$('#hubLb').innerHTML=hubLabels();$('#hubList').innerHTML=hubList();updDots();hubStart()}
+$('#homeBody').addEventListener('click',e=>{const h=e.target.closest('[data-hs]');if(h){hubTap(h.dataset.hs);return}
+ if(e.target.closest('#garyB')){hubTap(hubMine()?'glass':'counter');return}
+ if(e.target.closest('#hubSet')){go('scrStats');return}
+ const m=e.target.closest('[data-mode]');if(m){S.shopMode=m.dataset.mode;save();HUB.bg=null;blip();renderHome()}});
+
+/* ---------- counter shift: tutorial shift, collector requests, your own shop ---------- */
+async function startShift(){await ensureLoaded();const P=shiftPool();if(P.c.length+P.r.length<8){toast('Unlock a set first');return}
+ if(!enUse()){toast(`No energy left · +1 in ${enNext()} min${S.room.fridge?' · grab a snack from your fridge':''}`);return}
+ const first=tutOn()&&(S.stats.jobs||0)===0,mine=hubMine();
+ SHF={P,i:0,n:first?2:5,tips:0,pen:0,bought:[],spent:0,rep0:S.rep,good:0,log:[],first,mine,sales:0,asked:new Set()};S.stats.jobs=(S.stats.jobs||0)+1;prog('job',1);save();
+ $('#nav').classList.add('hide');mg.classList.add('on');bell();
+ mg.innerHTML=`<div class="wtt" style="margin-top:14vh">${mine?esc(pname())+'\'s counter':'Gary\'s counter'}</div><p class="empty">${mine?'Your own shop · you keep the takings':CAREER[crIdx()][0]+' · shift '+S.stats.jobs}<br>${SHF.n} customers are waiting. ${mine?'Takings':'Wage'} <b style="color:#6ff0a0">${fmt(crWage()*(mine?1.5:1))}</b> + tips.${first?'<br><br><b style="color:#ffd76a">Your first shift: just 2 easy customers.</b>':''}</p><button class="btn" id="shGoIn" style="max-width:340px">OPEN THE SHOP</button>`;
+ $('#shGoIn').onclick=()=>nextCustomer()}
+function custTypes(){if(SHF&&SHF.first)return['bulk','order'];const k=crIdx();const t=['bulk','binder','order','request'];if(k>=1)t.push('fake','fake');if(k>=2)t.push('gift');if(k>=3)t.push('binder');if(SHF&&SHF.mine)t.push('request','request','request');return t}
+function nextCustomer(){if(SHF.i>=SHF.n)return endShift();SHF.i++;const t=rnd(custTypes());({bulk:cBulk,binder:cBinder,order:cOrder,fake:cFake,gift:cGift,request:cRequest}[t])()}
+function cRequest(){const pool=allItems().filter(i=>i.k==='raw'&&i.val>=.2&&!SHF.asked.has(i.id)).sort((a,b)=>b.val-a.val).slice(0,40);const it=rnd(pool);if(!it)return cBulk();SHF.asked.add(it.id);
+ const mine=SHF.mine,price=Math.round(it.val*(mine?rr(1.2,1.4):rr(1.5,2))*100)/100;
+ shFrame(mine?'WANTS TO BUY':'COLLECTOR REQUEST',`I'm looking for <b>${esc(it.name)}</b> for my binder. ${mine?'Is it for sale?':'Gary said you might have one?'} I'll pay <b>${fmt(price)}</b>.`,
+  `<div style="width:min(40vw,160px);margin:0 auto"><img src="${it.c.l}" onerror="this.src='${it.c.s}'" style="width:100%;border-radius:8px;box-shadow:0 12px 26px rgba(0,0,0,.6)"></div><p class="empty" style="padding:8px">Market ${fmt(it.val)} · you have ${it.cnt}</p><div class="two"><button class="btn ghost" id="rqN">KEEP IT</button><button class="btn earn" id="rqY">SELL ${IN(price)}</button></div>`);
+ $('#rqN').onclick=()=>{toast('"Maybe next time!"');after(500)};
+ $('#rqY').onclick=()=>guard(it,()=>{const r=removeItem(it);if(r&&r.fake){addRep(-1);miss('"This is a FAKE!" No sale. Reputation −1');after(1100);return}
+  SHF.tips+=price;SHF.sales+=price;SHF.good++;S.stats.sold++;S.stats.earned+=price;addRep(.3);save();sfx.cash();burst(50,['#6ff0a0','#ffe07a','#fff'],.6);toast(`Sold ${it.name} for ${fmt(price)}`);after(900)},()=>after(400))}
+const _endShift=endShift;
+endShift=function(){if(SHF&&SHF.mine&&!SHF._b){SHF._b=1;SHF.tips+=crWage()*.5}const mine=SHF&&SHF.mine;_endShift();if(mine){const h=mg.querySelector('.sh-rcpt h5');if(h)h.textContent=pname().toUpperCase()+"'S CARDS"}};
+
+/* ---------- own shop = endgame (needs Partner rank) ---------- */
+const ownOk=()=>crIdx()>=4||!!S.prestige;
+document.getElementById('shopBody').addEventListener('click',e=>{const b=e.target.closest('#buyShop');if(b&&!ownOk()){e.stopPropagation();e.preventDefault();sfx.bad();toast(`Reach PARTNER at Gary's (${Math.max(0,70-(S.stats.jobs||0))} more shifts) to open your own shop`)}},true);
+new MutationObserver(()=>{const sb=$('#shopBody');if(!sb)return;
+ if(!sb.querySelector('.aucIn')&&sb.firstElementChild&&!sb.querySelector('.spin')){const d=document.createElement('div');d.className='aucIn';d.innerHTML=aucHomeHTML();sb.insertBefore(d,sb.firstElementChild)}
+ const bs=sb.querySelector('#buyShop');if(bs&&!bs.dataset.v26){bs.dataset.v26=1;const p=bs.parentElement.querySelector('p');if(p)p.innerHTML=`The endgame: your own card shop with your own customers, a consignment shelf and tournament nights. Needs rank <b>PARTNER</b> at Gary's (${Math.min(70,S.stats.jobs||0)}/70 shifts).`;bs.disabled=!ownOk()||S.coins<250}
+}).observe($('#shopBody'),{childList:true});
+$('#shopBody').addEventListener('click',e=>{const a=e.target.closest('[data-go="auction"]');if(a){openAuction()}});
+document.head.insertAdjacentHTML('beforeend','<style>#shopBody .pnl:has(#buyMach),#shopBody .pnl:has([data-go2="scrMachine"]){display:none}#shopBody .aucIn .pnl{margin-top:0;margin-bottom:12px}</style>');
+
+/* ---------- Collector Book (quests, story, collections, achievements, trophies in one) ---------- */
+let bookTab='today';
+const _rq=renderQuests;
+function dailyHTML(){return `<div class="pnl gold"><h4>TODAY · 🔥 ${S.streak} DAY STREAK</h4>${S.daily.keys.map(k=>{const d=DPOOL.find(x=>x.k===k);if(!d)return'';const p=Math.min(d.n,Math.floor(S.daily.p[k]||0)),done=p>=d.n,cl=S.daily.claimed.includes(k);
+ return `<div class="row2"><div class="tx"><b>${d.t}${d.g>1?` <span class="tag g${Math.min(d.g,5)}">GEN ${ROMAN[d.g]}</span>`:''}</b><div class="mbar"><i style="width:${p/d.n*100}%"></i></div></div><button class="sbtn ${done&&!cl?'earn':'g'}" data-claim="${k}" ${done&&!cl?'':'disabled'}>${cl?'✓':IN(dReward(d))}</button></div>`}).join('')}<p style="font-size:11px">${(S.streak%7)?`${7-(S.streak%7)} more day${7-(S.streak%7)>1?'s':''} in a row for a free booster box.`:'Booster box earned today!'}</p></div>`}
+renderQuests=function(){rollDaily();if(!S.flags.visBook){S.flags.visBook=1;save();setTimeout(tutCheck,300)}
+ _rq();const full=$('#questBody').innerHTML,tro=troQuestHTML(),rest=full.replace(tro,'');
+ const parts=rest.split('<h3 class="sec">');const story=parts[0];const sec={};parts.slice(1).forEach(p=>{const key=p.slice(0,p.indexOf('<'));sec[key]='<h3 class="sec">'+p});
+ const pick=re=>Object.keys(sec).filter(k=>re.test(k)).map(k=>sec[k]).join('');
+ const dots={today:dailyReady()>0,story:storyReady()>0,goals:colsReady()>0,tro:false};
+ const tabs=[['today','TODAY'],['story','STORY'],['goals','GOALS'],['tro','TROPHIES']];
+ let body='';
+ if(bookTab==='today')body=dailyHTML()+moHomeHTML()+pick(/^(Weekly request|Bounties)/);
+ else if(bookTab==='story')body=story+pick(/^(Set rewards|Master Sets)/)+specHomeHTML();
+ else if(bookTab==='goals')body=pick(/^(Collections|Achievements)/);
+ else body=tro;
+ $('#questBody').innerHTML=`<div class="bkhead">📖 ${esc(pname())}'S COLLECTOR BOOK</div><div class="bkt">${tabs.map(([k,n])=>`<button data-bt="${k}" class="${k===bookTab?'on':''}">${n}${dots[k]&&k!==bookTab?'<span class="d"></span>':''}</button>`).join('')}</div>`+body};
+$('#questBody').addEventListener('click',e=>{const t=e.target.closest('[data-bt]');if(t){bookTab=t.dataset.bt;blip();renderQuests();$('#questBody').scrollTop=0;return}
+ const c=e.target.closest('[data-claim]');if(c){const d=DPOOL.find(x=>x.k===c.dataset.claim);if(!d||S.daily.claimed.includes(d.k))return;S.daily.claimed.push(d.k);addCoins(dReward(d));addXP(50);sfx.cash();save();renderQuests()}});
+
+/* ---------- room visit flag, checks ---------- */
+const _rh=renderHof;renderHof=async function(){if(!S.flags.visHof){S.flags.visHof=1;save();setTimeout(tutCheck,300)}return _rh()};
+const _ca=checkAll;checkAll=function(){_ca();tutCheck();
+ if(crIdx()>=4&&!S.shop.owned&&!S.flags.partnerMsg){S.flags.partnerMsg=1;save();whenFree(()=>{fanfare();modal(`<div class="em">🏪</div><h2>Partner at Gary's!</h2><p>"Kid, you've learned everything I know. Time you opened your own shop."<br><br>Open it in the <b>glass case & shop</b> screen. Your own counter, your own customers, your own sign on the wall.</p><button class="btn" onclick="closeModal();go('scrShop')">LET'S DO IT</button>`)})}};
+const _go=go;go=function(id){if(id!=='scrHome')HUB.path=[],HUB.walk=0,HUB.after=null;_go(id)};
+if(S.shop.owned&&S.shopMode==null&&ownOk())S.shopMode='mine';
+setTimeout(()=>{if(S.player&&!tutOn())a2hsPrompt()},6000);
 
 
 boot();
