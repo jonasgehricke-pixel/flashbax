@@ -11,7 +11,7 @@
 <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
 <meta http-equiv="Pragma" content="no-cache">
 <meta http-equiv="Expires" content="0">
-<title>PACK RIP · v29</title>
+<title>PACK RIP · v30</title>
 <style>
 :root{--gold:#ffd76a;--bg:#050407;--panel:rgba(18,14,24,.7);--line:rgba(255,255,255,.1);--txt:#f5f2ff;--mut:#a8a2c0;--grn:#2fbf6a;--red:#e8455a;--mx:50%;--my:50%;--rx:0deg;--ry:0deg;--c1:#2d63c8;--c2:#0c1f52;--c3:#ffcb05;--bgh:225;--bgs:30%;--pw:220px;--pbg:linear-gradient(135deg,#fff,#dfe6ff)}
 *{box-sizing:border-box;margin:0;padding:0;-webkit-tap-highlight-color:transparent;-webkit-user-select:none;user-select:none;-webkit-touch-callout:none;touch-action:manipulation}
@@ -657,7 +657,7 @@ body.intro .screen,body.intro nav,body.intro #coin,body.intro #musBtn,body.intro
 <button id="musBtn" aria-label="Music">♪</button>
 <div id="machPill">⚙ MACHINE RUNNING</div>
 <section class="screen on" id="scrHome">
-  <header class="top"><span class="brand">PACK<i>RIP</i><span class="ver">v29</span></span><button class="backBtn" id="saveBtn">💾 SAVE</button></header>
+  <header class="top"><span class="brand">PACK<i>RIP</i><span class="ver">v30</span></span><button class="backBtn" id="saveBtn">💾 SAVE</button></header>
   <div class="scroll" id="homeBody"></div>
 </section>
 <section class="screen" id="scrSets">
@@ -2469,7 +2469,7 @@ function renderHome(){
   return `<div class="row2"><div class="tx"><b>${d.t}${d.g>1?` <span class="tag g${d.g}">GEN ${ROMAN[d.g]}</span>`:''}</b><div class="mbar"><i style="width:${p/d.n*100}%"></i></div></div><button class="sbtn ${done&&!cl?'earn':'g'}" data-claim="${k}" ${done&&!cl?'':'disabled'}>${cl?'✓':IN(dReward(d))}</button></div>`}).join('')}</div>`;
  const g=S.grail;h+=`<div class="pnl"><h4>👑 YOUR HOLY GRAIL · ULTRA RARES ONLY</h4>${g?`<div class="row2"><img class="th" src="${g.img}"><div class="tx"><b>PSA 10 ${esc(g.name)}</b><small>Reward: $200 + 300 XP</small></div><button class="sbtn g" id="grailPick">CHANGE</button></div>`:`<p>Pick one ultra rare as your life goal. Land it as a PSA 10 for a big reward.</p><button class="btn ghost" id="grailPick">CHOOSE GRAIL</button>`}</div>`;
  if(!ev)h+=`<p class="empty" style="padding:10px 0 0;font-size:11px;text-shadow:0 1px 4px #000">Next weekend event (Fri–Sun): ${EVS[evNext()][0]}</p>`;
- h+=`<p class="empty" style="font-size:10px;padding:14px 0 0;color:#6ff0a0">Version 29 · sell up to 50 · PSA duplicates · starter slab · ultra 1 in 500 · Gen IX Paldea · 5 lo-fi songs · PSA 10 7.5% · monthly 1,000 packs · set reward ~$100</p><button class="resetSm" id="resetHome">⟲ RESET GAME</button>`;
+ h+=`<p class="empty" style="font-size:10px;padding:14px 0 0;color:#6ff0a0">Version 30 · real monthly card · sell up to 50 · PSA duplicates · starter slab · ultra 1 in 500 · Gen IX Paldea · 5 lo-fi songs · PSA 10 7.5% · monthly 1,000 packs · set reward ~$100</p><button class="resetSm" id="resetHome">⟲ RESET GAME</button>`;
  $('#homeBody').innerHTML=h;updDots()}
 let homeSig='';
 function renderHomeLive(){const sig=[S.subs.filter(s=>s.ready<=NOW()).length,jobReady(),oakReady(),isBroke(),quizReady(),hlReady(),shelfSold(),!!S.machine.run,aucLive()].join();if(sig!==homeSig){homeSig=sig;renderHome()}}
@@ -2537,7 +2537,7 @@ function renderStats(){let own=0;Object.values(S.coll).forEach(s=>Object.values(
  ${L100?`<div class="pnl ev"><h4>✨ NEW GAME+ SEASON</h4><p>You reached level 100. Start a new season: your level resets to 1, you keep every card, slab, badge and dollar, and you earn a gold ★ next to your name.</p><button class="btn" id="stPrest">START SEASON ${S.prestige+2}</button></div>`:''}
  <div class="sgrid">${st.map(([v,l])=>`<div class="stat"><b>${v}</b><span>${l}</span></div>`).join('')}</div>
  <h3 class="sec">Best pulls</h3>${S.hist.length?`<div class="pnl">${S.hist.slice(0,12).map(h=>`<div class="row2"><img class="th" src="${h.img}"><div class="tx"><b>${esc(h.name)}</b><small>${(setById[h.set]||{n:''}).n} · Pack #${h.p} · ${tierName[h.r]}${h.god?' · GOD PACK':''}</small></div></div>`).join('')}</div>`:'<p class="empty">No holos yet.</p>'}
- <h3 class="sec">Rules of the game · v29</h3><div class="odds">Packs: <b>10 cards</b>, no duplicates inside one pack. Rare slot: <b>12.5% holo</b>. <b>Ultra rares are legendary: 1 in 500 packs.</b> One <b>God Pack</b> in every 200. Misprints about 1 in 170 cards. PSA 10 on about 1 in 13 submissions (7.5%).<br>
+ <h3 class="sec">Rules of the game · v30</h3><div class="odds">Packs: <b>10 cards</b>, no duplicates inside one pack. Rare slot: <b>12.5% holo</b>. <b>Ultra rares are legendary: 1 in 500 packs.</b> One <b>God Pack</b> in every 200. Misprints about 1 in 170 cards. PSA 10 on about 1 in 13 submissions (7.5%).<br>
  Levels <b>1 to 100</b>. Each region has a cap: Kanto 30, Johto 55, Hoenn 80, Sinnoh 100.<br>
  Work shifts at <b>Marty's counter</b>: wage ${fmt(crWage())} + tips. Every shift costs 1 energy (refills 1 every 20 min, or eat a snack from your fridge).<br>
  Every set you <b>complete 100%</b> earns a <b>random ungraded card from a modern set (Gen 4 to 8)</b>, worth around $100. Rip <b>1,000 packs</b> in a month for that month's exclusive special card.<br>
@@ -2555,7 +2555,7 @@ function intro(done){const I=$('#intro'),st=$('#iStage'),bx=$('#iBox');I.classLi
  let starter=null;const show=(who,sc,id)=>{st.innerHTML=`<div class="halo"></div><div class="isp"${id?' id="'+id+'"':''}>${sprite(who,sc)}</div>`};
  (async()=>{
   I.classList.add('dark');bx.style.display='none';
-  st.innerHTML=`<div class="title"><div class="t1">PACK<br>RIP</div><div class="t2">COLLECTOR EDITION · V29</div><div style="margin-top:22px;display:flex;gap:10px;justify-content:center;align-items:flex-end">${sprite(1,5)}${sprite(0,6)}${sprite(2,5)}</div><div class="ps">TAP TO ENTER THE SHOP</div><button class="btn ghost" id="tCode" style="margin-top:22px;color:#fff">🔑 CONTINUE WITH SAVE CODE</button><div class="cr">A fan-made card collecting game · ♪ sound on</div></div>`;
+  st.innerHTML=`<div class="title"><div class="t1">PACK<br>RIP</div><div class="t2">COLLECTOR EDITION · V30</div><div style="margin-top:22px;display:flex;gap:10px;justify-content:center;align-items:flex-end">${sprite(1,5)}${sprite(0,6)}${sprite(2,5)}</div><div class="ps">TAP TO ENTER THE SHOP</div><button class="btn ghost" id="tCode" style="margin-top:22px;color:#fff">🔑 CONTINUE WITH SAVE CODE</button><div class="cr">A fan-made card collecting game · ♪ sound on</div></div>`;
   await new Promise(r=>{$('#tCode').onclick=e=>{e.stopPropagation();ac();loadCodeModal()};I.onclick=e=>{if(e.target.closest('#tCode'))return;I.onclick=null;ac();musicStart();bell();r()}});
   st.innerHTML='';I.classList.remove('dark');document.body.classList.add('introZoom');await wait(1500);bx.style.display='';
   show('gary',10);
@@ -3652,6 +3652,34 @@ function updSel(){const bar=$('#selBar');bar.classList.toggle('on',selMode);cons
  $('#selFee').textContent=n?`Standard from ${fmt(batchFee(TIERS[0],n))}${n>=5?' · 10% bulk discount':''}`:'Tap holos · tap again for more copies';$('#selGo').disabled=!n}
 $('#selGo').onclick=()=>{const cards=[...selPick].flatMap(([id,n])=>{const c=cardById(id);return c?Array(n).fill(c):[]});if(!cards.length)return;selMode=false;selPick.clear();updSel();renderAlbum();psaTierModal(cards)};
 
+/* ---------- v30: monthly special is always a REAL card; old artwork slabs get replaced ---------- */
+async function realMonthlyCard(nm,seed){
+ const pick=l=>l[hsh(seed)%l.length];
+ const qs=[`name:"${nm}" rarity:Promo`,`name:"${nm}" (rarity:"Rare Holo" OR rarity:"Rare Ultra" OR rarity:"Rare Holo EX" OR rarity:"Illustration Rare")`,`name:"${nm}"`];
+ for(const q of qs){try{const j=await fetchJSON(`https://api.pokemontcg.io/v2/cards?q=${encodeURIComponent(q)}&pageSize=60&select=id,name,number,images,set`,15000);
+  const l=(j.data||[]).filter(x=>x.images&&x.images.large&&x.name.toLowerCase().includes(nm.toLowerCase()));if(l.length){const x=pick(l);return {id:x.id,name:x.name,n:x.number,s:x.images.small,l:x.images.large,setn:x.set&&x.set.name}}}catch(e){}}
+ try{const j=await fetchJSON(`https://api.tcgdex.net/v2/en/cards?name=${encodeURIComponent('eq:'+nm)}`,15000);const l=(Array.isArray(j)?j:[]).filter(c=>c.image);
+  if(l.length){const c=pick(l);return {id:'tcgdex-'+c.id,name:c.name,n:c.localId||'PROMO',s:c.image+'/low.webp',l:c.image+'/high.webp'}}}catch(e){}
+ return null}
+let moBusy2=false,moRetry=0;
+moCheck=async function(){moEnsure();if(moBusy2||S.mo.got||S.mo.p<MO_N||!S.player)return;if(NOW()<moRetry)return;moBusy2=true;
+ try{const M=moCard();const c=await realMonthlyCard(M.n,S.mo.m);
+  if(!c){moRetry=NOW()+60000;return}
+  S.mo.got=true;
+  const sl={uid:uid(),id:c.id,name:c.name,n:c.n,r:'ultra',s:c.s,l:c.l,art:0,grade:10,cert:String(Math.floor(1e8+Math.random()*9e8)),seed:Math.floor(Math.random()*1e9),d:NOW(),sp:1,mo:1,setn:'Monthly Special · '+moName(),y:new Date().getFullYear()};
+  S.slabs.push(sl);_uv++;addXP(150);save();
+  whenFree(()=>{flash(1,900);sfx.ultra();burst(300,['#ffe07a','#fff','#ff9de6'],1.5);banner('MONTHLY SPECIAL!');
+   modal(`<div class="em">🗓️</div><h2>${esc(moName())} special!</h2><p>You ripped ${MO_N.toLocaleString('en-US')} packs this month. Your exclusive reward, only obtainable in ${esc(moName())}:</p><div style="width:58%;margin:12px auto 0" id="moSlab">${slabHTML(sl)}</div><p><b>${esc(sl.name)}</b> · PSA 10 · <span class="money in">${fmt(cardVal(sl,{grade:10}))}</span></p><button class="btn" onclick="closeModal();go('scrVault')">TO MY VAULT</button>`);bindTilt($('#moSlab .slab'))});checkAll()}
+ finally{moBusy2=false}};
+/* replace old monthly slabs that only showed artwork with a real card of the same Pokémon (same grade, cert and value cap) */
+let moFixBusy=false;
+async function moFixOld(){if(moFixBusy)return;const old=(S.slabs||[]).filter(s=>s.art&&isMonthly(s));if(!old.length)return;moFixBusy=true;let n=0;
+ try{for(const s of old){const nm=String(s.name).replace(/^.*?\b(Charizard|Umbreon|Lugia|Mew|Rayquaza|Gengar|Pikachu|Blastoise|Espeon|Garchomp|Mewtwo|Snorlax)\b.*$/i,'$1');
+  const c=await realMonthlyCard(nm,(s.setn||'')+s.uid);if(!c)continue;
+  Object.assign(s,{id:c.id,name:c.name,n:c.n,s:c.s,l:c.l,art:0,mo:1});n++}
+  if(n){_uv++;save();whenFree(()=>{toast(`🗓️ Your monthly special${n>1?'s were':' was'} upgraded to a real card`);if($('#scrVault').classList.contains('on'))renderVault()})}}
+ finally{moFixBusy=false}}
+setTimeout(moFixOld,3000);setInterval(moFixOld,120000);
 boot();
 
 </script>
