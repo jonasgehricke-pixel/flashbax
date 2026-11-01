@@ -11,7 +11,7 @@
 <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
 <meta http-equiv="Pragma" content="no-cache">
 <meta http-equiv="Expires" content="0">
-<title>PACK RIP · v32</title>
+<title>PACK RIP · v33</title>
 <style>
 :root{--gold:#ffd76a;--bg:#050407;--panel:rgba(18,14,24,.7);--line:rgba(255,255,255,.1);--txt:#f5f2ff;--mut:#a8a2c0;--grn:#2fbf6a;--red:#e8455a;--mx:50%;--my:50%;--rx:0deg;--ry:0deg;--c1:#2d63c8;--c2:#0c1f52;--c3:#ffcb05;--bgh:225;--bgs:30%;--pw:220px;--pbg:linear-gradient(135deg,#fff,#dfe6ff)}
 *{box-sizing:border-box;margin:0;padding:0;-webkit-tap-highlight-color:transparent;-webkit-user-select:none;user-select:none;-webkit-touch-callout:none;touch-action:manipulation}
@@ -657,7 +657,7 @@ body.intro .screen,body.intro nav,body.intro #coin,body.intro #musBtn,body.intro
 <button id="musBtn" aria-label="Music">♪</button>
 <div id="machPill">⚙ MACHINE RUNNING</div>
 <section class="screen on" id="scrHome">
-  <header class="top"><span class="brand">PACK<i>RIP</i><span class="ver">v32</span></span><button class="backBtn" id="saveBtn">💾 SAVE</button></header>
+  <header class="top"><span class="brand">PACK<i>RIP</i><span class="ver">v33</span></span><button class="backBtn" id="saveBtn">💾 SAVE</button></header>
   <div class="scroll" id="homeBody"></div>
 </section>
 <section class="screen" id="scrSets">
@@ -1627,11 +1627,11 @@ async function renderAlbum(){
  document.body.classList.remove('opening');
  const special=!!albumSet&&albumSet[0]==='$';
  if(!special&&(!albumSet||!isUnlocked(SETS.findIndex(s=>s.id===albumSet))))albumSet=(curSet&&isUnlocked(SETS.indexOf(curSet))&&curSet.id)||'base1';
- $('#setChips').innerHTML=`<button class="chip val ${albumSet==='$raw'?'on':''}" data-set="$raw">💰 TOP 20 RAW</button><button class="chip psa ${albumSet==='$psa'?'on':''}" data-set="$psa">🏅 TOP 20 PSA</button><button class="chip ${albumSet==='$games'?'on':''}" data-set="$games">🎮 GAMES</button>`+SETS.map((s,i)=>`<button class="chip ${s.id===albumSet?'on':''}" data-set="${s.id}" ${isUnlocked(i)?'':'style="opacity:.4"'}>${isUnlocked(i)?'':'🔒 '}${s.n}</button>`).join('');
+ $('#setChips').innerHTML=`<button class="chip val ${albumSet==='$raw'?'on':''}" data-set="$raw">💰 TOP 20 RAW</button><button class="chip psa ${albumSet==='$psa'?'on':''}" data-set="$psa">🏅 TOP 20 PSA</button><button class="chip psa ${albumSet==='$allpsa'?'on':''}" data-set="$allpsa">🗂️ ALL PSA CARDS</button><button class="chip ${albumSet==='$games'?'on':''}" data-set="$games">🎮 GAMES</button>`+SETS.map((s,i)=>`<button class="chip ${s.id===albumSet?'on':''}" data-set="${s.id}" ${isUnlocked(i)?'':'style="opacity:.4"'}>${isUnlocked(i)?'':'🔒 '}${s.n}</button>`).join('');
  const sc=$('#setChips .chip.on');if(sc)sc.scrollIntoView({inline:'center',block:'nearest'});
- $('#psaBatch').textContent=selMode?'✕ STOP SELECTING':'📮 SEND SEVERAL CARDS TO PSA';$('#psaBatch').style.display=(albumSet==='$psa'||albumSet==='$games')?'none':'';
+ $('#psaBatch').textContent=selMode?'✕ STOP SELECTING':'📮 SEND SEVERAL CARDS TO PSA';$('#psaBatch').style.display=(albumSet==='$psa'||albumSet==='$games'||albumSet==='$allpsa')?'none':'';
  $('#agrid').innerHTML='<div style="grid-column:1/-1;display:flex;justify-content:center;padding:40px"><div class="spin"></div></div>';$('#msLine').innerHTML='';
- if(albumSet==='$games')return renderGames();
+ if(albumSet==='$games')return renderGames();if(albumSet==='$allpsa')return;
  if(special)return renderTop(albumSet);
  const set=setById[albumSet],me=albumSet;applyTheme(set);
  let D;try{D=await loadSet(me)}catch(e){$('#agrid').innerHTML='<div class="err" style="grid-column:1/-1">Needs internet to load this set.</div>';return}
@@ -1658,7 +1658,7 @@ async function renderTop(kind){await ensureLoaded();if(albumSet!==kind)return;$(
  $('#agrid').innerHTML=items.length?items.map((it,i)=>{const can=selMode&&it.k==='raw'&&(it.c.r==='holo'||it.c.r==='ultra');
   return `<div class="slot ${it.k!=='mis'?it.c.r:'holo'} ${it.k==='mis'?'mp-'+it.m.v:''} ${selMode?(can?'selable':'dim'):''} ${it.k==='raw'&&selPick.has(it.id)?'picked':''}" data-ai="${i}"${it.k==='raw'&&selPick.get(it.id)>1?` data-n="×${selPick.get(it.id)}"`:''}><img src="${it.img}" loading="lazy"><span class="rk">#${i+1}</span>${it.k==='mis'?'<span class="cnt" style="background:#ff9de6">ERROR</span>':it.k==='promo'?'<span class="cnt" style="background:#ffd76a">🎁</span>':it.cnt>1?`<span class="cnt">×${it.cnt}</span>`:''}<span class="sn">${esc(it.k==='promo'?it.p.setn:(setById[it.set]||{n:''}).n)}</span><span class="vl">${fmt(it.val)}</span></div>`}).join(''):'<p class="empty" style="grid-column:1/-1">No cards yet. Go rip some packs!</p>';
  $('#agrid')._items=items}
-$('#setChips').addEventListener('click',e=>{const b=e.target.closest('.chip');if(!b)return;const k=b.dataset.set;if(k[0]!=='$'&&!isUnlocked(SETS.findIndex(s=>s.id===k))){toast('Locked set');return}if((k==='$psa'||k==='$games')&&selMode){selMode=false;selPick.clear();updSel()}albumSet=k;renderAlbum()});
+$('#setChips').addEventListener('click',e=>{const b=e.target.closest('.chip');if(!b)return;const k=b.dataset.set;if(k[0]!=='$'&&!isUnlocked(SETS.findIndex(s=>s.id===k))){toast('Locked set');return}if((k==='$psa'||k==='$games'||k==='$allpsa')&&selMode){selMode=false;selPick.clear();updSel()}albumSet=k;renderAlbum()});
 $('#chips').addEventListener('click',e=>{const b=e.target.closest('.chip');if(b){filt=b.dataset.f;renderAlbum()}});
 $('#psaBatch').onclick=()=>{selMode=!selMode;selPick.clear();updSel();renderAlbum();if(selMode)toast('Tap the holos you want to grade')};
 function updSel(){const bar=$('#selBar');bar.classList.toggle('on',selMode);$('#selN').textContent=`${selPick.size} card${selPick.size===1?'':'s'} selected`;
@@ -2470,7 +2470,7 @@ function renderHome(){
   return `<div class="row2"><div class="tx"><b>${d.t}${d.g>1?` <span class="tag g${d.g}">GEN ${ROMAN[d.g]}</span>`:''}</b><div class="mbar"><i style="width:${p/d.n*100}%"></i></div></div><button class="sbtn ${done&&!cl?'earn':'g'}" data-claim="${k}" ${done&&!cl?'':'disabled'}>${cl?'✓':IN(dReward(d))}</button></div>`}).join('')}</div>`;
  const g=S.grail;h+=`<div class="pnl"><h4>👑 YOUR HOLY GRAIL · ULTRA RARES ONLY</h4>${g?`<div class="row2"><img class="th" src="${g.img}"><div class="tx"><b>PSA 10 ${esc(g.name)}</b><small>Reward: $200 + 300 XP</small></div><button class="sbtn g" id="grailPick">CHANGE</button></div>`:`<p>Pick one ultra rare as your life goal. Land it as a PSA 10 for a big reward.</p><button class="btn ghost" id="grailPick">CHOOSE GRAIL</button>`}</div>`;
  if(!ev)h+=`<p class="empty" style="padding:10px 0 0;font-size:11px;text-shadow:0 1px 4px #000">Next weekend event (Fri–Sun): ${EVS[evNext()][0]}</p>`;
- h+=`<p class="empty" style="font-size:10px;padding:14px 0 0;color:#6ff0a0">Version 32 · first 10 packs of a new set one by one · sell all dupes 75% · real monthly card · sell up to 50 · PSA duplicates · starter slab · ultra 1 in 500 · Gen IX Paldea · 5 lo-fi songs · PSA 10 7.5% · monthly 1,000 packs · set reward ~$100</p><button class="resetSm" id="resetHome">⟲ RESET GAME</button>`;
+ h+=`<p class="empty" style="font-size:10px;padding:14px 0 0;color:#6ff0a0">Version 33 · dupes 65% in shop · all PSA tab · first 10 packs of a new set one by one · sell all dupes 75% · real monthly card · sell up to 50 · PSA duplicates · starter slab · ultra 1 in 500 · Gen IX Paldea · 5 lo-fi songs · PSA 10 7.5% · monthly 1,000 packs · set reward ~$100</p><button class="resetSm" id="resetHome">⟲ RESET GAME</button>`;
  $('#homeBody').innerHTML=h;updDots()}
 let homeSig='';
 function renderHomeLive(){const sig=[S.subs.filter(s=>s.ready<=NOW()).length,jobReady(),oakReady(),isBroke(),quizReady(),hlReady(),shelfSold(),!!S.machine.run,aucLive()].join();if(sig!==homeSig){homeSig=sig;renderHome()}}
@@ -2538,7 +2538,7 @@ function renderStats(){let own=0;Object.values(S.coll).forEach(s=>Object.values(
  ${L100?`<div class="pnl ev"><h4>✨ NEW GAME+ SEASON</h4><p>You reached level 100. Start a new season: your level resets to 1, you keep every card, slab, badge and dollar, and you earn a gold ★ next to your name.</p><button class="btn" id="stPrest">START SEASON ${S.prestige+2}</button></div>`:''}
  <div class="sgrid">${st.map(([v,l])=>`<div class="stat"><b>${v}</b><span>${l}</span></div>`).join('')}</div>
  <h3 class="sec">Best pulls</h3>${S.hist.length?`<div class="pnl">${S.hist.slice(0,12).map(h=>`<div class="row2"><img class="th" src="${h.img}"><div class="tx"><b>${esc(h.name)}</b><small>${(setById[h.set]||{n:''}).n} · Pack #${h.p} · ${tierName[h.r]}${h.god?' · GOD PACK':''}</small></div></div>`).join('')}</div>`:'<p class="empty">No holos yet.</p>'}
- <h3 class="sec">Rules of the game · v32</h3><div class="odds">Packs: <b>10 cards</b>, no duplicates inside one pack. Rare slot: <b>12.5% holo</b>. <b>Ultra rares are legendary: 1 in 500 packs.</b> One <b>God Pack</b> in every 200. Misprints about 1 in 170 cards. PSA 10 on about 1 in 13 submissions (7.5%).<br>
+ <h3 class="sec">Rules of the game · v33</h3><div class="odds">Packs: <b>10 cards</b>, no duplicates inside one pack. Rare slot: <b>12.5% holo</b>. <b>Ultra rares are legendary: 1 in 500 packs.</b> One <b>God Pack</b> in every 200. Misprints about 1 in 170 cards. PSA 10 on about 1 in 13 submissions (7.5%).<br>
  Levels <b>1 to 100</b>. Each region has a cap: Kanto 30, Johto 55, Hoenn 80, Sinnoh 100.<br>
  Work shifts at <b>Marty's counter</b>: wage ${fmt(crWage())} + tips. Every shift costs 1 energy (refills 1 every 20 min, or eat a snack from your fridge).<br>
  Every set you <b>complete 100%</b> earns a <b>random ungraded card from a modern set (Gen 4 to 8)</b>, worth around $100. Rip <b>1,000 packs</b> in a month for that month's exclusive special card.<br>
@@ -2556,7 +2556,7 @@ function intro(done){const I=$('#intro'),st=$('#iStage'),bx=$('#iBox');I.classLi
  let starter=null;const show=(who,sc,id)=>{st.innerHTML=`<div class="halo"></div><div class="isp"${id?' id="'+id+'"':''}>${sprite(who,sc)}</div>`};
  (async()=>{
   I.classList.add('dark');bx.style.display='none';
-  st.innerHTML=`<div class="title"><div class="t1">PACK<br>RIP</div><div class="t2">COLLECTOR EDITION · V32</div><div style="margin-top:22px;display:flex;gap:10px;justify-content:center;align-items:flex-end">${sprite(1,5)}${sprite(0,6)}${sprite(2,5)}</div><div class="ps">TAP TO ENTER THE SHOP</div><button class="btn ghost" id="tCode" style="margin-top:22px;color:#fff">🔑 CONTINUE WITH SAVE CODE</button><div class="cr">A fan-made card collecting game · ♪ sound on</div></div>`;
+  st.innerHTML=`<div class="title"><div class="t1">PACK<br>RIP</div><div class="t2">COLLECTOR EDITION · V33</div><div style="margin-top:22px;display:flex;gap:10px;justify-content:center;align-items:flex-end">${sprite(1,5)}${sprite(0,6)}${sprite(2,5)}</div><div class="ps">TAP TO ENTER THE SHOP</div><button class="btn ghost" id="tCode" style="margin-top:22px;color:#fff">🔑 CONTINUE WITH SAVE CODE</button><div class="cr">A fan-made card collecting game · ♪ sound on</div></div>`;
   await new Promise(r=>{$('#tCode').onclick=e=>{e.stopPropagation();ac();loadCodeModal()};I.onclick=e=>{if(e.target.closest('#tCode'))return;I.onclick=null;ac();musicStart();bell();r()}});
   st.innerHTML='';I.classList.remove('dark');document.body.classList.add('introZoom');await wait(1500);bx.style.display='';
   show('gary',10);
@@ -3706,6 +3706,41 @@ const NEW_N=10;
 function newLock(){return !!(curSet&&$('#scrOpen')&&$('#scrOpen').classList.contains('on')&&(S.perSet[curSet.id]||0)<NEW_N)}
 const newLeft=()=>curSet?Math.max(0,NEW_N-(S.perSet[curSet.id]||0)):0;
 const _cp32=commitPack;commitPack=function(pk,set,mode){const before=S.perSet[set.id]||0;const r=_cp32(pk,set,mode);if(before<NEW_N&&(S.perSet[set.id]||0)>=NEW_N&&!mode)whenFree(()=>{fanfare();toast(`🔓 ${set.n}: bulk opening unlocked again`)});return r};
+/* ---------- v33: dupes button lives in the shop (65%, no PSA slabs) + ALL PSA tab grouped by card ---------- */
+const DUPE_PCT=.65;
+dupePlan=function(){const g={};
+ sellPool({noSeal:1}).forEach(it=>{const id=it.k==='raw'?it.id:it.k==='mis'?it.m.id:null;if(!id)return;(g[id]=g[id]||[]).push(it)});
+ const keep=[],sell=[];Object.entries(g).forEach(([id,a])=>{const slabbed=S.slabs.some(s=>!s.fake&&s.id===id);a.sort((x,y)=>y.val-x.val);
+  if(slabbed)sell.push(...a);else if(a.length>1){keep.push(a[0]);sell.push(...a.slice(1))}});
+ return {sell,keep,val:Math.round(sell.reduce((a,it)=>a+it.val*DUPE_PCT,0)*100)/100}};
+dupeBtnHTML=function(){const p=dupePlan();return `<div class="pnl gold" style="margin-top:12px"><h4>♻️ SELL ALL DUPLICATES · 65%</h4><p style="margin-top:0">Sells every extra raw copy: commons, rares, holos and misprints. The most valuable copy of each card stays. <b style="color:#fff">PSA slabs are never touched.</b> If you already own a card as a PSA slab, the raw copies count as duplicates.</p><button class="btn earn" id="dupAll" ${p.sell.length?'':'disabled'}>${p.sell.length?`SELL ${p.sell.length} DUPLICATES ${IN(p.val)}`:'NO DUPLICATES'}</button></div>`};
+sellAllDupes=function(){const p=dupePlan();if(!p.sell.length){toast('No duplicates to sell');return}
+ const top=p.sell.slice().sort((a,b)=>b.val-a.val).slice(0,10);
+ modal(`<div class="em">♻️</div><h2>Sell ${p.sell.length} duplicates?</h2><p>Marty pays <b>65%</b> of market: <span class="money in">${fmt(p.val)}</span><br>PSA slabs stay untouched.</p>
+ <div class="grid5" style="margin-top:10px">${top.map(it=>`<div class="mini ${it.c?it.c.r:'holo'}"><img src="${it.img}"><span class="pv">${fmt(it.val)}</span></div>`).join('')}</div>${p.sell.length>10?`<p style="font-size:11px">+ ${p.sell.length-10} more</p>`:''}
+ <button class="btn earn" id="dupY">SELL ALL ${IN(p.val)}</button><button class="btn ghost" onclick="closeModal()">CANCEL</button>`);
+ $('#dupY').onclick=()=>{closeModal();let tot=0,fk=0;p.sell.forEach(it=>{const r=removeItem(it);if(r&&r.fake)fk++;else tot+=it.val*DUPE_PCT});
+  tot=Math.round(tot*100)/100;addCoins(tot);S.stats.sold+=p.sell.length-fk;S.stats.earned+=tot;addXP(Math.min(200,p.sell.length*2));save();
+  sfx.cash();burst(160,['#6ff0a0','#ffe07a','#fff'],1.1);banner('DUPES SOLD!');toast(`Sold ${p.sell.length-fk} duplicates for ${fmt(tot)}${fk?` · ${fk} fake${fk>1?'s':''} binned`:''}`);
+  checkUnlocks();checkAll();if($('#scrShop').classList.contains('on'))renderShop();if($('#scrMarket').classList.contains('on'))renderMarket();if($('#scrAlbum').classList.contains('on'))renderAlbum()}};
+renderVault=function(){_rv31();const d=$('#vDup');if(d)d.remove()};
+const _rs33=renderShop;renderShop=async function(){await _rs33();const f=$('#shopBody .pnl');if(f&&!$('#sDup'))f.insertAdjacentHTML('afterend',`<div id="sDup">${dupeBtnHTML()}</div>`)};
+/* ALL PSA tab: grouped by card, groups ordered by their best slab, inside each group best grade first */
+function psaGroups(){const g={};S.slabs.forEach(sl=>{const k=sl.id+'|'+sl.name;(g[k]=g[k]||[]).push({sl,val:cardVal(sl,{grade:sl.grade})})});
+ const groups=Object.values(g).map(a=>{a.sort((x,y)=>y.sl.grade-x.sl.grade||y.val-x.val);return {a,top:Math.max(...a.map(x=>x.val))}});
+ groups.sort((x,y)=>y.top-x.top);return groups}
+document.head.insertAdjacentHTML('beforeend',`<style>.pgrp{grid-column:1/-1;display:flex;align-items:center;gap:8px;margin-top:10px;font-size:11px;font-weight:900;letter-spacing:.08em;color:var(--mut)}.pgrp b{color:#fff}.pgrp .dn{background:#c41e2a;color:#fff;padding:2px 6px;border-radius:6px;font-size:9px}.pgrp::after{content:"";flex:1;height:1px;background:var(--line)}.vslab.dupe{opacity:.88}.vslab .dtag{position:absolute;top:-6px;right:-4px;z-index:3;font-size:8.5px;font-weight:900;background:#c41e2a;color:#fff;padding:2px 5px;border-radius:7px}</style>`);
+async function renderAllPSA(){await ensureLoaded();if(albumSet!=='$allpsa')return;$('#chips').style.display='none';
+ const groups=psaGroups();const flat=[];let tot=0;groups.forEach(gr=>gr.a.forEach((x,i)=>{flat.push(x);tot+=x.val}));
+ $('#albCount').innerHTML=`<b>${S.slabs.length}</b> slabs`;$('#albSetName').textContent='All PSA cards · grouped by card, best first';$('#albPct').textContent=fmt(tot);$('#albBar').style.width='100%';
+ $('#msLine').innerHTML='Same cards stay together. The first slab in each group is your best one, everything after it is a <b style="color:#ff8a8a">duplicate</b> you can sell.';
+ let h='',k=0;groups.forEach(gr=>{const n=gr.a.length;
+  h+=`<div class="pgrp"><b>${esc(gr.a[0].sl.name)}</b>${n>1?`<span class="dn">×${n}</span>`:''}${fmt(gr.top)}</div>`;
+  gr.a.forEach((x,i)=>{h+=`<div class="vslab ${i?'dupe':''}" data-ps="${k}">${i?'<span class="dtag">DUPE</span>':''}${slabHTML(x.sl,{small:1})}<div class="vv">PSA ${x.sl.grade} · ${fmt(x.val)}</div></div>`;k++})});
+ $('#agrid').innerHTML=h||'<p class="empty" style="grid-column:1/-1">No graded cards yet. Send holos to PSA from the Binder.</p>';$('#agrid')._ps=flat}
+const _ra33=renderAlbum;renderAlbum=async function(){
+ if(albumSet==='$allpsa'){await _ra33.call(this).catch(()=>{});}else return _ra33();
+ return renderAllPSA()};
 boot();
 
 </script>
