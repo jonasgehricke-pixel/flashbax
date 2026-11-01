@@ -11,7 +11,7 @@
 <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
 <meta http-equiv="Pragma" content="no-cache">
 <meta http-equiv="Expires" content="0">
-<title>PACK RIP · v20</title>
+<title>PACK RIP · v21</title>
 <style>
 :root{--gold:#ffd76a;--bg:#050407;--panel:rgba(18,14,24,.7);--line:rgba(255,255,255,.1);--txt:#f5f2ff;--mut:#a8a2c0;--grn:#2fbf6a;--red:#e8455a;--mx:50%;--my:50%;--rx:0deg;--ry:0deg;--c1:#2d63c8;--c2:#0c1f52;--c3:#ffcb05;--bgh:225;--bgs:30%;--pw:220px;--pbg:linear-gradient(135deg,#fff,#dfe6ff)}
 *{box-sizing:border-box;margin:0;padding:0;-webkit-tap-highlight-color:transparent;-webkit-user-select:none;user-select:none;-webkit-touch-callout:none;touch-action:manipulation}
@@ -642,7 +642,7 @@ body.intro .screen,body.intro nav,body.intro #coin,body.intro #musBtn,body.intro
 <button id="musBtn" aria-label="Music">♪</button>
 <div id="machPill">⚙ MACHINE RUNNING</div>
 <section class="screen on" id="scrHome">
-  <header class="top"><span class="brand">PACK<i>RIP</i><span class="ver">v20</span></span><button class="backBtn" id="saveBtn">💾 SAVE</button></header>
+  <header class="top"><span class="brand">PACK<i>RIP</i><span class="ver">v21</span></span><button class="backBtn" id="saveBtn">💾 SAVE</button></header>
   <div class="scroll" id="homeBody"></div>
 </section>
 <section class="screen" id="scrSets">
@@ -1581,7 +1581,7 @@ const PROF={2:'Elm',3:'Birch',4:'Rowan'},NEWMON={2:100,3:135,4:107},GEM={2:'🌙
 function checkUnlocks(){_uv++;
  SETS.forEach((s,i)=>{if(i>0&&isUnlocked(i)&&!S.seenUnlock.includes(s.id)){S.seenUnlock.push(s.id);save();
   if(!S.seenGen.includes(s.g)){S.seenGen.push(s.g);save();renderPosters();
-   if(s.g===5){whenFree(()=>{flash(1,900);sfx.ultra();fanfare();burst(320,['#ffe07a','#fff','#9ef0ff','#ff9de6'],1.5);banner('SPECIAL SETS!');
+   if(s.g===6){whenFree(()=>{flash(1,900);sfx.ultra();fanfare();burst(320,['#ffe07a','#fff','#c86ae8','#ff9de6'],1.5);banner('PALDEA UNLOCKED!');modal(`<div class="em">🌈</div><h2>Generation IX · Paldea!</h2><p>The final region is open. 12 modern sets, from <b>Scarlet & Violet</b> to <b>Prismatic Evolutions</b>.<br><br>Illustration rares, Special Illustration rares and the famous <b>151</b> set are waiting.</p><button class="btn" onclick="closeModal();go('scrSets')">SHOW ME</button>`)});return}if(s.g===5){whenFree(()=>{flash(1,900);sfx.ultra();fanfare();burst(320,['#ffe07a','#fff','#9ef0ff','#ff9de6'],1.5);banner('SPECIAL SETS!');
     modal(`<div class="em">🎉</div><h2>Special Anniversary Sets!</h2><p>You finished all four generations. Now the anniversary sets open up:<br><br><b>Generations · 20th Anniversary</b><br><b>Celebrations · 25th Anniversary</b><br><b>30th Celebration (2026)</b> · coming soon<br><br>Pricier packs, bigger hits.</p><button class="btn" onclick="closeModal();go('scrSets')">SHOW ME</button>`)});return}
    whenFree(()=>{flash(1,900);sfx.ultra();fanfare();burst(320,['#ffe07a','#fff','#9ef0ff','#ff9de6'],1.5);banner('GEN '+ROMAN[s.g]+' UNLOCKED');
     modal(`<div class="em">${GEM[s.g]}</div><h2>Generation ${ROMAN[s.g]} · ${REGION[s.g]}!</h2><p>Welcome to ${REGION[s.g]}. Brand new for you:<br><br><b>${s.n}</b> booster packs<br><b>A new story</b> with Professor ${PROF[s.g]}<br><b>8 new Gym Leaders</b> and badges<br><b>New achievements, collections and daily missions</b><br><b>Level cap raised to ${CAP[s.g]}</b></p><button class="btn" onclick="closeModal();go('scrQuests')">SHOW ME</button><button class="btn ghost" onclick="closeModal()">LATER</button>`)})}
@@ -2454,7 +2454,7 @@ function renderHome(){
   return `<div class="row2"><div class="tx"><b>${d.t}${d.g>1?` <span class="tag g${d.g}">GEN ${ROMAN[d.g]}</span>`:''}</b><div class="mbar"><i style="width:${p/d.n*100}%"></i></div></div><button class="sbtn ${done&&!cl?'earn':'g'}" data-claim="${k}" ${done&&!cl?'':'disabled'}>${cl?'✓':IN(dReward(d))}</button></div>`}).join('')}</div>`;
  const g=S.grail;h+=`<div class="pnl"><h4>👑 YOUR HOLY GRAIL · ULTRA RARES ONLY</h4>${g?`<div class="row2"><img class="th" src="${g.img}"><div class="tx"><b>PSA 10 ${esc(g.name)}</b><small>Reward: $200 + 300 XP</small></div><button class="sbtn g" id="grailPick">CHANGE</button></div>`:`<p>Pick one ultra rare as your life goal. Land it as a PSA 10 for a big reward.</p><button class="btn ghost" id="grailPick">CHOOSE GRAIL</button>`}</div>`;
  if(!ev)h+=`<p class="empty" style="padding:10px 0 0;font-size:11px;text-shadow:0 1px 4px #000">Next weekend event (Fri–Sun): ${EVS[evNext()][0]}</p>`;
- h+=`<p class="empty" style="font-size:10px;padding:14px 0 0;color:#6ff0a0">Version 20 · ultra 1 in 800 · work at Gary's counter · PSA 10 7.5% · monthly 1,000 packs · set reward ~$100</p><button class="resetSm" id="resetHome">⟲ RESET GAME</button>`;
+ h+=`<p class="empty" style="font-size:10px;padding:14px 0 0;color:#6ff0a0">Version 21 · ultra 1 in 800 · Gen IX Paldea · 5 lo-fi songs · PSA 10 7.5% · monthly 1,000 packs · set reward ~$100</p><button class="resetSm" id="resetHome">⟲ RESET GAME</button>`;
  $('#homeBody').innerHTML=h;updDots()}
 let homeSig='';
 function renderHomeLive(){const sig=[S.subs.filter(s=>s.ready<=NOW()).length,jobReady(),oakReady(),isBroke(),quizReady(),hlReady(),shelfSold(),!!S.machine.run,aucLive()].join();if(sig!==homeSig){homeSig=sig;renderHome()}}
@@ -2515,14 +2515,14 @@ function renderStats(){let own=0;Object.values(S.coll).forEach(s=>Object.values(
  const L100=level()>=100;
  $('#statsBody').innerHTML=`<div class="pnl gold"><h4>💾 SAVE CODE</h4><p>Your game is saved on this device automatically. To be safe (new phone, cleared Safari data, other link), copy your save code and paste it back any time.</p><div class="two"><button class="btn" id="stSave">GET SAVE CODE</button><button class="btn ghost" id="stLoad">ENTER CODE</button></div></div>
  <div class="pnl"><h4>🖼️ APP BACKGROUND</h4><div class="row2"><div class="tx"><b>${BGS[S.bg][0]}</b><small>${BGS[S.bg][1]}</small></div><button class="sbtn" id="stBg">CHANGE</button></div></div>
- <div class="pnl"><h4>🧑 YOUR LOOK</h4><div class="row2"><div class="ic" style="width:56px;height:56px;border-radius:14px;background:var(--pbg);display:flex;align-items:flex-end;justify-content:center;overflow:hidden">${face(playerLook(),56)}</div><div class="tx"><b>${esc(pname())} · ${LOOKS[playerLook()].n}</b><small>Background: ${(PBGS[S.pbg]||PBGS[0])[0]}</small></div><button class="sbtn g" id="stLook">LOOK</button><button class="sbtn g" id="stPbg">🎨 BG</button></div></div>
+ <div class="pnl"><h4>🧑 YOUR LOOK</h4><div class="row2"><div class="ic" style="width:56px;height:56px;border-radius:14px;background:var(--pbg);display:flex;align-items:flex-end;justify-content:center;overflow:hidden">${face(playerLook(),56)}</div><div class="tx"><b>${esc(pname())}</b><small>Background: ${(PBGS[S.pbg]||PBGS[0])[0]}</small></div><button class="sbtn g" id="stLook">LOOK</button><button class="sbtn g" id="stPbg">🎨 BG</button></div></div>
  <div class="pnl"><h4>📦 OPEN SEVERAL PACKS AT ONCE</h4><p style="margin-top:0">Free vouchers and sealed packs are always used first.</p>${QTYS.filter(q=>q>1).map(q=>`<div class="row2"><div class="tx"><b>${q} packs at once</b><small>Level ${QLV[q]}</small></div><span class="tag ${qOk(q)?'':'r'}">${qOk(q)?'UNLOCKED':'🔒 LOCKED'}</span></div>`).join('')}</div>
  <div class="pnl"><h4>🍀 LUCKY OPENING RITUAL</h4><p>Pure superstition: it doesn't change the odds, but the game remembers your way and celebrates it.</p>${[['','No ritual'],['t','Always tear the top'],['b','Always tear the bottom']].map(([k,n])=>`<button class="opt ${S.ritual===k?'on':''}" data-rit="${k}"><div class="tx"><b>${n}</b></div>${S.ritual===k?'<div class="pr in">✓</div>':''}</button>`).join('')}</div>
  <div class="pnl"><h4>👑 CROWN OF YOUR BEST CARD</h4>${CROWNS.map((c,i)=>`<div class="row2"><div class="ic" style="width:40px">${crownSVG(i)}</div><div class="tx"><b>${c[1]}</b><small>best card worth ${fmt(c[0])}+</small></div></div>`).join('')}</div>
  ${L100?`<div class="pnl ev"><h4>✨ NEW GAME+ SEASON</h4><p>You reached level 100. Start a new season: your level resets to 1, you keep every card, slab, badge and dollar, and you earn a gold ★ next to your name.</p><button class="btn" id="stPrest">START SEASON ${S.prestige+2}</button></div>`:''}
  <div class="sgrid">${st.map(([v,l])=>`<div class="stat"><b>${v}</b><span>${l}</span></div>`).join('')}</div>
  <h3 class="sec">Best pulls</h3>${S.hist.length?`<div class="pnl">${S.hist.slice(0,12).map(h=>`<div class="row2"><img class="th" src="${h.img}"><div class="tx"><b>${esc(h.name)}</b><small>${(setById[h.set]||{n:''}).n} · Pack #${h.p} · ${tierName[h.r]}${h.god?' · GOD PACK':''}</small></div></div>`).join('')}</div>`:'<p class="empty">No holos yet.</p>'}
- <h3 class="sec">Rules of the game · v20</h3><div class="odds">Packs: <b>10 cards</b>, no duplicates inside one pack. Rare slot: <b>12.5% holo</b>. <b>Ultra rares are legendary: 1 in 800 packs.</b> One <b>God Pack</b> in every 200. Misprints about 1 in 170 cards. PSA 10 on about 1 in 13 submissions (7.5%).<br>
+ <h3 class="sec">Rules of the game · v21</h3><div class="odds">Packs: <b>10 cards</b>, no duplicates inside one pack. Rare slot: <b>12.5% holo</b>. <b>Ultra rares are legendary: 1 in 800 packs.</b> One <b>God Pack</b> in every 200. Misprints about 1 in 170 cards. PSA 10 on about 1 in 13 submissions (7.5%).<br>
  Levels <b>1 to 100</b>. Each region has a cap: Kanto 30, Johto 55, Hoenn 80, Sinnoh 100.<br>
  Work shifts at <b>Gary's counter</b>: wage ${fmt(crWage())} + tips. Every shift costs 1 energy (refills 1 every 20 min, or eat a snack from your fridge).<br>
  Every set you <b>complete 100%</b> earns a <b>random ungraded card from a modern set (Gen 4 to 8)</b>, worth around $100. Rip <b>1,000 packs</b> in a month for that month's exclusive special card.<br>
@@ -2540,7 +2540,7 @@ function intro(done){const I=$('#intro'),st=$('#iStage'),bx=$('#iBox');I.classLi
  const show=(who,sc,id)=>{st.innerHTML=`<div class="halo"></div><div class="isp"${id?' id="'+id+'"':''}>${sprite(who,sc)}</div>`};
  (async()=>{
   I.classList.add('dark');bx.style.display='none';
-  st.innerHTML=`<div class="title"><div class="t1">PACK<br>RIP</div><div class="t2">COLLECTOR EDITION · V20</div><div style="margin-top:22px;display:flex;gap:10px;justify-content:center;align-items:flex-end">${sprite(1,5)}${sprite(0,6)}${sprite(2,5)}</div><div class="ps">TAP TO ENTER THE SHOP</div><button class="btn ghost" id="tCode" style="margin-top:22px;color:#fff">🔑 CONTINUE WITH SAVE CODE</button><div class="cr">A fan-made card collecting game · ♪ sound on</div></div>`;
+  st.innerHTML=`<div class="title"><div class="t1">PACK<br>RIP</div><div class="t2">COLLECTOR EDITION · V21</div><div style="margin-top:22px;display:flex;gap:10px;justify-content:center;align-items:flex-end">${sprite(1,5)}${sprite(0,6)}${sprite(2,5)}</div><div class="ps">TAP TO ENTER THE SHOP</div><button class="btn ghost" id="tCode" style="margin-top:22px;color:#fff">🔑 CONTINUE WITH SAVE CODE</button><div class="cr">A fan-made card collecting game · ♪ sound on</div></div>`;
   await new Promise(r=>{$('#tCode').onclick=e=>{e.stopPropagation();ac();loadCodeModal()};I.onclick=e=>{if(e.target.closest('#tCode'))return;I.onclick=null;ac();musicStart();bell();r()}});
   st.innerHTML='';I.classList.remove('dark');document.body.classList.add('introZoom');await wait(1500);bx.style.display='';
   show('gary',10);
@@ -2548,13 +2548,13 @@ function intro(done){const I=$('#intro'),st=$('#iStage'),bx=$('#iBox');I.classLi
   show('oak',10);
   await say(['Hello there! Welcome to the world of Pokémon cards!','My name is Oak. People call me the Pokémon Professor.','This shop is full of rare cards waiting to be pulled.','Some people battle with them. Others rip packs, grade and trade them.','First, tell me a little about yourself. What do you look like?'],'PROF. OAK');
   I.onclick=null;bx.style.display='none';
-  const drawLooks=()=>{st.innerHTML=`<div class="lookPrev"><div class="isp">${sprite(look,9)}</div><b>${LOOKS[look].n}</b></div>${lookGrid(look)}<button class="btn" id="lkGo" style="max-width:400px">THIS IS ME</button>`};
+  const drawLooks=()=>{st.innerHTML=`<div class="lookPrev"><div class="isp">${sprite(look,9)}</div></div>${lookGrid(look)}<button class="btn" id="lkGo" style="max-width:400px">THIS IS ME</button>`};
   drawLooks();
   await new Promise(r=>{st.onclick=e=>{const b=e.target.closest('[data-lk]');if(b){e.stopPropagation();look=+b.dataset.lk;blip();drawLooks();return}if(e.target.id==='lkGo'){e.stopPropagation();st.onclick=null;blip();r()}}});
   bx.style.display='';show(look,10);
   if(look===2){name='HANNES';await say(['Oh! Hannes! The one with the glasses!','I have heard a lot about you. They say you never miss a holo.'],'PROF. OAK')}
   else{await typeLine('And what is your name?','PROF. OAK');
-   const pre=[LOOKS[look].d,'RED','LEAF'].filter((v,i,a)=>a.indexOf(v)===i);
+   const pre=['RED','LEAF','ASH','MAY'].filter((v,i,a)=>a.indexOf(v)===i);
    st.innerHTML=`<div class="isp">${sprite(look,7)}</div><div class="nameIn" style="margin-top:16px"><input id="nmI" maxlength="10" placeholder="YOUR NAME" autocomplete="off"><div class="pre">${pre.map(p=>`<button data-p="${p}">${p}</button>`).join('')}</div><button class="btn" id="nmGo" style="max-width:320px">CONFIRM</button></div>`;
    I.onclick=null;
    name=await new Promise(r=>{const inp=$('#nmI');inp.onclick=e=>e.stopPropagation();st.querySelectorAll('[data-p]').forEach(b=>b.onclick=e=>{e.stopPropagation();inp.value=b.dataset.p;blip()});
@@ -2566,7 +2566,7 @@ function intro(done){const I=$('#intro'),st=$('#iStage'),bx=$('#iBox');I.classLi
   show('gpa',10);
   await say(['{N}! There you are. I found my old card binder from 1999 in the attic.','Help me finish it? Here\'s $60 and one free pack. Gary, a pack for my grandkid!'],'GRANDPA');
   show('oak',10,'isp');
-  await say(['Finish Kanto and new regions will open up: Johto, Hoenn and Sinnoh.','Every set you complete earns you a bonus card. And if you ever pull an ultra rare… that is one in 800!','{N}! Your very own Pokémon card legend is about to unfold!'],'PROF. OAK');
+  await say(['Finish Kanto and new regions will open up: Johto, Hoenn, Sinnoh and finally Paldea.','Every set you complete earns you a bonus card. And if you ever pull an ultra rare… that is one in 800!','{N}! Your very own Pokémon card legend is about to unfold!'],'PROF. OAK');
   const sp=$('#isp');sp.style.transform='scale(.2)';sp.style.opacity=0;tone([784,659,523,392],.2,.05,'triangle',.09);await wait(850);
   S.player={name,look,g:['boy','girl','hannes'][look]||'boy'};save();I.classList.remove('on');I.onclick=null;document.body.classList.remove('introZoom','intro');done()})()}
 /* =================== NAV =================== */
@@ -3443,6 +3443,98 @@ async function deliverMany(sls){
  pStage.scrollTo({top:0,behavior:'smooth'});
  await new Promise(r=>{pFoot.innerHTML=`<button class="btn" id="pKeep">ADD ALL TO VAULT</button>`;$('#pKeep').onclick=r})}
 function closePSA(){psaEl.classList.remove('on','many');$('#psaBg').classList.remove('on','reveal');$('#nav').classList.remove('hide');$('#coin').style.opacity=1;pStage.innerHTML='';pStage.scrollTop=0;pFoot.innerHTML='';psaEl.onclick=null;pStage.onclick=null}
+
+/* =================== v21: GEN IX PALDEA, REAL PACK ART, 5 LO-FI SONGS, CENTERED MULTI GRID =================== */
+/* ---------- Generation IX · Paldea (unlocks last) ---------- */
+SETS.push(
+ {g:6,id:'sv1',n:'Scarlet & Violet',y:2023,h:300,sm:1,c:['#c8282a','#4a2a8a','#ffcb05'],e:1},
+ {g:6,id:'sv2',n:'Paldea Evolved',y:2023,h:150,sm:1.05,c:['#2f8a6a','#1a2a4a','#e8f0ff'],e:1},
+ {g:6,id:'sv3',n:'Obsidian Flames',y:2023,h:20,sm:1.15,c:['#2a1a1a','#0a0606','#ff7a2a'],ch:['Charizard'],e:1},
+ {g:6,id:'sv3pt5',n:'151',y:2023,h:200,sm:1.6,c:['#d8282a','#1a1a3a','#ffd76a'],ch:['Charizard','Mew','Alakazam'],e:1},
+ {g:6,id:'sv4',n:'Paradox Rift',y:2023,h:260,sm:1.1,c:['#3a2a6a','#0a0a1a','#9ef0ff'],e:1},
+ {g:6,id:'sv4pt5',n:'Paldean Fates',y:2024,h:45,sm:1.5,c:['#e8b020','#2a1a40','#fff3b0'],ch:['Charizard','Mew'],e:1},
+ {g:6,id:'sv5',n:'Temporal Forces',y:2024,h:190,sm:1.05,c:['#2a6ab0','#0a1a30','#c8f0ff'],e:1},
+ {g:6,id:'sv6',n:'Twilight Masquerade',y:2024,h:110,sm:1.1,c:['#2a8a5a','#1a0a2a','#ffd76a'],e:1},
+ {g:6,id:'sv6pt5',n:'Shrouded Fable',y:2024,h:280,sm:1.2,c:['#3a1a4a','#0a0610','#c89aff'],e:1},
+ {g:6,id:'sv7',n:'Stellar Crown',y:2024,h:200,sm:1.15,c:['#2a4ab0','#0a0a2a','#ffe07a'],e:1},
+ {g:6,id:'sv8',n:'Surging Sparks',y:2024,h:50,sm:1.25,c:['#ffcb05','#3a2a0a','#ffffff'],ch:['Pikachu'],e:1},
+ {g:6,id:'sv8pt5',n:'Prismatic Evolutions',y:2025,h:300,sm:1.8,c:['#c86ae8','#1a1040','#ffffff'],ch:['Umbreon','Espeon','Sylveon'],e:1});
+SETS.forEach(s=>setById[s.id]=s);
+GL.push(6);GENS[6]=['Generation IX','Paldea · 2023–2025'];ROMAN[6]='IX';REGION[6]='Paldea';CAP[6]=100;PCOL[6]=['#c8282a','#7a3ad0'];
+S.gp[6]=S.gp[6]||{p:0,h:0,u:0};
+Object.assign(POP,{umbreon:2.8,sylveon:1.8,espeon:2.2,miraidon:1.4,koraidon:1.4,terapagos:1.6,pecharunt:1.2,iono:2.2,greninja:1.6,gardevoir:1.6});
+function rarityTier(r){r=(r||'').toLowerCase();
+ if(/(special illustration|hyper|ultra|secret|shining|crystal|legend|lv\.?\s?x|gold star|☆|classic|\bex\b|star)/.test(r))return 'ultra';
+ if(/(double rare|illustration rare|ace spec|holo|shiny rare)/.test(r))return 'holo';
+ if(r.includes('rare'))return 'rare';if(r.includes('uncommon'))return 'uncommon';return 'common'}
+
+/* ---------- real booster pack photos per set (Bulbagarden Archives set categories) ---------- */
+const PK2_KEY='packrip_packimg3';let PKI2={};try{PKI2=JSON.parse(localStorage.getItem(PK2_KEY)||'{}')}catch(e){}
+const PK_CAT={base1:['Base Set (TCG)'],base2:['Jungle (TCG)'],base3:['Fossil (TCG)'],base4:['Base Set 2 (TCG)'],base5:['Team Rocket (TCG)'],gym1:['Gym Heroes (TCG)'],gym2:['Gym Challenge (TCG)'],
+ neo1:['Neo Genesis (TCG)'],neo2:['Neo Discovery (TCG)'],neo3:['Neo Revelation (TCG)'],neo4:['Neo Destiny (TCG)'],base6:['Legendary Collection (TCG)'],ecard1:['Expedition Base Set (TCG)','Expedition (TCG)'],ecard2:['Aquapolis (TCG)'],ecard3:['Skyridge (TCG)'],
+ ex1:['EX Ruby & Sapphire (TCG)'],ex2:['EX Sandstorm (TCG)'],ex3:['EX Dragon (TCG)'],ex4:['EX Team Magma vs Team Aqua (TCG)'],ex5:['EX Hidden Legends (TCG)'],ex6:['EX FireRed & LeafGreen (TCG)'],ex7:['EX Team Rocket Returns (TCG)'],ex8:['EX Deoxys (TCG)'],ex9:['EX Emerald (TCG)'],ex10:['EX Unseen Forces (TCG)'],ex11:['EX Delta Species (TCG)'],ex12:['EX Legend Maker (TCG)'],ex13:['EX Holon Phantoms (TCG)'],ex14:['EX Crystal Guardians (TCG)'],ex15:['EX Dragon Frontiers (TCG)'],ex16:['EX Power Keepers (TCG)'],
+ dp1:['Diamond & Pearl (TCG)'],dp2:['Mysterious Treasures (TCG)'],dp3:['Secret Wonders (TCG)'],dp4:['Great Encounters (TCG)'],dp5:['Majestic Dawn (TCG)'],dp6:['Legends Awakened (TCG)'],dp7:['Stormfront (TCG)'],pl1:['Platinum (TCG)'],pl2:['Rising Rivals (TCG)'],pl3:['Supreme Victors (TCG)'],pl4:['Arceus (TCG)'],
+ g1:['Generations (TCG)'],cel25:['Celebrations (TCG)'],
+ sv1:['Scarlet & Violet (TCG)'],sv2:['Paldea Evolved (TCG)'],sv3:['Obsidian Flames (TCG)'],sv3pt5:['Scarlet & Violet—151 (TCG)','Scarlet & Violet 151 (TCG)','151 (TCG)'],sv4:['Paradox Rift (TCG)'],sv4pt5:['Paldean Fates (TCG)'],sv5:['Temporal Forces (TCG)'],sv6:['Twilight Masquerade (TCG)'],sv6pt5:['Shrouded Fable (TCG)'],sv7:['Stellar Crown (TCG)'],sv8:['Surging Sparks (TCG)'],sv8pt5:['Prismatic Evolutions (TCG)']};
+const LANGSFX=/\s(ES|IT|BR|DE|FR|PT|NL|KR|KO|JP|JA|CN|ZH|TW|PL|SE|RU|LA|TH|ID|TC|SC)\.(jpe?g|png|webp)$/i;
+const BAD=/(box|display|bundle|blister|case|tin|code|deck|sleeved|pin|collection|wrapper\s?sheet|uncut|elite|etb|premium|build)/i;
+const pk2Pend={};
+function pkOkTitle(t,set){const T=t.replace(/^File:/,'');if(!/booster/i.test(T)||BAD.test(T)||LANGSFX.test(T))return false;
+ if(set.id==='base5'&&/destined|rivals|returns/i.test(T))return false;if(set.id==='base1'&&/(set 2|base set 2)/i.test(T))return false;return true}
+async function bulbaFiles(params){const j=await fetchJSON(`https://archives.bulbagarden.net/w/api.php?action=query&format=json&origin=*&prop=imageinfo&iiprop=url|size&iiurlwidth=600&${params}`,15000);return Object.values((j.query||{}).pages||{})}
+function packImgs(id){if(PKI2[id])return Promise.resolve(PKI2[id]);if(pk2Pend[id])return pk2Pend[id];const set=setById[id];
+ return pk2Pend[id]=(async()=>{let list=[];
+  for(const ext of ['jpg','png','webp']){const u=await probeImg(`packs/${id}.${ext}`);if(u){list=[u];break}}
+  if(!list.length&&set){const cats=PK_CAT[id]||[];let pages=[];
+   for(const c of cats){try{pages=await bulbaFiles(`generator=categorymembers&gcmtitle=${encodeURIComponent('Category:'+c)}&gcmtype=file&gcmlimit=500`);if(pages.length)break}catch(e){}}
+   let ok=pages.filter(p=>pkOkTitle(p.title||'',set)).map(p=>(p.imageinfo||[])[0]).filter(ii=>ii&&ii.height>ii.width*1.2);
+   if(!ok.length){try{const nm=set.n.split(' · ')[0];const ps=await bulbaFiles(`generator=search&gsrsearch=${encodeURIComponent('"'+nm+' Booster"')}&gsrnamespace=6&gsrlimit=30`);
+    ok=ps.filter(p=>pkOkTitle(p.title||'',set)&&(p.title||'').replace(/^File:/,'').toLowerCase().startsWith(nm.toLowerCase()+' booster')).map(p=>(p.imageinfo||[])[0]).filter(ii=>ii&&ii.height>ii.width*1.2)}catch(e){}}
+   for(const ii of ok.slice(0,6)){const u=ii.thumburl||ii.url;if(await probeImg(u))list.push(u)}}
+  if(list.length){PKI2[id]=list;try{localStorage.setItem(PK2_KEY,JSON.stringify(PKI2))}catch(e){}}
+  return list})().finally(()=>{delete pk2Pend[id]})}
+
+/* ---------- multi-pack grid: always fill the screen, centred last row (3 + 2) ---------- */
+const MCOLS={2:2,3:3,4:2,5:3,6:3,7:4,8:4,9:3,10:5,20:5,50:10};
+function fitGrid(grid,n){const box=grid.parentElement;requestAnimationFrame(()=>{const r=box.getBoundingClientRect();const gap=n>20?5:10;
+ const cols=MCOLS[n]||Math.ceil(Math.sqrt(n*.8)),rows=Math.ceil(n/cols);
+ let w=Math.min((r.width-gap*(cols-1))/cols,((r.height-gap*(rows-1))/rows)*100/178,420);w=Math.max(20,Math.floor(w));
+ Object.assign(grid.style,{display:'flex',flexWrap:'wrap',justifyContent:'center',alignContent:'center',gap:gap+'px',width:(cols*w+gap*(cols-1))+'px',maxWidth:'none',gridTemplateColumns:''});
+ [...grid.children].forEach(c=>{c.style.width=w+'px';c.style.flex='none'})})}
+
+/* ---------- look picker: icons only, no names ---------- */
+function lookGrid(sel){return `<div class="looks">${LOOKS.map((l,i)=>`<button data-lk="${i}" class="${i===sel?'on':''}" aria-label="Look ${i+1}">${face(i,56)}</button>`).join('')}</div>`}
+document.head.insertAdjacentHTML('beforeend','<style>.looks button{padding:4px;gap:0}.looks button img.px{border-radius:10px}</style>');
+
+/* ---------- 5 lo-fi songs: each its own melody, ~3.5–4.5 minutes ---------- */
+const SONGS=[
+ {n:'Pallet Town Lo-Fi',bpm:76,root:50,prog:[[0,4,7,11,14],[9,12,16,19],[5,9,12,16],[7,11,14,17]],sc:[0,2,4,7,9],seed:11,
+  A:'4-3-2---0-2-3-4-5---4-3-2-------4-3-2-0-2-3-5-4-3---2-0-0-------',B:'5-5-6-7-6---5-4-3-4-5---4-3-2---5-6-7-9-7---6-5-4-3-2-3-2-------'},
+ {n:'Viridian Rain',bpm:72,root:53,prog:[[0,3,7,10,14],[5,8,12,15],[10,14,17,21],[3,7,10,14]],sc:[0,3,5,7,10],seed:23,
+  A:'2...3.4---3-2---0...2.3---2-0---4...5.7---5-4---3-2-0-2---------',B:'7-------6-5-4---5-------4-3-2---3-4-5-7-8---7-5-4---2---3-------'},
+ {n:'Lavender Night',bpm:68,root:48,prog:[[0,3,7,10],[8,12,15,19],[5,8,12,15],[7,10,14,17]],sc:[0,3,5,7,10],seed:37,
+  A:'0---2---3-2-0---5---4---3-------2---3---4-3-2---0-2-1-0---------',B:'5-6-7---6-5-3---4-5-6---5-4-2---7---6---5-4-3-2-3---2---0-------'},
+ {n:'Cerulean Cape',bpm:82,root:55,prog:[[0,4,7,11],[2,5,9,12],[4,7,11,14],[5,9,12,16]],sc:[0,2,4,7,9],seed:41,
+  A:'0-2-4-5-4-2-4---3-5-7-5-4-------0-2-4-5-7-5-4-2-3-2-0-2-0-------',B:'7.7.7-5-6-5-4---6.6.6-4-5-4-3---5-6-7-8-9---8-7-6-5-4-5-4-------'},
+ {n:'Route 1 Sunset',bpm:79,root:52,prog:[[5,9,12,16],[7,11,14,17],[4,7,11,14],[9,12,16,19]],sc:[0,2,4,7,9],seed:59,
+  A:'4---5-7-5---4---2---4-5-4---2---0-2-4---5-4-2-0-2---------..0-2-',B:'7---8---9-8-7---5---7---8-7-5---4-5-7-5-4-2-0-2-4---------------'}];
+const SEG=['i','A','A','B','A','b','B','A','B','A','o'];
+const SEGD={i:{mel:0,drums:0,dens:0},A:{mel:'A',drums:1,dens:.12},B:{mel:'B',drums:1,dens:.14},b:{mel:'B',drums:0,dens:0,oct:-12},o:{mel:0,drums:0,dens:0}};
+function loSong(){const s=SONGS[LO.order[LO.si%LO.order.length]];LO.cur=s;LO.R=mulberry(s.seed*977+LO.si);LO.step=0;LO.st=60/s.bpm/2;
+ const segSec=64*LO.st,want=210+(s.seed%5)*12,n=Math.max(7,Math.min(SEG.length,Math.round(want/segSec)));
+ LO.segs=[...SEG.slice(0,n-1),'o'];LO.total=LO.segs.length*64;if(!busy())toast('♪ '+s.n+' · '+Math.round(LO.total*LO.st/60*10)/10+' min')}
+function loMel(s,str,step,t,oct){const c=str[step%64];if(c<'0'||c>'9')return;let len=1;while(len<8&&str[(step+len)%64]==='-')len++;
+ const d=+c,n=s.root+24+12*Math.floor(d/5)+s.sc[d%5]+(oct||0);loOsc(mf(n),t,LO.st*len*.95,'triangle',.06,2400,1);loOsc(mf(n)*2.003,t,LO.st*len*.6,'sine',.012,3000,1)}
+function loPlay(step,t){const s=LO.cur,st=LO.st,R=LO.R,bar=Math.floor(step/8),b=step%8,seg=LO.segs[Math.floor(step/64)]||'o',D=SEGD[seg],ch=s.prog[bar%4],root=s.root,sw=step%2?st*.33:0;
+ const fade=seg==='o'?Math.max(.15,1-(step%64)/64):seg==='i'?Math.min(1,.4+(step%64)/80):1;
+ if(b===0){ch.forEach((iv,i)=>loEP(mf(root+12+iv),t+i*.03,st*7.5,.04*fade));loOsc(mf(root-12+ch[0]),t,st*3,'sine',.16*fade,380,0)}
+ if(b===5&&seg!=='i')loOsc(mf(root-12+ch[0]+(R()<.5?7:0)),t+sw,st*2,'sine',.12*fade,380,0);
+ if(D.mel)loMel(s,s[D.mel],step,t+sw,D.oct);
+ if(D.drums){if(b===0||b===5||(b===3&&R()<.25))loKick(t+(b===5?sw:0));if(b===2||b===6)loNoise(t,.2,.12,'bandpass',1700,.8)}
+ if(seg!=='o'&&R()<.92)loNoise(t+sw,.045,(step%2?.025:.04)*fade,'highpass',7200,.6);
+ if(D.dens&&R()<D.dens){const n=root+36+s.sc[Math.floor(R()*s.sc.length)];loOsc(mf(n),t+sw,st,'sine',.018,2600,1)}}
+function loTick(){const a=AC;if(!a||!MUS.on)return;while(LO.next<a.currentTime+.35){loPlay(LO.step,LO.next);LO.next+=LO.st;LO.step++;if(LO.step>=LO.total){LO.si++;loSong();LO.next+=LO.st*4}}}
+
 
 boot();
 
