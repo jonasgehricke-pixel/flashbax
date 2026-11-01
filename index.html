@@ -11,7 +11,7 @@
 <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
 <meta http-equiv="Pragma" content="no-cache">
 <meta http-equiv="Expires" content="0">
-<title>PACK RIP · v34</title>
+<title>PACK RIP · v35</title>
 <style>
 :root{--gold:#ffd76a;--bg:#050407;--panel:rgba(18,14,24,.7);--line:rgba(255,255,255,.1);--txt:#f5f2ff;--mut:#a8a2c0;--grn:#2fbf6a;--red:#e8455a;--mx:50%;--my:50%;--rx:0deg;--ry:0deg;--c1:#2d63c8;--c2:#0c1f52;--c3:#ffcb05;--bgh:225;--bgs:30%;--pw:220px;--pbg:linear-gradient(135deg,#fff,#dfe6ff)}
 *{box-sizing:border-box;margin:0;padding:0;-webkit-tap-highlight-color:transparent;-webkit-user-select:none;user-select:none;-webkit-touch-callout:none;touch-action:manipulation}
@@ -657,7 +657,7 @@ body.intro .screen,body.intro nav,body.intro #coin,body.intro #musBtn,body.intro
 <button id="musBtn" aria-label="Music">♪</button>
 <div id="machPill">⚙ MACHINE RUNNING</div>
 <section class="screen on" id="scrHome">
-  <header class="top"><span class="brand">PACK<i>RIP</i><span class="ver">v34</span></span><button class="backBtn" id="saveBtn">💾 SAVE</button></header>
+  <header class="top"><span class="brand">PACK<i>RIP</i><span class="ver">v35</span></span><button class="backBtn" id="saveBtn">💾 SAVE</button></header>
   <div class="scroll" id="homeBody"></div>
 </section>
 <section class="screen" id="scrSets">
@@ -941,7 +941,7 @@ function evNext(){const wk=Math.floor((dayN()+3)/7);return EVK[(wk+(new Date().g
 /* =================== ECONOMY =================== */
 const TIER={common:.1,uncommon:.25,rare:1.5,holo:12,ultra:60};
 const GM={10:6,9:2.2,8:1.4,7:1.1,6:.9,5:.75,4:.6,3:.5,2:.4,1.5:.35,1:.3};
-const ULTRA_RATE=1/500;
+const ULTRA_RATE=1/400;
 const POP={charizard:4,lugia:3,pikachu:2.5,umbreon:2.5,rayquaza:2.5,blastoise:2,mewtwo:2,espeon:2,'ho-oh':2,venusaur:1.8,gengar:1.8,dragonite:1.8,gyarados:1.6,tyranitar:1.6,celebi:1.6,mew:1.7,suicune:1.5,eevee:1.5,typhlosion:1.5,groudon:1.5,kyogre:1.5,snorlax:1.4,entei:1.4,raikou:1.4,latios:1.4,latias:1.4,deoxys:1.4,salamence:1.4,blaziken:1.4,gardevoir:1.4,feraligatr:1.3,raichu:1.3,alakazam:1.3,articuno:1.3,zapdos:1.3,moltres:1.3,jirachi:1.3,metagross:1.3,meganium:1.2,sceptile:1.2,swampert:1.2,flygon:1.2,
  garchomp:1.8,lucario:1.8,arceus:2,giratina:1.8,dialga:1.6,palkia:1.6,darkrai:1.6,infernape:1.4,empoleon:1.3,torterra:1.2,glaceon:1.4,leafeon:1.4,togekiss:1.3,gallade:1.2,shaymin:1.3,rotom:1.2};
 function hsh(s){let h=2166136261;for(let i=0;i<s.length;i++){h^=s.charCodeAt(i);h=Math.imul(h,16777619)}return h>>>0}
@@ -1700,7 +1700,7 @@ function quickSell(it){
  const r=removeItem(it);if(r&&r.fake){sfx.bad();modal(`<div class="em">🧐</div><h2>Marty shakes his head</h2><p>"That ${esc(it.name)} is a <b>fake</b>, kid. Wrong font, wrong holo." He bins it.</p><button class="btn" onclick="closeModal()">UGH</button>`);save();return}
  const p=Math.max(.01,Math.round(it.val*.45*100)/100);addCoins(p);sfx.cash();toast(`Sold ${it.name} to Marty`);save()}
 /* =================== PSA =================== */
-const GRADE_ODDS=[[10,7.5],[9,37.5],[8,21],[7,12],[6,7],[5,5],[4,3.5],[3,2.5],[2,2],[1.5,1],[1,1]];
+const GRADE_ODDS=[[10,12.5],[9,32.5],[8,21],[7,12],[6,7],[5,5],[4,3.5],[3,2.5],[2,2],[1.5,1],[1,1]];
 const GRADE_NAME={10:'GEM MT',9:'MINT',8:'NM-MT',7:'NM',6:'EX-MT',5:'EX',4:'VG-EX',3:'VG',2:'GOOD',1.5:'FR',1:'PR'};
 const GRADE_LONG={10:'Gem Mint',9:'Mint',8:'Near Mint-Mint',7:'Near Mint',6:'Excellent-Mint',5:'Excellent',4:'Very Good-Excellent',3:'Very Good',2:'Good',1.5:'Fair',1:'Poor'};
 const LVL={10:0,9:1,8:2,7:3,6:4,5:5,4:6,3:7,2:8,1.5:9,1:10};
@@ -1738,7 +1738,7 @@ function psaTierModal(cards){
  const n=cards.length,raw=cards.reduce((a,c)=>a+cardVal(c),0),p10=cards.reduce((a,c)=>a+cardVal(c,{grade:10}),0);
  modal(`<div class="em">📮</div><h2>Submit ${n>1?n+' cards':'to PSA'}</h2>
  ${n>1?`<div class="grid5" style="margin-top:10px">${cards.slice(0,10).map(c=>`<div class="mini ${c.r}"><img src="${c.s}"></div>`).join('')}</div>`:''}
- <p>${n===1?`<b>${esc(cards[0].name)}</b> · raw ${fmt(raw)}<br>PSA 10 ≈ <b>${fmt(p10)}</b> · PSA 9 ≈ ${fmt(cardVal(cards[0],{grade:9}))}`:`Raw value ${fmt(raw)} · all PSA 10 ≈ <b>${fmt(p10)}</b>`}<br>${n>=5?'<b style="color:#6ff0a0">10% bulk discount</b> · ':''}All grades are final. PSA 10 is rare (about 1 in 13).</p>
+ <p>${n===1?`<b>${esc(cards[0].name)}</b> · raw ${fmt(raw)}<br>PSA 10 ≈ <b>${fmt(p10)}</b> · PSA 9 ≈ ${fmt(cardVal(cards[0],{grade:9}))}`:`Raw value ${fmt(raw)} · all PSA 10 ≈ <b>${fmt(p10)}</b>`}<br>${n>=5?'<b style="color:#6ff0a0">10% bulk discount</b> · ':''}All grades are final. PSA 10 is rare (about 1 in 8).</p>
  ${TIERS.map(t=>`<button class="opt" data-t="${t.k}" ${S.coins<batchFee(t,n)?'disabled':''}><div class="tx"><b>${t.n}</b><small>${t.d}${n>1?` · ${fmt(batchFee(t,n)/n)} per card`:''}</small></div><div class="pr">${OUT(batchFee(t,n))}</div></button>`).join('')}
  <button class="btn ghost" onclick="closeModal()">CANCEL</button>`);
  $('#mbox').querySelectorAll('.opt').forEach(b=>b.onclick=()=>{const t=TIERS.find(x=>x.k===b.dataset.t);closeModal();submitBatch(cards,t)})}
@@ -2470,7 +2470,7 @@ function renderHome(){
   return `<div class="row2"><div class="tx"><b>${d.t}${d.g>1?` <span class="tag g${d.g}">GEN ${ROMAN[d.g]}</span>`:''}</b><div class="mbar"><i style="width:${p/d.n*100}%"></i></div></div><button class="sbtn ${done&&!cl?'earn':'g'}" data-claim="${k}" ${done&&!cl?'':'disabled'}>${cl?'✓':IN(dReward(d))}</button></div>`}).join('')}</div>`;
  const g=S.grail;h+=`<div class="pnl"><h4>👑 YOUR HOLY GRAIL · ULTRA RARES ONLY</h4>${g?`<div class="row2"><img class="th" src="${g.img}"><div class="tx"><b>PSA 10 ${esc(g.name)}</b><small>Reward: $200 + 300 XP</small></div><button class="sbtn g" id="grailPick">CHANGE</button></div>`:`<p>Pick one ultra rare as your life goal. Land it as a PSA 10 for a big reward.</p><button class="btn ghost" id="grailPick">CHOOSE GRAIL</button>`}</div>`;
  if(!ev)h+=`<p class="empty" style="padding:10px 0 0;font-size:11px;text-shadow:0 1px 4px #000">Next weekend event (Fri–Sun): ${EVS[evNext()][0]}</p>`;
- h+=`<p class="empty" style="font-size:10px;padding:14px 0 0;color:#6ff0a0">Version 34 · PSA keeps sets unlocked · grouped PSA tab when selling · dupes 65% in shop · all PSA tab · first 10 packs of a new set one by one · sell all dupes 75% · real monthly card · sell up to 50 · PSA duplicates · starter slab · ultra 1 in 500 · Gen IX Paldea · 5 lo-fi songs · PSA 10 7.5% · monthly 1,000 packs · set reward ~$100</p><button class="resetSm" id="resetHome">⟲ RESET GAME</button>`;
+ h+=`<p class="empty" style="font-size:10px;padding:14px 0 0;color:#6ff0a0">Version 35 · options & German · PSA 10 12.5% · PSA keeps sets unlocked · grouped PSA tab when selling · dupes 65% in shop · all PSA tab · first 10 packs of a new set one by one · sell all dupes 75% · real monthly card · sell up to 50 · PSA duplicates · starter slab · ultra 1 in 400 · Gen IX Paldea · 5 lo-fi songs · PSA 10 12.5% · monthly 1,000 packs · set reward ~$100</p><button class="resetSm" id="resetHome">⟲ RESET GAME</button>`;
  $('#homeBody').innerHTML=h;updDots()}
 let homeSig='';
 function renderHomeLive(){const sig=[S.subs.filter(s=>s.ready<=NOW()).length,jobReady(),oakReady(),isBroke(),quizReady(),hlReady(),shelfSold(),!!S.machine.run,aucLive()].join();if(sig!==homeSig){homeSig=sig;renderHome()}}
@@ -2538,7 +2538,7 @@ function renderStats(){let own=0;Object.values(S.coll).forEach(s=>Object.values(
  ${L100?`<div class="pnl ev"><h4>✨ NEW GAME+ SEASON</h4><p>You reached level 100. Start a new season: your level resets to 1, you keep every card, slab, badge and dollar, and you earn a gold ★ next to your name.</p><button class="btn" id="stPrest">START SEASON ${S.prestige+2}</button></div>`:''}
  <div class="sgrid">${st.map(([v,l])=>`<div class="stat"><b>${v}</b><span>${l}</span></div>`).join('')}</div>
  <h3 class="sec">Best pulls</h3>${S.hist.length?`<div class="pnl">${S.hist.slice(0,12).map(h=>`<div class="row2"><img class="th" src="${h.img}"><div class="tx"><b>${esc(h.name)}</b><small>${(setById[h.set]||{n:''}).n} · Pack #${h.p} · ${tierName[h.r]}${h.god?' · GOD PACK':''}</small></div></div>`).join('')}</div>`:'<p class="empty">No holos yet.</p>'}
- <h3 class="sec">Rules of the game · v34</h3><div class="odds">Packs: <b>10 cards</b>, no duplicates inside one pack. Rare slot: <b>12.5% holo</b>. <b>Ultra rares are legendary: 1 in 500 packs.</b> One <b>God Pack</b> in every 200. Misprints about 1 in 170 cards. PSA 10 on about 1 in 13 submissions (7.5%).<br>
+ <h3 class="sec">Rules of the game · v35</h3><div class="odds">Packs: <b>10 cards</b>, no duplicates inside one pack. Rare slot: <b>12.5% holo</b>. <b>Ultra rares are legendary: 1 in 400 packs.</b> One <b>God Pack</b> in every 200. Misprints about 1 in 170 cards. PSA 10 on about 1 in 8 submissions (12.5%).<br>
  Levels <b>1 to 100</b>. Each region has a cap: Kanto 30, Johto 55, Hoenn 80, Sinnoh 100.<br>
  Work shifts at <b>Marty's counter</b>: wage ${fmt(crWage())} + tips. Every shift costs 1 energy (refills 1 every 20 min, or eat a snack from your fridge).<br>
  Every set you <b>complete 100%</b> earns a <b>random ungraded card from a modern set (Gen 4 to 8)</b>, worth around $100. Rip <b>1,000 packs</b> in a month for that month's exclusive special card.<br>
@@ -2556,7 +2556,7 @@ function intro(done){const I=$('#intro'),st=$('#iStage'),bx=$('#iBox');I.classLi
  let starter=null;const show=(who,sc,id)=>{st.innerHTML=`<div class="halo"></div><div class="isp"${id?' id="'+id+'"':''}>${sprite(who,sc)}</div>`};
  (async()=>{
   I.classList.add('dark');bx.style.display='none';
-  st.innerHTML=`<div class="title"><div class="t1">PACK<br>RIP</div><div class="t2">COLLECTOR EDITION · V34</div><div style="margin-top:22px;display:flex;gap:10px;justify-content:center;align-items:flex-end">${sprite(1,5)}${sprite(0,6)}${sprite(2,5)}</div><div class="ps">TAP TO ENTER THE SHOP</div><button class="btn ghost" id="tCode" style="margin-top:22px;color:#fff">🔑 CONTINUE WITH SAVE CODE</button><div class="cr">A fan-made card collecting game · ♪ sound on</div></div>`;
+  st.innerHTML=`<div class="title"><div class="t1">PACK<br>RIP</div><div class="t2">COLLECTOR EDITION · V35</div><div style="margin-top:22px;display:flex;gap:10px;justify-content:center;align-items:flex-end">${sprite(1,5)}${sprite(0,6)}${sprite(2,5)}</div><div class="ps">TAP TO ENTER THE SHOP</div><button class="btn ghost" id="tCode" style="margin-top:22px;color:#fff">🔑 CONTINUE WITH SAVE CODE</button><div class="cr">A fan-made card collecting game · ♪ sound on</div></div>`;
   await new Promise(r=>{$('#tCode').onclick=e=>{e.stopPropagation();ac();loadCodeModal()};I.onclick=e=>{if(e.target.closest('#tCode'))return;I.onclick=null;ac();musicStart();bell();r()}});
   st.innerHTML='';I.classList.remove('dark');document.body.classList.add('introZoom');await wait(1500);bx.style.display='';
   show('gary',10);
@@ -2589,7 +2589,7 @@ function intro(done){const I=$('#intro'),st=$('#iStage'),bx=$('#iBox');I.classLi
   show('gpa',10);
   await say(['{N}! There you are. I found my old card binder from 1999 in the attic.','Help me finish it? Here\'s $60 and one free pack. Marty, a pack for my grandkid!'],'GRANDPA');
   show('oak',10,'isp');
-  await say(['Finish Kanto and new regions will open up: Johto, Hoenn, Sinnoh and finally Paldea.','Every set you complete earns you a bonus card. And if you ever pull an ultra rare… that is one in 500!','{N}! Your very own Pokémon card legend is about to unfold!'],'PROF. LINDEN');
+  await say(['Finish Kanto and new regions will open up: Johto, Hoenn, Sinnoh and finally Paldea.','Every set you complete earns you a bonus card. And if you ever pull an ultra rare… that is one in 400!','{N}! Your very own Pokémon card legend is about to unfold!'],'PROF. LINDEN');
   const sp=$('#isp');sp.style.transform='scale(.2)';sp.style.opacity=0;tone([784,659,523,392],.2,.05,'triangle',.09);await wait(850);
   S.player={name,look,g:['boy','girl','hannes'][look]||'boy'};if(starter){S.slabs.push(starterSlab(starter));S.flags.starter=starter.id}save();I.classList.remove('on');I.onclick=null;document.body.classList.remove('introZoom','intro');done()})()}
 /* =================== NAV =================== */
@@ -3746,6 +3746,88 @@ const _ra33=renderAlbum;renderAlbum=async function(){
 function orderTab(list,tab){if(tab!=='allpsa')return list;const g={};list.forEach(it=>{const k=it.sl.id+'|'+it.sl.name;(g[k]=g[k]||[]).push(it)});
  return Object.values(g).map(a=>{a.sort((x,y)=>y.sl.grade-x.sl.grade||y.val-x.val);return {a,top:Math.max(...a.map(x=>x.val))}}).sort((x,y)=>y.top-x.top).flatMap(gr=>gr.a)}
 function psaHdr(it,list){const same=list.filter(x=>x.sl.id===it.sl.id&&x.sl.name===it.sl.name);return `<div class="pgrp"><b>${esc(it.sl.name)}</b>${same.length>1?`<span class="dn">×${same.length}</span>`:''}${fmt(Math.max(...same.map(x=>x.val)))}</div>`}
+/* ---------- v35: options menu (look, profile background, music, language) + German ---------- */
+document.head.insertAdjacentHTML('beforeend',`<style>
+#optBtn{position:fixed;top:calc(env(safe-area-inset-top) + 94px);right:12px;z-index:35;width:34px;height:34px;border-radius:50%;border:1px solid var(--line);background:rgba(20,18,28,.85);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);font-size:16px;color:#fff;display:flex;align-items:center;justify-content:center}
+body.intro #optBtn{visibility:hidden}
+#machPill{top:calc(env(safe-area-inset-top) + 136px)}
+.oseg{display:flex;gap:6px;margin-top:8px}.oseg button{flex:1;border:1px solid var(--line);background:rgba(255,255,255,.06);color:#fff;font-weight:900;font-size:13px;padding:11px 6px;border-radius:12px}.oseg button.on{background:#ffd76a;color:#160d00;border-color:#ffd76a}
+.osec{font-size:10px;letter-spacing:.2em;color:var(--gold);font-weight:900;margin:18px 0 4px;text-align:left}
+.orow{display:flex;align-items:center;gap:12px;margin-top:8px}
+.orow .pv{width:60px;height:60px;border-radius:16px;background:var(--pbg);overflow:hidden;flex:none;box-shadow:0 6px 14px rgba(0,0,0,.4)}
+.orow .pv img{width:60px;height:60px}
+.orow input[type=range]{flex:1;accent-color:#ffd76a;height:30px}
+.mbox .looks{max-height:240px;overflow-y:auto;margin-top:8px}
+</style>`);
+document.body.insertAdjacentHTML('beforeend','<button id="optBtn" aria-label="Options">⚙️</button>');
+if(S.vol==null)S.vol=.6;if(!S.lang)S.lang='en';
+const _ms35=musicStart;musicStart=function(){_ms35();try{if(MUS.g&&AC){MUS.g.gain.cancelScheduledValues(AC.currentTime);MUS.g.gain.setValueAtTime(.0001,AC.currentTime);MUS.g.gain.linearRampToValueAtTime(Math.max(.0001,S.vol),AC.currentTime+1.5)}}catch(e){}};
+function setVol(v){S.vol=v;save();if(MUS.on&&MUS.g&&AC){MUS.g.gain.cancelScheduledValues(AC.currentTime);MUS.g.gain.setValueAtTime(Math.max(.0001,v),AC.currentTime)}}
+function optionsModal(){const de=S.lang==='de',song=MUS.on&&LO.cur?LO.cur.n:'';
+ modal(`<h2>${de?'Optionen':'Options'}</h2>
+ <div class="osec">${de?'DEIN CHARAKTER':'YOUR CHARACTER'}</div>
+ <div class="orow"><div class="pv" id="oPv">${face(playerLook(),60)}</div><div style="flex:1;text-align:left;font-weight:900">${esc(pname())}</div><button class="sbtn g" id="oBg">🎨 ${de?'HINTERGRUND':'BACKGROUND'}</button></div>
+ <div id="oLooks">${lookGrid(playerLook())}</div>
+ <div class="osec">${de?'MUSIK':'MUSIC'}</div>
+ <div class="oseg"><button id="oMusOn" class="${S.music?'on':''}">♪ ${de?'AN':'ON'}</button><button id="oMusOff" class="${S.music?'':'on'}">🔇 ${de?'AUS':'OFF'}</button><button id="oSkip" ${S.music?'':'disabled'}>⏭ ${de?'NÄCHSTER SONG':'NEXT SONG'}</button></div>
+ <div class="orow"><span style="font-size:12px;color:var(--mut)">${de?'Lautstärke':'Volume'}</span><input type="range" id="oVol" min="0" max="100" value="${Math.round(S.vol/.9*100)}"></div>
+ ${song?`<p style="font-size:11px;margin-top:4px">${de?'Läuft gerade':'Now playing'}: <b>${esc(song)}</b></p>`:''}
+ <div class="osec">${de?'SPRACHE':'LANGUAGE'}</div>
+ <div class="oseg"><button data-lang="en" class="${de?'':'on'}">🇬🇧 English</button><button data-lang="de" class="${de?'on':''}">🇩🇪 Deutsch</button></div>
+ <div class="osec">${de?'SPEICHERN':'SAVE'}</div>
+ <div class="oseg"><button id="oSave">💾 ${de?'SPEICHERCODE':'SAVE CODE'}</button><button id="oApp">🖼️ ${de?'APP-HINTERGRUND':'APP BACKGROUND'}</button></div>
+ <button class="btn ghost" onclick="closeModal()">${de?'FERTIG':'DONE'}</button>`);
+ const mb=$('#mbox');
+ mb.querySelectorAll('[data-lk]').forEach(b=>b.onclick=()=>{S.player.look=+b.dataset.lk;save();blip();mb.querySelectorAll('[data-lk]').forEach(x=>x.classList.toggle('on',x===b));$('#oPv').innerHTML=face(playerLook(),60);if($('#scrHome').classList.contains('on'))renderHome()});
+ $('#oBg').onclick=()=>{pbgModal();const d=$('#mbox .btn.ghost');if(d)d.onclick=()=>optionsModal()};
+ $('#oMusOn').onclick=()=>{S.music=true;save();musicStart();musBtnUpd();optionsModal()};
+ $('#oMusOff').onclick=()=>{S.music=false;save();musicStop();musBtnUpd();optionsModal()};
+ $('#oSkip').onclick=()=>{if(!MUS.on)return;LO.si++;loSong();blip();setTimeout(optionsModal,50)};
+ $('#oVol').oninput=e=>setVol(Math.max(.0001,+e.target.value/100*.9));
+ mb.querySelectorAll('[data-lang]').forEach(b=>b.onclick=()=>{S.lang=b.dataset.lang;save();blip();applyLang();optionsModal()});
+ $('#oSave').onclick=saveCodeModal;$('#oApp').onclick=()=>{bgModal();const d=$('#mbox .btn.ghost');if(d)d.onclick=()=>optionsModal()}}
+$('#optBtn').onclick=()=>{ac();optionsModal()};
+
+/* ---------- German: translates every visible text through a phrase list ---------- */
+const DE=[
+ ['RIP ME OPEN','REISS MICH AUF'],['SWIPE ACROSS TOP OR BOTTOM','OBEN ODER UNTEN DRÜBERWISCHEN'],['Swipe for next card','Wischen für die nächste Karte'],['Swipe for summary','Wischen für die Übersicht'],['Tap to flip','Tippen zum Umdrehen'],
+ ['HOME','START'],['PACKS','PACKS'],['BINDER','ORDNER'],['SHOWS','MESSEN'],['VAULT','TRESOR'],['SHOP','LADEN'],['QUESTS','AUFGABEN'],['ROOM','ZIMMER'],['RIVAL','RIVALE'],['MARKET','MARKT'],['MACHINE','MASCHINE'],['STATS','STATISTIK'],
+ ['‹ HOME','‹ START'],['‹ SETS','‹ SETS'],['💾 SAVE','💾 SPEICHERN'],['RIP ANOTHER','NOCH EINS AUFREISSEN'],['OPEN BINDER','ORDNER ÖFFNEN'],['SEND HIT TO PSA','HIT ZU PSA SCHICKEN'],
+ ['THE BINDER','DER ORDNER'],['BOOSTER PACKS','BOOSTER-PACKS'],['⚡ RANDOM BOOSTER','⚡ ZUFÄLLIGER BOOSTER'],['PSA VAULT','PSA-TRESOR'],['CARD SHOWS','KARTENMESSEN'],['CARD SHOP','KARTENLADEN'],['MY ROOM','MEIN ZIMMER'],['RIVAL & TRADES','RIVALE & TAUSCH'],['PACK MACHINE','PACK-MASCHINE'],
+ ['Cash','Geld'],['Collection value','Sammlungswert'],['Collection','Sammlung'],['Sealed product','Versiegelte Produkte'],
+ ['📮 SEND SEVERAL CARDS TO PSA','📮 MEHRERE KARTEN ZU PSA SCHICKEN'],['✕ STOP SELECTING','✕ AUSWAHL BEENDEN'],['CANCEL','ABBRECHEN'],['SEND','SENDEN'],['CLOSE','SCHLIESSEN'],['DONE','FERTIG'],['NICE','SUPER'],['OK','OK'],['LATER','SPÄTER'],['SHOW ME','ZEIG MIR'],
+ ['All','Alle'],['In hand','Auf der Hand'],['Missing','Fehlt'],['Ultra','Ultra'],['Holo','Holo'],['Rare','Selten'],['Uncommon','Nicht so häufig'],['Common','Häufig'],
+ ['Raw','Roh'],['Duplicates','Doppelte'],['Holos & ultras','Holos & Ultras'],['PSA slabs','PSA-Slabs'],['PSA duplicates','PSA-Doppelte'],['Errors, rewards & sealed','Fehldrucke, Belohnungen & Versiegelt'],['🗂️ All PSA cards','🗂️ Alle PSA-Karten'],
+ ['💰 TOP 20 RAW','💰 TOP 20 ROH'],['🗂️ ALL PSA CARDS','🗂️ ALLE PSA-KARTEN'],['🎮 GAMES','🎮 SPIELE'],
+ ['CLEAR','LEEREN'],['PICK CARDS TO SELL','KARTEN ZUM VERKAUFEN WÄHLEN'],['SET UP YOUR TABLE','BAU DEINEN TISCH AUF'],['BACK','ZURÜCK'],['OPEN DOORS','TÜREN AUF'],['NEXT VISITOR','NÄCHSTER BESUCHER'],['🛒 AISLES','🛒 GÄNGE'],['NO DEAL','KEIN DEAL'],['COUNTER','GEGENANGEBOT'],['YOUR PRICE','DEIN PREIS'],['their offer','ihr Angebot'],['PACK UP','EINPACKEN'],["Show's over",'Die Messe ist vorbei'],['BACK TO MY TABLE','ZURÜCK ZU MEINEM TISCH'],['PASS','PASSEN'],
+ ['WORK','ARBEITEN'],['EAT','ESSEN'],['OPEN THE SHOP','LADEN ÖFFNEN'],['BULK BIN','KISTE'],['RARE CASE','VITRINE'],['SHIP ORDER','BESTELLUNG VERSENDEN'],['FAKE','FÄLSCHUNG'],['REAL','ECHT'],['OFFER','ANBIETEN'],['Shift done','Schicht vorbei'],['PAYOUT','AUSZAHLUNG'],['Wage','Lohn'],['Reputation','Ruf'],['Deductions','Abzüge'],
+ ['DAILY MISSIONS','TÄGLICHE MISSIONEN'],['Story','Geschichte'],['Bounties','Kopfgelder'],['Collections','Sammlungen'],['Achievements','Erfolge'],['Master Sets','Master-Sets'],['Weekly request','Wöchentliche Anfrage'],['IN PROGRESS','LÄUFT'],['CLAIM','EINLÖSEN'],
+ ['Packs ripped','Geöffnete Packs'],['Cards pulled','Gezogene Karten'],['Cards in hand','Karten auf der Hand'],['Holos','Holos'],['Ultra rares','Ultra Rares'],['God packs','God Packs'],['Misprints','Fehldrucke'],['Badges','Orden'],['Items sold','Verkaufte Artikel'],['Cards graded','Bewertete Karten'],['Retro games','Retro-Spiele'],['Auctions won','Gewonnene Auktionen'],['Sets unlocked','Freigeschaltete Sets'],['Best pulls','Beste Ziehungen'],
+ ['Slabs','Slabs'],['Value','Wert'],['Newest','Neueste'],['Grade','Note'],['OPEN','ÖFFNEN'],['WAIT','WARTEN'],['ADD ALL TO VAULT','ALLE IN DEN TRESOR'],['ADD TO VAULT','IN DEN TRESOR'],['BIN IT','WEGWERFEN'],
+ ['TAP TO ENTER THE SHOP','TIPPEN, UM DEN LADEN ZU BETRETEN'],['🔑 CONTINUE WITH SAVE CODE','🔑 MIT SPEICHERCODE WEITERSPIELEN'],['THIS IS ME','DAS BIN ICH'],['CONFIRM','BESTÄTIGEN'],['Choose your starter','Wähle deinen Starter'],
+ ['LET\'S RIP','LOS GEHT\'S'],['WEEKEND EVENT · ENDS SUNDAY','WOCHENEND-EVENT · ENDET SONNTAG'],['Next set reward: a random modern card (~$100)','Nächste Set-Belohnung: eine zufällige moderne Karte (~100 $)'],
+ ['HIGH/LOW','HÖHER/TIEFER'],['GYMS','ARENEN'],['⟲ RESET GAME','⟲ SPIEL ZURÜCKSETZEN'],['SELL ANYWAY','TROTZDEM VERKAUFEN'],['KEEP THE CARD','KARTE BEHALTEN'],['KEEP','BEHALTEN'],
+ ['GET SAVE CODE','SPEICHERCODE HOLEN'],['ENTER CODE','CODE EINGEBEN'],['COPY CODE','CODE KOPIEREN'],['LOAD A CODE','CODE LADEN'],['LOAD MY GAME','MEIN SPIEL LADEN'],['Your save code','Dein Speichercode'],['Enter save code','Speichercode eingeben'],
+ ['Hot today','Heute gefragt'],['Your most valuable items','Deine wertvollsten Artikel'],['Upgrade your room','Zimmer aufwerten'],['Hall of fame · your top 10','Ruhmeshalle · deine Top 10'],['📸 SHARE MY ROOM','📸 ZIMMER TEILEN'],['★ SHOWCASE SHELF','★ VITRINENREGAL'],
+ ['Submit to PSA','Zu PSA schicken'],['Standard','Standard'],['Express','Express'],['Walk-through','Sofort'],['Back in 20 minutes','Zurück in 20 Minuten'],['Back in 3 minutes','Zurück in 3 Minuten'],['Graded instantly','Sofort bewertet'],
+ ['IN THE QUEUE','IN DER WARTESCHLANGE'],['SHIPPED TO PSA','ZU PSA VERSCHICKT'],['GOT IT','ALLES KLAR'],['DING DONG! PSA DELIVERY','DING DONG! PSA-LIEFERUNG'],
+ ['Level','Level'],['Packs waiting','Packs warten'],['LOW ON CASH','WENIG GELD'],['RIP','AUFREISSEN'],['LOOK','ANSEHEN'],['CHANGE','ÄNDERN'],['CHOOSE GRAIL','GRAL WÄHLEN'],['JOIN','MITMACHEN'],['PREVIEW','VORSCHAU'],
+ ['NEW','NEU'],['MISPRINT','FEHLDRUCK'],['Your pack','Dein Pack'],['Nice pull!','Guter Zug!'],['LEGENDARY PULL!','LEGENDÄRER ZUG!'],['GOD PACK!','GOD PACK!']];
+const DEMAP=new Map(DE);
+const DESUB=[[/^Pack value /,'Pack-Wert '],[/ · pack price /,' · Pack-Preis '],[/This pack costs /,'Dieses Pack kostet '],[/FREE PACK/,'GRATIS-PACK'],[/ voucher(s)? left/,' Gutschein(e) übrig'],[/ NEW FOR YOUR BINDER/,' NEU FÜR DEINEN ORDNER'],
+ [/^SELL (\d+) DUPLICATES/,'$1 DOPPELTE VERKAUFEN'],[/^SELL (\d+) TO MARTY/,'$1 AN MARTY VERKAUFEN'],[/^QUICK SELL/,'SCHNELL VERKAUFEN'],[/^RIP (\d+) PACKS/,'$1 PACKS AUFREISSEN'],[/ packs at once unlocks at level /,' Packs auf einmal ab Level '],
+ [/^Level (\d+)!?$/,'Level $1!'],[/^Not enough money · you need /,'Nicht genug Geld · du brauchst '],[/^No energy left/,'Keine Energie mehr'],[/ more one by one to unlock bulk opening/,' weitere einzeln, dann gehen mehrere auf einmal'],[/NEW SET · open /,'NEUES SET · öffne noch '],
+ [/^Sold (\d+) duplicates for /,'$1 Doppelte verkauft für '],[/ in hand/,' auf der Hand'],[/Market /,'Marktwert '],[/^SEND 1 TO PSA…$/,'1 ZU PSA SCHICKEN…'],[/^📮 SEND ALL (\d+) COPIES TO PSA$/,'📮 ALLE $1 KOPIEN ZU PSA']];
+function deText(s,node){if(node&&node.parentNode&&node.parentNode.closest&&node.parentNode.closest('.brand'))return s;const t=s.trim();if(!t)return s;const hit=DEMAP.get(t);if(hit!=null)return s.replace(t,hit);let o=s;for(const [re,rep] of DESUB)o=o.replace(re,rep);return o}
+function deWalk(root){if(S.lang!=='de'||!root)return;const w=document.createTreeWalker(root,NodeFilter.SHOW_TEXT,{acceptNode:n=>{const p=n.parentNode;if(!p||/^(SCRIPT|STYLE|TEXTAREA)$/.test(p.nodeName))return NodeFilter.FILTER_REJECT;return NodeFilter.FILTER_ACCEPT}});
+ const list=[];let n;while(n=w.nextNode())list.push(n);list.forEach(x=>{if(x._de===x.nodeValue)return;const v=deText(x.nodeValue,x);if(v!==x.nodeValue){if(x._en==null)x._en=x.nodeValue;x.nodeValue=v;deSeen.add(x)}x._de=x.nodeValue})}
+const deSeen=new Set();
+let deObs=null;
+function applyLang(){document.documentElement.lang=S.lang==='de'?'de':'en';
+ if(S.lang==='de'){deWalk(document.body);if(!deObs){deObs=new MutationObserver(ms=>{if(S.lang!=='de')return;for(const m of ms){if(m.type==='characterData'){const t=m.target,v=deText(t.nodeValue,t);if(v!==t.nodeValue){t._en=t.nodeValue;t.nodeValue=v;deSeen.add(t)}}else m.addedNodes.forEach(x=>{if(x.nodeType===3){const v=deText(x.nodeValue,x);if(v!==x.nodeValue){x._en=x.nodeValue;x.nodeValue=v;deSeen.add(x)}}else if(x.nodeType===1)deWalk(x)})}});deObs.observe(document.body,{childList:true,subtree:true,characterData:true})}}
+ else{if(deObs){deObs.disconnect();deObs=null}deSeen.forEach(x=>{if(x._en!=null&&x.isConnected){x.nodeValue=x._en;x._de=null}});deSeen.clear();const id=document.querySelector('.screen.on');if(id)go(id.id)}}
+setTimeout(applyLang,0);
+
 boot();
 
 </script>
