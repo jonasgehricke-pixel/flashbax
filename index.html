@@ -11,7 +11,7 @@
 <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
 <meta http-equiv="Pragma" content="no-cache">
 <meta http-equiv="Expires" content="0">
-<title>PACK RIP · v33</title>
+<title>PACK RIP · v34</title>
 <style>
 :root{--gold:#ffd76a;--bg:#050407;--panel:rgba(18,14,24,.7);--line:rgba(255,255,255,.1);--txt:#f5f2ff;--mut:#a8a2c0;--grn:#2fbf6a;--red:#e8455a;--mx:50%;--my:50%;--rx:0deg;--ry:0deg;--c1:#2d63c8;--c2:#0c1f52;--c3:#ffcb05;--bgh:225;--bgs:30%;--pw:220px;--pbg:linear-gradient(135deg,#fff,#dfe6ff)}
 *{box-sizing:border-box;margin:0;padding:0;-webkit-tap-highlight-color:transparent;-webkit-user-select:none;user-select:none;-webkit-touch-callout:none;touch-action:manipulation}
@@ -657,7 +657,7 @@ body.intro .screen,body.intro nav,body.intro #coin,body.intro #musBtn,body.intro
 <button id="musBtn" aria-label="Music">♪</button>
 <div id="machPill">⚙ MACHINE RUNNING</div>
 <section class="screen on" id="scrHome">
-  <header class="top"><span class="brand">PACK<i>RIP</i><span class="ver">v33</span></span><button class="backBtn" id="saveBtn">💾 SAVE</button></header>
+  <header class="top"><span class="brand">PACK<i>RIP</i><span class="ver">v34</span></span><button class="backBtn" id="saveBtn">💾 SAVE</button></header>
   <div class="scroll" id="homeBody"></div>
 </section>
 <section class="screen" id="scrSets">
@@ -1017,7 +1017,7 @@ function rawCount(id){const s=setOf(id);return (S.coll[s]||{})[id]||0}
 function takeRaw(id){_uv++;const s=setOf(id),n=rawCount(id);if(n<1)return null;const f=S.fakes[id]||0;const isFake=f>0&&Math.random()<f/n;
  S.coll[s][id]=n-1;if(isFake)S.fakes[id]=f-1;else if(f>S.coll[s][id])S.fakes[id]=S.coll[s][id];return isFake}
 const seenCount=id=>Object.keys(S.seen[id]||{}).length;
-function ownedSet(id){const o=new Set();Object.entries(S.coll[id]||{}).forEach(([k,n])=>{if(n>0)o.add(k)});S.slabs.forEach(s=>{if(!s.fake&&!s.sp&&setOf(s.id)===id)o.add(s.id)});S.mis.forEach(m=>{if(setOf(m.id)===id)o.add(m.id)});return o}
+function ownedSet(id){const o=new Set();Object.entries(S.coll[id]||{}).forEach(([k,n])=>{if(n>0)o.add(k)});S.slabs.forEach(s=>{if(!s.fake&&!s.sp&&setOf(s.id)===id)o.add(s.id)});S.mis.forEach(m=>{if(setOf(m.id)===id)o.add(m.id)});(S.subs||[]).forEach(sb=>(sb.sls||[]).forEach(x=>{if(!x.sp&&setOf(x.id)===id)o.add(x.id)}));(S.shelf||[]).forEach(x=>{const sn=x.snap||{},cid=sn.k==='raw'?sn.id:sn.k==='slab'?sn.sl&&sn.sl.id:sn.m&&sn.m.id;if(cid&&setOf(cid)===id)o.add(cid)});return o}
 const ownCount=id=>ownedSet(id).size;
 const isOwned=cid=>rawCount(cid)>0||S.slabs.some(s=>!s.fake&&s.id===cid)||S.mis.some(m=>m.id===cid);
 function allItems(){const out=[];
@@ -2470,7 +2470,7 @@ function renderHome(){
   return `<div class="row2"><div class="tx"><b>${d.t}${d.g>1?` <span class="tag g${d.g}">GEN ${ROMAN[d.g]}</span>`:''}</b><div class="mbar"><i style="width:${p/d.n*100}%"></i></div></div><button class="sbtn ${done&&!cl?'earn':'g'}" data-claim="${k}" ${done&&!cl?'':'disabled'}>${cl?'✓':IN(dReward(d))}</button></div>`}).join('')}</div>`;
  const g=S.grail;h+=`<div class="pnl"><h4>👑 YOUR HOLY GRAIL · ULTRA RARES ONLY</h4>${g?`<div class="row2"><img class="th" src="${g.img}"><div class="tx"><b>PSA 10 ${esc(g.name)}</b><small>Reward: $200 + 300 XP</small></div><button class="sbtn g" id="grailPick">CHANGE</button></div>`:`<p>Pick one ultra rare as your life goal. Land it as a PSA 10 for a big reward.</p><button class="btn ghost" id="grailPick">CHOOSE GRAIL</button>`}</div>`;
  if(!ev)h+=`<p class="empty" style="padding:10px 0 0;font-size:11px;text-shadow:0 1px 4px #000">Next weekend event (Fri–Sun): ${EVS[evNext()][0]}</p>`;
- h+=`<p class="empty" style="font-size:10px;padding:14px 0 0;color:#6ff0a0">Version 33 · dupes 65% in shop · all PSA tab · first 10 packs of a new set one by one · sell all dupes 75% · real monthly card · sell up to 50 · PSA duplicates · starter slab · ultra 1 in 500 · Gen IX Paldea · 5 lo-fi songs · PSA 10 7.5% · monthly 1,000 packs · set reward ~$100</p><button class="resetSm" id="resetHome">⟲ RESET GAME</button>`;
+ h+=`<p class="empty" style="font-size:10px;padding:14px 0 0;color:#6ff0a0">Version 34 · PSA keeps sets unlocked · grouped PSA tab when selling · dupes 65% in shop · all PSA tab · first 10 packs of a new set one by one · sell all dupes 75% · real monthly card · sell up to 50 · PSA duplicates · starter slab · ultra 1 in 500 · Gen IX Paldea · 5 lo-fi songs · PSA 10 7.5% · monthly 1,000 packs · set reward ~$100</p><button class="resetSm" id="resetHome">⟲ RESET GAME</button>`;
  $('#homeBody').innerHTML=h;updDots()}
 let homeSig='';
 function renderHomeLive(){const sig=[S.subs.filter(s=>s.ready<=NOW()).length,jobReady(),oakReady(),isBroke(),quizReady(),hlReady(),shelfSold(),!!S.machine.run,aucLive()].join();if(sig!==homeSig){homeSig=sig;renderHome()}}
@@ -2538,7 +2538,7 @@ function renderStats(){let own=0;Object.values(S.coll).forEach(s=>Object.values(
  ${L100?`<div class="pnl ev"><h4>✨ NEW GAME+ SEASON</h4><p>You reached level 100. Start a new season: your level resets to 1, you keep every card, slab, badge and dollar, and you earn a gold ★ next to your name.</p><button class="btn" id="stPrest">START SEASON ${S.prestige+2}</button></div>`:''}
  <div class="sgrid">${st.map(([v,l])=>`<div class="stat"><b>${v}</b><span>${l}</span></div>`).join('')}</div>
  <h3 class="sec">Best pulls</h3>${S.hist.length?`<div class="pnl">${S.hist.slice(0,12).map(h=>`<div class="row2"><img class="th" src="${h.img}"><div class="tx"><b>${esc(h.name)}</b><small>${(setById[h.set]||{n:''}).n} · Pack #${h.p} · ${tierName[h.r]}${h.god?' · GOD PACK':''}</small></div></div>`).join('')}</div>`:'<p class="empty">No holos yet.</p>'}
- <h3 class="sec">Rules of the game · v33</h3><div class="odds">Packs: <b>10 cards</b>, no duplicates inside one pack. Rare slot: <b>12.5% holo</b>. <b>Ultra rares are legendary: 1 in 500 packs.</b> One <b>God Pack</b> in every 200. Misprints about 1 in 170 cards. PSA 10 on about 1 in 13 submissions (7.5%).<br>
+ <h3 class="sec">Rules of the game · v34</h3><div class="odds">Packs: <b>10 cards</b>, no duplicates inside one pack. Rare slot: <b>12.5% holo</b>. <b>Ultra rares are legendary: 1 in 500 packs.</b> One <b>God Pack</b> in every 200. Misprints about 1 in 170 cards. PSA 10 on about 1 in 13 submissions (7.5%).<br>
  Levels <b>1 to 100</b>. Each region has a cap: Kanto 30, Johto 55, Hoenn 80, Sinnoh 100.<br>
  Work shifts at <b>Marty's counter</b>: wage ${fmt(crWage())} + tips. Every shift costs 1 energy (refills 1 every 20 min, or eat a snack from your fridge).<br>
  Every set you <b>complete 100%</b> earns a <b>random ungraded card from a modern set (Gen 4 to 8)</b>, worth around $100. Rip <b>1,000 packs</b> in a month for that month's exclusive special card.<br>
@@ -2556,7 +2556,7 @@ function intro(done){const I=$('#intro'),st=$('#iStage'),bx=$('#iBox');I.classLi
  let starter=null;const show=(who,sc,id)=>{st.innerHTML=`<div class="halo"></div><div class="isp"${id?' id="'+id+'"':''}>${sprite(who,sc)}</div>`};
  (async()=>{
   I.classList.add('dark');bx.style.display='none';
-  st.innerHTML=`<div class="title"><div class="t1">PACK<br>RIP</div><div class="t2">COLLECTOR EDITION · V33</div><div style="margin-top:22px;display:flex;gap:10px;justify-content:center;align-items:flex-end">${sprite(1,5)}${sprite(0,6)}${sprite(2,5)}</div><div class="ps">TAP TO ENTER THE SHOP</div><button class="btn ghost" id="tCode" style="margin-top:22px;color:#fff">🔑 CONTINUE WITH SAVE CODE</button><div class="cr">A fan-made card collecting game · ♪ sound on</div></div>`;
+  st.innerHTML=`<div class="title"><div class="t1">PACK<br>RIP</div><div class="t2">COLLECTOR EDITION · V34</div><div style="margin-top:22px;display:flex;gap:10px;justify-content:center;align-items:flex-end">${sprite(1,5)}${sprite(0,6)}${sprite(2,5)}</div><div class="ps">TAP TO ENTER THE SHOP</div><button class="btn ghost" id="tCode" style="margin-top:22px;color:#fff">🔑 CONTINUE WITH SAVE CODE</button><div class="cr">A fan-made card collecting game · ♪ sound on</div></div>`;
   await new Promise(r=>{$('#tCode').onclick=e=>{e.stopPropagation();ac();loadCodeModal()};I.onclick=e=>{if(e.target.closest('#tCode'))return;I.onclick=null;ac();musicStart();bell();r()}});
   st.innerHTML='';I.classList.remove('dark');document.body.classList.add('introZoom');await wait(1500);bx.style.display='';
   show('gary',10);
@@ -3583,16 +3583,16 @@ function sellPool(o={}){const out=[];
  Object.values(g).forEach(a=>{if(a.length<2)return;a.slice().sort((x,y)=>y.grade-x.grade||cardVal(y,{grade:y.grade})-cardVal(x,{grade:x.grade})).slice(1).forEach(s=>dup.add(s.uid))});
  out.forEach(it=>{if(it.k==='slab'&&dup.has(it.sl.uid))it.dup=1});
  return out.sort((a,b)=>b.val-a.val)}
-const PTABS=[['all','All'],['raw','Raw'],['dupes','Duplicates'],['holo','Holos & ultras'],['psa','PSA slabs'],['psadup','PSA duplicates'],['other','Errors, rewards & sealed']];
-const inTab=(it,t)=>t==='all'||(t==='raw'&&it.k==='raw')||(t==='dupes'&&it.k==='raw'&&it.copy>0)||(t==='holo'&&it.k==='raw'&&(it.c.r==='holo'||it.c.r==='ultra'))||(t==='psa'&&it.k==='slab')||(t==='psadup'&&!!it.dup)||(t==='other'&&(it.k==='mis'||it.k==='promo'||it.k==='seal'));
+const PTABS=[['all','All'],['allpsa','🗂️ All PSA cards'],['raw','Raw'],['dupes','Duplicates'],['holo','Holos & ultras'],['psa','PSA slabs'],['psadup','PSA duplicates'],['other','Errors, rewards & sealed']];
+const inTab=(it,t)=>t==='all'||(t==='allpsa'&&it.k==='slab')||(t==='raw'&&it.k==='raw')||(t==='dupes'&&it.k==='raw'&&it.copy>0)||(t==='holo'&&it.k==='raw'&&(it.c.r==='holo'||it.c.r==='ultra'))||(t==='psa'&&it.k==='slab')||(t==='psadup'&&!!it.dup)||(t==='other'&&(it.k==='mis'||it.k==='promo'||it.k==='seal'));
 function mountPicker(el,o){const pool=o.pool,sel=o.sel,max=o.max;let tab=o.tab||'all';
  const selVal=()=>pool.filter(it=>sel.has(it.key)).reduce((a,it)=>a+it.val,0);
  const head=()=>`<b>${sel.size}</b>/${max} picked · ${fmt(selVal())}`;
- const draw=()=>{const list=pool.filter(it=>inTab(it,tab)),shown=list.slice(0,240),free=Math.max(0,max-sel.size),addN=Math.min(free,list.filter(it=>!sel.has(it.key)).length);
+ const draw=()=>{const list=orderTab(pool.filter(it=>inTab(it,tab)),tab),shown=list.slice(0,240),free=Math.max(0,max-sel.size),addN=Math.min(free,list.filter(it=>!sel.has(it.key)).length);
   el.innerHTML=`<div class="chips ptabs">${PTABS.map(([k,n])=>{const c=pool.filter(it=>inTab(it,k)).length;if(!c&&k!=='all'&&k!==tab)return'';return `<button class="chip ${k===tab?'on':''} ${k==='psadup'?'psa':k==='dupes'?'val':''}" data-pt="${k}">${n} · ${c}</button>`}).join('')}</div>
   <div class="ptool"><span>${head()}</span><button class="sbtn g" data-pa="add" ${addN?'':'disabled'}>+ ${tab==='all'?'TOP':'ALL'} ${addN}</button><button class="sbtn g" data-pa="clr" ${sel.size?'':'disabled'}>CLEAR</button></div>
-  ${tab==='psadup'?'<p class="pnote">Your best slab of each card stays in the vault. These are the extra copies, easy to sell.</p>':tab==='dupes'?'<p class="pnote">Only your extra copies. One of every card stays in your binder.</p>':''}
-  <div class="pick">${shown.map(it=>`<div class="p ${sel.has(it.key)?'on':''} ${it.k==='mis'?'mp-'+it.m.v:''}" data-k="${it.key}">${itemThumb(it)}<span class="ck">✓</span>${it.dup?'<span class="dpl">DUPE</span>':it.k==='raw'&&it.of>1?`<span class="cpy">${it.copy+1}/${it.of}</span>`:''}<span class="pv">${itemTag(it)?itemTag(it)+' · ':''}${fmt(it.val)}</span></div>`).join('')||'<p class="empty" style="grid-column:1/-1">Nothing on this tab.</p>'}</div>
+  ${tab==='allpsa'?'<p class="pnote">Same cards stay together, sorted by their best slab. The first slab of each card is your best one, everything marked <b style="color:#ff8a8a">DUPE</b> is safe to sell.</p>':tab==='psadup'?'<p class="pnote">Your best slab of each card stays in the vault. These are the extra copies, easy to sell.</p>':tab==='dupes'?'<p class="pnote">Only your extra copies. One of every card stays in your binder.</p>':''}
+  <div class="pick">${shown.map((it,ix)=>`${tab==='allpsa'&&(ix===0||shown[ix-1].sl.id+shown[ix-1].sl.name!==it.sl.id+it.sl.name)?psaHdr(it,list):''}<div class="p ${sel.has(it.key)?'on':''} ${it.k==='mis'?'mp-'+it.m.v:''}" data-k="${it.key}">${itemThumb(it)}<span class="ck">✓</span>${it.dup?'<span class="dpl">DUPE</span>':it.k==='raw'&&it.of>1?`<span class="cpy">${it.copy+1}/${it.of}</span>`:''}<span class="pv">${itemTag(it)?itemTag(it)+' · ':''}${fmt(it.val)}</span></div>`).join('')||'<p class="empty" style="grid-column:1/-1">Nothing on this tab.</p>'}</div>
   ${list.length>shown.length?`<p class="pnote" style="margin-top:8px">Showing the top ${shown.length} of ${list.length}.</p>`:''}`;
   o.onChange&&o.onChange()};
  el.onclick=e=>{const t=e.target.closest('[data-pt]');if(t){tab=t.dataset.pt;blip();draw();return}
@@ -3741,6 +3741,11 @@ async function renderAllPSA(){await ensureLoaded();if(albumSet!=='$allpsa')retur
 const _ra33=renderAlbum;renderAlbum=async function(){
  if(albumSet==='$allpsa'){await _ra33.call(this).catch(()=>{});}else return _ra33();
  return renderAllPSA()};
+
+/* ---------- v34: grouped ALL PSA tab when selling ---------- */
+function orderTab(list,tab){if(tab!=='allpsa')return list;const g={};list.forEach(it=>{const k=it.sl.id+'|'+it.sl.name;(g[k]=g[k]||[]).push(it)});
+ return Object.values(g).map(a=>{a.sort((x,y)=>y.sl.grade-x.sl.grade||y.val-x.val);return {a,top:Math.max(...a.map(x=>x.val))}}).sort((x,y)=>y.top-x.top).flatMap(gr=>gr.a)}
+function psaHdr(it,list){const same=list.filter(x=>x.sl.id===it.sl.id&&x.sl.name===it.sl.name);return `<div class="pgrp"><b>${esc(it.sl.name)}</b>${same.length>1?`<span class="dn">×${same.length}</span>`:''}${fmt(Math.max(...same.map(x=>x.val)))}</div>`}
 boot();
 
 </script>
