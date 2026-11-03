@@ -11,7 +11,7 @@
 <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
 <meta http-equiv="Pragma" content="no-cache">
 <meta http-equiv="Expires" content="0">
-<title>PACK RIP · v39</title>
+<title>PACK RIP · v40</title>
 <style>
 :root{--gold:#ffd76a;--bg:#050407;--panel:rgba(18,14,24,.7);--line:rgba(255,255,255,.1);--txt:#f5f2ff;--mut:#a8a2c0;--grn:#2fbf6a;--red:#e8455a;--mx:50%;--my:50%;--rx:0deg;--ry:0deg;--c1:#2d63c8;--c2:#0c1f52;--c3:#ffcb05;--bgh:225;--bgs:30%;--pw:220px;--pbg:linear-gradient(135deg,#fff,#dfe6ff)}
 *{box-sizing:border-box;margin:0;padding:0;-webkit-tap-highlight-color:transparent;-webkit-user-select:none;user-select:none;-webkit-touch-callout:none;touch-action:manipulation}
@@ -657,7 +657,7 @@ body.intro .screen,body.intro nav,body.intro #coin,body.intro #musBtn,body.intro
 <button id="musBtn" aria-label="Music">♪</button>
 <div id="machPill">⚙ MACHINE RUNNING</div>
 <section class="screen on" id="scrHome">
-  <header class="top"><span class="brand">PACK<i>RIP</i><span class="ver">v39</span></span><button class="backBtn" id="saveBtn">💾 SAVE</button></header>
+  <header class="top"><span class="brand">PACK<i>RIP</i><span class="ver">v40</span></span><button class="backBtn" id="saveBtn">💾 SAVE</button></header>
   <div class="scroll" id="homeBody"></div>
 </section>
 <section class="screen" id="scrSets">
@@ -2078,7 +2078,7 @@ const ACH=[['first','First rip','Open your first pack',()=>S.packs>=1,5,1],['p10
  ['s1','Sinnoh debut','Open a Gen IV pack',()=>S.gp[4].p>=1,40,4],['lvx','Level X','Pull a Pokémon LV.X',()=>!!S.flags.lvx,200,4],['creation','Creation trio','Pull a Dialga, Palkia or Giratina holo',()=>!!S.flags.creation,200,4],['chomp','Land shark','Pull a Garchomp holo',()=>!!S.flags.chomp,150,4],['arc','The Alpha','Pull an Arceus holo',()=>!!S.flags.arceus,300,4],
  ['s100','Sinnoh addict','Open 100 Gen IV packs',()=>S.gp[4].p>=100,250,4],['scomp','Sinnoh completionist','Complete a Gen IV set 100%',()=>SETS.some(s=>s.g===4&&setComplete(s.id)),400,4],['squiz','Sinnoh scholar','Name 400 Pokémon in the quiz',()=>S.stats.quiz>=400,250,4],['schamp','Sinnoh Champion','Earn all 8 Sinnoh badges',()=>regionBadges(4)>=8,1200,4],['master','Pokémon Master','Reach level 100',()=>level()>=100,2500,4]];
 function checkAll(){ACH.forEach(([k,n,d,ok,r,g])=>{if(!S.ach.includes(k)&&genOpen(g)&&ok()){S.ach.push(k);save();setTimeout(()=>{addCoins(r);toast(`🏆 ${n} · ${IN(r)}`);tone([1318,1568,2093],.3,.07,'sine',.08)},300)}});
- SETS.forEach(s=>{if(!S.ms.includes(s.id)&&memo[s.id]&&isUnlocked(SETS.indexOf(s))){const m=masterProg(s.id);if(m&&m.a>=m.b){S.ms.push(s.id);save();whenFree(()=>{const r=300*Math.min(4,s.g);addCoins(r);addXP(500);fanfare();burst(260,['#ffd76a','#fff'],1.3);modal(`<div class="em">👑</div><h2>Master Set!</h2><p>You completed the <b>${s.n}</b> Master Set (${m.what}).<br><br>+${fmt(r)} · a golden trophy for your room.</p><button class="btn" onclick="closeModal()">LEGENDARY</button>`)})}}});
+ SETS.forEach(s=>{if(!S.ms.includes(s.id)&&memo[s.id]&&isUnlocked(SETS.indexOf(s))){const m=masterProg(s.id);if(m&&m.a>=m.b){S.ms.push(s.id);save();whenFree(()=>{const r=210*Math.min(4,s.g);addCoins(r);addXP(500);fanfare();burst(260,['#ffd76a','#fff'],1.3);modal(`<div class="em">👑</div><h2>Master Set!</h2><p>You completed the <b>${s.n}</b> Master Set (${m.what}).<br><br>+${fmt(r)} · a golden trophy for your room.</p><button class="btn" onclick="closeModal()">LEGENDARY</button>`)})}}});
  specCheck();troCheck();moCheck();grailFix();updDots()}
 function updDots(){const q=dailyReady()+storyReady()+colsReady();
  document.querySelector('nav button[data-s="scrHome"]').classList.toggle('alert',q>0||S.subs.some(s=>s.ready<=NOW())||oakReady()||shelfSold()>0)}
@@ -2470,7 +2470,7 @@ function renderHome(){
   return `<div class="row2"><div class="tx"><b>${d.t}${d.g>1?` <span class="tag g${d.g}">GEN ${ROMAN[d.g]}</span>`:''}</b><div class="mbar"><i style="width:${p/d.n*100}%"></i></div></div><button class="sbtn ${done&&!cl?'earn':'g'}" data-claim="${k}" ${done&&!cl?'':'disabled'}>${cl?'✓':IN(dReward(d))}</button></div>`}).join('')}</div>`;
  const g=S.grail;h+=`<div class="pnl"><h4>👑 YOUR HOLY GRAIL · ULTRA RARES ONLY</h4>${g?`<div class="row2"><img class="th" src="${g.img}"><div class="tx"><b>PSA 10 ${esc(g.name)}</b><small>Reward: $200 + 300 XP</small></div><button class="sbtn g" id="grailPick">CHANGE</button></div>`:`<p>Pick one ultra rare as your life goal. Land it as a PSA 10 for a big reward.</p><button class="btn ghost" id="grailPick">CHOOSE GRAIL</button>`}</div>`;
  if(!ev)h+=`<p class="empty" style="padding:10px 0 0;font-size:11px;text-shadow:0 1px 4px #000">Next weekend event (Fri–Sun): ${EVS[evNext()][0]}</p>`;
- h+=`<p class="empty" style="font-size:10px;padding:14px 0 0;color:#6ff0a0">Version 39 · phone + PC in one file · gen rewards · ultimate Pikachus · ultra reveal in multi-packs · fullscreen ultra reveal · value hidden until flip · unlocked sets stay unlocked · options & German · PSA 10 12.5% · PSA keeps sets unlocked · grouped PSA tab when selling · dupes 65% in shop · all PSA tab · first 10 packs of a new set one by one · sell all dupes 75% · real monthly card · sell up to 50 · PSA duplicates · starter slab · ultra 1 in 400 · Gen IX Paldea · 5 lo-fi songs · PSA 10 12.5% · monthly 1,000 packs · set reward ~$100</p><button class="resetSm" id="resetHome">⟲ RESET GAME</button>`;
+ h+=`<p class="empty" style="font-size:10px;padding:14px 0 0;color:#6ff0a0">Version 40 · rewards −30% · dupes 40% · every show visitor buys · gen reward = full-art PSA 10 trophy · phone + PC in one file · gen rewards · ultimate Pikachus · ultra reveal in multi-packs · fullscreen ultra reveal · value hidden until flip · unlocked sets stay unlocked · options & German · PSA 10 12.5% · PSA keeps sets unlocked · grouped PSA tab when selling · dupes 65% in shop · all PSA tab · first 10 packs of a new set one by one · sell all dupes 75% · real monthly card · sell up to 50 · PSA duplicates · starter slab · ultra 1 in 400 · Gen IX Paldea · 5 lo-fi songs · PSA 10 12.5% · monthly 1,000 packs · set reward ~$100</p><button class="resetSm" id="resetHome">⟲ RESET GAME</button>`;
  $('#homeBody').innerHTML=h;updDots()}
 let homeSig='';
 function renderHomeLive(){const sig=[S.subs.filter(s=>s.ready<=NOW()).length,jobReady(),oakReady(),isBroke(),quizReady(),hlReady(),shelfSold(),!!S.machine.run,aucLive()].join();if(sig!==homeSig){homeSig=sig;renderHome()}}
@@ -2538,7 +2538,7 @@ function renderStats(){let own=0;Object.values(S.coll).forEach(s=>Object.values(
  ${L100?`<div class="pnl ev"><h4>✨ NEW GAME+ SEASON</h4><p>You reached level 100. Start a new season: your level resets to 1, you keep every card, slab, badge and dollar, and you earn a gold ★ next to your name.</p><button class="btn" id="stPrest">START SEASON ${S.prestige+2}</button></div>`:''}
  <div class="sgrid">${st.map(([v,l])=>`<div class="stat"><b>${v}</b><span>${l}</span></div>`).join('')}</div>
  <h3 class="sec">Best pulls</h3>${S.hist.length?`<div class="pnl">${S.hist.slice(0,12).map(h=>`<div class="row2"><img class="th" src="${h.img}"><div class="tx"><b>${esc(h.name)}</b><small>${(setById[h.set]||{n:''}).n} · Pack #${h.p} · ${tierName[h.r]}${h.god?' · GOD PACK':''}</small></div></div>`).join('')}</div>`:'<p class="empty">No holos yet.</p>'}
- <h3 class="sec">Rules of the game · v39</h3><div class="odds">Packs: <b>10 cards</b>, no duplicates inside one pack. Rare slot: <b>12.5% holo</b>. <b>Ultra rares are legendary: 1 in 400 packs.</b> One <b>God Pack</b> in every 200. Misprints about 1 in 170 cards. PSA 10 on about 1 in 8 submissions (12.5%).<br>
+ <h3 class="sec">Rules of the game · v40</h3><div class="odds">Packs: <b>10 cards</b>, no duplicates inside one pack. Rare slot: <b>12.5% holo</b>. <b>Ultra rares are legendary: 1 in 400 packs.</b> One <b>God Pack</b> in every 200. Misprints about 1 in 170 cards. PSA 10 on about 1 in 8 submissions (12.5%).<br>
  Levels <b>1 to 100</b>. Each region has a cap: Kanto 30, Johto 55, Hoenn 80, Sinnoh 100.<br>
  Work shifts at <b>Marty's counter</b>: wage ${fmt(crWage())} + tips. Every shift costs 1 energy (refills 1 every 20 min, or eat a snack from your fridge).<br>
  Every set you <b>complete 100%</b> earns a <b>random ungraded card from a modern set (Gen 4 to 8)</b>, worth around $100. Rip <b>1,000 packs</b> in a month for that month's exclusive special card.<br>
@@ -2556,7 +2556,7 @@ function intro(done){const I=$('#intro'),st=$('#iStage'),bx=$('#iBox');I.classLi
  let starter=null;const show=(who,sc,id)=>{st.innerHTML=`<div class="halo"></div><div class="isp"${id?' id="'+id+'"':''}>${sprite(who,sc)}</div>`};
  (async()=>{
   I.classList.add('dark');bx.style.display='none';
-  st.innerHTML=`<div class="title"><div class="t1">PACK<br>RIP</div><div class="t2">COLLECTOR EDITION · V39</div><div style="margin-top:22px;display:flex;gap:10px;justify-content:center;align-items:flex-end">${sprite(1,5)}${sprite(0,6)}${sprite(2,5)}</div><div class="ps">TAP TO ENTER THE SHOP</div><button class="btn ghost" id="tCode" style="margin-top:22px;color:#fff">🔑 CONTINUE WITH SAVE CODE</button><div class="cr">A fan-made card collecting game · ♪ sound on</div></div>`;
+  st.innerHTML=`<div class="title"><div class="t1">PACK<br>RIP</div><div class="t2">COLLECTOR EDITION · V40</div><div style="margin-top:22px;display:flex;gap:10px;justify-content:center;align-items:flex-end">${sprite(1,5)}${sprite(0,6)}${sprite(2,5)}</div><div class="ps">TAP TO ENTER THE SHOP</div><button class="btn ghost" id="tCode" style="margin-top:22px;color:#fff">🔑 CONTINUE WITH SAVE CODE</button><div class="cr">A fan-made card collecting game · ♪ sound on</div></div>`;
   await new Promise(r=>{$('#tCode').onclick=e=>{e.stopPropagation();ac();loadCodeModal()};I.onclick=e=>{if(e.target.closest('#tCode'))return;I.onclick=null;ac();musicStart();bell();r()}});
   st.innerHTML='';I.classList.remove('dark');document.body.classList.add('introZoom');await wait(1500);bx.style.display='';
   show('gary',10);
@@ -3707,16 +3707,16 @@ function newLock(){return !!(curSet&&$('#scrOpen')&&$('#scrOpen').classList.cont
 const newLeft=()=>curSet?Math.max(0,NEW_N-(S.perSet[curSet.id]||0)):0;
 const _cp32=commitPack;commitPack=function(pk,set,mode){const before=S.perSet[set.id]||0;const r=_cp32(pk,set,mode);if(before<NEW_N&&(S.perSet[set.id]||0)>=NEW_N&&!mode)whenFree(()=>{fanfare();toast(`🔓 ${set.n}: bulk opening unlocked again`)});return r};
 /* ---------- v33: dupes button lives in the shop (65%, no PSA slabs) + ALL PSA tab grouped by card ---------- */
-const DUPE_PCT=.65;
+const DUPE_PCT=.4;
 dupePlan=function(){const g={};
  sellPool({noSeal:1}).forEach(it=>{const id=it.k==='raw'?it.id:it.k==='mis'?it.m.id:null;if(!id)return;(g[id]=g[id]||[]).push(it)});
  const keep=[],sell=[];Object.entries(g).forEach(([id,a])=>{const slabbed=S.slabs.some(s=>!s.fake&&s.id===id);a.sort((x,y)=>y.val-x.val);
   if(slabbed)sell.push(...a);else if(a.length>1){keep.push(a[0]);sell.push(...a.slice(1))}});
  return {sell,keep,val:Math.round(sell.reduce((a,it)=>a+it.val*DUPE_PCT,0)*100)/100}};
-dupeBtnHTML=function(){const p=dupePlan();return `<div class="pnl gold" style="margin-top:12px"><h4>♻️ SELL ALL DUPLICATES · 65%</h4><p style="margin-top:0">Sells every extra raw copy: commons, rares, holos and misprints. The most valuable copy of each card stays. <b style="color:#fff">PSA slabs are never touched.</b> If you already own a card as a PSA slab, the raw copies count as duplicates.</p><button class="btn earn" id="dupAll" ${p.sell.length?'':'disabled'}>${p.sell.length?`SELL ${p.sell.length} DUPLICATES ${IN(p.val)}`:'NO DUPLICATES'}</button></div>`};
+dupeBtnHTML=function(){const p=dupePlan();return `<div class="pnl gold" style="margin-top:12px"><h4>♻️ SELL ALL DUPLICATES · 40%</h4><p style="margin-top:0">Sells every extra raw copy: commons, rares, holos and misprints. The most valuable copy of each card stays. <b style="color:#fff">PSA slabs are never touched.</b> If you already own a card as a PSA slab, the raw copies count as duplicates.</p><button class="btn earn" id="dupAll" ${p.sell.length?'':'disabled'}>${p.sell.length?`SELL ${p.sell.length} DUPLICATES ${IN(p.val)}`:'NO DUPLICATES'}</button></div>`};
 sellAllDupes=function(){const p=dupePlan();if(!p.sell.length){toast('No duplicates to sell');return}
  const top=p.sell.slice().sort((a,b)=>b.val-a.val).slice(0,10);
- modal(`<div class="em">♻️</div><h2>Sell ${p.sell.length} duplicates?</h2><p>Marty pays <b>65%</b> of market: <span class="money in">${fmt(p.val)}</span><br>PSA slabs stay untouched.</p>
+ modal(`<div class="em">♻️</div><h2>Sell ${p.sell.length} duplicates?</h2><p>Marty pays <b>40%</b> of market: <span class="money in">${fmt(p.val)}</span><br>PSA slabs stay untouched.</p>
  <div class="grid5" style="margin-top:10px">${top.map(it=>`<div class="mini ${it.c?it.c.r:'holo'}"><img src="${it.img}"><span class="pv">${fmt(it.val)}</span></div>`).join('')}</div>${p.sell.length>10?`<p style="font-size:11px">+ ${p.sell.length-10} more</p>`:''}
  <button class="btn earn" id="dupY">SELL ALL ${IN(p.val)}</button><button class="btn ghost" onclick="closeModal()">CANCEL</button>`);
  $('#dupY').onclick=()=>{closeModal();let tot=0,fk=0;p.sell.forEach(it=>{const r=removeItem(it);if(r&&r.fake)fk++;else tot+=it.val*DUPE_PCT});
@@ -4077,12 +4077,12 @@ function ultCheck(){if(S.ult||!S.player||!allComplete())return;S.ult={d:NOW()};a
 /* Sets screen: reward line under every gen + ultimate reward at the very end */
 const _rs39=renderSets;renderSets=function(){_rs39();const heads=[...document.querySelectorAll('#setList .gen')];
  heads.forEach((h,i)=>{const g=GL[i];if(!g||!GEN_BADGE[g])return;const [a,b]=genProg(g),on=S.genDone.includes(g),sl=S.slabs.find(x=>x.gr===g);
-  h.insertAdjacentHTML('afterend',`<div class="greward">${genBadgeHTML(g,38,on)}<div style="flex:1"><b>${on?'✓ '+GEN_BADGE[g][0]:'Complete all '+b+' sets'}</b>${on?`PSA 10 ${esc(sl?sl.name:'reward')} earned`:`Reward: ${GEN_BADGE[g][0]} badge + a PSA 10 of the most valuable card of this generation · ${a}/${b}`}<div class="mbar"><i style="width:${b?a/b*100:0}%"></i></div></div></div>`)});
+  h.insertAdjacentHTML('afterend',`<div class="greward">${genBadgeHTML(g,38,on)}<div style="flex:1"><b>${on?'✓ '+GEN_BADGE[g][0]:'Complete all '+b+' sets'}</b>${on?`PSA 10 ${esc(sl?sl.name:'reward')} earned`:`Reward: ${GEN_BADGE[g][0]} badge + a PSA 10 full-art card from this generation (trophy, not for sale) · ${a}/${b}`}<div class="mbar"><i style="width:${b?a/b*100:0}%"></i></div></div></div>`)});
  const d=setsDone();$('#setList').insertAdjacentHTML('beforeend',`<div class="gen"><b>🏆 ULTIMATE REWARD</b><span>Complete every set · ${d}/${SETS.length}</span></div><div class="pnl gold ultBox"><p style="margin-top:0;text-align:center">${S.ult?'<b style="color:#ffd76a">Earned!</b> The rarest Pikachus in your collection.':'Register every card of all '+SETS.length+' sets to unlock two legendary <b style="color:#fff">PSA 10 Pikachus</b>.'}</p><div class="mbar"><i style="width:${d/SETS.length*100}%"></i></div>${ultHTML()}</div>`)};
 /* Binder: ultimate tab at the very end */
 async function renderTrophies(){if(albumSet!=='$trophy')return;$('#chips').style.display='none';const d=setsDone();
  $('#albCount').innerHTML=`<b>${d}</b>/${SETS.length} sets`;$('#albSetName').textContent='Ultimate rewards · complete everything';$('#albPct').textContent=Math.floor(d/SETS.length*100)+'%';$('#albBar').style.width=(d/SETS.length*100)+'%';
- $('#msLine').innerHTML='Complete every set of a generation for its champion badge and a PSA 10 of its most valuable card. Complete <b style="color:#ffd76a">every set</b> for the two legendary Pikachus.';
+ $('#msLine').innerHTML='Complete every set of a generation for its champion badge and a PSA 10 full-art trophy card. Complete <b style="color:#ffd76a">every set</b> for the two legendary Pikachus.';
  $('#agrid').innerHTML=GL.map(g=>{const [a,b]=genProg(g),on=S.genDone.includes(g),sl=S.slabs.find(x=>x.gr===g);return `<div class="tro-g">${genBadgeHTML(g,52,on)}<b>${GEN_BADGE[g][0]}</b><small>${a}/${b} sets</small>${sl?`<div data-gsl="${sl.uid}">${slabHTML(sl,{small:1})}</div>`:''}</div>`}).join('')
   +`<div class="pgrp"><b>🏆 THE ULTIMATE REWARD</b>${d}/${SETS.length}</div>`+ultHTML()}
 const _ra39=renderAlbum;renderAlbum=async function(){const r=await _ra39();if(albumSet==='$trophy')renderTrophies();return r};
@@ -4096,6 +4096,59 @@ ultImgs();
 /* phone + PC in one file: re-fit when the window changes between layouts */
 matchMedia('(min-width:900px) and (pointer:fine)').addEventListener('change',()=>{fitPack();const g=$('#mgrid');if(g&&g.children.length)fitGrid(g,g.children.length);const rt=$('#ripText');if(rt&&!document.body.classList.contains('godmode'))rt.innerHTML=ripTxt()});
 DEMAP.set('SWIPE ACROSS TOP OR BOTTOM','OBEN ODER UNTEN DRÜBERWISCHEN');DEMAP.set('TAP TO CONTINUE','TIPPEN ZUM WEITERMACHEN');DEMAP.set('TAP TO REVEAL','TIPPEN ZUM AUFDECKEN');
+/* =================== v40: balance pass =================== */
+/* 1) all goal rewards -30% (achievements, trophy badges, daily missions, collections, story, master sets) */
+ACH.forEach(a=>{a[4]=Math.max(1,Math.round(a[4]*.7))});
+TT_R.forEach((v,i)=>{TT_R[i]=Math.round(v*.7)});
+DPOOL.forEach(d=>{d.r=Math.round(d.r*.7*100)/100});
+COLS.forEach(c=>{c[2]=Math.round(c[2]*.7)});
+Object.values(STORY).forEach(b=>b.chapters.forEach(ch=>{if(ch.r&&ch.r.c){ch.r.c=Math.round(ch.r.c*.7);ch.rt='+'+fmt(ch.r.c)}}));
+/* 2) card shows: every visitor wants to buy something from your table */
+nextBuyer=function(){
+ if(!SH)return;const open=SH.table.filter(t=>!t.sold);
+ if(SH.vis<=0||!open.length)return endShow();SH.vis--;
+ let type=pickType(),cands=open.filter(t=>wants(type,t)>0);
+ if(!cands.length){for(const k of shuffle(Object.keys(BT).filter(k=>k!=='trade'))){const c=open.filter(t=>wants(k,t)>0);if(c.length){type=k;cands=c;break}}}
+ if(!cands.length){type='coll';cands=open}
+ const b=BT[type],who={type,e:rnd(b.e),n:rnd(b.n),t:b.t,pat:b.pat};
+ let tot=cands.reduce((a,t)=>a+Math.max(.1,wants(type,t)),0),r=Math.random()*tot,it=cands[0];for(const t of cands){if((r-=Math.max(.1,wants(type,t)))<0){it=t;break}}
+ who.it=it;SH.cur=who;
+ if(type==='trade')return tradeOffer(who);
+ who.ceil=Math.round(ceilingFor(type,it)*100)/100;who.offer=Math.max(.05,Math.round(who.ceil*(type==='flip'?rr(.55,.68):rr(.68,.85))*100)/100);
+ haggleView(who,rnd(LINES[type]).replace('{c}',esc(it.name)).replace('{o}',fmt(who.offer)))};
+/* 3) generation reward: a modern FULL ART PSA 10 of a Pokémon from that generation, $500-1,000, NOT for sale, not counted in collection value */
+const GEN_DEX={1:[1,151],2:[152,251],3:[252,386],4:[387,493],5:[1,493],6:[906,1025]};
+const isGenR=s=>!!(s&&s.gr);
+const _cv40=cardVal;cardVal=function(c,o={}){if(c&&c.gr&&c.gv)return c.gv;return _cv40(c,o)};
+const _ai40=allItems;allItems=function(){return _ai40().filter(i=>!(i.k==='slab'&&isGenR(i.sl)))};
+(function(){const t=TROPH.find(x=>x.k==='psav');if(t)t.f=()=>S.slabs.filter(s=>!s.fake&&!isGenR(s)).reduce((a,s)=>a+cardVal(s,{grade:s.grade}),0)})();
+async function fullArt(g,seed){const [a,b]=GEN_DEX[g]||[1,1025];
+ const qs=[`nationalPokedexNumbers:[${a} TO ${b}] (rarity:"Special Illustration Rare" OR rarity:"Illustration Rare" OR rarity:"Rare Ultra") (set.series:"Scarlet & Violet" OR set.series:"Sword & Shield")`,
+  `nationalPokedexNumbers:[${a} TO ${b}] (rarity:"Illustration Rare" OR rarity:"Special Illustration Rare" OR rarity:"Rare Ultra" OR rarity:"Rare Secret")`];
+ for(const q of qs){try{const j=await fetchJSON(`https://api.pokemontcg.io/v2/cards?q=${encodeURIComponent(q)}&pageSize=250&select=id,name,number,images,set,rarity`,20000);
+  const l=(j.data||[]).filter(c=>c.images&&c.images.large);if(!l.length)continue;
+  l.sort((x,y)=>pop(y.name)-pop(x.name));const top=l.slice(0,Math.min(30,l.length)),c=top[hsh(String(seed))%top.length];
+  return {id:c.id,name:c.name,n:c.number,s:c.images.small,l:c.images.large,setn:(c.set&&c.set.name)||'Full Art',y:c.set&&c.set.releaseDate?+c.set.releaseDate.slice(0,4):''}}catch(e){}}
+ return null}
+const genFields=(c,g)=>({id:c.id,name:c.name,n:c.n,r:'ultra',s:c.s,l:c.l,sp:1,setn:c.setn,y:c.y,l3:'FULL ART · '+REGION[g].toUpperCase()+' REWARD',gr:g,gv:Math.round(rr(500,1000)),nos:1});
+let genBusy40=false,genRetry=0;
+genCheck=async function(){if(genBusy40||!S.player||NOW()<genRetry)return;const g=GL.find(x=>!S.genDone.includes(x)&&genComplete(x));if(g==null)return;genBusy40=true;
+ try{const c=await fullArt(g,S.player.name+g);if(!c){genRetry=NOW()+60000;return}S.genDone.push(g);
+  const sl=Object.assign({uid:uid(),grade:10,cert:String(Math.floor(1e8+Math.random()*9e8)),seed:Math.floor(Math.random()*1e9),d:NOW()},genFields(c,g));
+  _uv++;S.slabs.push(sl);addXP(1000);save();
+  whenFree(()=>{flash(1,1000);sfx.ultra();fanfare();burst(380,['#ffe07a','#fff',GEN_BADGE[g][1],GEN_BADGE[g][2]],1.7);banner(REGION[g].toUpperCase()+' COMPLETE!');
+   modal(`<div style="display:flex;justify-content:center;margin-top:6px">${genBadgeHTML(g,96,1)}</div><h2 style="margin-top:12px">${GENS[g][0]} complete!</h2><p>You completed every ${esc(REGION[g])} set. Your rewards:<br><br>🏅 The <b>${GEN_BADGE[g][0]}</b> badge<br>🖼️ A <b>PSA 10 full-art ${esc(c.name)}</b> from <b>${esc(c.setn)}</b></p><div style="width:52%;margin:12px auto 0" id="gsl">${slabHTML(sl)}</div><p>Trophy value <span class="money in">${fmt(sl.gv)}</span><br><span style="font-size:11px">A trophy for your vault: it can't be sold and doesn't count toward your collection value.</span></p><button class="btn" onclick="closeModal();go('scrVault')">TO MY VAULT</button>`);bindTilt($('#gsl .slab'))})}
+ finally{genBusy40=false;setTimeout(()=>genCheck(),1500)}};
+/* old generation rewards (PSA 10 of the most valuable card) become a full-art trophy */
+let genFixBusy=false;
+async function genFixOld(){if(genFixBusy)return;const old=S.slabs.filter(s=>s.gr&&!s.gv);if(!old.length)return;genFixBusy=true;let n=0;
+ try{for(const s of old){const c=await fullArt(s.gr,s.uid);if(!c)continue;Object.assign(s,genFields(c,s.gr));n++}
+  if(n){_uv++;save();whenFree(()=>{toast(`🖼️ Your generation reward${n>1?'s were':' was'} swapped for a full-art PSA 10 trophy`);if($('#scrVault').classList.contains('on'))renderVault()})}}
+ finally{genFixBusy=false}}
+setTimeout(genFixOld,3000);setInterval(genFixOld,120000);
+const _os40=openSlab;openSlab=function(sl){_os40(sl);if(!isGenR(sl))return;
+ const q=$('#vQS');if(q)q.outerHTML='<p class="empty" style="padding:10px">🏆 Generation reward · trophy, not for sale</p>';
+ const v=$('#vinfo .v');if(v)v.textContent=sl.gv?`Trophy value ${fmt(sl.gv)} · not for sale`:'Trophy · not for sale'};
 boot();
 
 </script>
